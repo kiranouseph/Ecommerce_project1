@@ -85,7 +85,7 @@
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Confirm Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="confirm Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                     <div class="form-group">

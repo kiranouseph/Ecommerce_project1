@@ -15,24 +15,22 @@ height:50px;
 	}
 carousel slide
 {
-	padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 50px;
-    padding-left: 80px;
+	margin-right:20px;
+	margin-left:20px;
 }
 navbar-brand
 {
 	font-size:40px;
 }
 
-.log
+log
 {
 	margin-top:5cm;
 }
 footer{
 	background-color:white;
 }
-.cardcolor
+cardcolor
 {
 background-color:white;	
 }

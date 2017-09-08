@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="eff.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.bg-4 { 
+    
+    
+     opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.abc
+{
+color: #ffffff;
+}
+</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -17,7 +29,7 @@
   <div class ="headd">
     <!-- Second navbar for sign in -->
     
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar" style=" margin-top:10px;">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -27,20 +39,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#"><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
+          <h2>BUY IT</h2>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Flowers</a></li>
-            <li><a href="#">Occassions</a></li>
-            <li><a href="cart.jsp">Shopping cart</a></li>
-            <li><a href="#">Check out</a></li>
+            <li><a href="index.jsp"><strong>Home</strong></a></li>
+            <li><a href="#"><strong>About</strong></a></li>
+            <li><a href="#"><strong>Flowers</strong></a></li>
+            <li><a href="#"><strong>Occassions</strong></a></li>
+            <li><a href="cart.jsp"><strong>Shopping cart</strong></a></li>
+            <li><a href="#"><strong>Check out</strong></a></li>
             
-             <li><a href="login.jsp">Sign in</a></li>
+             <li><a href="login.jsp"><strong>Sign in</strong></a></li>
             
           </ul>
 
@@ -52,8 +64,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-5">
 <br>
-<br>
-<br>
+
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -67,7 +78,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="flower/1.jpg" class="iii" alt="Los Angeles" >
+      <img src="flower/1.jpg" class="iii" alt="Los Angeles"  >
     </div>
 
     <div class="item">
@@ -193,8 +204,16 @@
 <br>
 <br>
 
-    <footer>@NIIT E-Commerce Case Study Project 2017</footer>
 
+
+<p class="abc text-center">
+<strong>&copy;EVENT MANAGEMENT COMPANY</strong>
+
+
+
+
+
+ </p> 
 
 </body>
 </html>
