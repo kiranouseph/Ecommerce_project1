@@ -6,7 +6,7 @@ import com.niit.ecommerce_backend.model.Product;
 
 
 public interface ProductDAO {
-	void saveProduct();
+	public boolean saveProduct(Product product);
 	List<Product> getAllProducts();
 	Product getProductById();
 

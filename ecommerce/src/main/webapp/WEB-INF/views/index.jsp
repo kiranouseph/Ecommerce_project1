@@ -41,8 +41,8 @@ height:50px;
 	}
 .carousel slide
 {
-	margin-right:20px;
-	margin-left:20px;
+	margin-right:5px;
+	margin-left:5px;
 }
 .navbar-brand
 {
@@ -76,6 +76,7 @@ background-color:white;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            
           </button>
           <a href="index.jsp"><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
         </div>
@@ -85,23 +86,26 @@ background-color:white;
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">flower</a></li>
-            <li><a href="#">occassions</a></li>
+           <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gifts</a></li>
+          <li><a href="#">cakes</a></li>
+          <li><a href="#">Photoframes</a></li>
+           
+         
+        </ul>
+      </li>
             <li><a href="cart">Shopping cart</a></li>
             <li><a href="#">Checkout</a></li>
             
             <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
-          <form class="navbar-form navbar-left">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
-        </div>
-      </div>
+     <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+     
     </form>
 
         </div><!-- /.navbar-collapse -->

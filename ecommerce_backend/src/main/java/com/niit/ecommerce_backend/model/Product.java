@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -23,19 +24,36 @@ public class Product implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
- 
-    @Column(name = "DTYPE", nullable = false)
-    private String dtype;
-    
-    @Column(name = "TITLE", nullable = false)
-    private String title;
-    
-    @Column(name = "SHORT_DESCRIPTION", nullable = false)
-    private String shortDesc;
-    
-    @Column(name = "FORMAT", nullable = false)
-    private String format;
+   	private int id;
+    @Column(name = "productname", nullable = false)
+    private String prodname;
+    @Column(name = "proddecs", nullable = false)
+    private String proddecs;
+	@Column(name = "price", nullable = false)
+    private String price;
+	@Column(name = "Suppliername", nullable = false)
+    private String Supplier;
+	@Column(name = "Categoryname", nullable = false)
+    private String Category;
+    public String getSupplier() {
+		return Supplier;
+	}
+
+	public void setSupplier(String supplier) {
+		Supplier = supplier;
+	}
+
+	public String getCategory() {
+		return Category;
+	}
+
+	public void setCategory(String category) {
+		Category = category;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public int getId() {
 		return id;
@@ -44,37 +62,41 @@ public class Product implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getDtype() {
-		return dtype;
+	public String getProdname() {
+		return prodname;
 	}
 
-	public void setDtype(String dtype) {
-		this.dtype = dtype;
+	public void setProdname(String prodname) {
+		this.prodname = prodname;
+	}
+	
+	public String getProddecs() {
+		return proddecs;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setProddecs(String proddecs) {
+		this.proddecs = proddecs;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+
+
+	
+
+	public String getPrice() {
+		return price;
 	}
 
-	public String getShortDesc() {
-		return shortDesc;
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
-	public void setShortDesc(String shortDesc) {
-		this.shortDesc = shortDesc;
-	}
+	
 
-	public String getFormat() {
-		return format;
-	}
 
-	public void setFormat(String format) {
-		this.format = format;
-	}
+	
+
+	
+
+	
 }
 
