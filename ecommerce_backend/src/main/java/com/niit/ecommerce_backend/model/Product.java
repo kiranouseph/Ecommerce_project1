@@ -23,19 +23,29 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 
    	private int id;
     @Column(name = "productname", nullable = false)
     private String prodname;
     @Column(name = "proddecs", nullable = false)
     private String proddecs;
 	@Column(name = "price", nullable = false)
-    private String price;
+    private int price;
 	@Column(name = "Suppliername", nullable = false)
     private String Supplier;
 	@Column(name = "Categoryname", nullable = false)
     private String Category;
-    public String getSupplier() {
+	@Column(name = "stock", nullable = false)
+    private int stock;
+    public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public String getSupplier() {
 		return Supplier;
 	}
 
@@ -82,11 +92,11 @@ public class Product implements Serializable {
 
 	
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

@@ -84,6 +84,7 @@ background-color:white;
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
+           <li><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
            <li class="dropdown">
@@ -103,20 +104,11 @@ background-color:white;
             <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
-     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
      
-    </form>
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    
-    <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-5">
-<br>
-
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -124,41 +116,37 @@ background-color:white;
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
-    
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="flower/1.jpg" class="iii" alt="Los Angeles"  >
+      <img src="http://createtalentsandmodels.com/wp-content/uploads/2016/03/createtalentsandmodel_banner_1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
     </div>
 
     <div class="item">
-      <img src="flower/2.jpg" class="iii" alt="Chicago">
+      <img src="http://weddingplannershub.com/vendor/bower/wedding/branch_images/LtpmzAGTBWcxaoV_fMhT2PWFmgOZHPtd.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
     </div>
 
     <div class="item">
-      <img src="flower/3.jpg" class="iii" alt="New York">
+      <img src="http://www.kjpatna.com/img/banner3.jpg" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
     </div>
-    
+
     <div class="item">
-      <img src="flower/4.jpg" class="iii" alt="india">
+      <img src="http://weddingplannershub.com/vendor/bower/wedding/branch_images/LtpmzAGTBWcxaoV_fMhT2PWFmgOZHPtd.jpg" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
     </div>
   </div>
 
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
-</div>
- <div class="col-md-4"></div>
- </div>
  
 
 <br>

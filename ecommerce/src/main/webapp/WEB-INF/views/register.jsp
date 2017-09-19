@@ -64,14 +64,14 @@
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Mobile number</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
                             Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                            <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=" use someone@domain.com"required >
                         </div>
                     </div>
                     <div class="form-group">

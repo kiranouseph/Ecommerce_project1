@@ -1,6 +1,6 @@
 package com.niit.ecommerce_backend.daoimpl;
 
-import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,26 +11,30 @@ import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.model.Product;
 
 
-@SuppressWarnings("unused")
+
+@Repository("ProductDAOImpl")
 public class ProductDAOImpl implements ProductDAO{
 	
-
-	public boolean saveProduct(Product product) {
+	@Autowired
+	SessionFactory sessionFactory;
+	@Autowired
+	public ProductDAOImpl(SessionFactory sessionfactory)
+	{
+		this.sessionFactory=sessionfactory;
+	}
+	public void saveProduct(Product product) {
 		 	
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		ssn.save(product);
+		t.commit();
+		ssn.close();	
 		 	
-		 	
-		 	return true;
+		 
 		 }
 
-	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Product getProductById() {
-		
-		return null;
-	}
+	
 
 	
 
