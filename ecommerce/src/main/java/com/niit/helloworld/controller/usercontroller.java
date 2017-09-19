@@ -103,7 +103,7 @@ public class usercontroller {
 		return mv1;
 	}
 	@RequestMapping("/product")
-	public ModelAndView addpro(@RequestParam("prid") int id ,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("cat") String cat,@RequestParam("supp") String supp) {
+	public ModelAndView addpro(@RequestParam("prid") int id ,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("cat") Category cat,@RequestParam("supp") Supplier supp) {
 		System.out.println("in controller");
 		System.out.println(id+name+desc+price+stock+cat+supp);
 		Product p=new Product();
@@ -112,7 +112,7 @@ public class usercontroller {
 		p.setProddecs(desc);
 		p.setPrice(price);
 		p.setStock(stock);
-		p.setCategory(cat);
+		p.setCategory();
 		p.setSupplier(supp);
 		pdao.saveProduct(p);
 		

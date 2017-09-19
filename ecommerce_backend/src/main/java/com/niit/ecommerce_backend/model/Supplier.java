@@ -1,16 +1,18 @@
 package com.niit.ecommerce_backend.model;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.util.Set;
 @SuppressWarnings("unused")
 @Entity
 @Component
@@ -26,7 +28,15 @@ public class Supplier {
     
     @Column(name = "Supplieraddress", nullable = false)
     private String suppdesc;
+    @OneToMany(targetEntity=Product.class,mappedBy="supplier",cascade=CascadeType.ALL)
+    private Set<Product> product;
   
+	public Set<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
 	public int getId() {
 		return id;
 	}

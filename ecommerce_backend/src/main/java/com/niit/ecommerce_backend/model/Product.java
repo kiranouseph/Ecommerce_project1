@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,10 +33,29 @@ public class Product implements Serializable {
     private String proddecs;
 	@Column(name = "price", nullable = false)
     private int price;
-	@Column(name = "Suppliername", nullable = false)
-    private String Supplier;
-	@Column(name = "Categoryname", nullable = false)
-    private String Category;
+	@ManyToOne
+    @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
+    private Category category;
+    
+    @ManyToOne
+    @JoinColumn(name="s_id",updatable=true,insertable=true,nullable=false)
+    private Supplier supplier;
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
 	@Column(name = "stock", nullable = false)
     private int stock;
     public int getStock() {
@@ -45,25 +66,11 @@ public class Product implements Serializable {
 		this.stock = stock;
 	}
 
-	public String getSupplier() {
-		return Supplier;
-	}
+	
 
-	public void setSupplier(String supplier) {
-		Supplier = supplier;
-	}
+	
 
-	public String getCategory() {
-		return Category;
-	}
-
-	public void setCategory(String category) {
-		Category = category;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 
 	public int getId() {
 		return id;
