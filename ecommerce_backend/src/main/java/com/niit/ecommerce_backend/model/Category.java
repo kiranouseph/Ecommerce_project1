@@ -3,6 +3,7 @@ package com.niit.ecommerce_backend.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,8 @@ public class Category implements Serializable {
    	private int id;
 	@Column(name = "Categoryname", nullable = false)
     private String Categoryname;
-	@OneToMany(targetEntity=Product.class,mappedBy="category",cascade=CascadeType.ALL)
+	
+	@OneToMany(targetEntity=Product.class,mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     private Set<Product> product ;
 	public Set<Product> getProduct() {
 		return product;

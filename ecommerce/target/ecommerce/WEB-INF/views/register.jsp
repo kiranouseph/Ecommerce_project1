@@ -52,40 +52,40 @@
                   <strong>Register</strong>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" method="post" action="addUser">
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Mobile number</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="mobno" placeholder="Your mobile number" pattern=".{10}"  required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
                             Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                            <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=" use someone@domain.com"required >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Confirm Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="confirm Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="inputPassword3" name="conpass" placeholder="confirm Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                     <div class="form-group">

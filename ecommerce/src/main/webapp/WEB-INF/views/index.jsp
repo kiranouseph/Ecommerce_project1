@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,13 +88,18 @@ background-color:white;
            <li><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="admin">ADMIN</a></li>
            <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Gifts</a></li>
-          <li><a href="#">cakes</a></li>
-          <li><a href="#">Photoframes</a></li>
+         <c:forEach var="designate" items="${catego}">
+                       
+                           <li><a href="${designate.id}">${designate.categoryname}</a></li>
+                       
+                    </c:forEach> 
+          
+          
            
          
         </ul>
@@ -119,21 +125,21 @@ background-color:white;
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner">
     <div class="item active">
-      <img src="http://createtalentsandmodels.com/wp-content/uploads/2016/03/createtalentsandmodel_banner_1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <img src="" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
     </div>
 
     <div class="item">
-      <img src="http://weddingplannershub.com/vendor/bower/wedding/branch_images/LtpmzAGTBWcxaoV_fMhT2PWFmgOZHPtd.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <img src="" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
     </div>
 
     <div class="item">
-      <img src="http://www.kjpatna.com/img/banner3.jpg" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
+      <img src="" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
     </div>
 
     <div class="item">
-      <img src="http://weddingplannershub.com/vendor/bower/wedding/branch_images/LtpmzAGTBWcxaoV_fMhT2PWFmgOZHPtd.jpg" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
+      <img src="" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
     </div>
   </div>
 
@@ -246,8 +252,21 @@ background-color:white;
 
 
 
-<p class="abc text-center">
-<strong>&copy;EVENT MANAGEMENT COMPANY</strong>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/Ecommerce/all_help">HELP</a></li>
+      <li><a href="/Ecommerce/all_about">About</a></li>
+      <li><a href="/Ecommerce/all_help">Contact</a></li>
+      <li><a href="/Ecommerce/all_policy">Policies</a></li>
+      <li><a>@Copyright</a></li>
+    </ul>
+    
+  </div>
+</nav>
 
 
 

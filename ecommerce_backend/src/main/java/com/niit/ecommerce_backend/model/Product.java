@@ -19,6 +19,12 @@ import java.io.*;
 @Table(name="PRODUCTS")
 public class Product implements Serializable {
 	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
+				+ ", category=" + category + ", supplier=" + supplier + ", stock=" + stock + "]";
+	}
+
 	/**
 	 * 
 	 */
@@ -29,7 +35,9 @@ public class Product implements Serializable {
    	private int id;
     @Column(name = "productname", nullable = false)
     private String prodname;
-    @Column(name = "proddecs", nullable = false)
+   
+
+	@Column(name = "proddecs", nullable = false)
     private String proddecs;
 	@Column(name = "price", nullable = false)
     private int price;
@@ -44,8 +52,8 @@ public class Product implements Serializable {
 		return category;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(Category object) {
+		this.category = object;
 	}
 
 	public Supplier getSupplier() {

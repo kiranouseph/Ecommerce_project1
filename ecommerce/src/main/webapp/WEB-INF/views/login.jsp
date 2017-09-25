@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -52,19 +53,19 @@
                   <strong>Login</strong>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="loginn">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
                             Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                            <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=""  required >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -79,7 +80,7 @@
                     </div>
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-success btn-sm">
+                            <button type="submit" class="btn btn-success btn-sm" >
                                 Sign in</button>
                                  <button type="reset" class="btn btn-default btn-sm">
                                 Reset</button>
