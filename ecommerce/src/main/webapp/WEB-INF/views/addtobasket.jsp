@@ -124,6 +124,50 @@ $(document).ready(function() {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+ <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            
+          </button>
+          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg" style="margin-top:5px; ">BUY IT</button></a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><a href="#" data-toggle="modal" data-target="#myModal1">list categories</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal2">list of suppliers</a></li>
+            <li><a href="" data-toggle="modal" data-target="#myModal3">list of products</a></li>
+         
+            <li><a href="#">offers cart</a></li>
+            
+            
+            <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+     
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+      <form class="navbar-form navbar-right">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+    </nav><!-- /.navbar -->
+
+
 <div class="col-lg-6 col-sm-6">
     <div class="card hovercard">
         <div class="card-background">
@@ -225,6 +269,87 @@ $(document).ready(function() {
     
     </div>
             
-    
+     <div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">categories</h4>
+      </div>
+      <div class="modal-body">
+       
+       <c:forEach var="designatee" items="${catego}" varStatus="loop">
+       <table>
+       <tr>
+     
+                       
+                            <td> ${loop.count} </td>  
+                                   <td>${designatee.id}</td> 
+                                         <td>${designatee.categoryname}</td> 
+                                         <td><a href="admin/update/${designatee.id}"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" >UPDATE</button></a></td> 
+                                          <td><a href="admin/delete/${designatee.id}"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">DELETE</button></a></td> 
+               </tr>      </table>   
+                    </c:forEach>         
+       
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">suppliers </h4>
+      </div>
+      <div class="modal-body">
+       <c:forEach var="designatee" items="${suppli}" varStatus="loop">
+       <table>
+       <tr>
+     
+                       
+                            <td> ${loop.count} </td>  
+                                   <td>${designatee.id}</td> 
+                                         <td>${designatee.categoryname}</td> 
+                                         <td><a href="admin/update/${designatee.id}"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" >UPDATE</button></a></td> 
+                                          <td><a href="admin/delete/${designatee.id}"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">DELETE</button></a></td> 
+               </tr>      </table>   
+                    </c:forEach>         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <div id="myModal3" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">products</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>   
 </body>
 </html>

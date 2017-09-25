@@ -48,7 +48,7 @@ public class ProductDAOImpl implements ProductDAO{
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Product ");
+		org.hibernate.Query q= ssn.createQuery("from Product where C_ID="+CategoryId);
 		ArrayList<Product> l=(ArrayList<Product>) q.list();
 		
         t.commit();
@@ -58,9 +58,20 @@ public class ProductDAOImpl implements ProductDAO{
 		return l;
 	
 	}
-	public Product getProdById(int pr) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Product> getProdById(int pr) {
+		System.out.println("in impl;"+pr);
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		org.hibernate.Query q= ssn.createQuery("from Product where ID="+pr);
+		ArrayList<Product> l=(ArrayList<Product>) q.list();
+		
+        t.commit();
+        ssn.close();
+        System.out.println("Daoimpl reached");
+		
+		return l;
+		
 	}
 
 

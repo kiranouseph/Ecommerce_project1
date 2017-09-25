@@ -16,23 +16,15 @@ import java.io.*;
 
 @Entity
 @Component
-@Table(name="PRODUCTS")
-public class Product implements Serializable {
-	
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
-				+ ", category=" + category + ", supplier=" + supplier + ", stock=" + stock + "]";
-	}
-
+@Table(name="CART")
+public class Cart implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
-	 
-   	private int id;
+	 @Column(name = "CART_ID", nullable = false) 
+   	private int cartid;
     @Column(name = "productname", nullable = false)
     private String prodname;
    
@@ -41,89 +33,53 @@ public class Product implements Serializable {
     private String proddecs;
 	@Column(name = "price", nullable = false)
     private int price;
-	@Column(name = "stock", nullable = false)
-    private int stock;
+	@Column(name = "Number", nullable = false)
+    private int number;
 	@ManyToOne
-    @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
-    private Category category;
-    
-    @ManyToOne
-    @JoinColumn(name="s_id",updatable=true,insertable=true,nullable=false)
-    private Supplier supplier;
-    
-	public Category getCategory() {
-		return category;
+    @JoinColumn(name="cart_id",updatable=true,insertable=true,nullable=false)
+    private User user;
+	public int getCartid() {
+		return cartid;
 	}
-
-	public void setCategory(Category object) {
-		this.category = object;
-	}
-
-	public Supplier getSupplier() {
-		return supplier;
-	}
-
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
-
-	
-    public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-
-	
-
-	
-
-	
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setCartid(int cartid) {
+		this.cartid = cartid;
 	}
 	public String getProdname() {
 		return prodname;
 	}
-
 	public void setProdname(String prodname) {
 		this.prodname = prodname;
 	}
-	
 	public String getProddecs() {
 		return proddecs;
 	}
-
 	public void setProddecs(String proddecs) {
 		this.proddecs = proddecs;
 	}
-
-
-
-	
-
 	public int getPrice() {
 		return price;
 	}
-
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	
-
-
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+   
 
-	
-
-	
 }
-

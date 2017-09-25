@@ -93,7 +93,7 @@ public class usercontroller {
 	@RequestMapping("/{catid}/{prid}")
 	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("prid") int pr) {
 		System.out.println("in contoller"+ca+pr);
-		Product ll=new Product();
+		ArrayList<Product> ll=new ArrayList<Product>();
 		ll=pdao.getProdById(pr);
 		System.out.println("controller reached");
 		ModelAndView mv1 = new ModelAndView("product");
@@ -179,14 +179,14 @@ public class usercontroller {
 		return mv1;
 	}
 	@RequestMapping("/addUser")
-	public ModelAndView addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email,@RequestParam("password") String password) {
-		System.out.println(name+mobno+email+password);
-         User u=new User();
-         u.setName(name);
-         u.setMobno(mobno);
-         u.setEmail(email);
-         u.setPassword(password);
-         udao.saveUser(u);
+	public ModelAndView addUser(@ModelAttribute("user") User user) {
+		System.out.println(user.getName());
+		System.out.println(user.getEmail());
+		System.out.println(user.getPassword());
+		System.out.println(user.getMobno());
+		
+		
+         udao.saveUser(user);
 		ModelAndView mv1 = new ModelAndView("login");
 		
 		

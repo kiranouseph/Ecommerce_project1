@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.ecommerce_backend.model.Product ;
 import com.niit.ecommerce_backend.model.Supplier ;
+import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category ;
 import com.niit.ecommerce_backend.model.User ;
 
@@ -50,6 +51,7 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Supplier.class);
 	        sessionBuilder.addAnnotatedClass(Category.class);
 	        sessionBuilder.addAnnotatedClass(User.class);
+	        sessionBuilder.addAnnotatedClass(Cart.class);
 	       
 	       
 	        

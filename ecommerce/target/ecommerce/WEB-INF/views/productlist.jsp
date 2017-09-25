@@ -89,7 +89,7 @@ table, th, td {
 </c:if>
 <a href="${designate.category.id}/${designate.id}">
 <div class = "col-sm-3" align="center">
- <div id="mydiv" style="width:200px;background:white" onmouseover="this.style.background='grey';" onmouseout="this.style.background='white';">
+ <div id="mydiv" style="width:200px;background:white" onmouseover="this.style.background='yellow';" onmouseout="this.style.background='white';">
 
 <table cellspacing="10" >
 <tr>

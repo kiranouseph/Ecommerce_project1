@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,6 +36,16 @@ public class User implements Serializable{
     
     @Column(name = "password", nullable = false)
     private String password;
+    @OneToOne
+    @JoinColumn(name="cart_id",updatable=true,insertable=true,nullable=false)
+    private Cart cart;
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getId() {
 		return id;

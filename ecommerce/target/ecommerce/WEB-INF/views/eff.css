@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 body { 
-background: url(flower/bg.jpg) no-repeat center center fixed; 
+background: url('flower/bg.jpg') no-repeat center center fixed; 
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;

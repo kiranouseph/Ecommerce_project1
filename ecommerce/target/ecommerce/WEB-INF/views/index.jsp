@@ -68,7 +68,7 @@ background-color:white;
   
     <!-- Second navbar for sign in -->
     
-    <nav class="navbar navbar">
+    <nav class="navbar navbar-default">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -79,13 +79,13 @@ background-color:white;
             <span class="icon-bar"></span>
             
           </button>
-          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
+          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg" style="margin-top:5px; ">BUY IT</button></a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
-           <li><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
+           
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="admin">ADMIN</a></li>
@@ -114,6 +114,15 @@ background-color:white;
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
+      <form class="navbar-form navbar-right">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
     </nav><!-- /.navbar -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -252,8 +261,21 @@ background-color:white;
 
 
 
-<p class="abc text-center">
-<strong>&copy;EVENT MANAGEMENT COMPANY</strong>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/Ecommerce/all_help">HELP</a></li>
+      <li><a href="/Ecommerce/all_about">About</a></li>
+      <li><a href="/Ecommerce/all_help">Contact</a></li>
+      <li><a href="/Ecommerce/all_policy">Policies</a></li>
+      <li><a>@Copyright</a></li>
+    </ul>
+    
+  </div>
+</nav>
 
 
 
