@@ -21,8 +21,6 @@ public class SupplierDAOImpl implements SupplierDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-
-	@Override
 	public void saveProduct(Supplier supplier) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -30,10 +28,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		ssn.save(supplier);
 		t.commit();
 		ssn.close();	
-		
 	}
-
-	@Override
 	public ArrayList<Supplier> getallsuppliers() {
 		
 		Session ssn=sessionFactory.openSession();
@@ -44,10 +39,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		
         t.commit();
         ssn.close();
-		for(Supplier s:l)
-		{
-			System.out.println(s);
-		}
+		
 		return l;
 	
 	}
@@ -64,6 +56,6 @@ public class SupplierDAOImpl implements SupplierDAO {
         ssn.close();
 		
 		return l;
-	}
 
+}
 }

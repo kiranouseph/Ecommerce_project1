@@ -2,6 +2,7 @@ package com.niit.ecommerce_backend.daoimpl;
 
 
 import java.util.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,33 +22,26 @@ public class CategoryDAOImpl implements CategoryDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-	@Override
 	public void saveProduct(Category category) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
 		ssn.save(category);
 		t.commit();
-		ssn.close();	
+		ssn.close();
 		
 	}
-	@Override
 	public ArrayList<Category> getallcategories() {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Category");
+		Query q= ssn.createQuery("from Category");
 		ArrayList<Category> l=(ArrayList<Category>) q.list();
 		
         t.commit();
         ssn.close();
-		for(Category c:l)
-		{
-			System.out.println(c);
-		}
+		
 		return l;
-	
-	
 	}
 	public Category getcatbyid(int cat) {
 		Session ssn=sessionFactory.openSession();
@@ -68,4 +62,9 @@ System.out.println(l.getCategoryname()+l.getId());
 		
 		
 	}
+	
+	
+	
+	
+	
 }

@@ -166,52 +166,61 @@ border-collapse: separate;
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    
-    
-    
-    
-    <div class="w3-container">
-  <h2>${prod.prodname}</h2>
-
-  <div class="w3-card-4" style="width:25%">
-   <!-- Lets make a simple image magnifier -->
+<div class="container">
+	<table id="cart"  style="color:black" >
+    				<thead>
+						<tr>
+							<th style="width:50%"></th>
+							<th style="width:50%"></th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="row">
+								 
+  
+  
+ <div class="col-sm-12 ">  
 <div class="magnify">
 	
-	<!-- This is the magnifying glass which will contain the original/large version -->
+	
 	<div class="large"></div>
-	
-	<!-- This is the small image -->
-	<img class="small" src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" style="width:100%; height:100%"/>
-	
-</div>
-    <div class="w3-container">
+									<img class="small" src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" style="width:100%; height:100%"/></div></div>
+									<div class="col-sm-12 ">
+									<a href="#" class="btn btn-warning btn-block">ADD TO CART	</a><br>
+									<a href="#" class="btn btn-success btn-block">CONTINUE SHOPPING</a>
+								</div>	
+								</div>
+							</td>
+							<td>
+							<c:forEach items="${prod}" var="designate"  varStatus="loop">
+							 <h2>${designate.prodname}</h2><br>
+							  <h2> <i class="fa fa-rupee"></i>${designate.price} <br></h2><br>
+							   <h2> ONLY  ${designate.stock} LEFT </h2><br>
+							    <h2>Category:${designate.category.id}</h2><br>
+							     <h2>${designate.supplier.id}</h2><br>
+							
+							</c:forEach>
+							
+							
+							</td>
+							
+							
+						
+							
+						</tr>
+				
+				
+						
+						
+					</tbody>
+				</table>
+</div>    
     
-   <table>
- 
-        
-         <div class="row">
-         <div class="col-sm-6 ">
-         <tr><td width="100%">
-          <a href="#"><button type="button" class="btn btn-info btn-md"  >ADD TO CART</button></a> 
-          </td></tr>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-sm-6 ">
-          <tr><td width="100%">
-          <a href="#"><button type="button" class="btn btn-info btn-md"  >CONTINUE SHOPPING</button></a>
-          
-          </td></tr>
-          </div>
-          </div>
-          
-         
-        
-         
-       
-         </table>
-    </div>
-  </div>
-</div>
+    
+    
+    
 </body>
 </html>

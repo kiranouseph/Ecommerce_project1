@@ -17,10 +17,12 @@ import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 import com.niit.ecommerce_backend.model.User;
  
@@ -35,18 +37,27 @@ public class usercontroller {
 	CategoryDAOImpl cdao;
 	@Autowired
 	SupplierDAOImpl sdao;
+	@Autowired
+	SubcategoryDAOImpl scdao;
  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/")
 	public ModelAndView home() {
 		System.out.println("in controller");
  
 		ModelAndView mv1 = new ModelAndView("index");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
-		 for(Category cc:l)
-			{
-				System.out.println(cc);
-			}
+		
+		 
 				
 				mv1.addObject("catego",l);
 		
@@ -54,6 +65,41 @@ public class usercontroller {
 	
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/Subcategory")
+	public ModelAndView subca() {
+		System.out.println("in controller");
+ 
+		ModelAndView mv1 = new ModelAndView("Subcategory");
+		 
+		
+		 
+				
+				
+		
+		
+	
+		return mv1;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -77,7 +123,37 @@ public class usercontroller {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/{catid}")
+	public ModelAndView ca(@PathVariable("catid") int ca) {
+		
+		ArrayList<Subcategory> ll=new ArrayList<Subcategory>();
+		ll=scdao.getsubcatByCatId(ca);
+		
+		ModelAndView mv1 = new ModelAndView("Subcategory");
+		mv1.addObject("subcate",ll);
+		
+				return mv1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*@RequestMapping("/{catid}")
 	public ModelAndView ca(@PathVariable("catid") int ca) {
 		System.out.println("in contoller"+ca);
 		ArrayList<Product> ll=new ArrayList<Product>();
@@ -89,7 +165,7 @@ public class usercontroller {
 		System.out.println("Category Product List");
 		System.out.println("list printed");
 		return mv1;
-	}
+	}*/
 	@RequestMapping("/{catid}/{prid}")
 	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("prid") int pr) {
 		System.out.println("in contoller"+ca+pr);
@@ -102,6 +178,18 @@ public class usercontroller {
 		
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		System.out.println("in controller");
@@ -131,6 +219,19 @@ public class usercontroller {
 		
 			
 	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	@RequestMapping("/signup")
 	public ModelAndView register() {
@@ -154,30 +255,54 @@ public class usercontroller {
 		return mv1;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/admin")
 	public ModelAndView admin() {
 		System.out.println("in controller");
 		ModelAndView mv1 = new ModelAndView("addtobasket");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
-		 for(Category cc:l)
-			{
-				System.out.println(cc);
-			}
-				
+		
+	
 				mv1.addObject("catego",l);
 		ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		 System.out.println("printing");
-		 for(Supplier ss:ll)
-			{
-				System.out.println(ss);
-			}
+		 
+		
 				
 				mv1.addObject("suppli",ll);
+				ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+				
+				
+				mv1.addObject("subcat",lll);
 		
 		
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/addUser")
 	public ModelAndView addUser(@ModelAttribute("user") User user) {
 		System.out.println(user.getName());
@@ -193,9 +318,23 @@ public class usercontroller {
 	
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/product")
-	public ModelAndView addpro(@RequestParam("prid") int id ,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("cat") int cat,@RequestParam("supp") int supp) {
-		System.out.println("in controller");
+	public ModelAndView addpro(@RequestParam("prid") int id ,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("cat") int cat,@RequestParam("supp") int supp,@RequestParam("scat") int scat) {
+		System.out.println("in controller no info ");
 		System.out.println("id  "+id+"name  "+name+"deasc  "+desc+"price  "+price+"stock  "+stock+"catid  "+cat+"suppid  "+supp);
 		Product p=new Product();
 		Category cc=new Category();
@@ -204,6 +343,8 @@ public class usercontroller {
 		p.setProddecs(desc);
 		p.setPrice(price);
 		p.setStock(stock);
+		
+		
 		Category ll=new Category();
 		ll=cdao.getcatbyid(cat);
 	    int cati=ll.getId();
@@ -213,6 +354,19 @@ public class usercontroller {
 	    ccc.setId(cati);
 	    ccc.setCategoryname(catii);
 	    p.setCategory(ccc);
+	    
+	    
+	    Subcategory scatt=new Subcategory();
+		scatt=scdao.getscatbyid(scat);
+	    int scati=scatt.getId();
+	    String scatii=scatt.getSubcategoryname();
+	   
+	    Subcategory sc=new Subcategory();
+	    sc.setId(scati);
+	    sc.setSubcategoryname(scatii);
+	    p.setSubcategory(sc);
+	    
+	    
 	    
 	    Supplier ss=new Supplier();
 		ss=sdao.getsuppbyid(supp);
@@ -224,6 +378,9 @@ public class usercontroller {
 	    sss.setSuppname(sup2);
 	    sss.setSuppdesc(sup3);
 	    p.setSupplier(sss);
+	    
+	    
+	    
 		pdao.saveProduct(p);
 		ModelAndView mv1 = new ModelAndView("addtobasket");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -242,6 +399,20 @@ public class usercontroller {
 	
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/category")
 	public ModelAndView addcat(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
 		System.out.println("in controller");
@@ -256,18 +427,12 @@ public class usercontroller {
 		ModelAndView mv1 = new ModelAndView("addtobasket");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 System.out.println("printing");
-		 for(Category cc:l)
-			{
-				System.out.println(cc);
-			}
+		
 				
 				mv1.addObject("catego",l);
 				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 				 System.out.println("printing");
-				 for(Supplier ss:ll)
-					{
-						System.out.println(ss);
-					}
+				
 						
 						mv1.addObject("suppli",ll);
 				
@@ -275,6 +440,59 @@ public class usercontroller {
 	
 		return mv1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/scategory")
+	public ModelAndView addscat(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("scat") int catt) {
+		System.out.println("in controller");
+		System.out.println(id+name);
+		Subcategory sc=new Subcategory();
+		sc.setId(id);
+		sc.setSubcategoryname(name);
+		Category ll=new Category();
+		ll=cdao.getcatbyid(catt);
+	    int cati=ll.getId();
+	    String catii=ll.getCategoryname();
+	    System.out.println(cati+"  "+catii);
+	    Category ccc=new Category();
+	    ccc.setId(cati);
+	    ccc.setCategoryname(catii);
+	    sc.setCategory(ccc);
+		scdao.saveProduct(sc);
+		
+		
+		ModelAndView mv1 = new ModelAndView("addtobasket");
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		 System.out.println("printing");
+		
+				
+				mv1.addObject("catego",l);
+				ArrayList<Supplier> lll=(ArrayList<Supplier>)sdao.getallsuppliers();
+				 System.out.println("printing");
+				
+						
+						mv1.addObject("suppli",lll);
+				
+		
+	
+		return mv1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/supplier")
 	public ModelAndView addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address) {
 		System.out.println("in controller");
@@ -311,6 +529,50 @@ public class usercontroller {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/ecommerce/1")
+	public ModelAndView list(@PathVariable("number") int ca) {
+		System.out.println(ca);
+		ModelAndView mv1 = new ModelAndView("list");
+		/*if(ca==1)
+		{
+			 ArrayList<Product> ll=(ArrayList<Product>)pdao.getallproducts();
+			 mv1.addObject("list",ll);	
+			 mv1.addObject("status",1);
+		}
+		else if(ca==2)
+		{
+			 ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+			 mv1.addObject("list",ll);	
+			 mv1.addObject("status",2);
+		}
+		else if(ca==3)
+		{
+			
+			 ArrayList<Subcategory> ll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+			 mv1.addObject("list",ll);	
+			 mv1.addObject("status",3);
+		}
+		else{
+			 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+			 mv1.addObject("list",ll);	
+			 mv1.addObject("status",4);
+		
+		}*/
+		System.out.println("0tes succeed"+ca);
+		return mv1;
+	}
 	
 
 }

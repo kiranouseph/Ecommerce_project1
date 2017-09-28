@@ -22,8 +22,6 @@ public class UserDAOImpl implements UserDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-
-	@Override
 	public void saveUser(User user) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -33,7 +31,6 @@ public class UserDAOImpl implements UserDAO {
 		ssn.close();
 		
 	}
-
 	public int checklogin(String email,String password) {
 		int re=0;
 		System.out.println("in checklogin"+email+password);
@@ -63,5 +60,6 @@ public class UserDAOImpl implements UserDAO {
 		return userr;
 	}
 
+	
 
 }

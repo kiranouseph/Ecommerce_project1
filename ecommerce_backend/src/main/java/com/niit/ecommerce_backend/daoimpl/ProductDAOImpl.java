@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -31,24 +32,20 @@ public class ProductDAOImpl implements ProductDAO{
 		this.sessionFactory=sessionfactory;
 	}
 	public void saveProduct(Product product) {
-		 	
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
 		ssn.save(product);
 		t.commit();
 		ssn.close();	
-		 	
-		 
-		 }
-	
-	@SuppressWarnings("unchecked")
-	public ArrayList<Product> getProdByCatId(int CategoryId){
-		System.out.println("in impl;"+CategoryId);
+		
+	}
+	public ArrayList<Product> getProdByCatId(int ca) {
+		System.out.println("in impl;"+ca);
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Product where C_ID="+CategoryId);
+		org.hibernate.Query q= ssn.createQuery("from Product where C_ID="+ca);
 		ArrayList<Product> l=(ArrayList<Product>) q.list();
 		
         t.commit();
@@ -56,7 +53,6 @@ public class ProductDAOImpl implements ProductDAO{
         System.out.println("Daoimpl reached");
 		
 		return l;
-	
 	}
 	public ArrayList<Product> getProdById(int pr) {
 		System.out.println("in impl;"+pr);
@@ -71,8 +67,20 @@ public class ProductDAOImpl implements ProductDAO{
         System.out.println("Daoimpl reached");
 		
 		return l;
-		
 	}
+	public ArrayList<Product> getallproducts() {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		Query q= ssn.createQuery("from Product");
+		ArrayList<Product> l=(ArrayList<Product>) q.list();
+		
+        t.commit();
+        ssn.close();
+		
+		return l;
+	}
+	
 
 
 	

@@ -7,6 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,9 +18,15 @@ import java.io.*;
 import java.util.Set;
 @Entity
 @Component
-@Table(name="Category")
-public class Category implements Serializable {
+@Table(name="SUBCATEGORY")
+public class Subcategory implements Serializable {
 
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	/**
 	 * 
 	 */
@@ -27,13 +35,14 @@ public class Category implements Serializable {
 	@Id
   
    	private int id;
-	@Column(name = "Categoryname", nullable = false)
-    private String Categoryname;
+	@Column(name = "Subcategoryname", nullable = false)
+    private String Subcategoryname;
 	
-	@OneToMany(targetEntity=Product.class,mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Product.class,mappedBy="subcategory",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     private Set<Product> product ;
-	@OneToMany(targetEntity=Subcategory.class,mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-    private Set<Subcategory> subcategory ;
+	 @ManyToOne
+	    @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
+	    private  Category category;
 	public Set<Product> getProduct() {
 		return product;
 	}
@@ -46,12 +55,13 @@ public class Category implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCategoryname() {
-		return Categoryname;
+	public String getSubcategoryname() {
+		return Subcategoryname;
 	}
-	public void setCategoryname(String categoryname) {
-		Categoryname = categoryname;
+	public void setSubcategoryname(String subcategoryname) {
+		Subcategoryname = subcategoryname;
 	}
+	
 	
 
 }

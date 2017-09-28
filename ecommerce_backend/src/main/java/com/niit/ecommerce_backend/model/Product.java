@@ -46,12 +46,21 @@ public class Product implements Serializable {
 	@ManyToOne
     @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
     private Category category;
-    
+	@ManyToOne
+    @JoinColumn(name="sc_id",updatable=true,insertable=true,nullable=false)
+    private Subcategory subcategory;
     @ManyToOne
     @JoinColumn(name="s_id",updatable=true,insertable=true,nullable=false)
     private Supplier supplier;
     
 	public Category getCategory() {
+		return category;
+	}
+
+	public void setSubcategory(Subcategory object) {
+		this.subcategory = object;
+	}
+	public Category getSubcategory() {
 		return category;
 	}
 

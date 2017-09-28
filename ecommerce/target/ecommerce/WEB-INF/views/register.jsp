@@ -53,33 +53,33 @@
                   <strong>Register</strong>
                 </div>
                 <div class="panel-body">
-                    <f:form class="form-horizontal" role="form" method="post" action="addUser" modelAttribute="user">
+                    <form class="form-horizontal" role="form" method="post" action="addUser" >
                     <div class="form-group">
-                        <f:label for="name" class="col-sm-3 control-label" path="name">
-                            Name</f:label>
+                        <label for="name" class="col-sm-3 control-label" >
+                            Name</label>
                         <div class="col-sm-9">
-                            <f:input type="text" class="form-control" id="name" path="name" placeholder="Enter your name" required/>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <f:label for="mobno" class="col-sm-3 control-label" path="mobno">
-                            Mobile number</f:label>
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Mobile number</label>
                         <div class="col-sm-9">
-                            <f:input type="text" class="form-control" id="mobno"  path="mobno" placeholder="Your mobile number"  pattern=".{10}" required/>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <f:label for="email" class="col-sm-3 control-label" path="email">
-                            Email</f:label>
+                        <label for="email" class="col-sm-3 control-label" >
+                            Email</label>
                         <div class="col-sm-9">
-                            <f:input type="text" class="form-control" id="inputEmail3" path="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=" use someone@domain.com"required/>
+                            <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=" use someone@domain.com"required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <f:label for="password" class="col-sm-3 control-label" path="password">
-                            Password</f:label>
+                        <label for="password" class="col-sm-3 control-label" >
+                            Password</label>
                         <div class="col-sm-9">
-                            <f:input type="password" class="form-control" id="inputPassword3" path="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required/>
+                            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                   
@@ -101,7 +101,7 @@
                                 Reset</button>
                         </div>
                     </div>
-                    </f:form>
+                    </form>
                 </div>
                
             </div>

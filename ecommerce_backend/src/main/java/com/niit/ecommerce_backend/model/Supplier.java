@@ -20,7 +20,7 @@ import java.util.Set;
 @Table(name="SUPPLIER")
 public class Supplier {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
 
 	private int id;
     @Column(name = "Suppliername", nullable = false)
