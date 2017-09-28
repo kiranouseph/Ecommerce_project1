@@ -80,6 +80,19 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return l;
 	}
+	public void deleteproduct(int id) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		Product l = (Product) ssn.get(Product.class, id);
+		ssn.delete(l);
+				
+		
+        t.commit();
+        
+        ssn.close();
+		
+	}
 	
 
 

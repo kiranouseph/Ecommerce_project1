@@ -99,10 +99,10 @@ $(document).ready(function() {
 <div class="container"><h1 style="margin-left: 30%;">ADMIN  </h1></div>
 <div id="exTab1" class="container">	
 <ul  class="nav nav-pills">
-			<li >
+			<li class="active">
         <a  href="#1a" data-toggle="tab">PRODUCTS</a>
 			</li>
-			<li><a href="#2a" data-toggle="tab">SUPPLIER</a>
+			<li class=""><a href="#2a" data-toggle="tab">SUPPLIER</a>
 			</li>
 			<li><a href="#3a" data-toggle="tab">CATEGORY</a>
 			</li>
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		</ul>
 
 			<div class="tab-content clearfix">
-			  <div class="tab-pane " id="1a">
+			  <div class="tab-pane active" id="1a">
      
      <form action="product" method="post">
       <table >
@@ -252,9 +252,9 @@ $(document).ready(function() {
 				
 							<div class="tab-pane" id="5a">
          <a href="list/1">LIST OF PRODUCTS</a><br><br>
-         <a href="2">LIST OF CATEGORIES</a><br><br>
-         <a href="3">LIST OF SUBCATEGORIES</a><br><br>
-         <a href="4">LIST OF SUPPLIERS</a><br><br>
+         <a href="list/2">LIST OF CATEGORIES</a><br><br>
+         <a href="list/3">LIST OF SUBCATEGORIES</a><br><br>
+         <a href="list/4">LIST OF SUPPLIERS</a><br><br>
 				</div>
 				
 				

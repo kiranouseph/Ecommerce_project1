@@ -9,8 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="eff.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -122,26 +121,26 @@ body {
 <body>
 
 <c:forEach items="${subcate}" var="designate"  varStatus="loop">
-<c:if test="${(loop.count) % 5== 0}">
+
 <br>
 <br>
 <br>
-</c:if>
-<a href="">
+
+
 <div class = "col-sm-3" align="center">
  <div id="mydiv" style="width:200px;background:white" onmouseover="this.style.background='grey';" onmouseout="this.style.background='white';">
 
-<figure class="snip1581"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample4.jpg" alt="profile-sample2"/>
+<figure class="snip1581"><img src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" alt="profile-sample2"/>
   <figcaption>
     <h3 class="title1">  ${designate.subcategoryname}</h3>
     <h3 class="title2"> ${designate.subcategoryname}</h3>
     <h3 class="title3"> ${designate.subcategoryname}</h3>
-  </figcaption><a href="#"></a>
+  </figcaption>
 </figure>
 </div>
 <br>
 </div>
-</a>
+
 
 
 

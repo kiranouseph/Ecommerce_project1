@@ -541,38 +541,104 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/ecommerce/1")
+	@RequestMapping("/list/{number}")
 	public ModelAndView list(@PathVariable("number") int ca) {
+		ArrayList<Product> p=new ArrayList<Product>();
+		ArrayList<Category> c=new ArrayList<Category>();
+		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
+		ArrayList<Supplier> sup=new ArrayList<Supplier>();
 		System.out.println(ca);
 		ModelAndView mv1 = new ModelAndView("list");
-		/*if(ca==1)
+		if(ca==1)
 		{
-			 ArrayList<Product> ll=(ArrayList<Product>)pdao.getallproducts();
-			 mv1.addObject("list",ll);	
+			 p=(ArrayList<Product>)pdao.getallproducts();
+			 mv1.addObject("list",p);	
 			 mv1.addObject("status",1);
 		}
 		else if(ca==2)
 		{
-			 ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
-			 mv1.addObject("list",ll);	
+			 c=(ArrayList<Category>)cdao.getallcategories();
+			 mv1.addObject("list",c);	
 			 mv1.addObject("status",2);
-		}
+					}
 		else if(ca==3)
 		{
 			
-			 ArrayList<Subcategory> ll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-			 mv1.addObject("list",ll);	
+			 sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
+			 mv1.addObject("list",sc);	
 			 mv1.addObject("status",3);
 		}
 		else{
-			 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-			 mv1.addObject("list",ll);	
+			 sup=(ArrayList<Supplier>)sdao.getallsuppliers();
+			 mv1.addObject("list",sup);	
 			 mv1.addObject("status",4);
+	
+		}
 		
-		}*/
-		System.out.println("0tes succeed"+ca);
+		 
 		return mv1;
 	}
+	@RequestMapping("/{id}/{number}/update")
+	public ModelAndView update(@PathVariable("number") int num,@PathVariable("id") int id) {
+	
+		ModelAndView mv1 = new ModelAndView("list");
+		if(num==1)
+	{
+		
+	
+	}
+	else if(num==2)
+	{
+		
+		
+		
+	}
+	else if(num==3)
+	{
+		
+		
+	}
+	else if(num==4)
+	{
+		
+		
+		
+		
+	}
+		return mv1;
+	}
+	
+	
+	@RequestMapping("list/{id}/{number}/delete")
+	public ModelAndView delete(@PathVariable("number") int num,@PathVariable("id") int id) {
+	
+		ModelAndView mv1 = new ModelAndView("addtobasket");
+		if(num==1)
+	{
+		
+			pdao.deleteproduct(id);
+	}
+	else if(num==2)
+	{
+	cdao.deletecategory(id);	
+		
+		
+	}
+	else if(num==3)
+	{
+		
+		scdao.deletesubcategory(id);	
+	}
+	else if(num==4)
+	{
+		
+		
+		sdao.deletesupplier(id);
+		
+	}
+		return mv1;
+	}
+	
 	
 
 }

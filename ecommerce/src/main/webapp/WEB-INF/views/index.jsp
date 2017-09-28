@@ -67,63 +67,8 @@ background-color:white;
 
   
     <!-- Second navbar for sign in -->
+    <jsp:include page="header.jsp" />  
     
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            
-          </button>
-          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg" style="margin-top:5px; ">BUY IT</button></a>
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-           
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="admin">ADMIN</a></li>
-           <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-         <c:forEach var="designate" items="${catego}">
-                       
-                           <li><a href="${designate.id}">${designate.categoryname}</a></li>
-                       
-                    </c:forEach> 
-          
-          
-           
-         
-        </ul>
-      </li>
-            <li><a href="cart">Shopping cart</a></li>
-            <li><a href="#">Checkout</a></li>
-            
-            <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-     
-
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-      <form class="navbar-form navbar-right">
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search">
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-  </div>
-    </nav><!-- /.navbar -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">

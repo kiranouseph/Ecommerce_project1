@@ -17,6 +17,27 @@
 </head>
 <body>
 <h4>haiii</h4>
+<c:if test="${status eq 1}">
+
+<h1>LIST OF PRODUCTS</h1>
+</c:if>
+<c:if test="${status eq 2}">
+
+<h1>LIST OF CATEGORIES</h1>
+
+</c:if>
+
+<c:if test="${status eq 3}">
+
+<h1>LIST OF SUBCATEGORIES</h1>
+</c:if>
+
+<c:if test="${status eq 4}">
+
+<h1>LIST OF SUPPLIERS</h1>
+</c:if>
+
+
 
 <c:forEach var="designate" items="${list}">
                        
@@ -26,43 +47,69 @@
 
 <table class="table package-table">
 
+                            <thead>
+                      
                             
+                            
+                          
+                            </thead>
                                 <tbody>
     							
-								<c:if test="${(status)}==1">
+								<c:if test="${status eq 1}">
+						
 								 <tr> 
 								 
-                                    <td>list.prodname</td>
-                                    <td>UPDATE</td>
-                                    <td>DELETE</td>
+                                    <td>${designate.prodname}</td>
+                                    <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" ></td>
+                                    <td>
+                                    <a href="${designate.id}/1/delete">
+                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    </a>
+                                    </td>
+                                   
+                                </tr>
+								</c:if>
+								<c:if test="${status eq 2}">
+								
+								 <tr> 
+								 
+                                    <td>${designate.categoryname}</td>
+                                   <td>
+                                   <a href="${designate.id}/2/update">
+                                   <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" >
+                                   </a>
+                                   </td>
+                                    <td>
+                                    <a href="${designate.id}/2/delete">
+                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    </a>
+                                    </td>
                                     
                                 </tr>
 								</c:if>
-								<c:if test="${(status)}==2">
+								<c:if test="${status eq 3}">
 								 <tr> 
 								 
-                                    <td>list.categoryname</td>
-                                   <td>UPDATE</td>
-                                    <td>DELETE</td>
+                                    <td>${designate.subcategoryname}</td>
+                                    <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" ></td>
+                                   <td>
+                                    <a href="${designate.id}/3/delete">
+                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    </a>
+                                    </td>
                                     
                                 </tr>
 								</c:if>
-								<c:if test="${(status)}==3">
+								<c:if test="${status eq 4}">
 								 <tr> 
 								 
-                                    <td>list.subcategoryname</td>
-                                    <td>UPDATE</td>
-                                    <td>DELETE</td>
-                                    
-                                </tr>
-								</c:if>
-								<c:if test="${(status)}==4">
-								 <tr> 
-								 
-                                    <td>list.suppname</td>
-                                   <td>UPDATE</td>
-                                    <td>DELETE</td>
-                                    
+                                    <td>${designate.suppname}</td>
+                                   <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" ></td>
+<td>
+                                    <a href="${designate.id}/4/delete">
+                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    </a>
+                                    </td>                                    
                                 </tr>
 								</c:if>
 							

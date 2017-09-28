@@ -62,6 +62,23 @@ System.out.println(l.getCategoryname()+l.getId());
 		
 		
 	}
+	public void deletecategory(int id) {
+	
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		Category l = (Category) ssn.get(Category.class, id);
+		ssn.delete(l);
+				
+		
+        t.commit();
+        
+        ssn.close();
+		
+		
+		
+		
+	}
 	
 	
 	
