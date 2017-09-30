@@ -105,6 +105,10 @@ table, th, td {
       ${designate.proddecs}<br>
       <i class="fa fa-rupee"></i>${designate.price} <br>
       ${designate.stock}<br>
+      ${designate.category.categoryname}
+            ${designate.supplier.suppname}
+      
+      
       
      </td>
 
@@ -114,7 +118,7 @@ table, th, td {
 </tr>
 
 </table>
-</div>
+
 <br>
 </div>
 </a>

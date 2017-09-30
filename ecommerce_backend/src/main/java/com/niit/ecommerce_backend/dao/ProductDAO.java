@@ -12,6 +12,6 @@ import antlr.collections.List;
 public interface ProductDAO {
 	public void saveProduct(Product product);
 	public ArrayList<Product> getProdByCatId(int ca);
-	public ArrayList<Product> getProdById(int pr) ;
+	public Product getProdById(int pr) ;
 	public void deleteproduct(int id);
 }

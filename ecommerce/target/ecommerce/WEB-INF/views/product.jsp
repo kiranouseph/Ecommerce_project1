@@ -119,53 +119,7 @@ border-collapse: separate;
   </script>
 </head>
 <body>
- <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            
-          </button>
-          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-           <li><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="admin">ADMIN</a></li>
-           <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-         <c:forEach var="designate" items="${catego}">
-                       
-                           <li><a href="${designate.id}">${designate.categoryname}</a></li>
-                       
-                    </c:forEach> 
-          
-          
-           
-         
-        </ul>
-      </li>
-            <li><a href="cart">Shopping cart</a></li>
-            <li><a href="#">Checkout</a></li>
-            
-            <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-     
-
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+   <jsp:include page="header.jsp" />  
 <div class="container">
 	<table id="cart"  style="color:black" >
     				<thead>
@@ -182,12 +136,8 @@ border-collapse: separate;
 								 
   
   
- <div class="col-sm-12 ">  
-<div class="magnify">
-	
-	
-	<div class="large"></div>
-									<img class="small" src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" style="width:100%; height:100%"/></div></div>
+
+									<img class="small" src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" style="width:100%; height:100%"/>
 									<div class="col-sm-12 ">
 									<a href="#" class="btn btn-warning btn-block">ADD TO CART	</a><br>
 									<a href="#" class="btn btn-success btn-block">CONTINUE SHOPPING</a>
@@ -195,14 +145,15 @@ border-collapse: separate;
 								</div>
 							</td>
 							<td>
-							<c:forEach items="${prod}" var="designate"  varStatus="loop">
-							 <h2>${designate.prodname}</h2><br>
-							  <h2> <i class="fa fa-rupee"></i>${designate.price} <br></h2><br>
-							   <h2> ONLY  ${designate.stock} LEFT </h2><br>
-							    <h2>Category:${designate.category.id}</h2><br>
-							     <h2>${designate.supplier.id}</h2><br>
 							
-							</c:forEach>
+							 <h2>${prods.prodname}</h2><br>
+							  <h2> <i class="fa fa-rupee"></i>${prods.price} <br></h2><br>
+							   <h2> ONLY  ${prods.stock} LEFT </h2><br>
+							    <h2>Category:${prods.category.categoryname}</h2><br>
+							    
+							     <h2>${prods.supplier.suppname}</h2><br>
+							
+						
 							
 							
 							</td>

@@ -19,6 +19,11 @@ import java.util.Set;
 @Component
 @Table(name="SUPPLIER")
 public class Supplier {
+	@Override
+	public String toString() {
+		return "Supplier [id=" + id + ", suppname=" + suppname + ", suppdesc=" + suppdesc + ", product=" + product
+				+ "]";
+	}
 	@Id
    
 
@@ -28,7 +33,7 @@ public class Supplier {
     
     @Column(name = "Supplieraddress", nullable = false)
     private String suppdesc;
-    @OneToMany(targetEntity=Product.class,mappedBy="supplier",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.DETACH,targetEntity=Product.class,mappedBy="supplier",fetch=FetchType.EAGER)
     private Set<Product> product;
   
 	public Set<Product> getProduct() {

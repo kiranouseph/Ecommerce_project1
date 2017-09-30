@@ -71,4 +71,18 @@ public class SupplierDAOImpl implements SupplierDAO {
         ssn.close();
 		
 	}
+	public void updatesupplier(Supplier s) {
+		
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		
+		ssn.update(s);
+				
+		
+        t.commit();
+        
+        ssn.close();
+				
+	}
 }

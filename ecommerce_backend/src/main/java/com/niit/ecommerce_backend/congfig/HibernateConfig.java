@@ -31,7 +31,7 @@ import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
-import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
+
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 
@@ -57,6 +57,8 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(User.class);
 	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
+	        
+	      
 	       
 	        
 	       
@@ -118,9 +120,8 @@ public class HibernateConfig
 	    @Autowired
 		public SubcategoryDAO getSubcategoryDAO(SessionFactory sessionFactory)
 		{
-		
-		return new SubcategoryDAOImpl(sessionFactory);
-		}
+			
+		return new SubcategoryDAOImpl(sessionFactory)	;	}
 	    @Bean
 		@Autowired
 	        public HibernateTransactionManager txManager(SessionFactory sessionFactory) {

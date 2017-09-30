@@ -65,10 +65,9 @@ background-color:white;
 </head>
 <body >
 
-  
-    <!-- Second navbar for sign in -->
     <jsp:include page="header.jsp" />  
-    
+   
+  
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -80,8 +79,9 @@ background-color:white;
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
+  
     <div class="item active">
-      <img src="" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <img src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" class="img-responsive" alt="Chania" style="width:100%; height:90vh">
     </div>
 
     <div class="item">
@@ -107,9 +107,7 @@ background-color:white;
     <span class="sr-only">Next</span>
   </a>
 </div>
- 
 
-<br>
  <div class="container-fluid">
  <div class="row">
   <div class="col-md-3">

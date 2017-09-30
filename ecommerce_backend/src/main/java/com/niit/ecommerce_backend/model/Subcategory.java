@@ -21,12 +21,7 @@ import java.util.Set;
 @Table(name="SUBCATEGORY")
 public class Subcategory implements Serializable {
 
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+	
 	/**
 	 * 
 	 */
@@ -38,11 +33,21 @@ public class Subcategory implements Serializable {
 	@Column(name = "Subcategoryname", nullable = false)
     private String Subcategoryname;
 	
-	@OneToMany(targetEntity=Product.class,mappedBy="subcategory",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Product.class,mappedBy="subcategory",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
     private Set<Product> product ;
-	 @ManyToOne
-	    @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
-	    private  Category category;
+	
+	@ManyToOne
+    @JoinColumn(name="c_id",updatable=true,insertable=true,nullable=false)
+    private Category category;
+	
+	
+	 
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public Set<Product> getProduct() {
 		return product;
 	}

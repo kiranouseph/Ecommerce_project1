@@ -27,7 +27,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-	public void saveProduct(Subcategory Subcategory) {
+	public void savesubcategory(Subcategory Subcategory) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();

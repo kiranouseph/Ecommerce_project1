@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.niit.ecommerce_backend.model.Supplier;
 
 import antlr.collections.List;
 
@@ -45,7 +46,7 @@ public class ProductDAOImpl implements ProductDAO{
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Product where C_ID="+ca);
+		org.hibernate.Query q= ssn.createQuery("from Product where SC_ID="+ca);
 		ArrayList<Product> l=(ArrayList<Product>) q.list();
 		
         t.commit();
@@ -54,13 +55,12 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return l;
 	}
-	public ArrayList<Product> getProdById(int pr) {
+	public Product getProdById(int pr) {
 		System.out.println("in impl;"+pr);
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Product where ID="+pr);
-		ArrayList<Product> l=(ArrayList<Product>) q.list();
+		Product l = (Product) ssn.get(Product.class,pr);
 		
         t.commit();
         ssn.close();

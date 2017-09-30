@@ -119,17 +119,17 @@ body {
   </script>
 </head>
 <body>
+ <jsp:include page="header.jsp" />  
+
+
+
 
 <c:forEach items="${subcate}" var="designate"  varStatus="loop">
-
-<br>
-<br>
-<br>
-
-
 <div class = "col-sm-3" align="center">
+<table cellspacing="100">
+<tr>
+<td>
  <div id="mydiv" style="width:200px;background:white" onmouseover="this.style.background='grey';" onmouseout="this.style.background='white';">
-
 <figure class="snip1581"><img src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" alt="profile-sample2"/>
   <figcaption>
     <h3 class="title1">  ${designate.subcategoryname}</h3>
@@ -138,34 +138,14 @@ body {
   </figcaption>
 </figure>
 </div>
-<br>
+
+
+</td>
+</tr>
+</table>
 </div>
 
-
-
-
-<c:if test="${(loop.count) % 5== 0}">
-
-
-</c:if>
 </c:forEach>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

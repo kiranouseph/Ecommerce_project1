@@ -106,14 +106,21 @@ $(document).ready(function() {
 			</li>
 			<li><a href="#3a" data-toggle="tab">CATEGORY</a>
 			</li>
-  		<li><a href="#4a" data-toggle="tab">SUBCATEGORY</a>
+			<li><a href="#4a" data-toggle="tab">SUBCATEGORY</a>
 			</li>
+  		
 				<li >
         <a  href="#5a" data-toggle="tab">MODIFICATIONS</a>
 			</li>
 		</ul>
+		
+		
+		
 
 			<div class="tab-content clearfix">
+			
+			
+			
 			  <div class="tab-pane active" id="1a">
      
      <form action="product" method="post">
@@ -138,6 +145,18 @@ $(document).ready(function() {
 
   
 </select></td></tr>
+
+<tr><td>SUBCATEGORY</td><td><select name="scat" style="width:100%">
+<option value="desigType">Select Designation</option>
+<c:forEach var="designatee" items="${subcatego}">
+                       
+                            <option value="${designatee.id}">${designatee.subcategoryname}</option>
+                       
+                    </c:forEach>         
+        
+
+  
+</select></td></tr>
 <tr><td>SUPPLIER</td><td><select name="supp" style="width:100%">
 <option value="desigType">Select Designation</option>
  <c:forEach var="designate" items="${suppli}">
@@ -146,14 +165,7 @@ $(document).ready(function() {
                        
                     </c:forEach> 
 </select></td></tr>
-<tr><td>SUBCATEGORY</td><td><select name="scat" style="width:100%">
-<option value="desigType">Select Designation</option>
- <c:forEach var="designate" items="${subcat}">
-                       
-                            <option value="${designate.id}">${designate.subcategoryname}</option>
-                       
-                    </c:forEach> 
-</select></td></tr>
+
 
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:100%"></td></tr>
@@ -165,6 +177,11 @@ $(document).ready(function() {
      
      
 				</div>
+				
+				
+				
+				
+				
 				<div class="tab-pane" id="2a">
          
 
@@ -174,14 +191,21 @@ $(document).ready(function() {
       
 <tr><td>SUPPLIER ID</td><td><input type="number"  name="suppid" required style="width:100%"></td></tr>
 <tr><td>SUPPLIER NAME</td><td><input type="text"  name="suppname" required style="width:100%"></td></tr>
-<tr><td>SUPPLIER ADDRESS</td><td><textarea rows="4" cols="50" name="suppaddress" style="width:100%"> </textarea></td></tr>
+<tr><td>SUPPLIER<br> ADDRESS</td><td><textarea rows="4" cols="50" name="suppaddress" style="width:100%"> </textarea></td></tr>
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:100%"></td></tr>
 </table>
 </form> 
         </div>
-        <div class="tab-pane fade in" id="tab3">
-                     <form action="category" method="post">
+        
+        
+        
+        
+        
+        
+        
+      <div class="tab-pane" id="3a">   
+                        <form action="category" method="post">
       <table >
      
       
@@ -197,36 +221,22 @@ $(document).ready(function() {
 
 
 				</div>
-        <div class="tab-pane" id="3a">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+        <div class="tab-pane" id="4a">
         
 
-<form action="category" method="post">
+<form action="subcategory" method="post">
       <table >
      
-      
-<tr><td>CATEGORY ID</td><td><input type="number"  name="catid" required style="width:200%"></td></tr>
-<tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:200%"></td></tr>
-
-
-<tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:200%"></td></tr>
-</table>
-</form>
-
-
-
-
-				</div>
-          <div class="tab-pane" id="4a">
-      
-
-
-<form action="scategory" method="post">
-      <table >
-     
-      
-<tr><td>SUBCATEGORY ID</td><td><input type="number"  name="scatid" required style="width:200%"></td></tr>
-<tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:200%"></td></tr>
-<tr><td>CATEGORY</td><td><select name="scat" style="width:200%">
+<tr><td>CATEGORY</td><td><select name="scat" style="width:100%">
 <option value="desigType">Select Designation</option>
 <c:forEach var="designatee" items="${catego}">
                        
@@ -237,6 +247,10 @@ $(document).ready(function() {
 
   
 </select></td></tr>
+      
+<tr><td>SUBCATEGORY ID</td><td><input type="number"  name="scatid" required style="width:200%"></td></tr>
+<tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:200%"></td></tr>
+
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:200%"></td></tr>
 </table>
@@ -245,15 +259,13 @@ $(document).ready(function() {
 
 
 
-
-
-
 				</div>
+         
 				
 							<div class="tab-pane" id="5a">
          <a href="list/1">LIST OF PRODUCTS</a><br><br>
          <a href="list/2">LIST OF CATEGORIES</a><br><br>
-         <a href="list/3">LIST OF SUBCATEGORIES</a><br><br>
+       <a href="list/3">LIST OF SUBCATEGORIES</a><br><br>
          <a href="list/4">LIST OF SUPPLIERS</a><br><br>
 				</div>
 				

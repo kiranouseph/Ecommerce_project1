@@ -22,7 +22,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-	public void saveProduct(Category category) {
+	public void savecategory(Category category) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
