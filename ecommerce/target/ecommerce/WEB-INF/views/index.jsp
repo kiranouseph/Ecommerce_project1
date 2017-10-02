@@ -81,6 +81,7 @@ background-color:white;
   
     <div class="item active">
       <img src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" class="img-responsive" alt="Chania" style="width:100%; height:90vh">
+
     </div>
 
     <div class="item">

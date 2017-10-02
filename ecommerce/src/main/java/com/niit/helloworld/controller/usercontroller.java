@@ -102,28 +102,6 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/{catid}")
-	public ModelAndView ca(@PathVariable("catid") int ca) {
-		System.out.println("in contoller"+ca);
-		ArrayList<Subcategory> ll=new ArrayList<Subcategory>();
-		ll=scdao.getsubcatByCatId(ca);
-		
-		ModelAndView mv1 = new ModelAndView("subcategorylist");
-		mv1.addObject("subcats",ll);
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-		
-		for(Subcategory s:ll)
-		{
-			System.out.println(s);
-		}
-		return mv1;
-		
-	}
 	
 	
 	
@@ -134,20 +112,7 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/{catid}/{scatid}")
-	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("scatid") int sca) {
-	
-		ModelAndView mv1 = new ModelAndView("productlist");
-	ArrayList<Product> ll =new ArrayList<Product>();
-		ll=pdao.getProdByscatId(sca);
-		mv1.addObject("prods",ll);
-		
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		mv1.addObject("catego",l);
-		
-		return mv1;
-	}
+
 	
 	
 	
@@ -165,24 +130,6 @@ public class usercontroller {
 	
 	
 	
-	
-	
-	@RequestMapping("/{cat}/{scat}/{prid}")
-	public ModelAndView pr(@PathVariable("cat") int ca,@PathVariable("prid") int pr,@PathVariable("scat") String  sca) {
-		
-		Product ll=new Product();
-		ll=pdao.getProdById(pr);
-		
-		ModelAndView mv1 = new ModelAndView("product");
-		mv1.addObject("prod",ll);
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-		return mv1;
-	}
 	
 	
 	
@@ -264,21 +211,6 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/cart")
-	public ModelAndView cart() {
-		System.out.println("in controller");
- 
-		ModelAndView mv1 = new ModelAndView("cart");
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-	
-	
-		return mv1;
-	}
 
 	
 	
@@ -289,31 +221,7 @@ public class usercontroller {
 	
 	
 	
-	
-	
-	
-	@RequestMapping("/admin")
-	public ModelAndView admin() {
-		System.out.println("in controller");
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-	
-				mv1.addObject("catego",l);
-		ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		 
-		
-				
-				mv1.addObject("suppli",ll);
-ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-		 
-		
-				
-				mv1.addObject("subcatego",lll);
-		
-		return mv1;
-	}
-	
+
 	
 	
 	
@@ -361,65 +269,6 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 	
 	
 	
-	@RequestMapping("/product")
-	public ModelAndView addpro(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat) {
-		System.out.println("name"+name+"desc"+desc+"price"+price+"stock"+stock+"scat"+scat+"cat"+cat+"supp"+supp);
-	
-		Product p=new Product();
-		
-		p.setId(prid);
-		p.setProdname(name);
-		p.setProddecs(desc);
-		p.setPrice(price);
-		p.setStock(stock);
-	
-		
-Category cc=new Category();
-		cc=cdao.getcatbyid(cat);
-		
-		
-		Subcategory scc=new Subcategory();
-		scc=scdao.getscatbyid(scat);
-		int idd=scc.getId();
-		String na=scc.getSubcategoryname();
-		Subcategory sccc=new Subcategory();
-		sccc.setId(idd);
-		sccc.setSubcategoryname(na);
-		sccc.setCategory(cc);
-		
-		
-	    p.setSubcategory(sccc);
-	    
-
-		Supplier sup=new Supplier();
-		sup=sdao.getsuppbyid(supp);
-	    p.setSupplier(sup);
-	    
-	   
-	    
-		pdao.saveProduct(p);
-		
-		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing categories");
-		
-				
-				mv1.addObject("catego",l);
-				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-				 System.out.println("printing categories");
-				
-						mv1.addObject("suppli",ll);
-						ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-						 System.out.println("printing categories");
-						
-								
-								mv1.addObject("subcatego",lll);
-		
-		
-	
-		return mv1;
-	}
 	
 	
 	
@@ -434,73 +283,9 @@ Category cc=new Category();
 	
 	
 	
-	@RequestMapping("/category")
-	public ModelAndView addcat(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
-		System.out.println("in controller");
-		System.out.println(id+name);
-		Category c=new Category();
-		c.setId(id);
-		c.setCategoryname(name);
-		
-		cdao.savecategory(c);
-		
-		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
-		
-				
-				mv1.addObject("catego",l);
-				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-				 System.out.println("printing");
-				
-						
-						mv1.addObject("suppli",ll);
-						 ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-						 System.out.println("printing");
-						
-								
-								mv1.addObject("subcatego",lll);
-				
-		
 	
-		return mv1;
-	}
-	@RequestMapping("/subcategory")
-	public ModelAndView addscat(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("scat") int cat) {
-		System.out.println("in controller");
-		System.out.println(id+name+cat);
-		Subcategory sc=new Subcategory();
-		sc.setId(id);
-		sc.setSubcategoryname(name);
-		Category c=new Category();
-		c=cdao.getcatbyid(cat);
-		sc.setCategory(c);
-		scdao.savesubcategory(sc);
-		
-		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
-		
-				
-				mv1.addObject("catego",l);
-				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-				 System.out.println("printing");
-				
-						
-						mv1.addObject("suppli",ll);
-						ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-						 System.out.println("printing");
-						
-								
-								mv1.addObject("subcatego",lll);
-						
-				
-		
 	
-		return mv1;
-	}
+	
 	
 	
 	
@@ -517,40 +302,7 @@ Category cc=new Category();
 	
 	
 	
-	@RequestMapping("/supplier")
-	public ModelAndView addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address) {
-		System.out.println("in controller");
-		System.out.println(id+name+address);
-		Supplier s=new Supplier();
-		s.setId(id);
-		s.setSuppname(name);
-		s.setSuppdesc(address);
-		
-		sdao.saveProduct(s);
-		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
-		
-				
-				mv1.addObject("catego",l);
-				
-				
-				
-				ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-				 System.out.println("printing");
-				
-						
-						mv1.addObject("subcatego",lll);
-		 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		 System.out.println("printing");
-		
-				mv1.addObject("suppli",ll);
-		
-		
 	
-		return mv1;
-	}
 	
 	
 	
@@ -700,22 +452,6 @@ Category cc=new Category();
 	
 	
 	
-	@RequestMapping("/{id}/4/update")
-	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppdesc")  String desc) {
-	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-	Supplier s= new Supplier();
-	s.setId(id);
-	s.setSuppname(name);
-	s.setSuppdesc(desc);
-	sdao.updatesupplier(s);
-	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-	
-	 
-	
-	mv1.addObject("catego",l);
-		return mv1;
-	}
 	
 	
 	
@@ -726,73 +462,25 @@ Category cc=new Category();
 	
 	
 	
-	@RequestMapping("/{id}/1/update")
-	public ModelAndView updateproduct() {
-	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-	
-	
-		
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-		return mv1;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@RequestMapping("/{id}/2/update")
-	public ModelAndView updatecategory() {
-	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-	
-		
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-	
-		return mv1;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@RequestMapping("/{id}/3/update")
-	public ModelAndView updatesubcategory() {
-	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
 
-		
-		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-		return mv1;
-	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	
@@ -838,50 +526,7 @@ Category cc=new Category();
 		mv1.addObject("catego",l);
 		return mv1;
 	}
-	@RequestMapping("offers")
-	public ModelAndView offer() {
-		ModelAndView mv1 = new ModelAndView("offer");
-		ArrayList<Product> p=new ArrayList<Product>();
-		 p=(ArrayList<Product>)pdao.getallproducts();
-		 mv1.addObject("prods",p);	
-		 ArrayList<Product> pp=new ArrayList<Product>();
-		 pp=(ArrayList<Product>)pdao.listof_offerProducts();
-		 mv1.addObject("offproducts",pp);
-		 
-		
-		
-		
-		
-		return mv1;
 	
-	}
-	
-	
-	
-	@RequestMapping("/offers/{prid}")
-	public ModelAndView offerprice(@PathVariable("prid") int prid,@RequestParam("offerprice") int offprice) 
-	{
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		pdao.setoffers(prid,offprice);
-		
-		
-		
-		
-		return mv1;
-	
-	}
-	@RequestMapping("/offers/delete/{prid}")
-	public ModelAndView offerdelete(@PathVariable("prid") int id) 
-	{
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		pdao.deleteoffer(id);
-		
-		
-		
-		
-		return mv1;
-	
-	}
 	
 	
 	

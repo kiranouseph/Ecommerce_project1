@@ -56,77 +56,38 @@ border-collapse: separate;
 
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="1">
-         
-         
-   <form action="offers/${designate.id}"  method="post">  
- <table>
-<thead>
-						<tr>
-							<th style="width:30%">Productname</th>
-							<th style="width:20%">actual price</th>
-							<th style="width:20%">offerprice</th>
-							<th style="width:30%" class="text-center"></th>
-							
-						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="designate" items="${prods}">
-
-  
+			<c:forEach var="designate" items="${prods}">
+         <form action="offers/${designate.id}" method="post">
+      <table >
+     
+      
 <tr>
+
 <td>${designate.prodname}</td>
-                                   
- 
-<td>
-${designate.price}
-</td>
+<td>${designate.price}</td>
+<td><input type="number" name="offerprice"></td>
 
-                                  
-                                       
-                                       
-                                       
-                                    <td><input type="number" name="offerprice" ></td>
-                                      <td> 
-                                    
-                                      <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT">
-                                       </td>
-                                       
-                                       
-                             
-                              
-                                   
-                                </tr>
-                                
- </c:forEach>
-                                </tbody>
-								
-								
- 
+<td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
+</tr>
+</table>
+</form> 
+         
 
- 
- 
- </table>
- </form>
 
- 
- 
- 
- 
- 
          
          
          
          
          
          
-         
+                </c:forEach>
 				</div>
 				<div class="tab-pane" id="2">
 				
 				
 				
 				
-				<form action="offers/delete/${designate.id}"  method="post">  
+				
  <table>
 <thead>
 						<tr>
@@ -156,7 +117,7 @@ ${designate.price}
                                     <td>${designate.offerprice}</td>
                                       <td> 
                                     
-                                      <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE">
+                                      <a href="offers/delete/${designate.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE"></a>
                                        </td>
                                        
                                        
@@ -174,7 +135,6 @@ ${designate.price}
  
  
  </table>
- </form>
 				
 				
 				

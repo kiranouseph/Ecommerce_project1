@@ -13,11 +13,9 @@ import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
-import com.niit.ecommerce_backend.model.Subcategory;
-import com.niit.ecommerce_backend.model.Supplier;
 @SuppressWarnings("unused")
 @Controller
-public class admincontroller {
+public class cartcontroller {
 	@Autowired
 	UserDAOImpl udao;
 	@Autowired
@@ -30,27 +28,23 @@ public class admincontroller {
 	SubcategoryDAOImpl scdao;
 	
 	
-	@RequestMapping("/admin")
-	public ModelAndView admin() {
+	@RequestMapping("/cart")
+	public ModelAndView cart() {
 		System.out.println("in controller");
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+ 
+		ModelAndView mv1 = new ModelAndView("cart");
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
 	
-				mv1.addObject("catego",l);
-		ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		 
-		
-				
-				mv1.addObject("suppli",ll);
-ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-		 
-		
-				
-				mv1.addObject("subcatego",lll);
-		
+	
 		return mv1;
 	}
+
+	
 	
 
 }
