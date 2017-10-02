@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>header</title>
 
 
-  <link href="eff.css" rel="stylesheet" type="text/css">
+
+ 
 
 </head>
 <body>
@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             
           </button>
-          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
+          <a href=""><button type="button" class="btn btn-info btn-lg"  >BUY IT</button></a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->

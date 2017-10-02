@@ -13,10 +13,12 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>updatesupplier</title>
+<title>update</title>
 </head>
 <body>
+    <jsp:include page="header.jsp" />  
 <c:if test="${status eq 1}">
+<div style="padding-left:25%; padding-top:15%">
 <form action="" method="post">
       <table >
      
@@ -65,13 +67,13 @@
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:100%"></td></tr>
 </table>
 </form>
-
+</div>
 
 </c:if>
 
 
 <c:if test="${status eq 2}">
-
+<div style="padding-left:25%; padding-top:15%">
 <form action="" method="post">
 
       <table >
@@ -86,8 +88,18 @@
 </table>
 
 </form> 
+</div>
 </c:if>
+
+
+
+
 <c:if test="${status eq 3}">
+<div style="padding-left:25%; padding-top:15%">
+
+<form action="${listt.id}/4/update" method="post">
+
+      <table >
 <tr><td>SUBCATEGORY  ID</td><td><input type="number"   name="suppid"   placeholder="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="suppname" required style="width:100%"  placeholder="${listt.subcategoryname }"></td></tr>
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
@@ -96,16 +108,19 @@
                        
                             <option value="${designatee.id}">${designatee.categoryname}</option>
                        
-                    </c:forEach>         
-        
+                    </c:forEach>    
+                  
 
   
 </select></td></tr>
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>
-
+  </table>
+                    </form>
+                    </div>     
+        
 </c:if>
 <c:if test="${status eq 4}">
-
+<div style="padding-left:25%; padding-top:15%">
 
 <form action="${listt.id}/4/update" method="post">
 
@@ -121,9 +136,11 @@
 </table>
 
 </form> 
-
+</div>
 
 
 </c:if>
+
+   <jsp:include page="footer.jsp" />  
 </body>
 </html>

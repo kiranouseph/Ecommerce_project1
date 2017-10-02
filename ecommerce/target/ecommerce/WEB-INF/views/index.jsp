@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MY GIFT</title>
+  <title>Giftery</title>
   <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +49,6 @@ height:50px;
 {
 	font-size:40px;
 }
-
 .log
 {
 	margin-top:5cm;
@@ -204,21 +203,7 @@ background-color:white;
 
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/Ecommerce/all_help">HELP</a></li>
-      <li><a href="/Ecommerce/all_about">About</a></li>
-      <li><a href="/Ecommerce/all_help">Contact</a></li>
-      <li><a href="/Ecommerce/all_policy">Policies</a></li>
-      <li><a>@Copyright</a></li>
-    </ul>
-    
-  </div>
-</nav>
+
 
 
 

@@ -5,11 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Listing</title>
 
 </head>
 <body>
-<h4>haiii</h4>
+
+    <jsp:include page="header.jsp" />  
 <c:if test="${status eq 1}">
 
 <h1>LIST OF PRODUCTS</h1>
@@ -33,22 +42,26 @@
 
 
 
-<c:forEach var="designate" items="${list}">
+
                        
                            
                        
                    
 
-<table class="table package-table">
+<table class="table package-table" >
 
-                            <thead>
-                      
-                            
-                            
-                          
-                            </thead>
+                           
                                 <tbody>
-    							
+                                <thead>
+						<tr>
+							<th style="width:50%"></th>
+							<th style="width:25%"></th>
+							<th style="width:25%"></th>
+							
+							
+						</tr>
+					</thead>
+    						<c:forEach var="designate" items="${list}">	
 								<c:if test="${status eq 1}">
 						
 								 <tr> 
@@ -57,13 +70,13 @@
                                    
                                    <td>
                                    <a href="${designate.id}/1/retrieve">
-                                   <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" >
+                                  <button type="button" class="btn btn-success">UPDATE</button>
                                    </a>
                                    </td>
 
                                     <td>
                                     <a href="${designate.id}/1/delete">
-                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                               <button type="button" class="btn btn-danger">DELETE</button>
                                     </a>
                                     </td>
                                    
@@ -76,12 +89,12 @@
                                     <td>${designate.categoryname}</td>
                                    <td>
                                    <a href="${designate.id}/2/retrieve">
-                                   <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" >
+                                  <button type="button" class="btn btn-success">UPDATE</button>
                                    </a>
                                    </td>
                                     <td>
                                     <a href="${designate.id}/2/delete">
-                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                   <button type="button" class="btn btn-danger">DELETE</button>
                                     </a>
                                     </td>
                                     
@@ -94,12 +107,12 @@
                                     <td>${designate.subcategoryname}</td>
                                    <td>
                                    <a href="${designate.id}/3/retrieve">
-                                   <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" >
+                                   <button type="button" class="btn btn-success">UPDATE</button>
                                    </a>
                                    </td>
                                     <td>
                                     <a href="${designate.id}/3/delete">
-                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    <button type="button" class="btn btn-danger">DELETE</button>
                                     </a>
                                     </td>
                                     
@@ -112,25 +125,26 @@
                                     <td>${designate.suppname}</td>
                                     <td>
                                    <a href="${designate.id}/4/retrieve">
-                                   <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" >
+                                  <button type="button" class="btn btn-success">UPDATE</button>
                                    </a>
                                    </td>
 									<td>
                                     <a href="${designate.id}/4/delete">
-                                    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE" >
+                                    <button type="button" class="btn btn-danger">DELETE</button>
                                     </a>
                                     </td>                                    
                                 </tr>
 								</c:if>
 							
-
+ </c:forEach> 
                                 </tbody>
                             </table>
-                             </c:forEach> 
+                            
                              
 
 
 
+   <jsp:include page="footer.jsp" />  
 
 </body>
 </html>

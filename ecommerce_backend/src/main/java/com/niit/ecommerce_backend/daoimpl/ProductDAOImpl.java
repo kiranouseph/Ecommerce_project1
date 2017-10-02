@@ -19,6 +19,7 @@ import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Supplier;
 
 import antlr.collections.List;
+import sun.net.www.content.text.plain;
 
 
 
@@ -41,7 +42,7 @@ public class ProductDAOImpl implements ProductDAO{
 		ssn.close();	
 		
 	}
-	public ArrayList<Product> getProdByCatId(int ca) {
+	public ArrayList<Product> getProdByscatId(int ca) {
 		System.out.println("in impl;"+ca);
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -94,10 +95,65 @@ public class ProductDAOImpl implements ProductDAO{
 		
 	}
 	
-
-
+	public void setoffers(int id,int offprice) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		 Query qry1 = ssn.createQuery("update Product  set offer="+1+"where id="+id);
+		 Query qry2 = ssn.createQuery("update Product  set offerprice="+offprice+"where id="+id);
+		 
+				       
+				          
+				          qry1.executeUpdate();
+				          qry2.executeUpdate();
+				
+		
+        t.commit();
+        
+        ssn.close();
+		
+	}
+	
+	public ArrayList<Product> listof_offerProducts() {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		
+		org.hibernate.Query q= ssn.createQuery("from Product where offer="+1);
+		ArrayList<Product> l=(ArrayList<Product>) q.list();
+				       
+				        
+				
+		
+        t.commit();
+        
+        ssn.close();
+        return l;
+		
+	}
+	
+	public void deleteoffer(int id) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		 Query qry1 = ssn.createQuery("update Product  set offer="+0+"where id="+id);
+		 Query qry2 = ssn.createQuery("update Product  set offerprice="+0+"where id="+id); 
+		 
+				       
+		 qry2.executeUpdate(); 
+				          qry1.executeUpdate();
+				         				
+		
+        t.commit();
+        
+        ssn.close();
+		
+	
 	
 
 	
 
+	
+
+}
 }

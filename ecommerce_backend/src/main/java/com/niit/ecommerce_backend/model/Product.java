@@ -22,7 +22,8 @@ public class Product implements Serializable {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
-				+ ", supplier=" + supplier + ", stock=" + stock + "]";
+				+ ", stock=" + stock + ", offer=" + offer + ", offerprice=" + offerprice + ", subcategory="
+				+ subcategory + ", supplier=" + supplier + "]";
 	}
 
 	/**
@@ -30,8 +31,8 @@ public class Product implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	 
+@Id
+
    	private int id;
     @Column(name = "productname", nullable = false)
     private String prodname;
@@ -43,6 +44,26 @@ public class Product implements Serializable {
     private int price;
 	@Column(name = "stock", nullable = false)
     private int stock;
+	@Column(name = "offer", nullable =false)
+    private int offer;
+	@Column(name = "offerprice", nullable =false)
+    private int offerprice;
+	public int getOffer() {
+		return offer;
+	}
+
+	public void setOffer(int offer) {
+		this.offer = offer;
+	}
+
+	public int getOfferprice() {
+		return offerprice;
+	}
+
+	public void setOfferprice(int offerprice) {
+		this.offerprice = offerprice;
+	}
+
 	@ManyToOne
     @JoinColumn(name="sc_id",updatable=true,insertable=true,nullable=false)
     private Subcategory subcategory;

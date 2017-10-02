@@ -56,7 +56,7 @@ public class usercontroller {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		System.out.println("in controller");
+		System.err.println("in controller");
  
 		ModelAndView mv1 = new ModelAndView("index");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -111,8 +111,16 @@ public class usercontroller {
 		ModelAndView mv1 = new ModelAndView("subcategorylist");
 		mv1.addObject("subcats",ll);
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
 		
+		mv1.addObject("catego",l);
+		
+		for(Subcategory s:ll)
+		{
+			System.out.println(s);
+		}
 		return mv1;
 		
 	}
@@ -130,8 +138,13 @@ public class usercontroller {
 	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("scatid") int sca) {
 	
 		ModelAndView mv1 = new ModelAndView("productlist");
+	ArrayList<Product> ll =new ArrayList<Product>();
+		ll=pdao.getProdByscatId(sca);
+		mv1.addObject("prods",ll);
 		
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		mv1.addObject("catego",l);
 		
 		return mv1;
 	}
@@ -154,16 +167,20 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/{catid}/{scatid}/{prid}")
-	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("prid") int pr,@PathVariable("scatid") int sca) {
-		System.out.println("in contoller"+ca+pr);
+	@RequestMapping("/{cat}/{scat}/{prid}")
+	public ModelAndView pr(@PathVariable("cat") int ca,@PathVariable("prid") int pr,@PathVariable("scat") String  sca) {
+		
 		Product ll=new Product();
 		ll=pdao.getProdById(pr);
 		
 		ModelAndView mv1 = new ModelAndView("product");
 		mv1.addObject("prod",ll);
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 		return mv1;
 	}
 	
@@ -184,7 +201,11 @@ public class usercontroller {
  
 		ModelAndView mv1 = new ModelAndView("login");
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 	
 		return mv1;
 	}
@@ -231,7 +252,11 @@ public class usercontroller {
  
 		ModelAndView mv1 = new ModelAndView("register");
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 	
 		return mv1;
 	}
@@ -245,7 +270,12 @@ public class usercontroller {
  
 		ModelAndView mv1 = new ModelAndView("cart");
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
+	
 	
 		return mv1;
 	}
@@ -309,7 +339,11 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
          udao.saveUser(user);
 		ModelAndView mv1 = new ModelAndView("login");
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 	
 		return mv1;
 	}
@@ -328,17 +362,17 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 	
 	
 	@RequestMapping("/product")
-	public ModelAndView addpro(@RequestParam("prid") int id ,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat) {
-		System.out.println("id"+id+"name"+name+"desc"+desc+"price"+price+"stock"+stock+"scat"+scat+"cat"+cat+"supp"+supp);
+	public ModelAndView addpro(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat) {
+		System.out.println("name"+name+"desc"+desc+"price"+price+"stock"+stock+"scat"+scat+"cat"+cat+"supp"+supp);
 	
 		Product p=new Product();
 		
-		p.setId(id);
+		p.setId(prid);
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);
 		p.setStock(stock);
-		
+	
 		
 Category cc=new Category();
 		cc=cdao.getcatbyid(cat);
@@ -567,7 +601,11 @@ Category cc=new Category();
 	
 		}
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
 		 
+		
+		mv1.addObject("catego",l); 
 		return mv1;
 	}
 	
@@ -640,6 +678,11 @@ Category cc=new Category();
 		
 		
 	}
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
 		return mv1;
 	}
 	
@@ -666,7 +709,11 @@ Category cc=new Category();
 	s.setSuppname(name);
 	s.setSuppdesc(desc);
 	sdao.updatesupplier(s);
+	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
+	 
+	
+	mv1.addObject("catego",l);
 		return mv1;
 	}
 	
@@ -687,7 +734,11 @@ Category cc=new Category();
 	
 		
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 		return mv1;
 	}
 	
@@ -707,7 +758,11 @@ Category cc=new Category();
 	
 		
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 	
 		return mv1;
 	}
@@ -729,7 +784,11 @@ Category cc=new Category();
 
 		
 		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
+		 
+		
+		mv1.addObject("catego",l);
 		return mv1;
 	}
 	
@@ -772,9 +831,66 @@ Category cc=new Category();
 		sdao.deletesupplier(id);
 		
 	}
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
 		return mv1;
+	}
+	@RequestMapping("offers")
+	public ModelAndView offer() {
+		ModelAndView mv1 = new ModelAndView("offer");
+		ArrayList<Product> p=new ArrayList<Product>();
+		 p=(ArrayList<Product>)pdao.getallproducts();
+		 mv1.addObject("prods",p);	
+		 ArrayList<Product> pp=new ArrayList<Product>();
+		 pp=(ArrayList<Product>)pdao.listof_offerProducts();
+		 mv1.addObject("offproducts",pp);
+		 
+		
+		
+		
+		
+		return mv1;
+	
 	}
 	
 	
+	
+	@RequestMapping("/offers/{prid}")
+	public ModelAndView offerprice(@PathVariable("prid") int prid,@RequestParam("offerprice") int offprice) 
+	{
+		ModelAndView mv1 = new ModelAndView("addtobasket");
+		pdao.setoffers(prid,offprice);
+		
+		
+		
+		
+		return mv1;
+	
+	}
+	@RequestMapping("/offers/delete/{prid}")
+	public ModelAndView offerdelete(@PathVariable("prid") int id) 
+	{
+		ModelAndView mv1 = new ModelAndView("addtobasket");
+		pdao.deleteoffer(id);
+		
+		
+		
+		
+		return mv1;
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}	
 
-}
+

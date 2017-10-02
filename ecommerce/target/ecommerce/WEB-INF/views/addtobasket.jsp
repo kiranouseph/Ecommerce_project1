@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add to basket</title>
+<title>admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -52,47 +52,7 @@ $(document).ready(function() {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body bgcolor="black">
- <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            
-          </button>
-          <a href="index.jsp"><button type="button" class="btn btn-info btn-lg" style="margin-top:5px; ">BUY IT</button></a>
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-           
-            
-         
-            <li><a href="#">offers cart</a></li>
-            
-            
-            <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-     
-
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-      <form class="navbar-form navbar-right">
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search">
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-  </div>
-  </form>
-    </nav><!-- /.navbar -->
+    <jsp:include page="header.jsp" />  
 
 
 
@@ -127,7 +87,7 @@ $(document).ready(function() {
       <table >
      
   
-  <tr><td >PRODUCT ID</td><td><input type="number"  name="prid" required style="width:100%"></td></tr>
+ <tr><td>ID</td><td><input type="number"  name="prid" required style="width:100%"></td></tr>
 <tr><td>NAME</td><td><input type="text"  name="name" required style="width:100%"></td></tr>
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%"> </textarea></td></tr>
 <tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%"></td></tr>
@@ -267,6 +227,8 @@ $(document).ready(function() {
          <a href="list/2">LIST OF CATEGORIES</a><br><br>
        <a href="list/3">LIST OF SUBCATEGORIES</a><br><br>
          <a href="list/4">LIST OF SUPPLIERS</a><br><br>
+          <a href="offers">OFFERS</a><br><br>
+         
 				</div>
 				
 				
@@ -276,6 +238,7 @@ $(document).ready(function() {
 
 
  
-   
+ 
+  
 </body>
 </html>
