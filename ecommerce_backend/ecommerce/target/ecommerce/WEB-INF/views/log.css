@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+.body { 
+background: url(flower/baskbg.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.log
+{
+	margin-top:5cm;
+	align:centre;
+	margin-right:13cm;
+}
+table
+{
+	
+    margin-left: 3.5cm;
+border-collapse: separate;
+    border-spacing: 10px ;
+}
+.logi
+{
+	margin-top:6.5cm;
+	 margin-right: 13cm;
+
+}
+.modelstyle
+{
+	background: url(flower/baskbg.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
