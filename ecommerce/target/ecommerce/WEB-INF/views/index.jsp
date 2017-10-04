@@ -107,100 +107,44 @@ background-color:white;
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+<br>
  <div class="container-fluid">
  <div class="row">
+ <c:forEach items="${catego}" var="designate"  varStatus="loop">
   <div class="col-md-3">
   <div class="cardcolor">
    <div class="w3-container">
+   <div  style="width:50%; height:50% ">
+
+
  
 
- <div  style="width:50%; height:50% ">
-    <img src="flower/4.jpg" alt="Norway" style="width:200%; height:200%">
+ 
+    <img src="" alt="Norway" style="width:200%; height:200%">
     <div class="w3-container w3-center" style="width:200%; height:200%">
-      <p>Bloosoming Fantasy</p><br>
-      <p>A dozen pink carnations in a glass vase with green fillers and some green </p><br>
-      <p>500 rs</p><br> 
-       <a href="#" class="btn btn-primary">Add to cart</a>
+      <p>${designate.categoryname}</p><br>
+            <p>A dozen pink carnations in a glass vase with green fillers and some green </p><br>
       
+            
     </div>
-  </div>
-</div>
+    
+ 
+
+
+    </div>
+   </div>
   
   
   </div>
  </div>
-  <div class="col-md-3">
-  <div class="cardcolor"> 
- <div class="w3-container">
+ 
+  
   
 
-  <div  style="width:50%; height:50% ">
-    <img src="flower/3.jpg" alt="Norway" style="width:200%; height:200%">
-    <div class="w3-container w3-center" style="width:200%; height:200%">
-      <p>Bloosoming Fantasy</p><br>
-      <p>A dozen pink carnations in a glass vase with green fillers and some green </p><br>
-      <p>500 rs</p><br> 
-       <a href="#" class="btn btn-primary">Add to cart</a>
-      
-    </div>
-  </div>
-</div>
-  
-  </div>
-  </div>
-  
-   <div class="col-md-3">
-    <div class="cardcolor">
-  <div class="w3-container">
-
-
- <div  style="width:50%; height:50% ">
-    <img src="flower/1.jpg" alt="Norway" style="width:200%; height:200%">
-    <div class="w3-container w3-center" style="width:200%; height:200%">
-      <p>Bloosoming Fantasy</p><br>
-      <p>A dozen pink carnations in a glass vase with green fillers and some green </p><br>
-      <p>500 rs</p><br> 
-       <a href="#" class="btn btn-primary">Add to cart</a>
-      
-    </div>
-  </div>
-</div>
-  </div>
-   </div>
-  
-    <div class="col-md-3">
-     <div class="cardcolor">
-   <div class="w3-container">
-
-
-  <div  style="width:50%; height:50% ">
-    <img src="flower/2.jpg" alt="Norway" style="width:200%; height:200%">
-    <div class="w3-container w3-center" style="width:200%; height:200%">
-      <p>Bloosoming Fantasy</p><br>
-      <p>A dozen pink carnations in a glass vase with green fillers and some green </p><br>
-      <p>500 rs</p><br> 
-       <a href="#" class="btn btn-primary">Add to cart</a>
-      
-    </div>
-  </div>
-</div>
-  
-    </div>
-    </div>
-    
+  </c:forEach>  
    </div>
    </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<jsp:include page="footer.jsp" /> 
 
 
 
@@ -210,7 +154,7 @@ background-color:white;
 
 
 
- </p> 
+  
 
 </body>
 </html>

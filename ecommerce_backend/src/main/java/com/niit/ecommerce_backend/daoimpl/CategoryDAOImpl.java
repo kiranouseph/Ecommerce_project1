@@ -79,6 +79,16 @@ System.out.println(l.getCategoryname()+l.getId());
 		
 		
 	}
+	public void updatecategory(Category c) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		 ssn.update(c);
+		t.commit();
+        ssn.close();
+		
+		
+	}
 	
 	
 	

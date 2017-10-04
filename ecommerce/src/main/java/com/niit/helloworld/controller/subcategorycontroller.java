@@ -34,8 +34,8 @@ public class subcategorycontroller {
 	
 	
 	
-	@RequestMapping("/{catid}/{scatid}")
-	public ModelAndView pr(@PathVariable("catid") int ca,@PathVariable("scatid") int sca) {
+	@RequestMapping("/selsubcat")
+	public ModelAndView pr(@RequestParam("id") int sca) {
 	
 		ModelAndView mv1 = new ModelAndView("productlist");
 	ArrayList<Product> ll =new ArrayList<Product>();
@@ -85,10 +85,17 @@ public class subcategorycontroller {
 		return mv1;
 	}
 	
-	@RequestMapping("/{id}/3/update")
-	public ModelAndView updatesubcategory() {
+	@RequestMapping("/updatesubcategory")
+	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat) {
 	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		ModelAndView mv1 = new ModelAndView("list");
+		Subcategory sc=new Subcategory();
+		sc.setId(id);
+		sc.setSubcategoryname(name);
+		Category c=new Category();
+		c=cdao.getcatbyid(cat);
+		sc.setCategory(c);
+		scdao.updatesubcategory(sc);
 
 		
 		
@@ -97,6 +104,12 @@ public class subcategorycontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		ArrayList<Subcategory> scc=new ArrayList<Subcategory>();
+
+		 scc=(ArrayList<Subcategory>)scdao.getallsubcategories();
+		 mv1.addObject("list",scc);	
+		 mv1.addObject("status",3);
+
 		return mv1;
 	}
 	

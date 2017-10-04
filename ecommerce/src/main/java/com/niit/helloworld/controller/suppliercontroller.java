@@ -66,15 +66,20 @@ public class suppliercontroller {
 	}
 	
 	
-	@RequestMapping("/{id}/4/update")
-	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppdesc")  String desc) {
+	@RequestMapping("/updatesupplier")
+	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc) {
 	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		ModelAndView mv1 = new ModelAndView("list");
 	Supplier s= new Supplier();
 	s.setId(id);
 	s.setSuppname(name);
 	s.setSuppdesc(desc);
 	sdao.updatesupplier(s);
+	ArrayList<Supplier> sup=new ArrayList<Supplier>();
+
+	 sup=(ArrayList<Supplier>)sdao.getallsuppliers();
+	 mv1.addObject("list",sup);	
+	 mv1.addObject("status",4);
 	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 	 

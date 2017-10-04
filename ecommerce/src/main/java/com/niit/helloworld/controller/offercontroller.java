@@ -14,7 +14,9 @@ import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
+import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 @SuppressWarnings("unused")
 @Controller
 public class offercontroller {
@@ -40,6 +42,9 @@ public class offercontroller {
 		 ArrayList<Product> pp=new ArrayList<Product>();
 		 pp=(ArrayList<Product>)pdao.listof_offerProducts();
 		 mv1.addObject("offproducts",pp);
+ArrayList<Category> c =new ArrayList<Category>();
+c=cdao.getallcategories();
+mv1.addObject("catego",c);
 		 
 		
 		
@@ -54,10 +59,17 @@ public class offercontroller {
 	@RequestMapping("/offers/{prid}")
 	public ModelAndView offerprice(@PathVariable("prid") int prid,@RequestParam("offerprice") int offprice) 
 	{
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		ModelAndView mv1 = new ModelAndView("offer");
 		pdao.setoffers(prid,offprice);
-		
-		
+		ArrayList<Product> p=new ArrayList<Product>();
+		 p=(ArrayList<Product>)pdao.getallproducts();
+		 mv1.addObject("prods",p);	
+		 ArrayList<Product> pp=new ArrayList<Product>();
+		 pp=(ArrayList<Product>)pdao.listof_offerProducts();
+		 mv1.addObject("offproducts",pp);
+		ArrayList<Category> c =new ArrayList<Category>();
+		c=cdao.getallcategories();
+		mv1.addObject("catego",c);
 		
 		
 		return mv1;
@@ -66,10 +78,17 @@ public class offercontroller {
 	@RequestMapping("/offers/delete/{prid}")
 	public ModelAndView offerdelete(@PathVariable("prid") int id) 
 	{
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		ModelAndView mv1 = new ModelAndView("offer");
 		pdao.deleteoffer(id);
-		
-		
+		ArrayList<Product> p=new ArrayList<Product>();
+		 p=(ArrayList<Product>)pdao.getallproducts();
+		 mv1.addObject("prods",p);	
+		 ArrayList<Product> pp=new ArrayList<Product>();
+		 pp=(ArrayList<Product>)pdao.listof_offerProducts();
+		 mv1.addObject("offproducts",pp);
+		ArrayList<Category> c =new ArrayList<Category>();
+		c=cdao.getallcategories();
+		mv1.addObject("catego",c);
 		
 		
 		return mv1;

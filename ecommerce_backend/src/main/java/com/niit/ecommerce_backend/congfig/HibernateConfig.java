@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 import com.niit.ecommerce_backend.model.Product ;
+import com.niit.ecommerce_backend.model.Review;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier ;
 import com.niit.ecommerce_backend.model.Cart;
@@ -24,9 +25,11 @@ import com.niit.ecommerce_backend.model.Category ;
 import com.niit.ecommerce_backend.model.User ;
 
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
@@ -57,7 +60,8 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(User.class);
 	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
-	        
+	        sessionBuilder.addAnnotatedClass(Review.class);
+
 	      
 	       
 	        
@@ -122,6 +126,20 @@ public class HibernateConfig
 		{
 			
 		return new SubcategoryDAOImpl(sessionFactory)	;	}
+	    
+	    
+	    @Bean
+	    @Autowired
+		public ReviewDAO getReviewDAO(SessionFactory sessionFactory)
+		{
+			
+		return new ReviewDAOImpl(sessionFactory);
+		}
+
+	    
+	    
+	    
+	    
 	    @Bean
 		@Autowired
 	        public HibernateTransactionManager txManager(SessionFactory sessionFactory) {

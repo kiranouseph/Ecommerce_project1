@@ -155,5 +155,38 @@ public class ProductDAOImpl implements ProductDAO{
 
 	
 
+
+	
+	}
+	
+	
+	public void updateproduct( Product p) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		 ssn.update(p);
+		 
+		 
+				       
+	
+				         				
+		
+        t.commit();
+        
+        ssn.close();
+		
+	
+	
+
+	
+
+
+	
+	
+	
+	
+	
+	
+	
 }
 }

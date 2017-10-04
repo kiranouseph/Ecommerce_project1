@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
            <li><input class="form-control mr-sm-2" type="text" placeholder="Search"></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="admin">ADMIN</a></li>
            <li class="dropdown">
@@ -40,7 +40,7 @@
         <ul class="dropdown-menu">
          <c:forEach var="designate" items="${catego}">
                        
-                           <li><a href="${designate.id}">${designate.categoryname}</a></li>
+                           <li><a href="selcat?id=${designate.id}">${designate.categoryname}</a></li>
                        
                     </c:forEach> 
           

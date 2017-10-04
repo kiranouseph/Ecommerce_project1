@@ -94,6 +94,15 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
         ssn.close();
 		
 	}
+	public void updatesubcategory(Subcategory sc) {
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		 ssn.update(sc);
+		t.commit();
+        ssn.close();
+		
+	}
 	
 
 	

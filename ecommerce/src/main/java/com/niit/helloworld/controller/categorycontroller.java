@@ -32,9 +32,10 @@ public class categorycontroller {
 	SubcategoryDAOImpl scdao;
 	
 	
+	
 
-	@RequestMapping("/{catid}")
-	public ModelAndView ca(@PathVariable("catid") int ca) {
+	@RequestMapping("/selcat")
+	public ModelAndView ca(@RequestParam("id") int ca) {
 		System.out.println("in contoller"+ca);
 		ArrayList<Subcategory> ll=new ArrayList<Subcategory>();
 		ll=scdao.getsubcatByCatId(ca);
@@ -91,18 +92,40 @@ public class categorycontroller {
 	
 	
 	
-	@RequestMapping("/{id}/2/update")
-	public ModelAndView updatecategory() {
+	@RequestMapping("/updatecategory")
+	public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
 	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-	
+		Category c=new Category();
+		c.setId(id);
+		c.setCategoryname(name);
+		
+		cdao.updatecategory(c);
 		
 		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		ModelAndView mv1 = new ModelAndView("list");
+		ArrayList<Category> cc=new ArrayList<Category>();
+
+		 cc=(ArrayList<Category>)cdao.getallcategories();
+		 mv1.addObject("list",cc);	
+		 mv1.addObject("status",2);
+
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		 System.out.println("printing");
 		
-		 
+				
+				mv1.addObject("catego",l);
+				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+				 System.out.println("printing");
+				
+						
+						mv1.addObject("suppli",ll);
+						 ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+						 System.out.println("printing");
+						
+								
+								mv1.addObject("subcatego",lll);
+				
 		
-		mv1.addObject("catego",l);
 	
 		return mv1;
 	}

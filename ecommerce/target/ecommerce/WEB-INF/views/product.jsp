@@ -23,8 +23,7 @@
 th, td { padding: 5px; }
 
 /* cellspacing */
-table { border-collapse: separate; border-spacing: 5px; } /* cellspacing="5" */
-table { border-collapse: collapse; border-spacing: 0; }   /* cellspacing="0" */
+table { border-collapse: separate; border-spacing: 5px; } 
 
 
   </style>
@@ -78,7 +77,7 @@ table { border-collapse: collapse; border-spacing: 0; }   /* cellspacing="0" */
                       <h4>${prod.stock} left</h4>
                         <p>${prod.proddecs}</p>
                         <div class="single-product-price">
-                           <h2><i class="fa fa-inr"></i>${prod.price}</h2>
+                           <h2><i class="fa fa-inr"></i><strike>${prod.price}</strike>         <i class="fa fa-inr"></i>${prod.offerprice}</h2>
                            
                         </div>                        
                         <div class="product-attributes clearfix">
@@ -149,16 +148,50 @@ table { border-collapse: collapse; border-spacing: 0; }   /* cellspacing="0" */
           </h3>
 				</div>
 				<div class="tab-pane" id="2">
-          <h3></h3>
+    						<c:forEach var="designate" items="${rev}">	
+<table>
+<tr>
+<td>
+${designate.custname}
+
+
+</td>
+<td>
+says
+</td>
+<td>
+${designate.review}
+</td>
+
+</tr>
+
+
+
+
+</table>
+
+
+
+
+
+</c:forEach>          
+          
+          
+          
+          
 				</div>
         <div class="tab-pane" id="3">
+           <form action="review?prid=${prod.id}" method="post">
+        
                 <table >
      
   
  
 <tr><td>NAME</td><td><input type="text"  name="name"  style="width:100%" required></td></tr>
 <tr><td>Feedback</td><td><textarea rows="4" cols="50" name="desc" style="width:100%" required></textarea></td></tr>
-<tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" style="width:100%"></td></tr></table>
+<tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" style="width:100%"></td></tr>
+</table>
+</form>
 
 
 				</div>

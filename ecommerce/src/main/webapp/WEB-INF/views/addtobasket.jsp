@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,6 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="addbask.css" rel="stylesheet" type="text/css">
 <style>
 /* USER PROFILE PAGE */
@@ -48,9 +53,7 @@ $(document).ready(function() {
 	});
 	});
 </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+  </head>
 <body bgcolor="black">
     <jsp:include page="header.jsp" />  
 
@@ -165,7 +168,7 @@ $(document).ready(function() {
         
         
       <div class="tab-pane" id="3a">   
-                        <form action="category" method="post">
+                        <form action="category" method="get">
       <table >
      
       
@@ -223,10 +226,10 @@ $(document).ready(function() {
          
 				
 							<div class="tab-pane" id="5a">
-         <a href="list/1">LIST OF PRODUCTS</a><br><br>
-         <a href="list/2">LIST OF CATEGORIES</a><br><br>
-       <a href="list/3">LIST OF SUBCATEGORIES</a><br><br>
-         <a href="list/4">LIST OF SUPPLIERS</a><br><br>
+         <a href="list?num=1">LIST OF PRODUCTS</a><br><br>
+         <a href="list?num=2">LIST OF CATEGORIES</a><br><br>
+       <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
+         <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
          
 				</div>

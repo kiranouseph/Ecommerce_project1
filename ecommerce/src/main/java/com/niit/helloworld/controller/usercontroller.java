@@ -71,75 +71,7 @@ public class usercontroller {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@RequestMapping("/login")
@@ -318,8 +250,9 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("/list/{number}")
-	public ModelAndView list(@PathVariable("number") int ca) {
+	@RequestMapping("/list")
+	public ModelAndView list(@RequestParam("num") int ca) 
+	{
 		ArrayList<Product> p=new ArrayList<Product>();
 		ArrayList<Category> c=new ArrayList<Category>();
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
@@ -365,8 +298,8 @@ public class usercontroller {
 	
 	
 	
-	@RequestMapping("list/{id}/{number}/retrieve")
-	public ModelAndView retrieve(@PathVariable("number") int num,@PathVariable("id") int id) {
+	@RequestMapping("/retrieve")
+	public ModelAndView retrieve(@RequestParam("id") int id,@RequestParam("num") int num) {
 		Product p=new Product();
 		Category c=new Category();
 		Subcategory sc=new Subcategory();
@@ -490,9 +423,8 @@ public class usercontroller {
 	
 
 	
-	@RequestMapping("list/{id}/{number}/delete")
-	public ModelAndView delete(@PathVariable("number") int num,@PathVariable("id") int id) {
-	
+	@RequestMapping("/delete")
+	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	
 		ModelAndView mv1 = new ModelAndView("addtobasket");
 		if(num==1)
 	{

@@ -11,11 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.niit.ecommerce_backend.model.Review;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 @SuppressWarnings("unused")
@@ -32,22 +34,28 @@ public class productcontroller {
 	SupplierDAOImpl sdao;
 	@Autowired
 	SubcategoryDAOImpl scdao;
+	@Autowired
+	ReviewDAOImpl rdao;
 	
 	
-	@RequestMapping("/{cat}/{scat}/{prid}")
-	public ModelAndView pr(@PathVariable("cat") int ca,@PathVariable("prid") int pr,@PathVariable("scat") String  sca) {
-		
+	@RequestMapping("/prod")
+	public ModelAndView pr(@RequestParam("id") int pr) {
+        ArrayList<Review> r=new ArrayList<Review>();		
 		Product ll=new Product();
 		ll=pdao.getProdById(pr);
-		
+		r=rdao.getrevbyprid(pr);
 		ModelAndView mv1 = new ModelAndView("product");
 		mv1.addObject("prod",ll);
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		 
-		
+		mv1.addObject("rev",r);
 		mv1.addObject("catego",l);
+		for(Review s:r)
+		{
+			System.out.println(s);
+		}
 		return mv1;
 	}
 	
@@ -86,8 +94,8 @@ Category cc=new Category();
 	    p.setSupplier(sup);
 	    
 	   
-	    
-		pdao.saveProduct(p);
+	    		pdao.saveProduct(p);
+
 		
 		
 		ModelAndView mv1 = new ModelAndView("addtobasket");
@@ -114,13 +122,52 @@ Category cc=new Category();
 	
 	
 	
-	@RequestMapping("/{id}/1/update")
-	public ModelAndView updateproduct() {
+	@RequestMapping("/updateproduct")
+	public ModelAndView updateproduct(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat) {
+	System.out.println(prid+" "+name+"  "+desc+"     "+price+"       "+stock+"      "+cat+"  "+supp);
+		ModelAndView mv1 = new ModelAndView("list");
+		ArrayList<Product> pp=new ArrayList<Product>();
+
+		 pp=(ArrayList<Product>)pdao.getallproducts();
+		 mv1.addObject("list",pp);	
+		 mv1.addObject("status",1);
+
 	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
-	
+		Product p=new Product();
+		
+		p.setId(prid);
+		p.setProdname(name);
+		p.setProddecs(desc);
+		p.setPrice(price);
+		p.setStock(stock);
 	
 		
+Category cc=new Category();
+		cc=cdao.getcatbyid(cat);
+		
+		
+		Subcategory scc=new Subcategory();
+		scc=scdao.getscatbyid(scat);
+		int idd=scc.getId();
+		String na=scc.getSubcategoryname();
+		Subcategory sccc=new Subcategory();
+		sccc.setId(idd);
+		sccc.setSubcategoryname(na);
+		sccc.setCategory(cc);
+		
+		
+	    p.setSubcategory(sccc);
+	    
+
+		Supplier sup=new Supplier();
+		sup=sdao.getsuppbyid(supp);
+	    p.setSupplier(sup);
+	    
+	   
+	    		pdao.updateproduct(p);
+
+		
+	
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		

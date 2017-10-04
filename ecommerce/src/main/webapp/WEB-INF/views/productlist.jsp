@@ -43,14 +43,14 @@ table, th, td {
 
       
         <!-- Thumbnail Images -->
-        <div class="thumbnail"> <a href="category/${designate.id}" class="link-p"> <img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt=""> </a>
+        <div class="thumbnail"> <a href="prod?id=${designate.id}" class="link-p"> <img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt=""> </a>
           <!-- Offer Tag-->
        
           <div class="caption prod-caption"> 
-            <div class="pro-name"><a href="category/${designate.id}" class="animated fadeInRightShort go">${designate.prodname }</a></div>
+            <div class="pro-name"><a href="prod?id=${designate.id}" class="animated fadeInRightShort go">${designate.prodname }</a></div>
             <p>
             <!-- Price & Button -->
-            </p><div class="btn-group"> <a href="category/${designate.id}" class="btn btn-default">$ ${designate.price}</a> <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a> </div>
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default">$ ${designate.price}</a> <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a> </div>
             <p></p>
           </div>
         </div>
@@ -67,5 +67,7 @@ table, th, td {
 
 </c:forEach>
 </div>
+  <jsp:include page="footer.jsp" />  
+
 </body>
 </html>

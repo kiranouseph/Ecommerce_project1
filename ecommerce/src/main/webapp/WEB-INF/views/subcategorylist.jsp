@@ -87,7 +87,7 @@
 }
 /* Demo purposes only */
 body {
-  background-color: #212121;
+  
   text-align: center;
 }
 
@@ -131,7 +131,7 @@ $(".hover").mouseleave(
     
     <h3 class="title2">${designate.subcategoryname }</h3>
     
-  </figcaption><a href="${designate.category.id}/${designate.id}"></a>
+  </figcaption><a href="selsubcat?id=${designate.id}"></a>
 </figure>
 
 
