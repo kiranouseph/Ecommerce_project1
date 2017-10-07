@@ -225,23 +225,49 @@ $(document).ready(function () {
   </a>
 </div>
 
+<br>
+<br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<c:forEach var="designate" items="${catego}">
+
+<h3>Offers for ${designate.categoryname}</h3>
 <div class="container">
 	<div class="row">
+	
+	
 		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
             
             
-            
+            <c:forEach var="des" items="${offproducts}">
+            <c:if test="${designate.id eq des.catnum}">
                 <div class="item">
                     <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
+                    <img src="resources/images/2.jpg" class="img-responsive" alt="abcd" style="width:100%; height:100%">
+                        <p class="lead">${des.prodname}</p>
+                        <p> ${des.price}</p>
+                        <p>${des.offerprice}</p>
+                        <p>${des.offerper }%</p>
                     </div>
                 </div>
-              
+                </c:if>
+</c:forEach>              
               
             </div>
             <button class="btn btn-primary leftLst"><</button>
@@ -250,123 +276,8 @@ $(document).ready(function () {
 	</div>
 
 </div>
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-            
-            
-            
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-              
-              
-            </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
-        </div>
-	</div>
-
-</div>
-
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-            
-            
-            
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-              
-              
-            </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
-        </div>
-	</div>
-
-</div>
-
-
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-            
-            
-            
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-              
-              
-            </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
-        </div>
-	</div>
-
-</div>
-
-
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-            
-            
-            
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-              
-              
-            </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
-        </div>
-	</div>
-
-</div>
+<br><br>
+</c:forEach>
 
 <jsp:include page="footer.jsp" /> 
 

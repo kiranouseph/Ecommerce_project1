@@ -79,7 +79,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <div class="single-product-price">
                         <c:if test="${prod.offer eq 1}">
 
- <h2><i class="fa fa-inr"></i><strike>${prod.price}</strike>         <i class="fa fa-inr"></i>${prod.offerprice}</h2>
+ <h2><i class="fa fa-inr"></i><strike>${prod.price}</strike>         <i class="fa fa-inr"></i>${prod.offerprice}  ${prod.offerper}% off</h2>
 </c:if>
                         
                         

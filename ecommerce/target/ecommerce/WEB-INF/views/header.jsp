@@ -103,21 +103,26 @@ $(document).ready(function(){
 							                           
                             <div id="menCollection" class="carousel slide" data-ride="carousel">
                               <div class="carousel-inner">
+                              
+                              
+                              
                                 <div class="item active">
                                     <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
                                     <h4><small>         </small></h4>                                        
                                     <button class="btn btn-primary" type="button">       </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>         </button>       
                                 </div><!-- End Item -->
-                                <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                    <h4><small>        </small></h4>                                        
-                                    <button class="btn btn-primary" type="button">           </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>        
-                                </div><!-- End Item -->
+                                
+                                
+                                
+                                <c:forEach var="designate" items="${catego}">
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>        </small></h4>                                        
+                                    <h4><small>  ${designate.categoryname}      </small></h4>                                        
                                     <button class="btn btn-primary" type="button"></button>   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>      
-                                </div><!-- End Item -->                                
+                                </div><!-- End Item -->   
+                                </c:forEach>    
+                                
+                                                         
                               </div><!-- End Carousel Inner -->
                               <!-- Controls -->
                               <a class="left carousel-control" href="#menCollection" role="button" data-slide="prev">
@@ -133,7 +138,7 @@ $(document).ready(function(){
                             
 						</ul>
 					</li>
-					<li class="col-sm-6">
+					<li class="col-sm-4">
 						
 						 <c:forEach var="designate" items="${catego}">
                        
@@ -143,6 +148,7 @@ $(document).ready(function(){
                     </c:forEach> 	
 						
 					</li>
+					   <li class="col-md-2"></li>
 					
 					
 					

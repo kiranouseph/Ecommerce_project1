@@ -142,7 +142,7 @@ $(document).ready(function(){
 						
 						 <c:forEach var="designate" items="${catego}">
                        
-                           <h5 ><li  style="text-align:center"><a href="selcat?id=${designate.id}">Gift ${designate.categoryname} to share colours to lives</a></li></h3>
+                           <h5 ><li  style="text-align:center"><a href="selcat?id=${designate.id}">Gift ${designate.categoryname} to ${designate.categorydesc }</a></li></h3>
                            
                        
                     </c:forEach> 	

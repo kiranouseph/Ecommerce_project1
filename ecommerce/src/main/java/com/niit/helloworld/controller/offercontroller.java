@@ -56,11 +56,11 @@ mv1.addObject("catego",c);
 	
 	
 	
-	@RequestMapping("/offers/{prid}")
-	public ModelAndView offerprice(@PathVariable("prid") int prid,@RequestParam("offerprice") int offprice) 
-	{
+	@RequestMapping("/offersset")
+	public ModelAndView offerprice(@RequestParam("prid") int prid,@RequestParam("offerprice") int offprice,@RequestParam("orgprice") int orgprice) 
+	{ System.err.println(offprice+" "+orgprice);
 		ModelAndView mv1 = new ModelAndView("offer");
-		pdao.setoffers(prid,offprice);
+		pdao.setoffers(prid,offprice,orgprice);
 		ArrayList<Product> p=new ArrayList<Product>();
 		 p=(ArrayList<Product>)pdao.getallproducts();
 		 mv1.addObject("prods",p);	
@@ -75,8 +75,8 @@ mv1.addObject("catego",c);
 		return mv1;
 	
 	}
-	@RequestMapping("/offers/delete/{prid}")
-	public ModelAndView offerdelete(@PathVariable("prid") int id) 
+	@RequestMapping("/offersdel")
+	public ModelAndView offerdelete(@RequestParam("prid") int id) 
 	{
 		ModelAndView mv1 = new ModelAndView("offer");
 		pdao.deleteoffer(id);

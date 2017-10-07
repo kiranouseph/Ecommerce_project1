@@ -15,6 +15,7 @@ import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
+import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Review;
 
@@ -57,6 +58,11 @@ public class reviewcontroller {
 		
 		
 		mv1.addObject("rev",rr);
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+		 
+			
+			mv1.addObject("catego",l);
 		return mv1;
 	
 	}

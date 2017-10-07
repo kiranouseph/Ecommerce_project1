@@ -26,6 +26,7 @@ import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 import com.niit.ecommerce_backend.model.User;
 
+import antlr.collections.List;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
  
 @SuppressWarnings("unused")
@@ -56,16 +57,18 @@ public class usercontroller {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		System.err.println("in controller");
- 
+		
+	
+		
 		ModelAndView mv1 = new ModelAndView("index");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		 
 				
 				mv1.addObject("catego",l);
-		
-		
+				ArrayList<Product> prod=new ArrayList<Product>();			
+	prod=pdao.listof_offerProducts();
+	mv1.addObject("offproducts",prod);
 	
 		return mv1;
 	}

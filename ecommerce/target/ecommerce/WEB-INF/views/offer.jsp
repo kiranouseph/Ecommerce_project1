@@ -57,7 +57,7 @@ border-collapse: separate;
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="1">
 			<c:forEach var="designate" items="${prods}">
-         <form action="offers/${designate.id}" method="post">
+         <form action="offersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
       <table >
      
       
@@ -65,7 +65,8 @@ border-collapse: separate;
 
 <td>${designate.prodname}</td>
 <td>${designate.price}</td>
-<td><input type="number" name="offerprice"></td>
+<td><input type="number" name="offerprice" value="${designate.offerprice}
+"></td>
 
 <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
 </tr>
@@ -117,7 +118,7 @@ ${designate.price}
                                     <td>${designate.offerprice}</td>
                                       <td> 
                                     
-                                      <a href="offers/delete/${designate.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE"></a>
+                                      <a href="offersdel?prid=${designate.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="DELETE"></a>
                                        </td>
                                        
                                        

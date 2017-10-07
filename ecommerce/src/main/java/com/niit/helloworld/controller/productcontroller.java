@@ -70,7 +70,7 @@ public class productcontroller {
 		p.setProddecs(desc);
 		p.setPrice(price);
 		p.setStock(stock);
-	
+	    p.setCatnum(cat);
 		
 Category cc=new Category();
 		cc=cdao.getcatbyid(cat);
@@ -141,7 +141,7 @@ Category cc=new Category();
 		p.setPrice(price);
 		p.setStock(stock);
 	
-		
+		p.setCatnum(cat);
 Category cc=new Category();
 		cc=cdao.getcatbyid(cat);
 		

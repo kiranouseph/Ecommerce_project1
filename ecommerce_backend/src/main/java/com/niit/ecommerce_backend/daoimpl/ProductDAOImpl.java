@@ -95,18 +95,22 @@ public class ProductDAOImpl implements ProductDAO{
 		
 	}
 	
-	public void setoffers(int id,int offprice) {
+	public void setoffers(int id,int offprice,int orgprice) {
+		System.err.println(offprice+" "+orgprice);
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
+		int per=100-(100*offprice/orgprice);
+		System.err.println(per);
 		 Query qry1 = ssn.createQuery("update Product  set offer="+1+"where id="+id);
 		 Query qry2 = ssn.createQuery("update Product  set offerprice="+offprice+"where id="+id);
-		 
+		 Query qry3 = ssn.createQuery("update Product  set offerper="+per+"where id="+id); 
 				       
 				          
 				          qry1.executeUpdate();
 				          qry2.executeUpdate();
-				
+				          qry3.executeUpdate();
+ 				
 		
         t.commit();
         
@@ -189,4 +193,9 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	
 }
+	
+	
+	
+	
+	
 }

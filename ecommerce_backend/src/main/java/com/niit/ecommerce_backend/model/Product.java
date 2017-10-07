@@ -33,6 +33,22 @@ public class Product implements Serializable {
     private String prodname;
    
 
+	public int getOfferper() {
+		return offerper;
+	}
+
+	public void setOfferper(int offerper) {
+		this.offerper = offerper;
+	}
+
+	public int getCatnum() {
+		return catnum;
+	}
+
+	public void setCatnum(int catnum) {
+		this.catnum = catnum;
+	}
+
 	@Column(name = "proddecs", nullable = false)
     private String proddecs;
 	@Column(name = "price", nullable = false)
@@ -43,6 +59,12 @@ public class Product implements Serializable {
     private int offer;
 	@Column(name = "offerprice", nullable =false)
     private int offerprice;
+	@Column(name = "offerper", nullable =false)
+    private int offerper;
+	@Column(name = "cate", nullable =false)
+    private int catnum;
+
+
 	public int getOffer() {
 		return offer;
 	}
