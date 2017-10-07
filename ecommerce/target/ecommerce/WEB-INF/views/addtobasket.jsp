@@ -174,7 +174,7 @@ $(document).ready(function() {
       
 <tr><td>CATEGORY ID</td><td><input type="number"  name="catid" required style="width:200%"></td></tr>
 <tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:200%"></td></tr>
-
+<tr><td>CATEGORY DESCRIPTION</td><td><input type="text"  name="catdesc" required style="width:200%"></td></tr>
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:200%"></td></tr>
 </table>
@@ -199,7 +199,7 @@ $(document).ready(function() {
 <form action="subcategory" method="post">
       <table >
      
-<tr><td>CATEGORY</td><td><select name="scat" style="width:100%">
+<tr><td>CATEGORY</td><td><select name="scat" style="width:200%">
 <option value="desigType">Select Designation</option>
 <c:forEach var="designatee" items="${catego}">
                        

@@ -80,20 +80,20 @@ background-color:white;
   <div class="carousel-inner">
   
     <div class="item active">
-      <img src="https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" class="img-responsive" alt="Chania" style="width:100%; height:90vh">
+      <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:90vh">
 
     </div>
 
     <div class="item">
-      <img src="" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <img src="resources/images/2.jpg" class="img-responsive" alt="abcd" style="width:100%; height:90vh">
     </div>
 
     <div class="item">
-      <img src="" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
+      <img src="resources/images/3.jpg" class="img-responsive" alt="Flower" style="width:100%; height:90vh">
     </div>
 
     <div class="item">
-      <img src="" class="img-responsive" alt="Flower" style="width:100%; height:100vh">
+      <img src="resources/images/4.jpg" class="img-responsive" alt="Flower" style="width:100%; height:90vh">
     </div>
   </div>
 

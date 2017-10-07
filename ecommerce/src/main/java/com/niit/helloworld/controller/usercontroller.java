@@ -375,66 +375,28 @@ public class usercontroller {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
-	
 	@RequestMapping("/delete")
 	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		
+		ArrayList<Product> p=new ArrayList<Product>();
+		ArrayList<Category> c=new ArrayList<Category>();
+		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
+		ArrayList<Supplier> sup=new ArrayList<Supplier>();
+		ModelAndView mv1 = new ModelAndView("list");
 		if(num==1)
 	{
-		
 			pdao.deleteproduct(id);
+			p=(ArrayList<Product>)pdao.getallproducts();
+			mv1.addObject("list",p);
+			mv1.addObject("status",1);
+			
 	}
 	else if(num==2)
 	{
 	cdao.deletecategory(id);	
-		
+	c=(ArrayList<Category>)cdao.getallcategories();
+	mv1.addObject("list",c);	
+	mv1.addObject("status",2);
 		
 	}
 	else if(num==3)
@@ -442,13 +404,18 @@ public class usercontroller {
 		
 		
 		scdao.deletesubcategory(id);
-		
+		sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
+		mv1.addObject("list",sc);
+		mv1.addObject("status",3);
 	}
 	else if(num==4)
 	{
 		
 		
 		sdao.deletesupplier(id);
+		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
+		mv1.addObject("list",sup);
+		mv1.addObject("status",4);
 		
 	}
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();

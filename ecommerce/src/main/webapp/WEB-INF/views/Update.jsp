@@ -31,7 +31,7 @@
 
 
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
-<option value="desigType">${listt.subcategory.category.categoryname}</option>
+<option value="${listt.subcategory.category.id}" selected>${listt.subcategory.category.categoryname}</option>
 <c:forEach var="designatee" items="${catego}">
                        
                             <option value="${designatee.id}">${designatee.categoryname}</option>
@@ -43,7 +43,7 @@
 </select></td></tr>
 
 <tr><td>SUBCATEGORY</td><td><select name="scat" style="width:100%">
-<option value="desigType">${listt.subcategory.subcategoryname}</option>
+<option value="${listt.subcategory.id}" selected>${listt.subcategory.subcategoryname}</option>
 <c:forEach var="designatee" items="${subcatego}">
                        
                             <option value="${designatee.id}">${designatee.subcategoryname}</option>
@@ -54,7 +54,7 @@
   
 </select></td></tr>
 <tr><td>SUPPLIER</td><td><select name="supp" style="width:100%">
-<option value="desigType">${ listt.supplier.suppname}</option>
+<option value="${ listt.supplier.id}" selected>${ listt.supplier.suppname}</option>
  <c:forEach var="designate" items="${suppli}">
                        
                             <option value="${designate.id}">${designate.suppname}</option>
@@ -103,7 +103,7 @@
 <tr><td>SUBCATEGORY  ID</td><td><input type="number"   name="scatid"  value="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:100%"  value="${listt.subcategoryname }"></td></tr>
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
-<option value="desigType">${listt.category.categoryname}</option>
+<option value="${listt.category.id}" >${listt.category.categoryname}</option>
 <c:forEach var="designatee" items="${catego}">
                        
                             <option value="${designatee.id}">${designatee.categoryname}</option>

@@ -13,30 +13,69 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Listing</title>
+<style>
+.table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+    font-color:black;
+}
 
+
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control{
+		width:20%;
+		display: inline !important;
+	}
+	.actions .btn{
+		width:36%;
+		margin:1.5em 0;
+	}
+	
+	.actions .btn-info{
+		float:left;
+	}
+	.actions .btn-danger{
+		float:right;
+	}
+	
+	table#cart thead { display: none; }
+	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+	table#cart tbody tr td:first-child { background: #333; color: #fff; }
+	table#cart tbody td:before {
+		content: attr(data-th); font-weight: bold;
+		display: inline-block; width: 8rem;
+	}
+	
+	
+	
+	table#cart tfoot td{display:block; }
+	table#cart tfoot td .btn{display:block;}
+	
+}
+
+</style>
 </head>
 <body>
 
     <jsp:include page="header.jsp" />  
 <c:if test="${status eq 1}">
 
-<h1>LIST OF PRODUCTS</h1>
+<h1 style="text-align:center">LIST OF PRODUCTS</h1>
 </c:if>
 <c:if test="${status eq 2}">
 
-<h1>LIST OF CATEGORIES</h1>
+<h1 style="text-align:center">LIST OF CATEGORIES</h1>
 
 </c:if>
 <c:if test="${status eq 3}">
 
-<h1>LIST OF SUBCATEGORIES</h1>
+<h1 style="text-align:center">LIST OF SUBCATEGORIES</h1>
 </c:if>
 
 
 
 <c:if test="${status eq 4}">
 
-<h1>LIST OF SUPPLIERS</h1>
+<h1 style="text-align:center">LIST OF SUPPLIERS</h1>
 </c:if>
 
 
@@ -50,93 +89,137 @@
 <table class="table package-table" >
 
                            
-                                <tbody>
+                                
                                 <thead>
 						<tr>
-							<th style="width:50%"></th>
-							<th style="width:25%"></th>
-							<th style="width:25%"></th>
+							<th style="width:80%"></th>
+							<th style="width:10%"></th>
+							<th style="width:10%"></th>
+							
+							
 							
 							
 						</tr>
 					</thead>
     						<c:forEach var="designate" items="${list}">	
 								<c:if test="${status eq 1}">
-						
+						<tbody>
 								 <tr> 
-								 
-                                    <td>${designate.prodname}</td>
-                                   
-                                   <td>
+									<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-8">
+										<h4 class="nomargin">${designate.prodname}</h4>
+										<p>
+    
+										</p>	</div>
+								</div>
+							</td>
+							 <td>
                                    <a href="retrieve?id=${designate.id}&num=1">
-                                  <button type="button" class="btn btn-success">UPDATE</button>
+                                  <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                    </a>
                                    </td>
 
                                     <td>
                                     <a href="delete?id=${designate.id}&num=1">
-                               <button type="button" class="btn btn-danger">DELETE</button>
+                               <i class="fa fa-trash-o fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                     </a>
                                     </td>
                                    
                                 </tr>
+                                </tbody>
 								</c:if>
 								<c:if test="${status eq 2}">
 								
+									<tbody>
 								 <tr> 
-								 
-                                    <td>${designate.categoryname}</td>
-                                   <td>
+									<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-8">
+										<h4 class="nomargin">${designate.categoryname}</h4>
+										<p>
+    
+										</p>	</div>
+								</div>
+							</td>
+							 <td>
                                    <a href="retrieve?id=${designate.id}&num=2">
-                                  <button type="button" class="btn btn-success">UPDATE</button>
+                                  <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                    </a>
                                    </td>
+
                                     <td>
                                     <a href="delete?id=${designate.id}&num=2">
-                                   <button type="button" class="btn btn-danger">DELETE</button>
+                               <i class="fa fa-trash-o fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                     </a>
                                     </td>
-                                    
+                                   
                                 </tr>
+                                </tbody>
 								</c:if>
 								<c:if test="${status eq 3}">
 								
+								<tbody>
 								 <tr> 
-								 
-                                    <td>${designate.subcategoryname}</td>
-                                   <td>
+									<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-8">
+										<h4 class="nomargin">${designate.subcategoryname}</h4>
+										<p>
+    
+										</p>	</div>
+								</div>
+							</td>
+							 <td>
                                    <a href="retrieve?id=${designate.id}&num=3">
-                                   <button type="button" class="btn btn-success">UPDATE</button>
+                                  <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                    </a>
                                    </td>
+
                                     <td>
                                     <a href="delete?id=${designate.id}&num=3">
-                                    <button type="button" class="btn btn-danger">DELETE</button>
+                               <i class="fa fa-trash-o fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                     </a>
                                     </td>
-                                    
+                                   
                                 </tr>
+                                </tbody>
 								</c:if>
 							
 								<c:if test="${status eq 4}">
+									<tbody>
 								 <tr> 
-								 
-                                    <td>${designate.suppname}</td>
-                                    <td>
+									<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-8">
+										<h4 class="nomargin">${designate.suppname}</h4>
+										<p>
+    
+										</p>	</div>
+								</div>
+							</td>
+							 <td>
                                    <a href="retrieve?id=${designate.id}&num=4">
-                                  <button type="button" class="btn btn-success">UPDATE</button>
+                                  <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                    </a>
                                    </td>
-									<td>
+
+                                    <td>
                                     <a href="delete?id=${designate.id}&num=4">
-                                    <button type="button" class="btn btn-danger">DELETE</button>
+                               <i class="fa fa-trash-o fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                     </a>
-                                    </td>                                    
+                                    </td>
+                                   
                                 </tr>
+                                </tbody>
 								</c:if>
 							
  </c:forEach> 
-                                </tbody>
+                                
                             </table>
                             
                              

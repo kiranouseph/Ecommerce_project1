@@ -173,7 +173,7 @@ div.cont {
 
 
 </style>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -181,7 +181,7 @@ div.cont {
 
 
 <!--footer-->
-<footer class="footer1" style="margin-top:130px;text-align:center;bottom:0">
+<footer class="footer1" style="margin-top:300px;text-align:center;bottom:0">
 <div class="container">
 
 <div class="row"><!-- row -->

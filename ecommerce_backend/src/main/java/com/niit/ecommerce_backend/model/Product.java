@@ -19,12 +19,7 @@ import java.io.*;
 @Table(name="PRODUCTS")
 public class Product implements Serializable {
 	
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
-				+ ", stock=" + stock + ", offer=" + offer + ", offerprice=" + offerprice + ", subcategory="
-				+ subcategory + ", supplier=" + supplier + "]";
-	}
+	
 
 	/**
 	 * 

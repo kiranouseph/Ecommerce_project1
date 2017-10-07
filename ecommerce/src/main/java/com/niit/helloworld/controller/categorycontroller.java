@@ -58,13 +58,13 @@ public class categorycontroller {
 	}
 	
 	@RequestMapping("/category")
-	public ModelAndView addcat(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
+	public ModelAndView addcat(@RequestParam("catid") int id ,@RequestParam("catname") String name,@RequestParam("catdesc") String catdesc) {
 		System.out.println("in controller");
 		System.out.println(id+name);
 		Category c=new Category();
 		c.setId(id);
 		c.setCategoryname(name);
-		
+		c.setCategorydesc(catdesc);
 		cdao.savecategory(c);
 		
 		

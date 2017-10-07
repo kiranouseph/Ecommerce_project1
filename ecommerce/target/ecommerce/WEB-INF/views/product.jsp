@@ -77,7 +77,15 @@ table { border-collapse: separate; border-spacing: 5px; }
                       <h4>${prod.stock} left</h4>
                         <p>${prod.proddecs}</p>
                         <div class="single-product-price">
-                           <h2><i class="fa fa-inr"></i><strike>${prod.price}</strike>         <i class="fa fa-inr"></i>${prod.offerprice}</h2>
+                        <c:if test="${prod.offer eq 1}">
+
+ <h2><i class="fa fa-inr"></i><strike>${prod.price}</strike>         <i class="fa fa-inr"></i>${prod.offerprice}</h2>
+</c:if>
+                        
+                        
+                        
+                        
+                           <h2><i class="fa fa-inr"></i>${prod.price}</h2>
                            
                         </div>                        
                         <div class="product-attributes clearfix">

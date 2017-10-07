@@ -33,7 +33,7 @@ public class offercontroller {
 	
 	
 	
-	@RequestMapping("offers")
+	@RequestMapping("/offers")
 	public ModelAndView offer() {
 		ModelAndView mv1 = new ModelAndView("offer");
 		ArrayList<Product> p=new ArrayList<Product>();

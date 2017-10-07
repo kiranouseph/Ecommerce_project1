@@ -29,7 +29,14 @@ public class Category implements Serializable {
    	private int id;
 	@Column(name = "Categoryname", nullable = false)
     private String Categoryname;
-	
+	@Column(name = "Categorydesc", nullable = false)
+    private String Categorydesc;
+	public String getCategorydesc() {
+		return Categorydesc;
+	}
+	public void setCategorydesc(String categorydesc) {
+		Categorydesc = categorydesc;
+	}
 	@OneToMany(targetEntity=Subcategory.class,mappedBy="category",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
     private Set<Subcategory> ssubcategory ;
 	

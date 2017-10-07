@@ -19,11 +19,7 @@ import java.util.Set;
 @Component
 @Table(name="SUPPLIER")
 public class Supplier {
-	@Override
-	public String toString() {
-		return "Supplier [id=" + id + ", suppname=" + suppname + ", suppdesc=" + suppdesc + ", product=" + product
-				+ "]";
-	}
+	
 	@Id
    
 
