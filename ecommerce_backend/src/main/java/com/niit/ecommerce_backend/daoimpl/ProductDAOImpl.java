@@ -3,6 +3,7 @@ package com.niit.ecommerce_backend.daoimpl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -169,8 +170,7 @@ public class ProductDAOImpl implements ProductDAO{
 		Transaction t=ssn.getTransaction();
 		t.begin();
 		 ssn.update(p);
-		 
-		 
+			 
 				       
 	
 				         				
@@ -178,20 +178,6 @@ public class ProductDAOImpl implements ProductDAO{
         t.commit();
         
         ssn.close();
-		
-	
-	
-
-	
-
-
-	
-	
-	
-	
-	
-	
-	
 }
 	
 	

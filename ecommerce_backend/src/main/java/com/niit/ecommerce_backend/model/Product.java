@@ -65,6 +65,13 @@ public class Product implements Serializable {
     private int catnum;
 
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
+				+ ", stock=" + stock + ", offer=" + offer + ", offerprice=" + offerprice + ", offerper=" + offerper
+				+ ", catnum=" + catnum + ", subcategory=" + subcategory + ", supplier=" + supplier + "]";
+	}
+
 	public int getOffer() {
 		return offer;
 	}

@@ -1,6 +1,7 @@
 package com.niit.helloworld.controller;
  
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.omg.PortableServer.SERVANT_RETENTION_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class usercontroller {
 	@RequestMapping("/")
 	public ModelAndView home() {
 		
-	
+		Random random= new Random();
 		
 		ModelAndView mv1 = new ModelAndView("index");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -70,7 +71,31 @@ public class usercontroller {
 	prod=pdao.listof_offerProducts();
 	mv1.addObject("offproducts",prod);
 	
+	 ArrayList<Product> pp=new ArrayList<Product>();
+	 pp=(ArrayList<Product>)pdao.listof_offerProducts();
+	 
+	 int index1 = random.nextInt(pp.size());
+	 Product p1=pp.get(index1);
+	 mv1.addObject("offp1",p1);
+	 pp.remove(p1);
+	 int index2 = random.nextInt(pp.size());
+	 Product p2=pp.get(index2);
+	 mv1.addObject("offp2",p2);
+	 pp.remove(p2);
+	 int index3 = random.nextInt(pp.size());
+	 Product p3=pp.get(index3);
+	 mv1.addObject("offp3",p3);
+	 pp.remove(p3);
+	 int index4 = random.nextInt(pp.size());
+	 Product p4=pp.get(index4);
+	 mv1.addObject("offp4",p4);
+	 pp.remove(p4);
+	
 		return mv1;
+		
+		
+		
+		
 	}
 	
 	

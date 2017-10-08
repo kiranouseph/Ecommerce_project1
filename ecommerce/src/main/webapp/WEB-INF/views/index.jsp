@@ -40,11 +40,7 @@ background-size: cover;
 height:50px;
 	 
 	}
-.carousel slide
-{
-	margin-right:5px;
-	margin-left:5px;
-}
+
 .navbar-brand
 {
 	font-size:40px;
@@ -60,6 +56,127 @@ height:50px;
 {
 background-color:white;	
 }
+
+
+
+
+
+div.wrapper{
+	float:left; /* important */
+	position:relative; /* important(so we can absolutely position the description div */
+}
+div.description{
+	position:absolute; /* absolute position (so we can position it where we want)*/
+	bottom:0px; /* position will be on bottom */
+	left:0px;
+	width:100%;
+	/* styling bellow */
+	
+	color:red;
+	
+}
+p.description_content{
+	padding:10px;
+	margin:0px;
+	font-size: 30px;
+}
+
+
+
+
+
+
+
+/* BOOTSTRAP 3.x GLOBAL STYLES
+-------------------------------------------------- */
+
+
+.overlay { 
+  color:#fff;
+  position:absolute;
+  z-index:12;
+  top:50%;
+  left:0;
+  width:100%;
+  text-align:center;
+}
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.myCarouse1l {
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 1;
+}
+
+/* Declare heights because of positioning of img element */
+.myCarouse1l .item {
+  height: 400px;
+  background-color:#555;
+}
+.myCarouse1l img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 400px;
+}
+
+
+
+
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+    margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+  }
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+ .myCarouse1l-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
         .MultiCarousel .MultiCarousel-inner .item { float: left;}
@@ -69,7 +186,21 @@ background-color:white;
     .MultiCarousel .rightLst { right:0; }
     
         .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
 </style>
+
+
 <script>
 $(document).ready(function () {
     var itemsMainDiv = ('.MultiCarousel');
@@ -177,6 +308,11 @@ $(document).ready(function () {
     }
 
 });
+
+// Sets interval...what is transition slide speed?
+$('#myCarousel').carousel({
+interval: 2000
+});
 </script>
 </head>
 <body >
@@ -184,46 +320,167 @@ $(document).ready(function () {
     <jsp:include page="header.jsp" />  
    
   
-    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel1" data-slide-to="1"></li>
-    <li data-target="#myCarousel1" data-slide-to="2"></li>
-    <li data-target="#myCarousel1" data-slide-to="3"></li>
-  </ol>
+<div class="overlay">
+<h2 style="color:red">SPECIAL OFFERS FOR YOU</h2>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-  
-    <div class="item active">
-      <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:90vh">
 
-    </div>
+	<table   style=" margin-left: 1cm; border-collapse: separate; border-spacing: 30px;">
+    				<thead>
+						<tr>
+							<th style="width:15%"></th>
+							<th style="width:15%"></th>
+							<th style="width:15%"></th>
+							<th style="width:15%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+				<td>
+				
 
-    <div class="item">
-      <img src="resources/images/2.jpg" class="img-responsive" alt="abcd" style="width:100%; height:90vh">
-    </div>
-
-    <div class="item">
-      <img src="resources/images/3.jpg" class="img-responsive" alt="Flower" style="width:100%; height:90vh">
-    </div>
-
-    <div class="item">
-      <img src="resources/images/4.jpg" class="img-responsive" alt="Flower" style="width:100%; height:90vh">
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<a href="prod?id=${offp1.id}">
+<div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp1.prodname}<br>${offp1.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
 </div>
+        
+   </a>    
+        
+        
+        
+				</td>
+				
+				
+						<td>
+				
+<a href="prod?id=${offp2.id}">
+	<div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp2.prodname}<br>${offp2.offerper}%OFFF   </strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+       
+    </a>    
+     
+        
+				
+		
+				</td>
+				
+						<td>
+				
+<a href="prod?id=${offp3.id}">
+	<div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp3.prodname}<br>${offp3.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+  </a>     
+        
+      
+        
+					
+				</td>		
+				<td>
+				
+				
+				
+<a href="prod?id=${offp4.id}">			
+ <div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp4.prodname}<br>${offp4.offerper}%OFF </strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+ </a>      
+                
+        
+        
+        
+				</td>
+				
+			
+				
+						
+							
+						</tr>
+					</tbody>
+				
+				</table>
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  
+  <div class="carousel-inner">
+    <div class="item active">
+       <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <div class="container">
+        <div class="carousel-caption">
+          </div>
+      </div>
+    </div>
+    
+    <c:forEach var="designate" items="${catego}">
+    <div class="item">
+       <img src="resources/images/2.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>${designate.categoryname}</h1>
+        </div>
+      </div>
+    </div>
+   </c:forEach>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <i class="glyphicon glyphicon-chevron-left"></i>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <i class="glyphicon glyphicon-chevron-right"></i>
+  </a>  
+</div>
+<!-- /.carousel -->
 
 <br>
 <br>
