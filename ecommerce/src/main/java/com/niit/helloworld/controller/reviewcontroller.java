@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
+import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
@@ -18,7 +24,7 @@ import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Review;
-
+//for controlling the reviews of the product
 @Controller
 
 public class reviewcontroller {
@@ -35,7 +41,7 @@ public class reviewcontroller {
 	@Autowired
 	ReviewDAOImpl rdao;
 	
-	
+	//for setting the review for a product with the name of the customer
 	@RequestMapping("/review")
 	public ModelAndView offer(@RequestParam("prid") int id,@RequestParam("name") String name,@RequestParam("desc") String rev) {
 		ModelAndView mv1 = new ModelAndView("product");

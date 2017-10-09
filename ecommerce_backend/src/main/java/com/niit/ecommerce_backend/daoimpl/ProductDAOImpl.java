@@ -34,6 +34,7 @@ public class ProductDAOImpl implements ProductDAO{
 	{
 		this.sessionFactory=sessionfactory;
 	}
+	//for saving product
 	public void saveProduct(Product product) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -43,6 +44,8 @@ public class ProductDAOImpl implements ProductDAO{
 		ssn.close();	
 		
 	}
+	
+	//for retrieving the list of products based on subcategory
 	public ArrayList<Product> getProdByscatId(int ca) {
 		System.out.println("in impl;"+ca);
 		Session ssn=sessionFactory.openSession();
@@ -57,6 +60,9 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return l;
 	}
+	
+	
+	//for retrieving the product based on the id passed
 	public Product getProdById(int pr) {
 		System.out.println("in impl;"+pr);
 		Session ssn=sessionFactory.openSession();
@@ -70,6 +76,9 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return l;
 	}
+	
+	
+	//for retrieving all the products
 	public ArrayList<Product> getallproducts() {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -82,6 +91,7 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return l;
 	}
+	//for deleting a product based on the id passed
 	public void deleteproduct(int id) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -95,7 +105,7 @@ public class ProductDAOImpl implements ProductDAO{
         ssn.close();
 		
 	}
-	
+	//for setting offers and offerpercentage based on the offerprice orginal price passed
 	public void setoffers(int id,int offprice,int orgprice) {
 		System.err.println(offprice+" "+orgprice);
 		Session ssn=sessionFactory.openSession();
@@ -118,7 +128,7 @@ public class ProductDAOImpl implements ProductDAO{
         ssn.close();
 		
 	}
-	
+	//for retrieving the list of offer products
 	public ArrayList<Product> listof_offerProducts() {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -136,7 +146,7 @@ public class ProductDAOImpl implements ProductDAO{
         return l;
 		
 	}
-	
+	//for deleting an offer
 	public void deleteoffer(int id) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -152,34 +162,56 @@ public class ProductDAOImpl implements ProductDAO{
         t.commit();
         
         ssn.close();
-		
 	
-	
-
-	
-
-	
-
-
 	
 	}
 	
-	
+	//for updating a product
 	public void updateproduct( Product p) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
 		 ssn.update(p);
-			 
-				       
-	
-				         				
 		
         t.commit();
         
         ssn.close();
 }
 	
+	
+	
+	
+	
+ public Product gettopoffer(int id) {
+Session ssn=sessionFactory.openSession();
+Transaction t=ssn.getTransaction();
+
+String q="Select max(offerper) FROM Product where CATE="+id;
+Query minQuery = ssn.createQuery(q);
+Product pro=(Product) minQuery.list();
+
+t.commit();
+
+ssn.close();
+return pro;
+
+
+
+
+
+}
+
+
+
+
+
+
+	
+	
+	
+	
+	
+
 	
 	
 	

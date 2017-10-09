@@ -65,8 +65,7 @@ border-collapse: separate;
 
 <td>${designate.prodname}</td>
 <td>${designate.price}</td>
-<td><input type="number" name="offerprice" value="${designate.offerprice}
-"></td>
+<td><input type="number" name="offerprice" value="${designate.offerprice}"></td>
 
 <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
 </tr>

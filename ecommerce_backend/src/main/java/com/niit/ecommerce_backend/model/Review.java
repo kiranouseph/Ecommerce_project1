@@ -30,6 +30,10 @@ public class Review implements Serializable {
     private String Custname;
 	@Column(name = "Product_id", nullable = false)
     private int prid;
+	@Column(name = "starrating", nullable = false)
+    private int star;
+	
+	
 	
 
 	public int getPrid() {

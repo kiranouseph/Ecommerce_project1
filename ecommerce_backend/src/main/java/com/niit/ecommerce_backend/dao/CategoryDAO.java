@@ -9,4 +9,5 @@ public interface CategoryDAO {
 	public ArrayList<Category> getallcategories();
 	public Category getcatbyid(int cat);
 	public void deletecategory(int id);
+	public void updatecategory(Category c);
 }

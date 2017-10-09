@@ -21,7 +21,8 @@ public class SupplierDAOImpl implements SupplierDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
-	public void saveProduct(Supplier supplier) {
+	//for adding supplier
+	public void savesupplier(Supplier supplier) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
@@ -29,6 +30,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		t.commit();
 		ssn.close();	
 	}
+	//for retrieving the all suppliers 
 	public ArrayList<Supplier> getallsuppliers() {
 		
 		Session ssn=sessionFactory.openSession();
@@ -43,7 +45,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		return l;
 	
 	}
-
+//for retrieving the detaisl of the supplier by the supplier id passed
 	public Supplier getsuppbyid(int supp) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -58,6 +60,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 		return l;
 
 }
+	//for deleting the supplier
 	public void deletesupplier(int id) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -71,6 +74,7 @@ public class SupplierDAOImpl implements SupplierDAO {
         ssn.close();
 		
 	}
+	//for updating the supplier
 	public void updatesupplier(Supplier s) {
 		
 		Session ssn=sessionFactory.openSession();

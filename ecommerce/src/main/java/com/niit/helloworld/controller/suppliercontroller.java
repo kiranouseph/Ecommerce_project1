@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
+import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
@@ -17,6 +23,7 @@ import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 @SuppressWarnings("unused")
+//for supplier operations controlling
 @Controller
 public class suppliercontroller {
 	@Autowired
@@ -29,21 +36,22 @@ public class suppliercontroller {
 	SupplierDAOImpl sdao;
 	@Autowired
 	SubcategoryDAOImpl scdao;
-	
+	@Autowired
+	ReviewDAOImpl rdao;
+	//for adding supplier
 	@RequestMapping("/supplier")
 	public ModelAndView addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address) {
-		System.out.println("in controller");
-		System.out.println(id+name+address);
-		Supplier s=new Supplier();
+		
+				Supplier s=new Supplier();
 		s.setId(id);
 		s.setSuppname(name);
 		s.setSuppdesc(address);
 		
-		sdao.saveProduct(s);
+		sdao.savesupplier(s);
 		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		ModelAndView mv1 = new ModelAndView("admin");
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
+		
 		
 				
 				mv1.addObject("catego",l);
@@ -51,12 +59,12 @@ public class suppliercontroller {
 				
 				
 				ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-				 System.out.println("printing");
+		
 				
 						
 						mv1.addObject("subcatego",lll);
 		 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		 System.out.println("printing");
+		
 		
 				mv1.addObject("suppli",ll);
 		
@@ -65,7 +73,7 @@ public class suppliercontroller {
 		return mv1;
 	}
 	
-	
+	//updating supplier
 	@RequestMapping("/updatesupplier")
 	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc) {
 	

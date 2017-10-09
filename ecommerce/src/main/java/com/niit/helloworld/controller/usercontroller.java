@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CategoryDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
@@ -31,6 +35,7 @@ import antlr.collections.List;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
  
 @SuppressWarnings("unused")
+//home controller For the important redirections and operations
 @Controller
 public class usercontroller {
 	@Autowired
@@ -43,7 +48,8 @@ public class usercontroller {
 	SupplierDAOImpl sdao;
 	@Autowired
 	SubcategoryDAOImpl scdao;
-	
+	@Autowired
+	ReviewDAOImpl rdao;
 	
  
 	
@@ -55,7 +61,7 @@ public class usercontroller {
 	
 	
 	
-	
+	//for loading the landing page at the start
 	@RequestMapping("/")
 	public ModelAndView home() {
 		
@@ -67,14 +73,30 @@ public class usercontroller {
 		 
 				
 				mv1.addObject("catego",l);
+
+				/*ArrayList<Product> topoff=new ArrayList<Product>();
+				for(Category tpof:l)
+				{
+				
+					topoff.add(pdao.gettopoffer(tpof.getId()));
+					
+				}
+				for(Product pr:topoff)
+				{
+					System.err.println(pr);
+				}
+				mv1.addObject("topoff",topoff);
+
+*/
+				
 				ArrayList<Product> prod=new ArrayList<Product>();			
 	prod=pdao.listof_offerProducts();
 	mv1.addObject("offproducts",prod);
 	
 	 ArrayList<Product> pp=new ArrayList<Product>();
 	 pp=(ArrayList<Product>)pdao.listof_offerProducts();
-	 
-	 int index1 = random.nextInt(pp.size());
+	//for displaying special offers randomly from the offer list
+	int index1 = random.nextInt(pp.size());
 	 Product p1=pp.get(index1);
 	 mv1.addObject("offp1",p1);
 	 pp.remove(p1);
@@ -101,10 +123,10 @@ public class usercontroller {
 	
 
 	
-	
+	//for redirections to login page from home page
 	@RequestMapping("/login")
 	public ModelAndView login() {
-		System.out.println("in controller");
+	
  
 		ModelAndView mv1 = new ModelAndView("login");
 		
@@ -152,10 +174,10 @@ public class usercontroller {
 		
 		
 		
-	
+	// for redirecting to register page
 	@RequestMapping("/signup")
 	public ModelAndView register() {
-		System.out.println("in controller");
+		
  
 		ModelAndView mv1 = new ModelAndView("register");
 		
@@ -172,36 +194,10 @@ public class usercontroller {
 	
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//for adding the user details to database at time of sign in
 	@RequestMapping("/addUser")
 	public ModelAndView addUser(@ModelAttribute("user") User user) {
-		System.out.println(user.getName());
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
-		System.out.println(user.getMobno());
+		
 		
 		
          udao.saveUser(user);
@@ -216,66 +212,15 @@ public class usercontroller {
 		return mv1;
 	}
 	
+		
+	/*for loading the product list ,category list,supplier list,subcategory list based on the 
+	number send like 1,2,3,4
+	1=product list
+	2=category list
+	3=subcategory list
+	4=supplier list
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	*/
 	
 	
 	@RequestMapping("/list")
@@ -324,6 +269,16 @@ public class usercontroller {
 	
 	
 	
+	/*for loading the data of a specific product,subcategory,category,supplier( for displaying in the page 
+	 in which updations are done  based on the 
+	number send like 1,2,3,4 and the respective id of the item 
+	1=product list
+	2=category list
+	3=subcategory list
+	4=supplier list
+	
+	*/
+
 	
 	
 	@RequestMapping("/retrieve")
@@ -341,7 +296,7 @@ public class usercontroller {
 			mv1.addObject("listt",p);
 			mv1.addObject("status",1);
 			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-			 System.out.println("printing");
+	
 			
 					
 					mv1.addObject("catego",l);
@@ -349,12 +304,12 @@ public class usercontroller {
 					
 					
 					ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-					 System.out.println("printing");
+			
 					
 							
 							mv1.addObject("subcatego",lll);
 			 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-			 System.out.println("printing");
+			
 			
 					mv1.addObject("suppli",ll);
 	}
@@ -374,7 +329,7 @@ public class usercontroller {
 		mv1.addObject("listt",sc);
 		mv1.addObject("status",3);
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
+		 
 		
 				
 				mv1.addObject("catego",l);
@@ -383,9 +338,8 @@ public class usercontroller {
 	else if(num==4)
 	{
 		
-		System.err.println("in else if 4");
+	
 		sup=sdao.getsuppbyid(id);
-		System.err.println(sup);
 		mv1.addObject("listt",sup);
 		mv1.addObject("status",4);
 		
@@ -402,6 +356,15 @@ public class usercontroller {
 	
 	
 	
+	/*for deleting a product or supplier  or subcategory or product  based on the 
+	number send like 1,2,3,4 and the id of the item to be deleted
+	1=product list
+	2=category list
+	3=subcategory list
+	4=supplier list
+	
+	*/
+
 	
 	@RequestMapping("/delete")
 	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	

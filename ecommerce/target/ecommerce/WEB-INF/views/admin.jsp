@@ -86,7 +86,7 @@ $(document).ready(function() {
 			
 			  <div class="tab-pane active" id="1a">
      
-     <form action="product" method="post">
+     <form action="product" method="post" enctype="multipart/form-data">
       <table >
      
   
@@ -95,6 +95,7 @@ $(document).ready(function() {
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%"> </textarea></td></tr>
 <tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%"></td></tr>
 <tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%"></td></tr>
+<tr><td>IMAGE</td><td><input type="file" name="image" required></td></tr>
 
 
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
@@ -168,14 +169,14 @@ $(document).ready(function() {
         
         
       <div class="tab-pane" id="3a">   
-                        <form action="category" method="get">
+                        <form action="category" method="post" enctype="multipart/form-data">
       <table >
      
       
 <tr><td>CATEGORY ID</td><td><input type="number"  name="catid" required style="width:200%"></td></tr>
 <tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:200%"></td></tr>
 <tr><td>CATEGORY DESCRIPTION</td><td><input type="text"  name="catdesc" required style="width:200%"></td></tr>
-
+<tr><td>IMAGE</td><td><input type="file" name="image" required></td></tr>
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:200%"></td></tr>
 </table>
 </form>
@@ -196,7 +197,7 @@ $(document).ready(function() {
         <div class="tab-pane" id="4a">
         
 
-<form action="subcategory" method="post">
+<form action="subcategory" method="post" enctype="multipart/form-data">
       <table >
      
 <tr><td>CATEGORY</td><td><select name="scat" style="width:200%">
@@ -213,7 +214,7 @@ $(document).ready(function() {
       
 <tr><td>SUBCATEGORY ID</td><td><input type="number"  name="scatid" required style="width:200%"></td></tr>
 <tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:200%"></td></tr>
-
+<tr><td>IMAGE</td><td><input type="file" name="image" required></td></tr>
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:200%"></td></tr>
 </table>

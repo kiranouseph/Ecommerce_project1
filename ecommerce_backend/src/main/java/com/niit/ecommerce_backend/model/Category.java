@@ -31,6 +31,15 @@ public class Category implements Serializable {
     private String Categoryname;
 	@Column(name = "Categorydesc", nullable = false)
     private String Categorydesc;
+	@Column(name = "catimage", nullable = false)
+    private String catimage;
+	
+	public String getCatimage() {
+		return catimage;
+	}
+	public void setCatimage(String catimage) {
+		this.catimage = catimage;
+	}
 	public String getCategorydesc() {
 		return Categorydesc;
 	}

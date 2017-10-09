@@ -72,20 +72,34 @@ $(document).ready(function(){
 </head>
 <body>
  
-  <nav class="navbar navbar-default">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="navbar-wrapper">
   <div class="container-fluid">
-    <div class="navbar-header">
-    	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="">Giftery</a>
-	</div>
-	
-	
-		<ul class="nav navbar-nav navbar-right">
+    <div class="navbar navbar-default navbar-static-top">
+      
+        <div class="navbar-header">
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+        <a class="navbar-brand" href="">GIFTERY</a>
+        </div>
+        <div class="navbar-collapse collapse">
+     <ul class="nav navbar-nav navbar-right">
 		    
             <li><a href="">Home</a></li>
             <li><a href="#">About</a></li>
@@ -117,7 +131,8 @@ $(document).ready(function(){
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>  ${designate.categoryname}      </small></h4>                                        
+                                    <h4><small>  ${designate.categoryname}      </small></h4>
+                                                                            
                                     <button class="btn btn-primary" type="button"></button>   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>      
                                 </div><!-- End Item -->   
                                 </c:forEach>    
@@ -172,11 +187,20 @@ $(document).ready(function(){
                               
           
 		</ul>
-     
-	
- </div>
- 
-  </nav>
+
+        </div>
+
+    </div>
+  </div><!-- /container -->
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
 
 
 </body>

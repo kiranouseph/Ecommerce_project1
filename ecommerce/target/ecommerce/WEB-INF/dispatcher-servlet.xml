@@ -13,6 +13,8 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
  <mvc:annotation-driven/>
 <mvc:resources mapping="/resources/**" location="/resources/" />
+<mvc:resources mapping="D:/PRODIMAGES/**" location="D:/PRODIMAGES/" />
+
 
 	<context:component-scan base-package="com.niit.helloworld.controller" />
 	<context:component-scan base-package="com.niit.ecommerce_backend"/>
@@ -25,4 +27,12 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		 <!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="30000000" />
+
+</bean>
 </beans>

@@ -21,6 +21,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
+	//for saving the review
 	public void savereview(Review r) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -31,6 +32,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 		
 	}
+	
+	//for retreiving the reviews of a specific product based on the product id passed
 	public ArrayList<Review> getrevbyprid(int pr) {
 		
 		Session ssn=sessionFactory.openSession();

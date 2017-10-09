@@ -131,7 +131,8 @@ $(document).ready(function(){
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>  ${designate.categoryname}      </small></h4>                                        
+                                    <h4><small>  ${designate.categoryname}      </small></h4>
+                                                                            
                                     <button class="btn btn-primary" type="button"></button>   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>      
                                 </div><!-- End Item -->   
                                 </c:forEach>    

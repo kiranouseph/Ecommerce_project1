@@ -22,6 +22,8 @@ public class UserDAOImpl implements UserDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
+	
+	//for adding the user credentials to the database
 	public void saveUser(User user) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -31,6 +33,7 @@ public class UserDAOImpl implements UserDAO {
 		ssn.close();
 		
 	}
+	
 	public int checklogin(String email,String password) {
 		int re=0;
 		System.out.println("in checklogin"+email+password);
@@ -40,6 +43,7 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("status"+re);
 		return re;
 	}
+	
 	public User getUserByUsername(String email){
 		System.out.println("in getuserbyname"+email);
 		User userr=null;

@@ -7,8 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
+import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
@@ -26,6 +32,8 @@ public class cartcontroller {
 	SupplierDAOImpl sdao;
 	@Autowired
 	SubcategoryDAOImpl scdao;
+	@Autowired
+	ReviewDAOImpl rdao;
 	
 	
 	@RequestMapping("/cart")

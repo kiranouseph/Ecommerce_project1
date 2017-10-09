@@ -14,4 +14,9 @@ public interface ProductDAO {
 	public ArrayList<Product> getProdByscatId(int ca);
 	public Product getProdById(int pr) ;
 	public void deleteproduct(int id);
+	public ArrayList<Product> getallproducts();
+	public ArrayList<Product> listof_offerProducts();
+	public void setoffers(int id,int offprice,int orgprice);
+	public void deleteoffer(int id);
+	public void updateproduct( Product p);
 }

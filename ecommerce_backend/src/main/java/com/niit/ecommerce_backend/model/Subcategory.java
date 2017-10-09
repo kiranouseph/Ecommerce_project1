@@ -22,6 +22,12 @@ import java.util.Set;
 public class Subcategory implements Serializable {
 
 	
+	public String getSubcatimage() {
+		return Subcatimage;
+	}
+	public void setSubcatimage(String subcatimage) {
+		Subcatimage = subcatimage;
+	}
 	/**
 	 * 
 	 */
@@ -32,7 +38,8 @@ public class Subcategory implements Serializable {
    	private int id;
 	@Column(name = "Subcategoryname", nullable = false)
     private String Subcategoryname;
-	
+	@Column(name = "Subcatimage", nullable = false)
+    private String Subcatimage;
 	@OneToMany(targetEntity=Product.class,mappedBy="subcategory",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
     private Set<Product> product ;
 	

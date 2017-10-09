@@ -22,6 +22,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
+	//for adding category
+	
 	public void savecategory(Category category) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -31,6 +33,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		ssn.close();
 		
 	}
+	//for retrieving all the categories irrespective of id
 	public ArrayList<Category> getallcategories() {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -43,6 +46,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		return l;
 	}
+	
+	
+	// for retrieving the details of a category based on the category id passed
 	public Category getcatbyid(int cat) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -55,13 +61,8 @@ System.out.println(l.getCategoryname()+l.getId());
         ssn.close();
 		
 		return l;
-		
-		
-		
-		
-		
-		
 	}
+	//for deleting a category
 	public void deletecategory(int id) {
 	
 		Session ssn=sessionFactory.openSession();
@@ -79,6 +80,7 @@ System.out.println(l.getCategoryname()+l.getId());
 		
 		
 	}
+	//for update a category
 	public void updatecategory(Category c) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -89,6 +91,7 @@ System.out.println(l.getCategoryname()+l.getId());
 		
 		
 	}
+	
 	
 	
 	

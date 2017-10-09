@@ -63,7 +63,19 @@ public class Product implements Serializable {
     private int offerper;
 	@Column(name = "cate", nullable =false)
     private int catnum;
+	@Column(name = "image", nullable =false)
+    private String image;
+	
+	
 
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	@Override
 	public String toString() {

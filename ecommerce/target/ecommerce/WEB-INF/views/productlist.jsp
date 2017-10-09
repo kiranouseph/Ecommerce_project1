@@ -36,7 +36,7 @@ table, th, td {
 
 
 <c:forEach items="${prods}" var="designate"  varStatus="loop">
-<a href="${designate.subcategory.id}/${designate.id}">
+
 <div class="col-lg-3 col-sm-4 hero-feature text-center">
 
 

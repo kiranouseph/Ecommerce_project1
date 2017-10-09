@@ -169,7 +169,7 @@ $(document).ready(function() {
         
         
       <div class="tab-pane" id="3a">   
-                        <form action="category" method="get" enctype="multipart/form-data">
+                        <form action="category" method="post" enctype="multipart/form-data">
       <table >
      
       

@@ -62,8 +62,8 @@ background-color:white;
 
 
 div.wrapper{
-	float:left; /* important */
-	position:relative; /* important(so we can absolutely position the description div */
+	
+	
 }
 div.description{
 	position:absolute; /* absolute position (so we can position it where we want)*/
@@ -76,7 +76,7 @@ div.description{
 	
 }
 p.description_content{
-	padding:10px;
+	padding:0px;
 	margin:0px;
 	font-size: 30px;
 }
@@ -319,133 +319,8 @@ interval: 2000
 
     <jsp:include page="header.jsp" />  
    
-  
-<div class="overlay">
-<h2 style="color:red">SPECIAL OFFERS FOR YOU</h2>
+<div style="height:100%"> 
 
-
-	<table   style=" margin-left: 1cm; border-collapse: separate; border-spacing: 30px;">
-    				<thead>
-						<tr>
-							<th style="width:15%"></th>
-							<th style="width:15%"></th>
-							<th style="width:15%"></th>
-							<th style="width:15%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-				<td>
-				
-
-<a href="prod?id=${offp1.id}">
-<div class='wrapper'>
-	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp1.prodname}<br>${offp1.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-        
-   </a>    
-        
-        
-        
-				</td>
-				
-				
-						<td>
-				
-<a href="prod?id=${offp2.id}">
-	<div class='wrapper'>
-	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp2.prodname}<br>${offp2.offerper}%OFFF   </strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-       
-    </a>    
-     
-        
-				
-		
-				</td>
-				
-						<td>
-				
-<a href="prod?id=${offp3.id}">
-	<div class='wrapper'>
-	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp3.prodname}<br>${offp3.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-  </a>     
-        
-      
-        
-					
-				</td>		
-				<td>
-				
-				
-				
-<a href="prod?id=${offp4.id}">			
- <div class='wrapper'>
-	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%" />
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp4.prodname}<br>${offp4.offerper}%OFF </strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
- </a>      
-                
-        
-        
-        
-				</td>
-				
-			
-				
-						
-							
-						</tr>
-					</tbody>
-				
-				</table>
-				
-				
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
 
 
 <div id="myCarousel" class="carousel slide">
@@ -481,7 +356,7 @@ interval: 2000
   </a>  
 </div>
 <!-- /.carousel -->
-
+</div>
 <br>
 <br>
 
@@ -498,7 +373,80 @@ interval: 2000
 
 
 
+ <div class="container"  style="text-align:center">
+ 
+             <div class="row">
+            
+             
+             
+             
+                  <div class="col-md-3">
+                  <a href="prod?id=${offp1.id}">
+                  <div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp1.prodname}<br>${offp1.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+</a>
+                  </div>
+                   <div class="col-md-3">
+                   <a href="prod?id=${offp2.id}">
+                 <div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp2.prodname}<br>${offp2.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+</a>
+                  </div>
+                   <div class="col-md-3">
+                   <a href="prod?id=${offp3.id}">
+                 <div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp3.prodname}<br>${offp3.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+</a>
+                  </div>
+                   <div class="col-md-3">
+                   <a href="prod?id=${offp4.id}">
+                 <div class='wrapper'>
+	<!-- image -->
+	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'><strong>${offp4.prodname}<br>${offp4.offerper}%OFF</strong></p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+</a>
+                  </div>
+                  
+                  </div>
+                  </div>
 
+
+	
+    
 
 
 	<c:forEach var="designate" items="${catego}">

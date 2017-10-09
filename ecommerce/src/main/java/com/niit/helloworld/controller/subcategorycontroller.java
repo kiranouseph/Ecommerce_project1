@@ -1,5 +1,8 @@
 package com.niit.helloworld.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +10,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
+import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
@@ -19,6 +29,7 @@ import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 @SuppressWarnings("unused")
+//for controlling the subcategory level operations
 @Controller
 public class subcategorycontroller {
 	@Autowired
@@ -31,9 +42,10 @@ public class subcategorycontroller {
 	SupplierDAOImpl sdao;
 	@Autowired
 	SubcategoryDAOImpl scdao;
+	@Autowired
+	ReviewDAOImpl rdao;
 	
-	
-	
+//for selecting the products according to the selected subcategory	
 	@RequestMapping("/selsubcat")
 	public ModelAndView pr(@RequestParam("id") int sca) {
 	
@@ -48,33 +60,48 @@ public class subcategorycontroller {
 		
 		return mv1;
 	}
-	
+	//for adding subcategory
 	@RequestMapping("/subcategory")
-	public ModelAndView addscat(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("scat") int cat) {
-		System.out.println("in controller");
-		System.out.println(id+name+cat);
+	public ModelAndView addscat(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("scat") int cat,@RequestParam("image") MultipartFile file) {
+		
+		
 		Subcategory sc=new Subcategory();
 		sc.setId(id);
 		sc.setSubcategoryname(name);
 		Category c=new Category();
 		c=cdao.getcatbyid(cat);
 		sc.setCategory(c);
+		 String img=c.getCategoryname()+name+file.getOriginalFilename();
+sc.setSubcatimage(img);
 		scdao.savesubcategory(sc);
 		
+String filepath ="D:/PRODIMAGES/"+c.getCategoryname()+name+file.getOriginalFilename();
 		
-		ModelAndView mv1 = new ModelAndView("addtobasket");
+		
+		try {
+			byte imagebyte[] = file.getBytes();
+			BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+			fos.write(imagebyte);
+			fos.close();
+			} catch (IOException e) {
+			e.printStackTrace();
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		ModelAndView mv1 = new ModelAndView("admin");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		 System.out.println("printing");
+		 
 		
 				
 				mv1.addObject("catego",l);
 				ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-				 System.out.println("printing");
+				 
 				
 						
 						mv1.addObject("suppli",ll);
 						ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-						 System.out.println("printing");
+						 
 						
 								
 								mv1.addObject("subcatego",lll);
@@ -84,7 +111,7 @@ public class subcategorycontroller {
 	
 		return mv1;
 	}
-	
+	//for updating subcategory
 	@RequestMapping("/updatesubcategory")
 	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat) {
 	

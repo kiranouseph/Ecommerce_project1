@@ -27,6 +27,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 	{
 		this.sessionFactory=sessionfactory;
 	}
+	//for adding subcategory
 	public void savesubcategory(Subcategory Subcategory) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -37,6 +38,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 
 		
 	}
+	//for retreiving all the subcategories irrespective of the id
 	public ArrayList<Subcategory> getallsubcategories() {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -49,6 +51,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 		return l;
 	}
+	//for retreiving the details of subcategory based on the subcategory id passed
 	public Subcategory getscatbyid(int scat) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -65,6 +68,8 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 		
 	}
+	
+	//for retrieving the subcategories in a category by the category id passed
 	public ArrayList<Subcategory> getsubcatByCatId(int ca) {
 		
 			
@@ -81,6 +86,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 			return l;
 		
 	}
+	//for deleting a subcategory
 	public void deletesubcategory(int id) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
@@ -94,6 +100,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
         ssn.close();
 		
 	}
+	//for updating a subcategory
 	public void updatesubcategory(Subcategory sc) {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
