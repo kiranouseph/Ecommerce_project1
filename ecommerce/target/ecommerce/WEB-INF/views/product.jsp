@@ -61,7 +61,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <!-- Nav tabs -->
                         <ul class="product-tabs" role="tablist">
                            
-                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="https://images.samsclubresources.com/is/image/samsclub/0002554245365_A?$img_size_380x380$" alt=""></a></li>
+                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="D:/PRODIMAGES/${prod.image}" alt="" style="width:100%;height:100%"></a></li>
                         </ul>
                      </div>
                   </div>

@@ -43,7 +43,7 @@ table, th, td {
 
       
         <!-- Thumbnail Images -->
-        <div class="thumbnail"> <a href="prod?id=${designate.id}" class="link-p"> <img src="D:/PRODIMAGES/${designate.image}" alt=""> </a>
+        <div class="thumbnail"> <a href="prod?id=${designate.id}" class="link-p"> <img src="resources/products/${designate.image }" alt=""style="width:100%;height:150px"> </a>
           <!-- Offer Tag-->
        
           <div class="caption prod-caption"> 
@@ -60,7 +60,7 @@ table, th, td {
 
 
 </div>
-</a>
+
 
 
 

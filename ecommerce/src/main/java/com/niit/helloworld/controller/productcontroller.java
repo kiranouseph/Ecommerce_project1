@@ -87,7 +87,7 @@ public class productcontroller {
 		p.setPrice(price);
 		p.setStock(stock);
 	    p.setCatnum(cat);
-	    String img=file.getOriginalFilename()+name;
+	    String img=name+file.getOriginalFilename();
 	    p.setImage(img);
 
 		int idd=scc.getId();
@@ -104,7 +104,7 @@ public class productcontroller {
 		Supplier sup=new Supplier();
 		sup=sdao.getsuppbyid(supp);
 	    p.setSupplier(sup);
-	    String filepath ="D:/PRODIMAGES/"+name+ file.getOriginalFilename();
+	    String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+name+ file.getOriginalFilename();
 		
 
 		try {

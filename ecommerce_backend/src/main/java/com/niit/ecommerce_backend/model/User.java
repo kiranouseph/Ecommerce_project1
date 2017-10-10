@@ -1,18 +1,22 @@
 package com.niit.ecommerce_backend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.util.Set;
 @SuppressWarnings("unused")
 @Entity
 @Component
@@ -36,14 +40,28 @@ public class User implements Serializable{
     
     @Column(name = "password", nullable = false)
     private String password;
-    @OneToOne
-    @JoinColumn(name="cart_id",updatable=true,insertable=true,nullable=false)
-    private Cart cart;
-	public Cart getCart() {
+    @Column(name = "Role", nullable = false)
+    private String role;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	@OneToMany(targetEntity=Cart.class,mappedBy="user",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
+    private Set<Cart> cart ;
+   
+    
+    
+    
+	
+	public Set<Cart> getCart() {
 		return cart;
 	}
 
-	public void setCart(Cart cart) {
+	public void setCart(Set<Cart> cart) {
 		this.cart = cart;
 	}
 

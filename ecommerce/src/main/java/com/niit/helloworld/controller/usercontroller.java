@@ -96,7 +96,7 @@ public class usercontroller {
 	 ArrayList<Product> pp=new ArrayList<Product>();
 	 pp=(ArrayList<Product>)pdao.listof_offerProducts();
 	//for displaying special offers randomly from the offer list
-	int index1 = random.nextInt(pp.size());
+	/*int index1 = random.nextInt(pp.size());
 	 Product p1=pp.get(index1);
 	 mv1.addObject("offp1",p1);
 	 pp.remove(p1);
@@ -111,7 +111,7 @@ public class usercontroller {
 	 int index4 = random.nextInt(pp.size());
 	 Product p4=pp.get(index4);
 	 mv1.addObject("offp4",p4);
-	 pp.remove(p4);
+	 pp.remove(p4);*/
 	
 		return mv1;
 		
@@ -196,11 +196,16 @@ public class usercontroller {
 
 	//for adding the user details to database at time of sign in
 	@RequestMapping("/addUser")
-	public ModelAndView addUser(@ModelAttribute("user") User user) {
+	public ModelAndView addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email,@RequestParam("password") String password) {
 		
 		
-		
-         udao.saveUser(user);
+		User user=new User();
+		user.setName(name);
+		user.setMobno(mobno);
+		user.setPassword(password);
+		user.setEmail(email);
+        user.setRole("ROLE_USER"); 
+		udao.saveUser(user);
 		ModelAndView mv1 = new ModelAndView("login");
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();

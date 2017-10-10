@@ -121,8 +121,11 @@ $(document).ready(function(){
                               
                               
                                 <div class="item active">
-                                    <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                    <h4><small>         </small></h4>                                        
+                                    <a href="#"><img src="resourses/products/11.jpg" class="img-responsive" alt="product 1"></a>
+                                    <div class="carousel-caption">
+        <h3>Top offer in categories</h3>
+     
+      </div>                                        
                                     <button class="btn btn-primary" type="button">       </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>         </button>       
                                 </div><!-- End Item -->
                                 
@@ -130,8 +133,11 @@ $(document).ready(function(){
                                 
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>  ${designate.categoryname}      </small></h4>
+                                    <a href="#"><img src="resouces/products/${designate.catimage}" class="img-responsive" alt="product 3"></a>
+                                    <div class="carousel-caption">
+        <h3>${designate.categoryname}</h3>
+        
+      </div>
                                                                             
                                     <button class="btn btn-primary" type="button"></button>   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>      
                                 </div><!-- End Item -->   

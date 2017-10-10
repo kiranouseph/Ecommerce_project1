@@ -28,7 +28,7 @@
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%" >${listt.proddecs}</textarea></td></tr>
 <tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%" value="${listt.price }"></td></tr>
 <tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%" value="${listt.stock }"></td></tr>
-<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.image}"accept="D:/PRODIMAGES/${listt.image}" required></td></tr>
+<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.image}"accept="D:/PRODIMAGES/${listt.image}"></td></tr>
 <tr><td><img src="D:/PRODIMAGES/${listt.image}" style="width:100px;height:100px"></td></tr>
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
 <option value="${listt.subcategory.category.id}" selected>${listt.subcategory.category.categoryname}</option>
