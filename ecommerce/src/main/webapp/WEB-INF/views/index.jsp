@@ -331,16 +331,22 @@ interval: 2000
        <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
       <div class="container">
         <div class="carousel-caption">
+        <h1>Share happiness with giftery gifts</h1>
+        <h3>SCROLL DOWN FOR MORE OFFERS</h3>
+        <span class="glyphicons glyphicons-circle-arrow-down"></span>
           </div>
       </div>
     </div>
     
     <c:forEach var="designate" items="${catego}">
     <div class="item">
-       <img src="resources/images/2.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+       <img src="resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
       <div class="container">
         <div class="carousel-caption">
           <h1>${designate.categoryname}</h1>
+           <h3>SCROLL DOWN FOR MORE OFFERS</h3>
+           <span class="glyphicons glyphicons-circle-arrow-down"></span>
+          
         </div>
       </div>
     </div>

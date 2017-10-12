@@ -142,28 +142,6 @@ public class usercontroller {
 	
 	
 	
-		/*@RequestMapping("/loginn")
-		public ModelAndView getin(@RequestParam("email") String email,@RequestParam("password") String password) {
-			System.out.println(email+password);
-	 int s=udao.checklogin(email,password);
-	 System.out.println("Status"+s);
-	 if(s==1)
-	 {
-			ModelAndView mv1 = new ModelAndView("index");
-			return mv1;
-	 }
-	 else
-	 {
-		 ModelAndView mv1 = new ModelAndView("login");
-		 return mv1;
-	 }
-			
-		
-			
-	}*/
-		
-		
-		
 		
 		
 		
@@ -228,7 +206,7 @@ public class usercontroller {
 	*/
 	
 	
-	@RequestMapping("/list")
+	@RequestMapping("/admin/list")
 	public ModelAndView list(@RequestParam("num") int ca) 
 	{
 		ArrayList<Product> p=new ArrayList<Product>();
@@ -286,7 +264,7 @@ public class usercontroller {
 
 	
 	
-	@RequestMapping("/retrieve")
+	@RequestMapping("/admin/retrieve")
 	public ModelAndView retrieve(@RequestParam("id") int id,@RequestParam("num") int num) {
 		Product p=new Product();
 		Category c=new Category();
@@ -371,7 +349,7 @@ public class usercontroller {
 	*/
 
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/admin/delete")
 	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	
 		
 		ArrayList<Product> p=new ArrayList<Product>();

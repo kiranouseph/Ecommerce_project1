@@ -67,7 +67,7 @@ public class categorycontroller {
 	
 	//for adding category
 	
-	@RequestMapping("/category")
+	@RequestMapping("/admin/category")
 	public ModelAndView addcat(@RequestParam("catid") int id ,@RequestParam("catname") String name,@RequestParam("catdesc") String catdesc,@RequestParam("image") MultipartFile file) {
 		
 		Category c=new Category();
@@ -118,7 +118,7 @@ String filepath ="D:/PRODIMAGES/"+name+file.getOriginalFilename();
 	
 	
 	//for updating category
-	@RequestMapping("/updatecategory")
+	@RequestMapping("/admin/updatecategory")
 	public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name,@RequestParam("catdesc") String catdesc) {
 	
 		Category c=new Category();

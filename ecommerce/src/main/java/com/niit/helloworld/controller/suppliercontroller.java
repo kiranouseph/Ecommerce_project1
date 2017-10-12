@@ -39,7 +39,7 @@ public class suppliercontroller {
 	@Autowired
 	ReviewDAOImpl rdao;
 	//for adding supplier
-	@RequestMapping("/supplier")
+	@RequestMapping("admin/supplier")
 	public ModelAndView addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address) {
 		
 				Supplier s=new Supplier();
@@ -74,7 +74,7 @@ public class suppliercontroller {
 	}
 	
 	//updating supplier
-	@RequestMapping("/updatesupplier")
+	@RequestMapping("admin/updatesupplier")
 	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc) {
 	
 		ModelAndView mv1 = new ModelAndView("list");

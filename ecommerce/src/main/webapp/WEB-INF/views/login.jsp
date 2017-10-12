@@ -28,19 +28,19 @@
                   <strong>Login</strong>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="loginn">
+                    <form class="form-horizontal" role="form" action="j_spring_security_check" method="post">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
                             Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=""  required >
+                            <input type="email" class="form-control" id="inputEmail3" name="j_username" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=""  required >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">
                             Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="inputPassword3" name="j_password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                     <div class="form-group">

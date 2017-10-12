@@ -61,7 +61,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <!-- Nav tabs -->
                         <ul class="product-tabs" role="tablist">
                            
-                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="D:/PRODIMAGES/${prod.image}" alt="" style="width:100%;height:100%"></a></li>
+                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="resources/products/${prod.image}" alt="" style="width:100%;height:300px"></a></li>
                         </ul>
                      </div>
                   </div>
@@ -97,7 +97,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </div>
                         <div>
                         <table>
-                        <tr><td><button type="button" class="btn btn-success">ADD TO CART</button></td>
+                        <tr><td><a href="addcart?id=${prod.id}&name=${pageContext.request.userPrincipal.name}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
                         <td><button type="button" class="btn btn-danger">BUY NOW</button></td>
                         
                         </tr>

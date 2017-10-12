@@ -64,7 +64,9 @@
 							<th style="width:50%">Product</th>
 							<th style="width:10%">Price</th>
 							<th style="width:8%">Quantity</th>
-							<th style="width:22%" class="text-center">Subtotal</th>
+							<th style="width:20%" >Subtotal</th>
+							<th style="width:18%" ></th>
+							
 							
 						</tr>
 					</thead>
@@ -86,13 +88,23 @@
 							<td data-th="Quantity">
 								<input type="number" class="form-control text-center" value="1"/>
 							</td>
-							<td data-th="Subtotal" class="text-center">29.99</td>
+							<td data-th="Subtotal" class="text-center">29.99
+							</td>
+							<td>
+							 <a href="retrieve?id=${designate.id}&num=1">
+                                  <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
+                                   </a>
+                                    <a href="retrieve?id=${designate.id}&num=1">
+                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
+                                   </a>
+							</td>
 							
 						</tr>
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">
-							<td class="text-center"><strong>Total 29.99</strong></td>
+							<td class="text-center"><strong>Total 29.99   </strong></td>
+							
 						</tr>
 						<tr>
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue 

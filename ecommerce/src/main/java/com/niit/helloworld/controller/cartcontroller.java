@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecommerce_backend.dao.CategoryDAO;
@@ -12,6 +13,7 @@ import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
+import com.niit.ecommerce_backend.daoimpl.CartDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
@@ -34,11 +36,13 @@ public class cartcontroller {
 	SubcategoryDAOImpl scdao;
 	@Autowired
 	ReviewDAOImpl rdao;
+	@Autowired
+	CartDAOImpl cartdao;
 	
 	
 	@RequestMapping("/cart")
 	public ModelAndView cart() {
-		System.out.println("in controller");
+		
  
 		ModelAndView mv1 = new ModelAndView("cart");
 		
@@ -51,7 +55,23 @@ public class cartcontroller {
 	
 		return mv1;
 	}
+	@RequestMapping("/addcart")
+	public ModelAndView addcart(@RequestParam("id") int id,@RequestParam("name") String name)
+	{
+		
+ 
+		
+		cartdao.addcart(id, name);
+		ModelAndView mv1 = new ModelAndView("cart");
+		
+		
+	
+	
+		return mv1;
+	}
 
+	
+	
 	
 	
 

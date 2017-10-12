@@ -70,7 +70,7 @@ public class productcontroller {
 	
 	
 	//for adding product
-	@RequestMapping("/product")
+	@RequestMapping("/admin/product")
 	public ModelAndView addpro(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		
 	
@@ -146,7 +146,7 @@ public class productcontroller {
 	
 	
 	//for updating product
-	@RequestMapping("/updateproduct")
+	@RequestMapping("/admin/updateproduct")
 	public ModelAndView updateproduct(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		ModelAndView mv1 = new ModelAndView("list");
 		ArrayList<Product> pp=new ArrayList<Product>();

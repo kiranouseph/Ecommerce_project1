@@ -103,7 +103,10 @@ $(document).ready(function(){
 		    
             <li><a href="">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="admin">ADMIN</a></li>
+             <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
+            <li><a href="admin/admin">ADMIN</a></li>
+            </c:if>
+                 <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">   
 			<li class="dropdown mega-dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Choose your gift <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu">
@@ -121,25 +124,25 @@ $(document).ready(function(){
                               
                               
                                 <div class="item active">
-                                    <a href="#"><img src="resourses/products/11.jpg" class="img-responsive" alt="product 1"></a>
+                                    <a href="#"><img src="resources/products/11.jpg" class="img-responsive" alt="product 1"></a>
                                     <div class="carousel-caption">
         <h3>Top offer in categories</h3>
      
       </div>                                        
-                                    <button class="btn btn-primary" type="button">       </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>         </button>       
                                 </div><!-- End Item -->
                                 
                                 
                                 
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
-                                    <a href="#"><img src="resouces/products/${designate.catimage}" class="img-responsive" alt="product 3"></a>
+                                    <a href="#"><img src="resources/products/${designate.catimage}" class="img-responsive" alt="product 3"></a>
                                     <div class="carousel-caption">
         <h3>${designate.categoryname}</h3>
+        <br>
+        
         
       </div>
                                                                             
-                                    <button class="btn btn-primary" type="button"></button>   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span>      </button>      
                                 </div><!-- End Item -->   
                                 </c:forEach>    
                                 
@@ -185,12 +188,22 @@ $(document).ready(function(){
 					
 				</ul>				
 			</li>
+			
+			
                <li><a href="cart">Shopping cart</a></li>
             <li><a href="#">Checkout</a></li>
-            
+            </c:if>
+<c:if test="${pageContext.request.userPrincipal.name == null }">
             <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name == null }">
+            
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                              
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name  != null}">
+					<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+					<li><a href='<c:url value="/j_spring_security_logout" />'>Logout</a></li>
+				</c:if>                  
           
 		</ul>
 
