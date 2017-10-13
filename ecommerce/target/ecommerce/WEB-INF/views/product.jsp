@@ -61,7 +61,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <!-- Nav tabs -->
                         <ul class="product-tabs" role="tablist">
                            
-                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="resources/products/${prod.image}" alt="" style="width:100%;height:300px"></a></li>
+                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="${pageContext.request.contextPath}/resources/products/${prod.image}" alt="" style="width:100%;height:300px"></a></li>
                         </ul>
                      </div>
                   </div>

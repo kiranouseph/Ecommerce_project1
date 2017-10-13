@@ -2,6 +2,7 @@ package com.niit.ecommerce_backend.daoimpl;
 
 import java.util.ArrayList;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -44,7 +45,7 @@ public Product getprodbyid(int id) {
 	
     t.commit();
     ssn.close();
-    System.out.println("Daoimpl reached");
+   
 	
 	return l;
 }
@@ -61,5 +62,65 @@ public ArrayList<Cart> getcartitemsbyname(String name) {
  
 	
 	return l;
+}
+
+public void deletecartitem(int cartid) {
+	Session ssn=sessionFactory.openSession();
+	Transaction t=ssn.getTransaction();
+	t.begin();
+	Cart l = (Cart) ssn.get(Cart.class, cartid);
+	ssn.delete(l);
+			
+	
+    t.commit();
+    
+    ssn.close();
+	
+}
+
+public Cart getcartitembyid(int cartid) {
+	Session ssn=sessionFactory.openSession();
+	Transaction t=ssn.getTransaction();
+	t.begin();
+	Cart l = (Cart) ssn.get(Cart.class, cartid);
+	
+			
+	
+    t.commit();
+    
+    ssn.close();
+    return l;
+	
+}
+
+
+public void updatecartitem(Cart cart) {
+	Session ssn=sessionFactory.openSession();
+	Transaction t=ssn.getTransaction();
+	t.begin();
+ssn.update(cart);
+	
+    t.commit();
+    
+    ssn.close();
+	
+}
+
+public void updatequan(int imp, int i) {
+	Session ssn=sessionFactory.openSession();
+	Transaction t=ssn.getTransaction();
+	t.begin();
+	 Query qry1 = ssn.createQuery("update Cart  set quantity="+i+"where cartid="+imp);
+	  
+	 
+			       
+	
+			          qry1.executeUpdate();
+			         				
+	
+    t.commit();
+    
+    ssn.close();
+	
 }
 }
