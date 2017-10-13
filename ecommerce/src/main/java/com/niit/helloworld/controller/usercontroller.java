@@ -33,7 +33,19 @@ import com.niit.ecommerce_backend.model.User;
 
 import antlr.collections.List;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
- 
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
 @SuppressWarnings("unused")
 //home controller For the important redirections and operations
 @Controller
@@ -50,7 +62,8 @@ public class usercontroller {
 	SubcategoryDAOImpl scdao;
 	@Autowired
 	ReviewDAOImpl rdao;
-	
+	@Autowired
+	private MailSender sendmail;
  
 	
 	
@@ -157,6 +170,31 @@ public class usercontroller {
 	public ModelAndView register() {
 		
  
+		
+		 
+		  
+	
+		SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo("plavinpaul11@gmail.com");
+        email.setSubject("ORDER CONFIRMATION");
+        email.setText("YOUR OPRDER IS PLACED BE READY WITH 250 rs FOR THE ROSE BOUQUET OUR REPRESENTATIVES WILL CONTACT YOU SHORTLY KEEP BUYING FROM GIFTERY ");
+         
+        // sends the e-mail
+        sendmail.send(email);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		ModelAndView mv1 = new ModelAndView("register");
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();

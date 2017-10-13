@@ -18,6 +18,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:component-scan base-package="com.niit.helloworld.controller" />
 	<context:component-scan base-package="com.niit.ecommerce_backend"/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -27,12 +28,28 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="kiranouseph@gmail.com" />
+		<property name="password" value="keerthykiran" />
+ 
+		<!-- The name of the property, following JavaBean naming conventions -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
 <bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
 		 <!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="30000000" />
+		
 
 </bean>
 </beans>

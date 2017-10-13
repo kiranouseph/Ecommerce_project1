@@ -36,6 +36,23 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		
+		
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>${spring.version}</version>
+</dependency>
+		
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>${spring.version}</version>
+</dependency>
+
+		
 		<dependency>
 		  <groupId>com.niit</groupId>
   <artifactId>ecommerce_backend</artifactId>
@@ -88,8 +105,15 @@
 </dependency>
 
 
+<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 
-		
+
     
   </dependencies>
   <build>
