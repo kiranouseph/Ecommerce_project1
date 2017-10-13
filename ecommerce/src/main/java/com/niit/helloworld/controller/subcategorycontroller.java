@@ -71,11 +71,11 @@ public class subcategorycontroller {
 		Category c=new Category();
 		c=cdao.getcatbyid(cat);
 		sc.setCategory(c);
-		 String img=c.getCategoryname()+name+file.getOriginalFilename();
+		 String img="subcat"+file.getOriginalFilename();
 sc.setSubcatimage(img);
 		scdao.savesubcategory(sc);
 		
-String filepath ="D:/PRODIMAGES/"+c.getCategoryname()+name+file.getOriginalFilename();
+String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"subcat"+file.getOriginalFilename();
 		
 		
 		try {
@@ -113,7 +113,7 @@ String filepath ="D:/PRODIMAGES/"+c.getCategoryname()+name+file.getOriginalFilen
 	}
 	//for updating subcategory
 	@RequestMapping("/admin/updatesubcategory")
-	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat) {
+	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 	
 		ModelAndView mv1 = new ModelAndView("list");
 		Subcategory sc=new Subcategory();
@@ -122,6 +122,32 @@ String filepath ="D:/PRODIMAGES/"+c.getCategoryname()+name+file.getOriginalFilen
 		Category c=new Category();
 		c=cdao.getcatbyid(cat);
 		sc.setCategory(c);
+		if(file==null)
+		{
+			Subcategory imageret=new Subcategory();
+			imageret=scdao.getscatbyid(id);
+			String image=imageret.getSubcatimage();
+			sc.setSubcatimage(image);
+		}
+		else
+		{
+			 String img="subcat"+file.getOriginalFilename();
+			 sc.setSubcatimage(img);	
+			 String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"subcat"+file.getOriginalFilename();
+				
+				
+				try {
+					byte imagebyte[] = file.getBytes();
+					BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+					fos.write(imagebyte);
+					fos.close();
+					} catch (IOException e) {
+					e.printStackTrace();
+					} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					}
+		}
 		scdao.updatesubcategory(sc);
 
 		

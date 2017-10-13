@@ -101,7 +101,18 @@ $(document).ready(function(){
         <div class="navbar-collapse collapse">
      <ul class="nav navbar-nav navbar-right">
 		    
+            
+            
+           <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}"> 
             <li><a href="">Home</a></li>
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}"> 
+            <li><a href="">Home</a></li>
+            </c:if>
+            
+            
+            
+            
             <li><a href="#">About</a></li>
              <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
             <li><a href="admin/admin">ADMIN</a></li>
@@ -190,9 +201,20 @@ $(document).ready(function(){
 			</li>
 			
 			
-               <li><a href="cart">Shopping cart</a></li>
+               
             <li><a href="#">Checkout</a></li>
             </c:if>
+  <c:if test="${pageContext.request.userPrincipal.name !=  'admin123@gmail.com' }">
+  
+   <li><a href="user/cart?name=${pageContext.request.userPrincipal.name}">Shopping cart</a></li>
+  
+  </c:if>
+   <c:if test="${pageContext.request.userPrincipal.name == null }">
+   
+    <li><a href="login"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart</a></li>
+   
+   </c:if>
+            
 <c:if test="${pageContext.request.userPrincipal.name == null }">
             <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             </c:if>

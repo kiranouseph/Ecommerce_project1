@@ -43,6 +43,14 @@
                             <input type="password" class="form-control" id="inputPassword3" name="j_password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                               <label for="inputPassword3" class="col-sm-9 control-label" style="font-color:red">
+                           ${MESSAGE}</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
                             <div class="checkbox">

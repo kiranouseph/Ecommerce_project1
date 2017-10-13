@@ -81,13 +81,13 @@ public class productcontroller {
 		
 		Subcategory scc=new Subcategory();
 		scc=scdao.getscatbyid(scat);
-		p.setId(prid);
+	p.setId(prid);
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);
 		p.setStock(stock);
 	    p.setCatnum(cat);
-	    String img=name+file.getOriginalFilename();
+	    String img=file.getOriginalFilename();
 	    p.setImage(img);
 
 		int idd=scc.getId();
@@ -104,7 +104,7 @@ public class productcontroller {
 		Supplier sup=new Supplier();
 		sup=sdao.getsuppbyid(supp);
 	    p.setSupplier(sup);
-	    String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+name+ file.getOriginalFilename();
+	    String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+ file.getOriginalFilename();
 		
 
 		try {
@@ -165,6 +165,7 @@ public class productcontroller {
 		p.setStock(stock);
 	
 		p.setCatnum(cat);
+		
 Category cc=new Category();
 		cc=cdao.getcatbyid(cat);
 		
@@ -185,6 +186,38 @@ Category cc=new Category();
 		Supplier sup=new Supplier();
 		sup=sdao.getsuppbyid(supp);
 	    p.setSupplier(sup);
+	    if(file==null)
+	    	
+	    {
+	    Product imageret=new Product();
+	    imageret=pdao.getProdById(prid);
+	    String img=imageret.getImage();
+	    p.setImage(img);
+	    
+	    	
+	    	
+	    }
+	    else
+	    {
+	    	 String img=name+file.getOriginalFilename();
+	 	    p.setImage(img);
+	 	   String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+file.getOriginalFilename();
+			
+
+			try {
+				byte imagebyte[] = file.getBytes();
+				BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+				fos.write(imagebyte);
+				fos.close();
+				} catch (IOException e) {
+				e.printStackTrace();
+				} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+	    	
+	    	
+	    }
 	    
 	   
 	    		pdao.updateproduct(p);

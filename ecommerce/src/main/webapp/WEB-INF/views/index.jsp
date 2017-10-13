@@ -457,6 +457,8 @@ interval: 2000
 
 	<c:forEach var="designate" items="${catego}">
 
+
+
 <h3>Offers for ${designate.categoryname}</h3>
 <div class="container">
 	<div class="row">
@@ -487,6 +489,8 @@ interval: 2000
 	</div>
 
 </div>
+
+
 <br><br>
 </c:forEach>
 

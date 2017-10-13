@@ -1,8 +1,12 @@
 package com.niit.helloworld.controller;
 
+import java.lang.annotation.Annotation;
+import java.security.Security;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +24,9 @@ import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
+import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category;
+import com.niit.ecommerce_backend.model.Product;
 @SuppressWarnings("unused")
 @Controller
 public class cartcontroller {
@@ -40,11 +46,16 @@ public class cartcontroller {
 	CartDAOImpl cartdao;
 	
 	
-	@RequestMapping("/cart")
-	public ModelAndView cart() {
+	@RequestMapping("/user/cart")
+	public ModelAndView cart(@RequestParam("name") String name) {
 		
  
 		ModelAndView mv1 = new ModelAndView("cart");
+		ArrayList<Cart> cartt=new ArrayList<Cart>();
+	
+		cartt=cartdao.getcartitemsbyname(name);
+		mv1.addObject("cartt", cartt);
+		
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
@@ -55,13 +66,33 @@ public class cartcontroller {
 	
 		return mv1;
 	}
-	@RequestMapping("/addcart")
+	@RequestMapping("user/addcart")
 	public ModelAndView addcart(@RequestParam("id") int id,@RequestParam("name") String name)
-	{
+	{ Cart cart=new Cart();
 		
- 
+ if(name==null)
+ {
+	 
+	String namee=SecurityContextHolder.getContext().getAuthentication().getName();
+	cart.setUsername(namee);
+ }
+ else
+ {
+	 cart.setUsername(name); 
+ }
+	
 		
-		cartdao.addcart(id, name);
+		cart.setQuantity(1);
+		
+		
+		Product p=new Product();
+		p=cartdao.getprodbyid(id);
+		
+		cart.setPrice(p.getPrice());
+		cart.setProduct(p);
+		
+		cartdao.addcart(cart);
+		
 		ModelAndView mv1 = new ModelAndView("cart");
 		
 		

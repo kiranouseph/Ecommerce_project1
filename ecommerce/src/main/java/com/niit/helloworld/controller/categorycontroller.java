@@ -74,12 +74,12 @@ public class categorycontroller {
 		c.setId(id);
 		c.setCategoryname(name);
 		c.setCategorydesc(catdesc);
-		 String img=name+file.getOriginalFilename();
+		 String img="cat"+file.getOriginalFilename();
 		 c.setCatimage(img);
 		cdao.savecategory(c);
 	   		  
 		      
-String filepath ="D:/PRODIMAGES/"+name+file.getOriginalFilename();
+String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"cat"+file.getOriginalFilename();
 		
 		
 		try {
@@ -119,12 +119,42 @@ String filepath ="D:/PRODIMAGES/"+name+file.getOriginalFilename();
 	
 	//for updating category
 	@RequestMapping("/admin/updatecategory")
-	public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name,@RequestParam("catdesc") String catdesc) {
+	public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name,@RequestParam("catdesc") String catdesc,@RequestParam("image") MultipartFile file) {
 	
 		Category c=new Category();
 		c.setId(id);
 		c.setCategoryname(name);
 		c.setCategorydesc(catdesc);
+		if(file==null)
+		{
+			Category imageret=new Category();
+			imageret=cdao.getcatbyid(id);
+			String image=imageret.getCatimage();
+			c.setCatimage(image);
+		}
+		else
+		{
+			String img="cat"+file.getOriginalFilename();
+			 c.setCatimage(img);
+			 String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"cat"+file.getOriginalFilename();
+				
+				
+				try {
+					byte imagebyte[] = file.getBytes();
+					BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+					fos.write(imagebyte);
+					fos.close();
+					} catch (IOException e) {
+					e.printStackTrace();
+					} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					}	
+			
+			
+			
+		}
+		
 		cdao.updatecategory(c);
 		
 		

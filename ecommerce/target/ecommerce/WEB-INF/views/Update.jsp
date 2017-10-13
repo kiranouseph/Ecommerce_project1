@@ -82,7 +82,7 @@
 <tr><td>CATEGORY  ID</td><td><input type="number"   name="catid"   value="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:100%"  value="${listt.categoryname }"></td></tr>
 <tr><td>CATEGORY DESCRIPTION</td><td><input type="text"  name="catdesc" required style="width:100%"  value="${listt.categorydesc }"></td></tr>
-<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.catimage }" required></td></tr>
+<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.catimage }" ></td></tr>
 <tr><td><img src="D:/PRODIMAGES/${listt.catimage}" style="width:100px;height:100px"></td></tr>
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>
 
@@ -103,7 +103,7 @@
       <table >
 <tr><td>SUBCATEGORY  ID</td><td><input type="number"   name="scatid"  value="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:100%"  value="${listt.subcategoryname }"></td></tr>
-<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.subcatimage}" required></td></tr>
+<tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.subcatimage}" ></td></tr>
 <tr><td><img src="D:/PRODIMAGES/${listt.subcatimage}" style="width:100px;height:100px"></td></tr>
 
 

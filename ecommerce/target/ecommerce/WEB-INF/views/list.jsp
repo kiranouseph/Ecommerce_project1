@@ -107,7 +107,7 @@
 								 <tr> 
 									<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-4 "><img src="resources/products/${designate.image}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.prodname}</h4>
 										<p>
@@ -136,7 +136,7 @@
 								 <tr> 
 									<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-4 "><img src="resources/products/${designate.catimage}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.categoryname}</h4>
 										<p>
@@ -165,7 +165,7 @@
 								 <tr> 
 									<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-4 "><img src="resources/products/${designate.subcatimage}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.subcategoryname}</h4>
 										<p>
@@ -194,8 +194,8 @@
 								 <tr> 
 									<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-4 "><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="Chania" width="200" height="200" class="img-responsive"/></div>
-									<div class="col-sm-8">
+									
+									<div class="col-sm-12">
 										<h4 class="nomargin">${designate.suppname}</h4>
 										<p>
     

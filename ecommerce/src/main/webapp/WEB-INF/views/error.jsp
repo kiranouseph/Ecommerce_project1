@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>ERROR</h2>
+<h2>YOU HAVR NO PERMISSION</h2>
+<a href="" class="btn btn-primary btn-lg" href="#" role="button" >GO BACK</a>
 </body>
 </html>

@@ -50,20 +50,12 @@ public class User implements Serializable{
 		this.role = role;
 	}
 
-	@OneToMany(targetEntity=Cart.class,mappedBy="user",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
-    private Set<Cart> cart ;
-   
+
     
     
     
 	
-	public Set<Cart> getCart() {
-		return cart;
-	}
-
-	public void setCart(Set<Cart> cart) {
-		this.cart = cart;
-	}
+	
 
 	public int getId() {
 		return id;

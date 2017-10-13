@@ -1,18 +1,22 @@
 package com.niit.ecommerce_backend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.util.Set;
 
 @Entity
 @Component
@@ -108,7 +112,17 @@ public class Product implements Serializable {
     @JoinColumn(name="s_id",updatable=true,insertable=true,nullable=false)
     private Supplier supplier;
     
-	
+	@OneToMany(targetEntity=Cart.class,mappedBy="product",cascade = CascadeType.DETACH,fetch=FetchType.EAGER)
+    private Set<Cart> cart ;
+   
+
+	public Set<Cart> getCart() {
+		return cart;
+	}
+
+	public void setCart(Set<Cart> cart) {
+		this.cart = cart;
+	}
 
 	public Supplier getSupplier() {
 		return supplier;

@@ -195,6 +195,29 @@ public class usercontroller {
 		return mv1;
 	}
 	
+	
+	
+	@RequestMapping("/err")
+	public ModelAndView logfail()
+	{
+		
+		ModelAndView mv1 = new ModelAndView("login");
+		mv1.addObject("MESSAGE", "INVALID USERNAME OR POSSWORD");
+		return mv1;
+	}
+	@RequestMapping("/error")
+	public ModelAndView unauthoroized()
+	{
+		
+		ModelAndView mv1 = new ModelAndView("error");
+		return mv1;
+	}
+	
+	
+	
+	
+	
+	
 		
 	/*for loading the product list ,category list,supplier list,subcategory list based on the 
 	number send like 1,2,3,4

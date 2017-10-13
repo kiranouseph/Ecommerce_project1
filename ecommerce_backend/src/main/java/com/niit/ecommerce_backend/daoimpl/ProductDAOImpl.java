@@ -47,7 +47,7 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//for retrieving the list of products based on subcategory
 	public ArrayList<Product> getProdByscatId(int ca) {
-		System.out.println("in impl;"+ca);
+	
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();

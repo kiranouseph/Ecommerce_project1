@@ -97,7 +97,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </div>
                         <div>
                         <table>
-                        <tr><td><a href="addcart?id=${prod.id}&name=${pageContext.request.userPrincipal.name}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
+                        <tr><td><a href="user/addcart?id=${prod.id}&name=${pageContext.request.userPrincipal.name}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
                         <td><button type="button" class="btn btn-danger">BUY NOW</button></td>
                         
                         </tr>

@@ -23,15 +23,13 @@ public class Cart implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "CART_ID", nullable = false) 
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	
    	private int cartid;
-@Column(name = "Orderid", nullable = false) 
+
 	
-   	private int orderid;
-
-@Column(name = "quantity", nullable = false) 
-
+	@Column(name = "Quantity", nullable = false) 
 	private int quantity;
 
 @Column(name = "price", nullable = false) 
@@ -39,29 +37,19 @@ public class Cart implements Serializable{
 	private int price;
 
 
-@Column(name = "productid", nullable = false) 
-
-private int productid;
 
 @Column(name = "username", nullable = false) 
 
 private String username;
 
-@Column(name = "status", nullable = false) 
 
-private int status;
 
 
 @ManyToOne
-@JoinColumn(name="useremail",updatable=true,insertable=true,nullable=false)
-private User user;
+@JoinColumn(name="prid",updatable=true,insertable=true,nullable=false)
+private Product product;
 
-	public int getOrderid() {
-	return orderid;
-}
-public void setOrderid(int orderid) {
-	this.orderid = orderid;
-}
+	
 public int getQuantity() {
 	return quantity;
 }
@@ -74,29 +62,21 @@ public int getPrice() {
 public void setPrice(int price) {
 	this.price = price;
 }
-public int getProductid() {
-	return productid;
-}
-public void setProductid(int productid) {
-	this.productid = productid;
-}
+
+
 public String getUsername() {
 	return username;
 }
 public void setUsername(String username) {
 	this.username = username;
 }
-public int getStatus() {
-	return status;
+
+	
+	public Product getProduct() {
+	return product;
 }
-public void setStatus(int status) {
-	this.status = status;
-}
-	public User getUser() {
-	return user;
-}
-public void setUser(User user) {
-	this.user = user;
+public void setProduct(Product product) {
+	this.product = product;
 }
 	public int getCartid() {
 		return cartid;
