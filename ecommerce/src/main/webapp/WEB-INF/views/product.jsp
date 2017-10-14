@@ -91,18 +91,19 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </div>                        
                         <div class="product-attributes clearfix">
                            
-                          <button onclick="plus()"><i class="fa fa-plus"></i></button>
-                         <input type="number" name="number" id="number" width="5px" value="1">
-                          <button onclick="minus()"><i class="fa fa-minus"></i></button>
+                       
                         </div>
-                        <div>
-                        <table>
-                        <tr><td><a href="user/addcart?id=${prod.id}&name=${pageContext.request.userPrincipal.name}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
-                        <td><button type="button" class="btn btn-danger">BUY NOW</button></td>
                         
+                        <table>
+                        <tr><td><a href="addcart?id=${prod.id}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
                         </tr>
-                        </table>
-                        </div>
+                       </table>
+                       <form action="buynow">
+                             <input type="number" name="number" id="number" width="5px" value="1">
+                      <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUY NOW" name="num" >
+                        </form>
+                        
+                       
                         <div class="add-to-wishlist">
                            <a class="wish-btn" href="cart.html?ref=designcollection">
                            <i class="fa fa-heart-o"></i>

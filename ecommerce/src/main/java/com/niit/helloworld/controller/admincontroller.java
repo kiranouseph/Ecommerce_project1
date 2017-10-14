@@ -43,7 +43,7 @@ public class admincontroller {
 	
 	// if the admin link in home page is clicked it will be redirected to here 
 
-	@RequestMapping("/admin/admin")
+	@RequestMapping("/admin")
 	public ModelAndView admin() {
 		
 		ModelAndView mv1 = new ModelAndView("admin");
@@ -64,6 +64,9 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		
 		return mv1;
 	}
+	
+	
+	
 	
 
 }

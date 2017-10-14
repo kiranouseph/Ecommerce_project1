@@ -134,6 +134,7 @@ public class usercontroller {
 	}
 	
 	
+	
 
 	
 	//for redirections to login page from home page
@@ -267,7 +268,7 @@ public class usercontroller {
 	*/
 	
 	
-	@RequestMapping("/admin/list")
+	@RequestMapping("/list")
 	public ModelAndView list(@RequestParam("num") int ca) 
 	{
 		ArrayList<Product> p=new ArrayList<Product>();
@@ -325,7 +326,7 @@ public class usercontroller {
 
 	
 	
-	@RequestMapping("/admin/retrieve")
+	@RequestMapping("/retrieve")
 	public ModelAndView retrieve(@RequestParam("id") int id,@RequestParam("num") int num) {
 		Product p=new Product();
 		Category c=new Category();
@@ -410,7 +411,7 @@ public class usercontroller {
 	*/
 
 	
-	@RequestMapping("/admin/delete")
+	@RequestMapping("/delete")
 	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	
 		
 		ArrayList<Product> p=new ArrayList<Product>();

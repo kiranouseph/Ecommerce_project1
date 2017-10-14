@@ -96,12 +96,14 @@ table { border-collapse: separate; border-spacing: 5px; }
                           <button onclick="minus()"><i class="fa fa-minus"></i></button>
                         </div>
                         <div>
+                        <form>
                         <table>
-                        <tr><td><a href="user/addcart?id=${prod.id}&name=${pageContext.request.userPrincipal.name}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
+                        <tr><td><a href="addcart?id=${prod.id}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
                         <td><button type="button" class="btn btn-danger">BUY NOW</button></td>
                         
                         </tr>
                         </table>
+                        </form>
                         </div>
                         <div class="add-to-wishlist">
                            <a class="wish-btn" href="cart.html?ref=designcollection">

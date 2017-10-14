@@ -42,7 +42,7 @@ public class offercontroller {
 	
 	
 	//for redirecting to offer page with the offer products from database
-	@RequestMapping("/admin/offers")
+	@RequestMapping("/offers")
 	public ModelAndView offer() {
 		ModelAndView mv1 = new ModelAndView("offer");
 		ArrayList<Product> p=new ArrayList<Product>();
@@ -66,7 +66,7 @@ mv1.addObject("catego",c);
 	
 	//for setting offer to a product
 	
-	@RequestMapping("/admin/offersset")
+	@RequestMapping("/offersset")
 	public ModelAndView offerprice(@RequestParam("prid") int prid,@RequestParam("offerprice") int offprice,@RequestParam("orgprice") int orgprice) 
 	{ 
 		ModelAndView mv1 = new ModelAndView("offer");
@@ -87,7 +87,7 @@ mv1.addObject("catego",c);
 	}
 	
 	//for deleting a offer
-	@RequestMapping("/admin/offersdel")
+	@RequestMapping("/offersdel")
 	public ModelAndView offerdelete(@RequestParam("prid") int id) 
 	{
 		ModelAndView mv1 = new ModelAndView("offer");

@@ -115,7 +115,7 @@ $(document).ready(function(){
             
             <li><a href="#">About</a></li>
              <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
-            <li><a href="admin/admin">ADMIN</a></li>
+            <li><a href="admin">ADMIN</a></li>
             </c:if>
                  <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">   
 			<li class="dropdown mega-dropdown">
@@ -206,12 +206,12 @@ $(document).ready(function(){
             </c:if>
   <c:if test="${pageContext.request.userPrincipal.name !=  'admin123@gmail.com' }">
   
-   <li><a href="user/cart?name=${pageContext.request.userPrincipal.name}">Shopping cart</a></li>
+   <li><a href="cart?name=${pageContext.request.userPrincipal.name}">Shopping cart</a></li>
   
   </c:if>
    <c:if test="${pageContext.request.userPrincipal.name == null }">
    
-    <li><a href="login"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart</a></li>
+    <li><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart</a></li>
    
    </c:if>
             

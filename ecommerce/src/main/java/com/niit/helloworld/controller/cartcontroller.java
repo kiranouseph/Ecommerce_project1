@@ -47,11 +47,12 @@ public class cartcontroller {
 	CartDAOImpl cartdao;
 	
 	//redirection to cart from header
-	@RequestMapping("/user/cart")
-	public ModelAndView cart(@RequestParam("name") String name) {
+	@RequestMapping("/cart")
+	public ModelAndView cart() {
 		
  int total=0;
- 
+ org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+ String name = auth.getName();
 		ModelAndView mv1 = new ModelAndView("cart");
 		ArrayList<Cart> cartt=new ArrayList<Cart>();
 	
@@ -77,9 +78,13 @@ public class cartcontroller {
 	
 	
 	//for adding items to cart
-	@RequestMapping("user/addcart")
-	public ModelAndView addcart(@RequestParam("id") int id,@RequestParam("name") String name)
-	{ Cart cart=new Cart();
+	@RequestMapping("/addcart")
+	public ModelAndView addcart(@RequestParam("id") int id)
+	{ 
+		
+		 org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	     String name = auth.getName();
+	     Cart cart=new Cart();
 		
 int flag=0,imp=0;
 	ArrayList<Cart> cartt=new ArrayList<Cart>();
@@ -110,8 +115,15 @@ cart.setQuantity(1);
 		
 		Product p=new Product();
 		p=cartdao.getprodbyid(id);
+		if(p.getOfferprice()!=0)
+		{
+		cart.setPrice(p.getOfferprice());	
+		}
+		else
+		{
+			cart.setPrice(p.getPrice());
+		}
 		
-		cart.setPrice(p.getPrice());
 		cart.setProduct(p);
 		
 		cartdao.addcart(cart);
@@ -138,7 +150,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		return mv1;
 	}
 //for updating cart
-	@RequestMapping("/user/cartretrieve")
+	@RequestMapping("/cartretrieve")
 	public ModelAndView cartretrieve(@RequestParam("id") int cartid) {
 		
 		ModelAndView mv1 = new ModelAndView("updatecart");
@@ -157,7 +169,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	}
 	
 	
-	@RequestMapping("/user/cartupdate")
+	@RequestMapping("/cartupdate")
 	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan) {
 		
 		ModelAndView mv1 = new ModelAndView("cart");
@@ -189,7 +201,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 	
 	//for deleting cart item by cartid
-	@RequestMapping("/user/cartdelete")
+	@RequestMapping("/cartdelete")
 	public ModelAndView cartdelete(@RequestParam("id") int cartid) {
 		
 		cartdao.deletecartitem(cartid);
@@ -222,6 +234,13 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 	
 
+	}
+	
+	@RequestMapping("/buynow")
+	public ModelAndView buynow(@RequestParam("num") int num)
+	{
+		ModelAndView mv1 = new ModelAndView("product");
+		return mv1;
 	}
 	
 

@@ -61,7 +61,7 @@ public class subcategorycontroller {
 		return mv1;
 	}
 	//for adding subcategory
-	@RequestMapping("/admin/subcategory")
+	@RequestMapping("/subcategory")
 	public ModelAndView addscat(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("scat") int cat,@RequestParam("image") MultipartFile file) {
 		
 		
@@ -112,7 +112,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		return mv1;
 	}
 	//for updating subcategory
-	@RequestMapping("/admin/updatesubcategory")
+	@RequestMapping("/updatesubcategory")
 	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 	
 		ModelAndView mv1 = new ModelAndView("list");

@@ -70,7 +70,7 @@ public class productcontroller {
 	
 	
 	//for adding product
-	@RequestMapping("/admin/product")
+	@RequestMapping("/product")
 	public ModelAndView addpro(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		
 	
@@ -146,9 +146,30 @@ public class productcontroller {
 	
 	
 	//for updating product
-	@RequestMapping("/admin/updateproduct")
+	@RequestMapping("/updateproduct")
 	public ModelAndView updateproduct(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		ModelAndView mv1 = new ModelAndView("list");
+		
+		
+		
+		
+		
+		Subcategory sc=new Subcategory();
+		sc.setId(scat);
+		sc.setSubcategoryname(name);
+		Category c=new Category();
+		c=cdao.getcatbyid(cat);
+		sc.setCategory(c);
+	
+			Subcategory imagere=new Subcategory();
+			imagere=scdao.getscatbyid(scat);
+			String image=imagere.getSubcatimage();
+			sc.setSubcatimage(image);
+
+		scdao.updatesubcategory(sc);
+		
+		
+		
 		ArrayList<Product> pp=new ArrayList<Product>();
 
 		 pp=(ArrayList<Product>)pdao.getallproducts();

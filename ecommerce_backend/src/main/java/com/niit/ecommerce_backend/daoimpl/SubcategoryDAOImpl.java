@@ -111,6 +111,27 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 	}
 	
+	
+	
+	public void changecategory(Category ca,int cat) {
+		
+		
+	
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+	
+		
+		
+		
+        t.commit();
+        
+        ssn.close();
+		
+		
+		
+	}
+	
 
 	
 }
