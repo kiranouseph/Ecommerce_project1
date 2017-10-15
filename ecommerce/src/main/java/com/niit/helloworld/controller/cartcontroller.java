@@ -237,9 +237,22 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	}
 	
 	@RequestMapping("/buynow")
-	public ModelAndView buynow(@RequestParam("num") int num)
+	public ModelAndView buynow(@RequestParam("number") int num,@RequestParam("id") int id)
 	{
-		ModelAndView mv1 = new ModelAndView("product");
+		
+		ModelAndView mv1 = new ModelAndView("orderconfirm");
+		Product p=pdao.getProdById(id);
+		if(p.getOffer()==1)
+		{
+			mv1.addObject("price",p.getOfferprice());	
+		}
+		else
+		{
+			mv1.addObject("price",p.getPrice());	
+		}
+		mv1.addObject("product",p);
+		mv1.addObject("num",num);
+		mv1.addObject("status",1);
 		return mv1;
 	}
 	

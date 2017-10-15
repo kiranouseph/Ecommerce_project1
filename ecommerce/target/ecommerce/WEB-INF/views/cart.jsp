@@ -98,7 +98,7 @@
                                    </td>
                                    <td>
                                    <a href="cartdelete?id=${design.cartid}">
-                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
+                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:200px;height:200px"></i>
                                    </a>
                                    </td>
 						</tr>

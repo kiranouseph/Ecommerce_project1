@@ -99,8 +99,10 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </tr>
                        </table>
                        <form action="buynow">
-                             <input type="number" name="number" id="number" width="5px" value="1">
-                      <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUY NOW" name="num" >
+                            <input type="number" name="number" value=1>
+
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUYNOW" >
+ <input type="hidden" name="id" value="${prod.id}">
                         </form>
                         
                        

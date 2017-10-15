@@ -91,20 +91,21 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </div>                        
                         <div class="product-attributes clearfix">
                            
-                          <button onclick="plus()"><i class="fa fa-plus"></i></button>
-                         <input type="number" name="number" id="number" width="5px" value="1">
-                          <button onclick="minus()"><i class="fa fa-minus"></i></button>
+                       
                         </div>
-                        <div>
-                        <form>
+                        
                         <table>
                         <tr><td><a href="addcart?id=${prod.id}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
-                        <td><button type="button" class="btn btn-danger">BUY NOW</button></td>
-                        
                         </tr>
-                        </table>
+                       </table>
+                       <form action="buynow">
+                            <input type="number" name="number" value=1>
+
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUYNOW" >
+ <input type="hidden" name="id" value="${prod.id}">
                         </form>
-                        </div>
+                        
+                       
                         <div class="add-to-wishlist">
                            <a class="wish-btn" href="cart.html?ref=designcollection">
                            <i class="fa fa-heart-o"></i>

@@ -9,11 +9,12 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Product;
 
 @Repository("CartDAOImpl")
-public class CartDAOImpl {
+public class CartDAOImpl implements CartDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 	@Autowired

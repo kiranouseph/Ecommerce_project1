@@ -22,12 +22,14 @@ import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier ;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category ;
+import com.niit.ecommerce_backend.model.Orderr;
 import com.niit.ecommerce_backend.model.User ;
 
 import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
+
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
@@ -61,6 +63,9 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
 	        sessionBuilder.addAnnotatedClass(Review.class);
+	        sessionBuilder.addAnnotatedClass(Orderr.class);	    
+	        
+	        
 
 	      
 	       
@@ -99,6 +104,9 @@ public class HibernateConfig
 			
 		return new ProductDAOImpl(sessionFactory);
 		}
+	    
+	    
+	    
 	    @Bean
 	    @Autowired
 		public SupplierDAO getSupplierDAO(SessionFactory sessionFactory)
@@ -106,6 +114,8 @@ public class HibernateConfig
 			
 		return new SupplierDAOImpl(sessionFactory);
 		}
+	    
+	    
 	    @Bean
 	    @Autowired
 		public CategoryDAO getCategoryDAO(SessionFactory sessionFactory)
@@ -113,6 +123,8 @@ public class HibernateConfig
 			
 		return new CategoryDAOImpl(sessionFactory);
 		}
+	    
+	    
 	    @Bean
 	    @Autowired
 		public UserDAO getUserDAO(SessionFactory sessionFactory)
@@ -120,12 +132,16 @@ public class HibernateConfig
 		
 		return new UserDAOImpl(sessionFactory);
 		}
+	    
+	    
 	    @Bean
 	    @Autowired
 		public SubcategoryDAO getSubcategoryDAO(SessionFactory sessionFactory)
 		{
 			
 		return new SubcategoryDAOImpl(sessionFactory)	;	}
+	    
+	    
 	    
 	    
 	    @Bean
@@ -135,8 +151,13 @@ public class HibernateConfig
 			
 		return new ReviewDAOImpl(sessionFactory);
 		}
-
 	    
+	  
+	    
+	    
+	    
+	    
+	   
 	    
 	    
 	    

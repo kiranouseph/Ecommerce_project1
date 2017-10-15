@@ -470,6 +470,7 @@ interval: 2000
             
             <c:forEach var="des" items="${offproducts}">
             <c:if test="${designate.id eq des.catnum}">
+          <a href="prod?id=${designate.id}" > 
                 <div class="item">
                     <div class="pad15">
                     <img src="resources/images/2.jpg" class="img-responsive" alt="abcd" style="width:100%; height:100%">
@@ -479,6 +480,7 @@ interval: 2000
                         <p>${des.offerper }%</p>
                     </div>
                 </div>
+                </a>
                 </c:if>
 </c:forEach>              
               
