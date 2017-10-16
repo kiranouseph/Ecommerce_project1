@@ -29,7 +29,15 @@ public class Supplier {
     
     @Column(name = "Supplieraddress", nullable = false)
     private String suppdesc;
-    @OneToMany(cascade = CascadeType.DETACH,targetEntity=Product.class,mappedBy="supplier",fetch=FetchType.EAGER)
+    @Column(name = "suppemail", nullable = false)
+    private String suppemail;
+    public String getSuppemail() {
+		return suppemail;
+	}
+	public void setSuppemail(String suppemail) {
+		this.suppemail = suppemail;
+	}
+	@OneToMany(cascade = CascadeType.DETACH,targetEntity=Product.class,mappedBy="supplier",fetch=FetchType.EAGER)
     private Set<Product> product;
   
 	public Set<Product> getProduct() {

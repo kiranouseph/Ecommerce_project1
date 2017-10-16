@@ -149,13 +149,15 @@ $(document).ready(function() {
 				<div class="tab-pane" id="2a">
          
 
-<form action="supplier" method="post">
+<form action="supplier" >
       <table >
      
       
 <tr><td>SUPPLIER ID</td><td><input type="number"  name="suppid" required style="width:100%"></td></tr>
 <tr><td>SUPPLIER NAME</td><td><input type="text"  name="suppname" required style="width:100%"></td></tr>
 <tr><td>SUPPLIER<br> ADDRESS</td><td><textarea rows="4" cols="50" name="suppaddress" style="width:100%"> </textarea></td></tr>
+<tr><td>SUPPLIER<br> EMAIL</td><td><input type="text"  name="suppemail" required style="width:100%"></td></tr>
+<tr><td>SUPPLIER<br> MOBILE NO:</td><td><input type="number"  name="suppmob" required style="width:100%"></td></tr>
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:100%"></td></tr>
 </table>
@@ -244,5 +246,6 @@ $(document).ready(function() {
  
  
   
+   <jsp:include page="footer.jsp" />  
 </body>
 </html>

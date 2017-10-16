@@ -52,10 +52,15 @@
       <security:intercept-url pattern="/cartdelete/**"
      access="hasRole('ROLE_USER')" /> 
 
-      <security:intercept-url pattern="/adduser/**"
-     access="hasRole('ROLE_USER')" /> 
+
           <security:intercept-url pattern="/review/**"
      access="hasRole('ROLE_USER')" /> 
+     
+           <security:intercept-url pattern="/supd/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+     
+            <security:intercept-url pattern="/supplierpage/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
      
 		<security:form-login 
 		    login-processing-url="/j_spring_security_check"

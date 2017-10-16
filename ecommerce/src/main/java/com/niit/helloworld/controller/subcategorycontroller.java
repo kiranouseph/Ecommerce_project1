@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
+import com.niit.ecommerce_backend.model.User;
 @SuppressWarnings("unused")
 //for controlling the subcategory level operations
 @Controller
@@ -57,6 +59,24 @@ public class subcategorycontroller {
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		mv1.addObject("catego",l);
+		//for getting the email of the logined user and to find the role whether admni user or supplier	
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		
+		
 		
 		return mv1;
 	}
@@ -71,13 +91,13 @@ public class subcategorycontroller {
 		Category c=new Category();
 		c=cdao.getcatbyid(cat);
 		sc.setCategory(c);
-		 String img="subcat"+file.getOriginalFilename();
+		 String img=file.getOriginalFilename();
 sc.setSubcatimage(img);
 		scdao.savesubcategory(sc);
 		
-String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"subcat"+file.getOriginalFilename();
+String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+file.getOriginalFilename();
 		
-		
+//image uplaod		
 		try {
 			byte imagebyte[] = file.getBytes();
 			BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
@@ -107,7 +127,21 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 								mv1.addObject("subcatego",lll);
 						
 				
-		
+								org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+								 String namees = authent.getName();
+								 if(namees!="anonymousUser")
+								 {
+								 ArrayList<User> userer=udao.getUserByUsername(namees);
+								 for(User u:userer)
+								 {
+									 mv1.addObject("role", u.getRole());
+								 }
+								 }
+								 else
+								 {
+									 mv1.addObject("role","ROLE_USER");
+								 }
+								 
 	
 		return mv1;
 	}
@@ -122,6 +156,8 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		Category c=new Category();
 		c=cdao.getcatbyid(cat);
 		sc.setCategory(c);
+		
+		//no image use previous  upload
 		if(file==null)
 		{
 			Subcategory imageret=new Subcategory();
@@ -129,11 +165,12 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 			String image=imageret.getSubcatimage();
 			sc.setSubcatimage(image);
 		}
+		//use new image
 		else
 		{
-			 String img="subcat"+file.getOriginalFilename();
+			 String img=file.getOriginalFilename();
 			 sc.setSubcatimage(img);	
-			 String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+"subcat"+file.getOriginalFilename();
+			 String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+file.getOriginalFilename();
 				
 				
 				try {
@@ -162,6 +199,25 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		 scc=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		 mv1.addObject("list",scc);	
 		 mv1.addObject("status",3);
+		 
+		 
+		//for getting the email of the logined user and to find the role whether admni user or supplier	
+		 org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
 
 		return mv1;
 	}

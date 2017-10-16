@@ -3,6 +3,7 @@ package com.niit.helloworld.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,7 @@ import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
+import com.niit.ecommerce_backend.model.User;
 @SuppressWarnings("unused")
 @Controller
 
@@ -61,6 +63,25 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		
 				
 				mv1.addObject("subcatego",lll);
+				
+				//for getting the email of the logined user and to find the role whether admni user or supplier
+				org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+				 String namees = authent.getName();
+				 if(namees!="anonymousUser")
+				 {
+				 ArrayList<User> userer=udao.getUserByUsername(namees);
+				 for(User u:userer)
+				 {
+					 mv1.addObject("role", u.getRole());
+				 }
+				 }
+				 else
+				 {
+					 mv1.addObject("role","ROLE_USER");
+				 }
+				 
+				 
+				 
 		
 		return mv1;
 	}

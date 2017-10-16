@@ -18,6 +18,7 @@ import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.Supplier;
+import com.niit.ecommerce_backend.model.User;
 
 import antlr.collections.List;
 import sun.net.www.content.text.plain;
@@ -153,11 +154,11 @@ public class ProductDAOImpl implements ProductDAO{
 		t.begin();
 		 Query qry1 = ssn.createQuery("update Product  set offer="+0+"where id="+id);
 		 Query qry2 = ssn.createQuery("update Product  set offerprice="+0+"where id="+id); 
-		 
+		 Query qry3 = ssn.createQuery("update Product  set offerper="+0+"where id="+id); 
 				       
 		 qry2.executeUpdate(); 
 				          qry1.executeUpdate();
-				         				
+				          qry3.executeUpdate();			
 		
         t.commit();
         
@@ -181,7 +182,7 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	
 	
-	
+//for product's top offer in a category	
  public Product gettopoffer(int id) {
 Session ssn=sessionFactory.openSession();
 Transaction t=ssn.getTransaction();
@@ -200,20 +201,24 @@ return pro;
 
 
 }
-
-
-
-
-
+ 
+ //products by supplier id
+public ArrayList<Product> getprodbysid(int sid) {
 
 	
+	ArrayList<Product> pro=new ArrayList<Product>();
 	
+	Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    org.hibernate.Query q= session.createQuery("from Product where S_ID="+sid);
+	pro=(ArrayList<Product>) q.list();
 	
+    session.getTransaction().commit();
+    session.close();
+   
 	
+	return pro;
 	
 
-	
-	
-	
-	
+}
 }

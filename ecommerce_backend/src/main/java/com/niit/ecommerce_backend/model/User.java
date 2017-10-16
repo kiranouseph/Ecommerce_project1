@@ -38,10 +38,12 @@ public class User implements Serializable{
     @Column(name = "email", nullable = false)
     private String email;
     
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = true)
     private String password;
     @Column(name = "Role", nullable = false)
     private String role;
+   
+
 	public String getRole() {
 		return role;
 	}

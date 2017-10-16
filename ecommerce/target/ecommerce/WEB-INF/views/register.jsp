@@ -14,7 +14,17 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="log.css" rel="stylesheet" type="text/css">
-
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("pass").value;
+        var confirmPassword = document.getElementById("cpass").value;
+        if (password != confirmPassword) {
+        	 document.getElementById("error").innerHTML = "PASSWORD MISMATCH";
+            return false;
+        }
+        return true;
+    }
+</script>
 
 </head>
 <body>
@@ -53,10 +63,17 @@
                         <label for="password" class="col-sm-3 control-label" >
                             Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
+                            <input type="password" class="form-control" id="pass" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
-                  
+                       <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label" >
+                            Confirm Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="cpass" name="cpassword" placeholder="confirm Password" pattern=".{6,}" title="Six or more characters" required>
+                        </div>
+                    </div>
+                  <p id="error"></p>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
                             <div class="checkbox">
@@ -69,7 +86,7 @@
                     </div>
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-success btn-sm">
+                            <button type="submit" class="btn btn-success btn-sm" onclick="return Validate()">
                                 Register</button>
                                  <button type="reset" class="btn btn-default btn-sm">
                                 Reset</button>

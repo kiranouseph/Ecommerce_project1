@@ -3,6 +3,7 @@ package com.niit.ecommerce_backend.daoimpl;
 import java.util.ArrayList;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -34,34 +35,53 @@ public class UserDAOImpl implements UserDAO {
 		
 	}
 	
-	public int checklogin(String email,String password) {
-		int re=0;
-		System.out.println("in checklogin"+email+password);
-		User userr = getUserByUsername(email);
-		if(userr != null && password.equals(userr.getPassword()))
-			{re = 1;}
-		System.out.println("status"+re);
-		return re;
-	}
 	
-	public User getUserByUsername(String email){
+	
+	//for getting the user details by user email
+	public ArrayList<User> getUserByUsername(String email){
 		System.out.println("in getuserbyname"+email);
-		User userr=null;
-		try{
+		ArrayList<User> userr=new ArrayList<User>();
+		
 		Session session = sessionFactory.openSession();
 	    session.beginTransaction();
-	    org.hibernate.Query q= session.createQuery("from Product where email=:email ");
-		userr=(User) q.list();
-		System.out.println("after retrievel"+userr.getEmail()+userr.getPassword());
+	    org.hibernate.Query q= session.createQuery("from User where email='"+email+"'");
+		userr=(ArrayList<User>) q.list();
+		
 	    session.getTransaction().commit();
 	    session.close();
 	   
-		}catch(Exception e){
-			System.out.println("in catch");
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+		
 		return userr;
+	}
+//for changing password for the first login of supplier
+	public void changepassword(String email, String pass) {
+		
+		
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		
+		 Query qry1 = ssn.createQuery("update User  set password='"+pass+"'where email='"+email+"'");
+		
+				          
+				          qry1.executeUpdate();
+				         
+				         
+ 				
+		
+        t.commit();
+        
+        ssn.close();
+		
+		
+		
+	}
+
+	
+	
+	public int checklogin(String email, String password) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

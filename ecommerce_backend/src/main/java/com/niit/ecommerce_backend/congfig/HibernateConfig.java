@@ -22,7 +22,7 @@ import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier ;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category ;
-import com.niit.ecommerce_backend.model.Orderr;
+
 import com.niit.ecommerce_backend.model.User ;
 
 import com.niit.ecommerce_backend.dao.ProductDAO;
@@ -63,7 +63,7 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
 	        sessionBuilder.addAnnotatedClass(Review.class);
-	        sessionBuilder.addAnnotatedClass(Orderr.class);	    
+	      	    
 	        
 	        
 

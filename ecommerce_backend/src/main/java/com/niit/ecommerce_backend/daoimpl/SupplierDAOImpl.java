@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Supplier;
+import com.niit.ecommerce_backend.model.User;
 
 @Repository("SupplierDAOImpl")
 public class SupplierDAOImpl implements SupplierDAO {
@@ -88,5 +89,25 @@ public class SupplierDAOImpl implements SupplierDAO {
         
         ssn.close();
 				
+	}
+	
+	//for getting the supplier details by supplier email
+	public ArrayList<Supplier> getsuppbyname(String nameess) {
+	
+		ArrayList<Supplier> supp=new ArrayList<Supplier>();
+		
+		Session session = sessionFactory.openSession();
+	    session.beginTransaction();
+	    org.hibernate.Query q= session.createQuery("from Supplier where suppemail='"+nameess+"'");
+		supp=(ArrayList<Supplier>) q.list();
+		
+	    session.getTransaction().commit();
+	    session.close();
+	   
+		
+		return supp;
+		
+		
+		
 	}
 }

@@ -103,10 +103,10 @@ $(document).ready(function(){
 		    
             
             
-           <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}"> 
+           <c:if test="${role == 'ROLE_ADMIN'}"> 
             <li><a href="">Home</a></li>
             </c:if>
-            <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}"> 
+         <c:if test="${role != 'ROLE_ADMIN'}"> 
             <li><a href="">Home</a></li>
             </c:if>
             
@@ -114,10 +114,15 @@ $(document).ready(function(){
             
             
             <li><a href="#">About</a></li>
-             <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
+           <c:if test="${role == 'ROLE_ADMIN'}"> 
             <li><a href="admin">ADMIN</a></li>
             </c:if>
-                 <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">   
+            
+             <c:if test="${role == 'ROLE_SUPPLIER'}"> 
+            <li><a href="supplierpage">SUPPLIER</a></li>
+            </c:if>
+            
+             <c:if test="${role == 'ROLE_USER'}">  
 			<li class="dropdown mega-dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Choose your gift <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu">
@@ -204,7 +209,7 @@ $(document).ready(function(){
                
             <li><a href="#">Checkout</a></li>
             </c:if>
-  <c:if test="${pageContext.request.userPrincipal.name !=  'admin123@gmail.com' }">
+  <c:if test="${role == 'ROLE_USER'}"> 
   
    <li><a href="cart?name=${pageContext.request.userPrincipal.name}">Shopping cart</a></li>
   

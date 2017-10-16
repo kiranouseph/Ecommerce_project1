@@ -72,7 +72,8 @@
                     </form>
                 </div>
                 <div class="panel-footer">
-                    Not Registered? <a href="signup" >Register here</a></div>
+                    Not Registered? <a href="signup" >Register here</a><br>
+                    Supplier first login? <a href="supd" >Register here</a></div>
             </div>
         </div>
     </div>

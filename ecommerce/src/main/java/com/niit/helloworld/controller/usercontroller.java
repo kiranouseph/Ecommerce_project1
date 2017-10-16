@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -86,7 +87,7 @@ public class usercontroller {
 		 
 				
 				mv1.addObject("catego",l);
-
+//for retreiving the top offer of each category to shown in the dropdown carousel of header
 				/*ArrayList<Product> topoff=new ArrayList<Product>();
 				for(Category tpof:l)
 				{
@@ -125,7 +126,26 @@ public class usercontroller {
 	 Product p4=pp.get(index4);
 	 mv1.addObject("offp4",p4);
 	 pp.remove(p4);*/
-	
+	 
+	 
+	 
+	//for getting the email of the logined user and to find the role whether admni user or supplier
+	 org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+	 String namees = authent.getName();
+	 if(namees!="anonymousUser")
+	 {
+	 ArrayList<User> userer=udao.getUserByUsername(namees);
+	 for(User u:userer)
+	 {
+		 mv1.addObject("role", u.getRole());
+	 }
+	 }
+	 else
+	 {
+		 mv1.addObject("role","ROLE_USER");
+	 }
+	 
+	 
 		return mv1;
 		
 		
@@ -149,7 +169,65 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		
 	
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
+		return mv1;
+	}
+	
+	//for redirecting to password change page for supplier at first login
+	@RequestMapping("/supd")
+	public ModelAndView supplogin() {
+	
+ 
+		ModelAndView mv1 = new ModelAndView("supd");
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
+		
 		return mv1;
 	}
 	
@@ -174,7 +252,7 @@ public class usercontroller {
 		
 		 
 		  
-	
+	/*
 		SimpleMailMessage email = new SimpleMailMessage();
         email.setTo("plavinpaul11@gmail.com");
         email.setSubject("ORDER CONFIRMATION");
@@ -183,7 +261,7 @@ public class usercontroller {
         // sends the e-mail
         sendmail.send(email);
 		
-		
+		*/
 		
 		
 		
@@ -203,6 +281,27 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
 	
 		return mv1;
 	}
@@ -213,14 +312,14 @@ public class usercontroller {
 
 	//for adding the user details to database at time of sign in
 	@RequestMapping("/addUser")
-	public ModelAndView addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email,@RequestParam("password") String password) {
+	public ModelAndView addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email, @RequestParam("password") String password) {
 		
 		
 		User user=new User();
 		user.setName(name);
 		user.setMobno(mobno);
-		user.setPassword(password);
 		user.setEmail(email);
+		user.setPassword(password);
         user.setRole("ROLE_USER"); 
 		udao.saveUser(user);
 		ModelAndView mv1 = new ModelAndView("login");
@@ -230,25 +329,125 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
 	
 		return mv1;
 	}
 	
 	
-	
+	//if username or password entered incorrect redirect to here
 	@RequestMapping("/err")
 	public ModelAndView logfail()
 	{
 		
 		ModelAndView mv1 = new ModelAndView("login");
 		mv1.addObject("MESSAGE", "INVALID USERNAME OR POSSWORD");
+		
+		
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
+	
 		return mv1;
 	}
+	
+	
+	
+	//for submitting new password from supplier
+	@RequestMapping("/spasupd")
+	public ModelAndView passupd(@RequestParam("pass") String pass)
+	
+	{
+		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 String name = auth.getName();
+	udao.changepassword(name,pass);	
+		
+		
+		
+		ModelAndView mv1 = new ModelAndView("index");
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
+	
+		return mv1;
+	}
+	
+	
+	
+	//redirection when an unauthorized access comes
 	@RequestMapping("/error")
 	public ModelAndView unauthoroized()
 	{
 		
 		ModelAndView mv1 = new ModelAndView("error");
+		
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		
 		return mv1;
 	}
 	
@@ -309,6 +508,24 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l); 
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
 		return mv1;
 	}
 	
@@ -395,6 +612,24 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
 		return mv1;
 	}
 	
@@ -459,6 +694,25 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		
+		
 		return mv1;
 	}
 	

@@ -28,6 +28,7 @@ import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.niit.ecommerce_backend.model.User;
 @SuppressWarnings("unused")
 @Controller
 public class cartcontroller {
@@ -51,13 +52,16 @@ public class cartcontroller {
 	public ModelAndView cart() {
 		
  int total=0;
+//for getting the email of the logined user and to find the role whether admni user or supplier
  org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
  String name = auth.getName();
+ 
 		ModelAndView mv1 = new ModelAndView("cart");
 		ArrayList<Cart> cartt=new ArrayList<Cart>();
 	
 		cartt=cartdao.getcartitemsbyname(name);
 		mv1.addObject("cartt", cartt);
+		//for calculating the subtotal of the cart of a user by email
 		for(Cart ca:cartt)
 		{
 		int tot=ca.getPrice()*ca.getQuantity();
@@ -73,15 +77,35 @@ public class cartcontroller {
 		mv1.addObject("catego",l);
 	
 	
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
 		return mv1;
 	}
 	
 	
-	//for adding items to cart
+	//for adding items to cart 
 	@RequestMapping("/addcart")
 	public ModelAndView addcart(@RequestParam("id") int id)
 	{ 
-		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
 		 org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	     String name = auth.getName();
 	     Cart cart=new Cart();
@@ -99,6 +123,8 @@ int flag=0,imp=0;
 			imp=cr.getCartid();
 		}
 	}
+	
+	//if the product exist the quantity is incremented by 1
 	if(flag==1)
 	{
 		
@@ -107,6 +133,8 @@ int flag=0,imp=0;
 		quant=quant+1;
 		cartdao.updatequan(imp,quant);
 	}
+	
+	//new product new row is created in cart table
 	else
 	{
 		cart.setUsername(name);
@@ -117,11 +145,11 @@ cart.setQuantity(1);
 		p=cartdao.getprodbyid(id);
 		if(p.getOfferprice()!=0)
 		{
-		cart.setPrice(p.getOfferprice());	
+		cart.setPrice(p.getOfferprice()); //price if there is a offer 	
 		}
 		else
 		{
-			cart.setPrice(p.getPrice());
+			cart.setPrice(p.getPrice());  //price if no offer
 		}
 		
 		cart.setProduct(p);
@@ -147,9 +175,29 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		mv1.addObject("catego",l);
 	
 	
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
 		return mv1;
 	}
-//for updating cart
+//for updating cart 
 	@RequestMapping("/cartretrieve")
 	public ModelAndView cartretrieve(@RequestParam("id") int cartid) {
 		
@@ -158,8 +206,22 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		car=cartdao.getcartitembyid(cartid);
 		mv1.addObject("cartt", car);
 		
-		
-		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
 		
 	
 		return mv1;
@@ -175,6 +237,9 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		ModelAndView mv1 = new ModelAndView("cart");
 
 		Cart car =new Cart();
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	     String namee = auth.getName();
 	     car.setUsername(namee); 
@@ -186,7 +251,21 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		cartdao.updatecartitem(car);
 		
 		
-	
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
 		
 		
 		return mv1;
@@ -218,6 +297,8 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	     cartt=cartdao.getcartitemsbyname(name);
 			mv1.addObject("cartt", cartt);
 			int total=0;
+			
+			//for calcluating the sumtotal of the products of the cart
 			for(Cart ca:cartt)
 			{
 			int tot=ca.getPrice()*ca.getQuantity();
@@ -226,8 +307,22 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			
 			mv1.addObject("total",total);
 			
-		
-		
+			//for getting the email of the logined user and to find the role whether admni user or supplier
+			org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+			 String namees = authent.getName();
+			 if(namees!="anonymousUser")
+			 {
+			 ArrayList<User> userer=udao.getUserByUsername(namees);
+			 for(User u:userer)
+			 {
+				 mv1.addObject("role", u.getRole());
+			 }
+			 }
+			 else
+			 {
+				 mv1.addObject("role","ROLE_USER");
+			 }
+			 
 		
 		return mv1;
 		
@@ -235,7 +330,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 
 	}
-	
+	//for buying the product redirect to order confirm rather than entering to cart
 	@RequestMapping("/buynow")
 	public ModelAndView buynow(@RequestParam("number") int num,@RequestParam("id") int id)
 	{
@@ -253,6 +348,26 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		mv1.addObject("product",p);
 		mv1.addObject("num",num);
 		mv1.addObject("status",1);
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
 		return mv1;
 	}
 	
