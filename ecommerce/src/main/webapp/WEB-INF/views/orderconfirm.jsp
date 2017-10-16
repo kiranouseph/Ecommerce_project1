@@ -458,7 +458,7 @@ $(document).ready(function() {
 <c:forEach var="product" items="${cartt}">
 <tr>
 <td>${product.product.prodname }</td>
-<td>${price}</td>
+<td>${product.price}</td>
  
 
 <td>${product.quantity}</td>

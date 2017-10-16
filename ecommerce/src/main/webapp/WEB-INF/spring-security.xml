@@ -35,10 +35,18 @@
     access="hasRole('ROLE_ADMIN')" />
      <security:intercept-url pattern="/retrieve/**"
     access="hasRole('ROLE_ADMIN')" />
+       <security:intercept-url pattern="/delete/**"
+    access="hasRole('ROLE_ADMIN')" />
+    
+    
+    
+    
     <security:intercept-url pattern="/login"
      access="permitAll" />
       <security:intercept-url pattern="/"
      access="permitAll" />
+     
+     
 
      
     <security:intercept-url pattern="/cart/**"
@@ -51,18 +59,36 @@
      access="hasRole('ROLE_USER')" /> 
       <security:intercept-url pattern="/cartdelete/**"
      access="hasRole('ROLE_USER')" /> 
-
-
           <security:intercept-url pattern="/review/**"
      access="hasRole('ROLE_USER')" /> 
              <security:intercept-url pattern="/buynow/**"
      access="hasRole('ROLE_USER')" /> 
+              <security:intercept-url pattern="/checkout/**"
+     access="hasRole('ROLE_USER')" /> 
      
+     
+     
+       <security:intercept-url pattern="/suppoffers/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+       <security:intercept-url pattern="/suppoffersset/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+       <security:intercept-url pattern="/suppoffersdel/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+           <security:intercept-url pattern="/supplierpage/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+       <security:intercept-url pattern="/addprobysupp/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+           <security:intercept-url pattern="/suppdelete/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+           <security:intercept-url pattern="/suppretrieve/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
+           <security:intercept-url pattern="/suppupdatee/**"
+     access="hasRole('ROLE_SUPPLIER')" /> 
            <security:intercept-url pattern="/supd/**"
      access="hasRole('ROLE_SUPPLIER')" /> 
-     
-            <security:intercept-url pattern="/supplierpage/**"
+           <security:intercept-url pattern="/spasupd/**"
      access="hasRole('ROLE_SUPPLIER')" /> 
+     
      
 		<security:form-login 
 		    login-processing-url="/j_spring_security_check"

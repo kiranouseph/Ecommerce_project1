@@ -113,7 +113,7 @@ $(document).ready(function(){
             
             
             
-            <li><a href="#">About</a></li>
+            <li><a href="about">About</a></li>
            <c:if test="${role == 'ROLE_ADMIN'}"> 
             <li><a href="admin">ADMIN</a></li>
             </c:if>

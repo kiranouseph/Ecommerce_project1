@@ -309,6 +309,76 @@ public class usercontroller {
 	
 	
 	
+	@RequestMapping("/about")
+	public ModelAndView about() {
+		
+ 
+		
+		 
+		  
+	/*
+		SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo("plavinpaul11@gmail.com");
+        email.setSubject("ORDER CONFIRMATION");
+        email.setText("YOUR OPRDER IS PLACED BE READY WITH 250 rs FOR THE ROSE BOUQUET OUR REPRESENTATIVES WILL CONTACT YOU SHORTLY KEEP BUYING FROM GIFTERY ");
+         
+        // sends the e-mail
+        sendmail.send(email);
+		
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		ModelAndView mv1 = new ModelAndView("about");
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+		 
+		 
+		 
+		 
+	
+		return mv1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	//for adding the user details to database at time of sign in
 	@RequestMapping("/addUser")
