@@ -88,7 +88,8 @@
 							<td data-th="Price">${cartt.price }</td>
 							<td data-th="Quantity">
 							<form action="cartupdate">
-							    <input type="number"  value="${cartt.cartid }" name="id">
+							 <input id="prodId" name="id" type="hidden" value="${cartt.cartid}">
+							  <input id="prodId" name="prid" type="hidden" value="${cartt.product.id}">
 								<input type="number" class="form-control text-center" value="${cartt.quantity }" name="quantity">
 							    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%">
 							</form>

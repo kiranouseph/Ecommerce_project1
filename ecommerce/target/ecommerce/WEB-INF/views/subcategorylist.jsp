@@ -126,10 +126,10 @@ $(".hover").mouseleave(
 
 
 
-<figure class="snip1581"><img src="https://static.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg" alt="profile-sample2"/>
+<figure class="snip1581"><img src="resources/products/${designate.subcatimage}" alt="profile-sample2"/>
   <figcaption>
     
-    <h3 class="title2">${designate.subcategoryname }</h3>
+    <h3 class="title2" style="color:black;">${designate.subcategoryname }</h3>
     
   </figcaption><a href="selsubcat?id=${designate.id}"></a>
 </figure>

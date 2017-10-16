@@ -444,6 +444,42 @@ $(document).ready(function() {
 </c:if>
                  
   <c:if test="${status eq 2}">
+  
+  
+ 
+  <table style="border-collapse: separate;
+    border-spacing: 50px ;cellspacing:25%">
+<tr>
+<th>Name</th>
+<th>price</th>
+<th>Quantity</th>
+<th>Total</th>
+</tr>
+<c:forEach var="product" items="${cartt}">
+<tr>
+<td>${product.product.prodname }</td>
+<td>${price}</td>
+ 
+
+<td>${product.quantity}</td>
+
+<td>${product.price*product.quantity}</td>
+</tr>
+</c:forEach>
+<tr>
+<td></td>
+<td></td>
+<td>SUBTOTAL</td>
+<td>${total}</td>
+
+
+
+</tr>
+<tr><td><input type="checkbox">
+                                   CONFIRM(Cannot be undone)</td></tr>
+                                   <tr><td>  <button class="subscribe btn btn-success btn-lg btn-block" type="button">Place order</button></td></tr>
+</table>
+  
 
 
 

@@ -232,7 +232,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 	
 	@RequestMapping("/cartupdate")
-	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan) {
+	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan,@RequestParam("prid") int prid) {
 		
 		ModelAndView mv1 = new ModelAndView("cart");
 
@@ -242,10 +242,11 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	     String namee = auth.getName();
+	    car.setCartid(cartid);
 	     car.setUsername(namee); 
 		car.setQuantity(quan);
 		Product p=new Product();
-		p=cartdao.getprodbyid(cartid);
+		p=cartdao.getprodbyid(prid);
 		car.setProduct(p);
 		car.setPrice(p.getPrice());
 		cartdao.updatecartitem(car);
@@ -267,7 +268,10 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 }
 		 
 		
-		
+		 ArrayList<Cart> cartt=new ArrayList<Cart>();
+			
+			cartt=cartdao.getcartitemsbyname(namees);
+			mv1.addObject("cartt", cartt);
 		return mv1;
 	
 	
@@ -336,6 +340,11 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	{
 		
 		ModelAndView mv1 = new ModelAndView("orderconfirm");
+ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
 		Product p=pdao.getProdById(id);
 		if(p.getOffer()==1)
 		{
@@ -367,6 +376,53 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 }
 		 
 		 
+		 
+		return mv1;
+	}
+	
+	
+	@RequestMapping("/checkout")
+	public ModelAndView checkout()
+	{
+		int total=0;
+		ModelAndView mv1 = new ModelAndView("orderconfirm");
+		
+ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+		 
+		
+		mv1.addObject("catego",l);
+		
+	
+	
+		
+		
+		//for getting the email of the logined user and to find the role whether admni user or supplier
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+		 if(namees!="anonymousUser")
+		 {
+		 ArrayList<User> userer=udao.getUserByUsername(namees);
+		 for(User u:userer)
+		 {
+			 mv1.addObject("role", u.getRole());
+		 }
+		 }
+		 else
+		 {
+			 mv1.addObject("role","ROLE_USER");
+		 }
+			mv1.addObject("status",2);
+			
+			ArrayList<Cart> cartt=new ArrayList<Cart>();
+			
+			cartt=cartdao.getcartitemsbyname(namees);
+			mv1.addObject("cartt", cartt);
+			for(Cart c:cartt )
+			{
+			total=total+(c.getPrice()*c.getQuantity());	
+			}
+		 mv1.addObject("total",total);
 		 
 		return mv1;
 	}

@@ -107,7 +107,7 @@
 								 <tr> 
 									<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-4 "><img src="/resources/products/${designate.image}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
+									<div class="col-sm-4 "><img src="${pageContext.request.contextPath}/resources/products/${designate.image}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.prodname}</h4>
 										<p>

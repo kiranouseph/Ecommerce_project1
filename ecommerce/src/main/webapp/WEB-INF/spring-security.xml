@@ -55,6 +55,8 @@
 
           <security:intercept-url pattern="/review/**"
      access="hasRole('ROLE_USER')" /> 
+             <security:intercept-url pattern="/buynow/**"
+     access="hasRole('ROLE_USER')" /> 
      
            <security:intercept-url pattern="/supd/**"
      access="hasRole('ROLE_SUPPLIER')" /> 
