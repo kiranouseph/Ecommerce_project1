@@ -189,7 +189,33 @@ p.description_content{
         
         
         
-        
+  @bg: #2d2d37; // Dark blue
+@primary: #fd6b21; // Orange
+
+body { background: @bg;}
+a { color: white; text-decoration: none; }
+
+.arrow {
+  text-align: center;
+  margin: 8% 0;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}      
         
         
         
@@ -340,15 +366,30 @@ interval: 2000
     
     <c:forEach var="designate" items="${catego}">
     <div class="item">
-       <img src="resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      
       <div class="container">
-        <div class="carousel-caption">
+      <div class="row">
+    <div class="col col-lg-6">
+      <img src="resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+    </div>
+   <div class="col col-lg-6" style="margin-top:15%">
+        
           <h1>${designate.categoryname}</h1>
-           <h3>SCROLL DOWN FOR MORE OFFERS</h3>
-           <span class="glyphicons glyphicons-circle-arrow-down"></span>
+            <h1>${designate.categorydesc}</h1>
           
+     <div  style="margin-top:40%"></div>     
+    <h3 style="color:blue;">SCROLL DOWN FOR MORE OFFERS</h3>
+          <div class="arrow bounce">
+  <a class="fa fa-arrow-down fa-2x" href="#"></a>
+</div>
+ 
+          
+        
         </div>
       </div>
+  
+    </div>
+
     </div>
    </c:forEach>
   </div>
