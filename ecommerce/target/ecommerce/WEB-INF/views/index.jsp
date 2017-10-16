@@ -390,7 +390,7 @@ interval: 2000
                   <a href="prod?id=${offp1.id}">
                   <div class='wrapper'>
 	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp1.image}" style="width:100%; height:100%"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -405,7 +405,7 @@ interval: 2000
                    <a href="prod?id=${offp2.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp2.image}" style="width:100%; height:100%"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -420,7 +420,7 @@ interval: 2000
                    <a href="prod?id=${offp3.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp3.image}" style="width:100%; height:100%"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -435,7 +435,7 @@ interval: 2000
                    <a href="prod?id=${offp4.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src='https://i.ytimg.com/vi/EJA5nU9L6zU/maxresdefault.jpg' style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp4.image}" style="width:100%; height:100%"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -470,10 +470,10 @@ interval: 2000
             
             <c:forEach var="des" items="${offproducts}">
             <c:if test="${designate.id eq des.catnum}">
-          <a href="prod?id=${designate.id}" > 
+          <a href="prod?id=${des.id}" > 
                 <div class="item">
                     <div class="pad15">
-                    <img src="resources/images/2.jpg" class="img-responsive" alt="abcd" style="width:100%; height:100%">
+                    <img src="${pageContext.request.contextPath}/resources/products/${des.image}" class="img-responsive" alt="abcd" style="width:100%; height:100%">
                         <p class="lead">${des.prodname}</p>
                         <p> ${des.price}</p>
                         <p>${des.offerprice}</p>

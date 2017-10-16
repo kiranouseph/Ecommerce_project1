@@ -78,6 +78,8 @@
 <h1 style="text-align:center">LIST OF SUPPLIERS</h1>
 </c:if>
 
+<h1 style="text-align:center">${msg}</h1>
+
 
 
 

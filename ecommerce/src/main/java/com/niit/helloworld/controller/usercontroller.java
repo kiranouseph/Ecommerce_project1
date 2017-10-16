@@ -656,38 +656,70 @@ public class usercontroller {
 		ModelAndView mv1 = new ModelAndView("list");
 		if(num==1)
 	{
-			pdao.deleteproduct(id);
+			try
+			{pdao.deleteproduct(id);
 			p=(ArrayList<Product>)pdao.getallproducts();
 			mv1.addObject("list",p);
 			mv1.addObject("status",1);
-			
+			mv1.addObject("msg","deleted successfully");
+			}
+			catch(Exception e)
+			{
+				p=(ArrayList<Product>)pdao.getallproducts();
+			mv1.addObject("list",p);
+			mv1.addObject("status",1);
+				mv1.addObject("msg","This product is in a someones cart you cant delete");
+			}
 	}
 	else if(num==2)
 	{
+	try{	
 	cdao.deletecategory(id);	
 	c=(ArrayList<Category>)cdao.getallcategories();
 	mv1.addObject("list",c);	
 	mv1.addObject("status",2);
-		
+	mv1.addObject("msg","deleted successfully");
+	}
+	catch(Exception e)
+	{c=(ArrayList<Category>)cdao.getallcategories();
+	mv1.addObject("list",c);	
+	mv1.addObject("status",2);
+		mv1.addObject("msg","This category contains subcategories and products you cant delete");
+	}
 	}
 	else if(num==3)
 	{
 		
-		
+		try{
 		scdao.deletesubcategory(id);
 		sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		mv1.addObject("list",sc);
 		mv1.addObject("status",3);
+		mv1.addObject("msg","deleted successfully");
+	}
+		catch(Exception e)
+		{sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
+		mv1.addObject("list",sc);
+		mv1.addObject("status",3);
+			mv1.addObject("msg","This subcategory contains products you cant delete");
+		}
 	}
 	else if(num==4)
 	{
 		
-		
+	try{	
 		sdao.deletesupplier(id);
 		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
 		mv1.addObject("list",sup);
 		mv1.addObject("status",4);
-		
+		mv1.addObject("msg","This supplier provides some products you cant delete");
+	}
+	catch(Exception e)
+	{		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
+	mv1.addObject("list",sup);
+	mv1.addObject("status",4);
+		mv1.addObject("msg","This product is in a someones cart you cant delete");
+	}
 	}
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
