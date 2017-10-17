@@ -43,7 +43,71 @@ public class Order implements Serializable {
 	
 	@Column(name = "price", nullable =  true) 
 	private int price;
+	@Column(name = "total", nullable = true) 
+	private int total;
 	
+	@Column(name = "cardnumber", nullable =  true) 
+	private int cardnumber;
+	
+	@Column(name = "cvnumber", nullable =  true) 
+	private int cvnumber;
+	
+	
+	@Column(name = "expdate", nullable =  true) 
+	private int expdate;
+	
+	@Column(name = "couponcode", nullable =  true) 
+	private int ccode;
+	@Column(name = "bconfirm", nullable =  true) 
+	private int bcon;
+	@Column(name = "sconfirm", nullable =  true) 
+	private int scon;
+	@Column(name = "Payconfirm", nullable =  true) 
+	private int paycon;
+	@Column(name = "placeconfirm", nullable =  true) 
+	private int placecon;
+	@Column(name = "email", nullable =  true) 
+	private String email;
+	public int getBcon() {
+		return bcon;
+	}
+
+	public void setBcon(int bcon) {
+		this.bcon = bcon;
+	}
+
+	public int getScon() {
+		return scon;
+	}
+
+	public void setScon(int scon) {
+		this.scon = scon;
+	}
+
+	public int getPaycon() {
+		return paycon;
+	}
+
+	public void setPaycon(int paycon) {
+		this.paycon = paycon;
+	}
+
+	public int getPlacecon() {
+		return placecon;
+	}
+
+	public void setPlacecon(int placecon) {
+		this.placecon = placecon;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public int getOrderid() {
 		return orderid;
 	}
@@ -134,20 +198,9 @@ public class Order implements Serializable {
 		this.ccode = ccode;
 	}
 
-	@Column(name = "total", nullable = true) 
-	private int total;
 	
-	@Column(name = "cardnumber", nullable =  true) 
-	private int cardnumber;
 	
-	@Column(name = "cvnumber", nullable =  true) 
-	private int cvnumber;
 	
-	@Column(name = "expdate", nullable =  true) 
-	private int expdate;
-	
-	@Column(name = "couponcode", nullable =  true) 
-	private int ccode;
 	
 
 }

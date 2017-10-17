@@ -148,7 +148,9 @@ $(document).ready(function() {
             <div class="panel panel-default">
                
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="post" action="" >
+                
+               <c:if test="${addr == 1 || addr == 2 || addr==3}">
+                    <form class="form-horizontal" role="form" method="post" action="badd" >
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label" >
                             Name</label>
@@ -160,21 +162,21 @@ $(document).ready(function() {
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 1</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="add1"  name="add1" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                    <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="add2"  name="add2" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             City/Town</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="city"  name="city" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     
@@ -183,7 +185,7 @@ $(document).ready(function() {
                            State / Province / Region
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     
@@ -192,7 +194,7 @@ $(document).ready(function() {
                             Zip / Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     
@@ -208,6 +210,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                     </form>
+                    </c:if>
                 </div>
                
             </div>
@@ -231,7 +234,8 @@ $(document).ready(function() {
             <div class="panel panel-default">
                
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="post" action="" >
+                 <c:if test="${addr == 2 || addr==3}">
+                    <form class="form-horizontal" role="form" method="post" action="sadd" >
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label" >
                             Name</label>
@@ -291,6 +295,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                     </form>
+                    </c:if>
                 </div>
                
             </div>
@@ -320,7 +325,8 @@ $(document).ready(function() {
                     </div>                    
                 </div>
                 <div class="panel-body">
-                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                 <c:if test="${addr==3}">
+                    <form role="form" id="payment-form" method="POST" action="pay">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -329,7 +335,7 @@ $(document).ready(function() {
                                         <input 
                                             type="tel"
                                             class="form-control"
-                                            name="cardNumber"
+                                            name="cardnum"
                                             placeholder="Valid Card Number"
                                             autocomplete="cc-number"
                                             required autofocus 
@@ -344,9 +350,9 @@ $(document).ready(function() {
                                 <div class="form-group">
                                     <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
                                     <input 
-                                        type="tel" 
+                                        type="text" 
                                         class="form-control" 
-                                        name="cardExpiry"
+                                        name="cardexp"
                                         placeholder="MM / YY"
                                         autocomplete="cc-exp"
                                         required 
@@ -359,7 +365,7 @@ $(document).ready(function() {
                                     <input 
                                         type="tel" 
                                         class="form-control"
-                                        name="cardCVC"
+                                        name="cardcv"
                                         placeholder="CVC"
                                         autocomplete="cc-csc"
                                         required
@@ -370,8 +376,8 @@ $(document).ready(function() {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="couponCode">COUPON CODE</label>
-                                    <input type="text" class="form-control" name="couponCode" />
+                                    <label for="couponcod">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponcode" />
                                 </div>
                             </div>                        
                         </div>
@@ -386,6 +392,7 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </form>
+                    </c:if>
                 </div>
             </div>            
             <!-- CREDIT CARD FORM ENDS HERE -->
@@ -436,7 +443,7 @@ $(document).ready(function() {
 </tr>
 <tr><td><input type="checkbox">
                                    CONFIRM(Cannot be undone)</td></tr>
-                                   <tr><td>  <button class="subscribe btn btn-success btn-lg btn-block" type="button">Place order</button></td></tr>
+                                   <tr><td>  <a href="placeorder"><button class="subscribe btn btn-success btn-lg btn-block" type="button">Place order</button></a></td></tr>
 </table>
 
 
@@ -477,7 +484,15 @@ $(document).ready(function() {
 </tr>
 <tr><td><input type="checkbox">
                                    CONFIRM(Cannot be undone)</td></tr>
-                                   <tr><td>  <button class="subscribe btn btn-success btn-lg btn-block" type="button">Place order</button></td></tr>
+                                   
+                                     <c:if test="${ord.bcon==0 || ord.scon==0 || order.paycon==0}">
+                                   
+                                   <tr><td> <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; cursor: not-allowed"></td></tr>
+                                   </c:if>
+                                        <c:if test="${ord.bcon==1 && ord.scon==1 && order.paycon==1}">
+                                   
+                                   <tr><td> <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; "></td></tr>
+                                   </c:if>
 </table>
   
 
