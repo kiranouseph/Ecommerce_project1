@@ -22,21 +22,21 @@ import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier ;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category ;
-
+import com.niit.ecommerce_backend.model.Order;
 import com.niit.ecommerce_backend.model.User ;
 
 import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
-
+import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
-
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 
@@ -63,6 +63,8 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
 	        sessionBuilder.addAnnotatedClass(Review.class);
+	        sessionBuilder.addAnnotatedClass(Order.class);
+      	    
 	      	    
 	        
 	        
@@ -150,6 +152,13 @@ public class HibernateConfig
 		{
 			
 		return new ReviewDAOImpl(sessionFactory);
+		}
+	    @Bean
+	    @Autowired
+		public OrderDAO getOrderDAO(SessionFactory sessionFactory)
+		{
+			
+		return new OrderDAOImpl(sessionFactory);
 		}
 	    
 	  
