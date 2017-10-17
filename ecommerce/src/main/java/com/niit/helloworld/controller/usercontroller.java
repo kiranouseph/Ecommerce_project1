@@ -155,6 +155,15 @@ public class usercontroller {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+
+	
 
 	
 	//for redirections to login page from home page
@@ -493,7 +502,7 @@ public class usercontroller {
 		return mv1;
 	}
 	
-	
+
 	
 	//redirection when an unauthorized access comes
 	@RequestMapping("/error")

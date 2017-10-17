@@ -43,9 +43,7 @@ body {
 
 
 
-h5 {
-  font-family: 'Nunito Sans', sans-serif;
-}
+
   ul {
   list-style-type: none;
 }
@@ -103,17 +101,16 @@ $(document).ready(function(){
 		    
             
             
-           <c:if test="${role == 'ROLE_ADMIN'}"> 
-            <li><a href="">Home</a></li>
-            </c:if>
-         <c:if test="${role != 'ROLE_ADMIN'}"> 
-            <li><a href="">Home</a></li>
-            </c:if>
+           
+            <li><a href="./">Home</a></li>
+          
+       
             
             
             
-            
+           
             <li><a href="about">About</a></li>
+           
            <c:if test="${role == 'ROLE_ADMIN'}"> 
             <li><a href="admin">ADMIN</a></li>
             </c:if>
@@ -182,7 +179,7 @@ $(document).ready(function(){
 						
 						 <c:forEach var="designate" items="${catego}">
                        
-                           <h5 ><li  style="text-align:center"><a href="selcat?id=${designate.id}">Gift ${designate.categoryname} to ${designate.categorydesc }</a></li></h3>
+                           <h3 style="color:blue"><li  style="text-align:center"><a href="selcat?id=${designate.id}">Gift ${designate.categoryname} to ${designate.categorydesc }</a></li></h3>
                            
                        
                     </c:forEach> 	

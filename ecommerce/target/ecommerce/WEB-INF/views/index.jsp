@@ -189,8 +189,7 @@ p.description_content{
         
         
         
-        
-        
+ 
         
         
         
@@ -328,7 +327,7 @@ interval: 2000
   
   <div class="carousel-inner">
     <div class="item active">
-       <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+       <img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
       <div class="container">
         <div class="carousel-caption">
         <h1>Share happiness with giftery gifts</h1>
@@ -340,15 +339,30 @@ interval: 2000
     
     <c:forEach var="designate" items="${catego}">
     <div class="item">
-       <img src="resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      
       <div class="container">
-        <div class="carousel-caption">
+      <div class="row">
+    <div class="col col-lg-6">
+      <img src="${pageContext.request.contextPath}/resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+    </div>
+   <div class="col col-lg-6" style="margin-top:15%">
+        
           <h1>${designate.categoryname}</h1>
-           <h3>SCROLL DOWN FOR MORE OFFERS</h3>
-           <span class="glyphicons glyphicons-circle-arrow-down"></span>
+            <h1>${designate.categorydesc}</h1>
           
+     <div  style="margin-top:40%"></div>     
+    <h3 style="color:blue;">SCROLL DOWN FOR MORE OFFERS</h3>
+          <div class="arrow bounce">
+  <a class="fa fa-arrow-down fa-2x" href="#"></a>
+</div>
+ 
+          
+        
         </div>
       </div>
+  
+    </div>
+
     </div>
    </c:forEach>
   </div>

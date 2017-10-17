@@ -50,7 +50,7 @@ table, th, td {
             <div class="pro-name"><a href="prod?id=${designate.id}" class="animated fadeInRightShort go">${designate.prodname }</a></div>
             <p>
             <!-- Price & Button -->
-            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default">$ ${designate.price}</a> <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a> </div>
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default">$ ${designate.price}</a> <a href="addcart?id=${designate.id}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>ADD TO CART</a> </div>
             <p></p>
           </div>
         </div>

@@ -61,7 +61,7 @@
     border-spacing: 10px ;" >
     				<thead>
 						<tr>
-							<th style="width:50%">Product</th>
+							<th style="width:40%">Product</th>
 							<th style="width:10%">Price</th>
 							<th style="width:8%">Quantity</th>
 							<th style="width:22%" class="text-center">Subtotal</th>
@@ -98,7 +98,7 @@
                                    </td>
                                    <td>
                                    <a href="cartdelete?id=${design.cartid}">
-                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:200px;height:200px"></i>
+                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
                                    </a>
                                    </td>
 						</tr>

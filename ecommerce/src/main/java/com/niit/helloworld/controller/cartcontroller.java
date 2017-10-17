@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.ecommerce_backend.dao.CategoryDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
@@ -99,6 +100,8 @@ public class cartcontroller {
 		 
 		return mv1;
 	}
+	
+
 	
 	
 	//for adding items to cart 
@@ -197,6 +200,9 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		return mv1;
 	}
+	
+	
+
 //for updating cart 
 	@RequestMapping("/cartretrieve")
 	public ModelAndView cartretrieve(@RequestParam("id") int cartid) {
@@ -376,11 +382,11 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 }
 		 
 		 
-		 
+		 mv1.addObject("addr",3); 
 		return mv1;
 	}
 	
-	
+
 	@RequestMapping("/checkout")
 	public ModelAndView checkout()
 	{
@@ -423,7 +429,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			total=total+(c.getPrice()*c.getQuantity());	
 			}
 		 mv1.addObject("total",total);
-		 
+		 mv1.addObject("addr",3);
 		return mv1;
 	}
 	

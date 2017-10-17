@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
   
@@ -162,21 +163,21 @@ $(document).ready(function() {
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 1</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="add1"  name="add1" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="add1"  name="add1" placeholder="Your mobile number"  required>
                         </div>
                     </div>
                    <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="add2"  name="add2" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="add2"  name="add2" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             City/Town</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="city"  name="city" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="city"  name="city" placeholder="Your mobile number"  required>
                         </div>
                     </div>
                     
@@ -185,7 +186,7 @@ $(document).ready(function() {
                            State / Province / Region
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                     
@@ -194,7 +195,7 @@ $(document).ready(function() {
                             Zip / Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                     
@@ -247,21 +248,21 @@ $(document).ready(function() {
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 1</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                    <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             City/Town</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                     
@@ -270,7 +271,7 @@ $(document).ready(function() {
                            State / Province / Region
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
                         </div>
                     </div>
                     
@@ -279,7 +280,7 @@ $(document).ready(function() {
                             Zip / Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
+                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  required>
                         </div>
                     </div>
                     

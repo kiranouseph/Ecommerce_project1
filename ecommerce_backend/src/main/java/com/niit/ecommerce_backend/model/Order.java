@@ -16,7 +16,7 @@ import java.io.*;
 
 @Entity
 @Component
-@Table(name="ORDER")
+@Table(name="ORDERR")
 public class Order implements Serializable {
 
 	/**
@@ -37,14 +37,14 @@ public class Order implements Serializable {
 	private String baddress;
 	
 	@Column(name = "prid", nullable = true)
-	private int prid;
+	private String prid;
 	@Column(name = "Quantity", nullable = true) 
-	private int quantity;
+	private String quantity;
 	
 	@Column(name = "price", nullable =  true) 
-	private int price;
+	private String price;
 	@Column(name = "total", nullable = true) 
-	private int total;
+	private String total;
 	
 	@Column(name = "cardnumber", nullable =  true) 
 	private int cardnumber;
@@ -134,35 +134,37 @@ public class Order implements Serializable {
 		this.baddress = baddress;
 	}
 
-	public int getPrid() {
+	
+
+	public String getPrid() {
 		return prid;
 	}
 
-	public void setPrid(int prid) {
+	public void setPrid(String prid) {
 		this.prid = prid;
 	}
 
-	public int getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	public int getTotal() {
+	public String getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(String total) {
 		this.total = total;
 	}
 

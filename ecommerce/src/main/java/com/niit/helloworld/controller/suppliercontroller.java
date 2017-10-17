@@ -102,8 +102,7 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		
 		return mv1;
 	}
-	
-	
+
 	
 	
 	//for adding supplier

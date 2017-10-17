@@ -31,6 +31,20 @@ function biograph(e) {
 </script>
 <style>
 
+.jumbotron {
+background: #358CCE;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 24px;
+padding-bottom: 24px; }
+.jumbotron small {
+color: #FFF;
+}
+.h1 small {
+font-size: 24px;
+}
+
 html, body {
   padding:0;
   margin:0;
@@ -193,63 +207,156 @@ html, body {
 
 </style>
 <body>
+
+    <jsp:include page="header.jsp" />  
+<center><h1>OUR TEAM</h1></center>
 <div class="about__section"> <!-- Specificity container -->
-<a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('http://placekitten.com/254/254');"></div>
+<a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
   <div class="about__info">
-  <h4 class="name">Koby Conrad</h4>
+  <h4 class="name">Kiran ouseph</h4>
   <h5 class="title">Chief Executive Officer</h5>
   </div>
-  <div class="bioText">Koby Conrad is a lorem ipsum dalor set amet consectur adipscing.<br><br>f g+ tw li</div>
+  <div class="bioText"><br><br></div>
   
-  </div></a><a href="javascript:void(0);" title="Nicholas Butler - CTO"><div class="about__slot bio">
-    <div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('http://dizin.x10.bz/codepen/yJQzdy/n_butler-bg.jpg');"></div>
-  
+  </div></a><a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
   <div class="about__info">
-  <h4 class="name">Nicholas Butler</h4>
-  <h5 class="title">Chief Technology Officer</h5>
+  <h4 class="name">Kiran ouseph</h4>
+  <h5 class="title">Chief Executive Officer</h5>
   </div>
-    <div class="bioText">Nicholas Butler is a full stack developer, graphic designer, and entrepreneur.<br><br>f g+ tw li</div>
+  <div class="bioText"><br><br></div>
   
-  
-  </div></a><a href="javascript:void(0);" title="Riley Brunet - Creative Director"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('http://placekitten.com/224/224');"></div>
+  </div></a><a href="javascript:void(0);" title="Riley Brunet - Creative Director"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
   <div class="about__info">
-  <h4 class="name">Riley Brunett</h4>
+  <h4 class="name">Plavin Paul</h4>
   <h5 class="title">Creative Director</h5>
   </div>
-  <div class="bioText">Riley Brunett is a lorem ipsum dalor set amet consectur adipscing.<br><br>f g+ tw li</div>
+  <div class="bioText"><br><br></div>
   
   </div></a><a href="javascript:void(0);" title="Harbor Neher - Account Manager"><div class="about__slot">
-    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('http://placekitten.com/326/326');"></div>
+    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
   
   <div class="about__info">
-  <h4 class="name">Harbor Neher</h4>
+  <h4 class="name">Hrishikesh </h4>
   <h5 class="title">Account Manager</h5>
   </div>
-      <div class="bioText">Harbor Neher is a lorem ipsum dalor set amet consectur adipscing.<br><br>f g+ tw li</div>
+      <div class="bioText">.<br><br></div>
   
   </div></a><a href="javascript:void(0);" title="Sarah Spoja - CTO"><div class="about__slot">
-    <div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('http://placekitten.com/284/284');"></div>
+    <div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
   
   <div class="about__info">
-  <h4 class="name">Sarah Spoja</h4>
+  <h4 class="name">Sonu Soman</h4>
   <h5 class="title">Staff Writer</h5>
   </div>
-    <div class="bioText">Sarah Spoja is a lorem ipsum dalor set amet consectur adipscing.<br><br>f g+ tw li</div>
+    <div class="bioText"><br><br></div>
   
   
   </div></a><a href="javascript:void(0);" title="Malik Ali - Account Manager"><div class="about__slot">
-    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('http://placekitten.com/294/294');"></div>
+    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
   
   <div class="about__info">
-  <h4 class="name">Malik Ali</h4>
+  <h4 class="name">Shiphia philip</h4>
   <h5 class="title">Account Manager</h5>
   </div>
-      <div class="bioText">Malik Ali is a lorem ipsum dalor set amet consectur adipscing.<br><br>f g+ tw li</div>
+      <div class="bioText"><br><br></div>
+  
+  </div></a>
+ <a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
+  <div class="about__info">
+  <h4 class="name">Kiran ouseph</h4>
+  <h5 class="title">Chief Executive Officer</h5>
+  </div>
+  <div class="bioText"><br><br></div>
+  
+  </div></a>
+  <a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
+  <div class="about__info">
+  <h4 class="name">Lovely ps</h4>
+  <h5 class="title">Chief Executive Officer</h5>
+  </div>
+  <div class="bioText"><br><br></div>
   
   </div></a>
   
   </div>
-
-
+<br>
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Contact us <small>Feel free to contact us</small></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form >
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" name="email"class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">General Customer Service</option>
+                                <option value="suggestions">Suggestions</option>
+                                <option value="product">Product Support</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea name="message" id="message" name="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+            <address>
+                <strong>Niit ltd</strong><br>
+                Chandran Arcade <br>
+                Shornur road<br>
+                Thrissur<br>
+                <abbr title="Phone">
+                    P:</abbr>
+                (123) 456-7890
+            </address>
+            <address>
+                <strong>Full Name</strong><br>
+                <a href="mailto:#">first.last@example.com</a>
+            </address>
+            </form>
+        </div>
+    </div>
+</div>
+    <jsp:include page="footer.jsp" />  
 </body>
 </html>

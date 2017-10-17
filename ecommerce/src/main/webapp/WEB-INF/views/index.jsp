@@ -189,34 +189,7 @@ p.description_content{
         
         
         
-  @bg: #2d2d37; // Dark blue
-@primary: #fd6b21; // Orange
-
-body { background: @bg;}
-a { color: white; text-decoration: none; }
-
-.arrow {
-  text-align: center;
-  margin: 8% 0;
-}
-.bounce {
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}      
-        
+ 
         
         
         
@@ -354,7 +327,7 @@ interval: 2000
   
   <div class="carousel-inner">
     <div class="item active">
-       <img src="resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+       <img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
       <div class="container">
         <div class="carousel-caption">
         <h1>Share happiness with giftery gifts</h1>
@@ -370,7 +343,7 @@ interval: 2000
       <div class="container">
       <div class="row">
     <div class="col col-lg-6">
-      <img src="resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+      <img src="${pageContext.request.contextPath}/resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
     </div>
    <div class="col col-lg-6" style="margin-top:15%">
         
