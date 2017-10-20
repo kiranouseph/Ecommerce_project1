@@ -197,9 +197,9 @@ public class productcontroller {
 
 		 
 	
-		Product p=new Product();
+		Product p=pdao.getProdById(prid);
 		
-		p.setId(prid);
+		System.out.println("Previous Product Data : "+p);
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);
@@ -207,15 +207,17 @@ public class productcontroller {
 	
 		p.setCatnum(cat);
 		
-Category cc=new Category();
+		Category cc=new Category();
 		cc=cdao.getcatbyid(cat);
 		
 		
 		Subcategory scc=new Subcategory();
 		scc=scdao.getscatbyid(scat);
+		
 		int idd=scc.getId();
 		String na=scc.getSubcategoryname();
 		Subcategory sccc=new Subcategory();
+		
 		sccc.setId(idd);
 		sccc.setSubcategoryname(na);
 		sccc.setCategory(cc);
@@ -229,41 +231,41 @@ Category cc=new Category();
 	    p.setSupplier(sup);
 	    
 	    //no image uplaod use previous image
-	    if(file==null)
+	    System.out.println("In File : "+file.getOriginalFilename());
+	    if(file.getOriginalFilename()!="")
 	    	
 	    {
-	    Product imageret=new Product();
-	    imageret=pdao.getProdById(prid);
-	    System.err.println(imageret.getImage());
-	    String img=imageret.getImage();
-	    p.setImage(img);
-	    
-	    	
-	    	
-	    }
-	    
-	    //upload new image
-	    else
-	    {
-	    	 String img=file.getOriginalFilename();
-	 	    p.setImage(img);
-	 	   String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+file.getOriginalFilename();
-			
+	  
+	    String img=file.getOriginalFilename();
+ 	    p.setImage(img);
+ 	   String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/products/"+file.getOriginalFilename();
+		
 
-			try {
-				byte imagebyte[] = file.getBytes();
-				BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
-				fos.write(imagebyte);
-				fos.close();
-				} catch (IOException e) {
-				e.printStackTrace();
-				} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				}
+		try {
+			byte imagebyte[] = file.getBytes();
+			BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+			fos.write(imagebyte);
+			fos.close();
+			} catch (IOException e) {
+			e.printStackTrace();
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+    	
 	    	
 	    	
 	    }
+	   else
+	    {
+		    String img=p.getImage();
+	    	p.setImage(img);
+	    	System.err.println(p.getImage());
+	    }
+	    
+	    System.out.println(p);
+	   
+	  
 	    
 	   
 	    		pdao.updateproduct(p);

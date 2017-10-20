@@ -81,11 +81,14 @@ public class Product implements Serializable {
 		this.image = image;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", prodname=" + prodname + ", proddecs=" + proddecs + ", price=" + price
 				+ ", stock=" + stock + ", offer=" + offer + ", offerprice=" + offerprice + ", offerper=" + offerper
-				+ ", catnum=" + catnum + ", subcategory=" + subcategory + ", supplier=" + supplier + "]";
+				+ ", catnum=" + catnum + ", image=" + image + ", subcategory=" + subcategory + ", supplier=" + supplier
+				+ ", cart=" + cart + "]";
 	}
 
 	public int getOffer() {

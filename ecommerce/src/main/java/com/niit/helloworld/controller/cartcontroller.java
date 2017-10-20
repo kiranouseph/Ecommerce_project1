@@ -134,6 +134,7 @@ int flag=0,imp=0;
 		Cart ct=cartdao.getcartitembyid(imp);
 		int quant=ct.getQuantity();
 		quant=quant+1;
+		
 		cartdao.updatequan(imp,quant);
 	}
 	
@@ -161,6 +162,12 @@ cart.setQuantity(1);
 			
 		
 	}
+	Product p=new Product();
+	p=pdao.getProdById(id);
+	p.setStock(p.getStock()-1);
+	pdao.updateproduct(p);
+	
+	
 		
 		
 		
@@ -229,7 +236,11 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 }
 		 
 		
-	
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+		 
+			
+			mv1.addObject("catego",l);
 		return mv1;
 	
 	
@@ -242,8 +253,12 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		ModelAndView mv1 = new ModelAndView("cart");
 
-		Cart car =new Cart();
+		Cart car =cartdao.getcartitembyid(cartid);
 		
+	
+		Product pp=pdao.getProdById(prid);
+		pp.setStock(pp.getStock()-(quan-car.getQuantity()));
+		pdao.updateproduct(pp);
 		
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -256,7 +271,6 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		car.setProduct(p);
 		car.setPrice(p.getPrice());
 		cartdao.updatecartitem(car);
-		
 		
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 		 String namees = authent.getName();
@@ -278,6 +292,13 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			
 			cartt=cartdao.getcartitemsbyname(namees);
 			mv1.addObject("cartt", cartt);
+			
+			
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+			 
+			
+			mv1.addObject("catego",l);
 		return mv1;
 	
 	
@@ -293,7 +314,13 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	@RequestMapping("/cartdelete")
 	public ModelAndView cartdelete(@RequestParam("id") int cartid) {
 		
+	
+		Cart c=cartdao.getcartitembyid(cartid);
+		Product pp=pdao.getProdById(c.getProduct().getId());
+		pp.setStock(pp.getStock()+c.getQuantity());
+		pdao.updateproduct(pp);
 		cartdao.deletecartitem(cartid);
+		
 		ModelAndView mv1 = new ModelAndView("cart");
 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
@@ -363,8 +390,9 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		mv1.addObject("product",p);
 		mv1.addObject("num",num);
 		mv1.addObject("status",1);
-		
-		
+		Product pr=pdao.getProdById(id);
+		pr.setStock(pr.getStock()-num);
+		pdao.updateproduct(pr);
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 		 String namees = authent.getName();
@@ -382,7 +410,10 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 }
 		 
 		 
-		 mv1.addObject("addr",3); 
+		 mv1.addObject("bcon",0);
+		 mv1.addObject("scon",0);
+		 mv1.addObject("paycon",0);
+		 
 		return mv1;
 	}
 	
@@ -429,7 +460,10 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			total=total+(c.getPrice()*c.getQuantity());	
 			}
 		 mv1.addObject("total",total);
-		 mv1.addObject("addr",3);
+		 mv1.addObject("bcon",0);
+		 mv1.addObject("scon",0);
+		 mv1.addObject("paycon",0);
+	
 		return mv1;
 	}
 	

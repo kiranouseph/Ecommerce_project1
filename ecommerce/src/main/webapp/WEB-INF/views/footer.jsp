@@ -181,7 +181,7 @@ div.cont {
 
 
 <!--footer-->
-<footer class="footer1" style="margin-top:300px;text-align:center;bottom:0">
+<footer class="footer1" style="margin-top:150px;text-align:center;bottom:0">
 <div class="container">
 
 <div class="row"><!-- row -->

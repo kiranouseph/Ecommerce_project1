@@ -36,15 +36,11 @@ public class Order implements Serializable {
 	@Column(name = "Billingaddress", nullable = true) 
 	private String baddress;
 	
-	@Column(name = "prid", nullable = true)
-	private String prid;
-	@Column(name = "Quantity", nullable = true) 
-	private String quantity;
-	
-	@Column(name = "price", nullable =  true) 
-	private String price;
+
+
+
 	@Column(name = "total", nullable = true) 
-	private String total;
+	private int total;
 	
 	@Column(name = "cardnumber", nullable =  true) 
 	private int cardnumber;
@@ -66,8 +62,23 @@ public class Order implements Serializable {
 	private int paycon;
 	@Column(name = "placeconfirm", nullable =  true) 
 	private int placecon;
+	
+	public String getOrderdetails() {
+		return orderdetails;
+	}
+
+	public void setOrderdetails(String orderdetails) {
+		this.orderdetails = orderdetails;
+	}
+
 	@Column(name = "email", nullable =  true) 
 	private String email;
+	@Column(name = "orderdetails", nullable =  true) 
+	private String orderdetails;
+	
+	
+
+
 	public int getBcon() {
 		return bcon;
 	}
@@ -136,35 +147,12 @@ public class Order implements Serializable {
 
 	
 
-	public String getPrid() {
-		return prid;
-	}
 
-	public void setPrid(String prid) {
-		this.prid = prid;
-	}
-
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-	public String getTotal() {
+	public int getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(int total) {
 		this.total = total;
 	}
 

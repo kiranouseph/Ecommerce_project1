@@ -102,7 +102,7 @@ $(document).ready(function(){
             
             
            
-            <li><a href="./">Home</a></li>
+       
           
        
             
@@ -204,18 +204,13 @@ $(document).ready(function(){
 			
 			
                
-            <li><a href="#">Checkout</a></li>
-            </c:if>
+                      </c:if>
   <c:if test="${role == 'ROLE_USER'}"> 
   
    <li><a href="cart?name=${pageContext.request.userPrincipal.name}">Shopping cart</a></li>
   
   </c:if>
-   <c:if test="${pageContext.request.userPrincipal.name == null }">
-   
-    <li><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping cart</a></li>
-   
-   </c:if>
+  
             
 <c:if test="${pageContext.request.userPrincipal.name == null }">
             <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

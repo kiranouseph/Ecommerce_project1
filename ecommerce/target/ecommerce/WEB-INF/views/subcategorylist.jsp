@@ -126,7 +126,7 @@ $(".hover").mouseleave(
 
 
 
-<figure class="snip1581"><img src="resources/products/${designate.subcatimage}" alt="profile-sample2"/>
+<figure class="snip1581"><img src="resources/products/${designate.subcatimage}" alt="profile-sample2" style="width:100%;height:100%"/>
   <figcaption>
     
     <h3 class="title2" style="color:black;">${designate.subcategoryname }</h3>

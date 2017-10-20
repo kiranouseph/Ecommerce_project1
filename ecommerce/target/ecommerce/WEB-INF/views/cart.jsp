@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -54,8 +55,12 @@
 <%@ include file = "header.jsp" %>
 <body>
 
-  
+<c:if test="${fn:length(cartt) eq 0}">
 
+<h2>NO PRODUCTS IN YOUR CART PLEASE ADD AND COME BACK</h2>
+
+</c:if>
+<c:if test="${fn:length(cartt) ge 1}">
 <div class="container">
 	<table id="cart"  style="color:black;border-collapse: separate;
     border-spacing: 10px ;" >
@@ -88,7 +93,7 @@
 							</td>
 							<td data-th="Price">${design.price }</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="${design.quantity }">
+								<input type="number" class="form-control text-center" value="${design.quantity }" readonly>
 							</td>
 							<td data-th="Subtotal" class="text-center">${design.price*design.quantity }</td>
 							<td>
@@ -116,6 +121,7 @@
 					</tfoot>
 				</table>
 </div>
+</c:if>
 <%@ include file = "footer.jsp" %>
 </body>
 </html>

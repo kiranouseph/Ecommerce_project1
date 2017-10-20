@@ -17,6 +17,106 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<style>
+
+html {
+  font-family: "Abel", sans-serif;
+  color: #FFF;
+  
+}
+
+
+
+#overlay {
+  background:white;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#info {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+
+  width: 90%;
+  max-width: 400px;
+  padding: 40px;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 1s;
+  z-index: 99;
+ 
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+#info button:hover {
+  color: #999;
+}
+
+#info label#close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  margin: 15px;
+  font-size: 1.6em;
+    color:black;
+  cursor: pointer;
+  
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"][id="open"]:checked ~ #overlay {
+  opacity: .8;
+  z-index: 98;
+}
+
+input[type="radio"][id="open"]:checked ~ #info {
+  visibility: visible;
+  opacity: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+#button {
+ 
+ 
+  color:black;
+  cursor: pointer;
+ 
+}
+
+
+</style>
+
 </head>
 <body>
     <jsp:include page="header.jsp" />  
@@ -73,7 +173,26 @@
                 </div>
                 <div class="panel-footer">
                     Not Registered? <a href="signup" >Register here</a><br>
-                    Supplier first login? <a href="supd" >Register here</a></div>
+                    
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<div id="wrapper">
+  <input type="radio" id="open" name="popup">
+  <input type="radio" id="close" name="popup">
+  <div id="popup">
+    <label id="button" for="open">New supplier here</label>
+  </div>
+  <div id="overlay"></div>
+  <div id="info">
+    <h1>Welcome supplier</h1>
+   As per the discussions we made earlier we are glad to sell your products through our online platform giftery.You have been recieved an email containing a password and you can login in normal login screen with your provided email and recieved password .And then will be redirected to a change password and you should change it at the first login.Any violation to the rules and policy of giftery will result in the termination of your account
+   <br>
+   <a href="supd"><button class="btn btn-success btn-sm" style="width:100%">LOGIN</button></a>  
+    
+    <label id="close" for="close"><i class="fa fa-times-circle fa-lg"></i></label>
+  </div>
+</div>
+
             </div>
         </div>
     </div>

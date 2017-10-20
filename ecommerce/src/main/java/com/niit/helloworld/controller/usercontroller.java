@@ -791,13 +791,13 @@ public class usercontroller {
 		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
 		mv1.addObject("list",sup);
 		mv1.addObject("status",4);
-		mv1.addObject("msg","This supplier provides some products you cant delete");
+		mv1.addObject("msg","deleted successfully");
 	}
 	catch(Exception e)
 	{		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
 	mv1.addObject("list",sup);
 	mv1.addObject("status",4);
-		mv1.addObject("msg","This product is in a someones cart you cant delete");
+		mv1.addObject("msg","This supplier provides some products you cant delete");
 	}
 	}
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -110,28 +111,15 @@ $(document).ready(function() {
         <div class="col-lg-10 bhoechie-tab-container">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
               <div class="list-group">
-                
-                <a href="#" class="list-group-item active text-center">
-                  
-                  <h2>BILLING ADDRESS</h2> 
-                  
-                  
-                </a>
-                <a href="#" class="list-group-item text-center">
-                
-                  <h2>SHIPPING  ADDRESS</h2>
-                  
-                </a>
-                <a href="#" class="list-group-item text-center">
+           
+                <a href="#" class="list-group-item active  text-center"><h2>BILLING ADDRESS</h2></a>
+                <a href="#" class="list-group-item text-center"><h2>SHIPPING  ADDRESS</h2></a>
+                <a href="#" class="list-group-item text-center"><h2>PAYMENT</h2> </a>
+                <a href="#" class="list-group-item  text-center"><h2>CONFIRM ORDER</h2> </a>
+          
                
-               <h2>PAYMENT</h2>
                
-                </a>
-                <a href="#" class="list-group-item text-center">
                
-               <h2>CONFIRM ORDER</h2>
-               
-                </a>
                
               </div>
             </div>
@@ -150,8 +138,27 @@ $(document).ready(function() {
                
                 <div class="panel-body">
                 
-               <c:if test="${addr == 1 || addr == 2 || addr==3}">
-                    <form class="form-horizontal" role="form" method="post" action="badd" >
+               <c:if test="${bcon==1}">
+                    
+                    <h3>THE billing address you provided</h3>
+                    <p>${orde.baddress}</p>
+                    
+                    
+                    
+                    
+                    
+                    </c:if>
+                    
+                    
+                    
+                    
+                    
+                     <c:if test="${bcon == 0}">
+                    
+                    
+                    
+                    
+                     <form class="form-horizontal" role="form" method="post" action="badd" >
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label" >
                             Name</label>
@@ -163,21 +170,21 @@ $(document).ready(function() {
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 1</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="add1"  name="add1" placeholder="Your mobile number"  required>
+                            <input type="text" class="form-control" id="mobno"  name="add1" placeholder="Address line 1"   required>
                         </div>
                     </div>
                    <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="add2"  name="add2" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="add2" placeholder="Address line 2"   required>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             City/Town</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="city"  name="city" placeholder="Your mobile number"  required>
+                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City/town"   required>
                         </div>
                     </div>
                     
@@ -186,7 +193,7 @@ $(document).ready(function() {
                            State / Province / Region
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="state/ region/ provice"   required>
                         </div>
                     </div>
                     
@@ -195,7 +202,7 @@ $(document).ready(function() {
                             Zip / Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Your mobile number"   required>
+                            <input type="number" class="form-control" id="mobno"  name="pin" placeholder="Zip/Postal code"  required>
                         </div>
                     </div>
                     
@@ -210,8 +217,14 @@ $(document).ready(function() {
 
                         </div>
                     </div>
+                    
+                    
+                    
+                    
+                    
                     </form>
                     </c:if>
+                    
                 </div>
                
             </div>
@@ -235,8 +248,24 @@ $(document).ready(function() {
             <div class="panel panel-default">
                
                 <div class="panel-body">
-                 <c:if test="${addr == 2 || addr==3}">
-                    <form class="form-horizontal" role="form" method="post" action="sadd" >
+                 <c:if test="${scon==1}}">
+                   
+             <h3>THE shipping address you provided</h3>
+                    <p>${orde.saddress}</p>
+            
+            
+            
+                    </c:if>
+                    
+                    
+                     <c:if test="${scon==0}">
+                   
+            
+            
+            
+            
+            
+             <form class="form-horizontal" role="form" method="post" action="sadd" >
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label" >
                             Name</label>
@@ -248,21 +277,21 @@ $(document).ready(function() {
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 1</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="add1" placeholder="Address line 1"   required>
                         </div>
                     </div>
                    <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             Address line 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="add2" placeholder="Address line 2"   required>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
                             City/Town</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City/town"   required>
                         </div>
                     </div>
                     
@@ -271,7 +300,7 @@ $(document).ready(function() {
                            State / Province / Region
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"   required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="State/province/region"   required>
                         </div>
                     </div>
                     
@@ -280,7 +309,7 @@ $(document).ready(function() {
                             Zip / Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  required>
+                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Zip/postalcode"  required>
                         </div>
                     </div>
                     
@@ -295,6 +324,9 @@ $(document).ready(function() {
 
                         </div>
                     </div>
+                    
+                    
+                    
                     </form>
                     </c:if>
                 </div>
@@ -326,8 +358,25 @@ $(document).ready(function() {
                     </div>                    
                 </div>
                 <div class="panel-body">
-                 <c:if test="${addr==3}">
-                    <form role="form" id="payment-form" method="POST" action="pay">
+                 <c:if test="${paycon==1}"> 
+ 
+ 
+  <h3>THE payment details you provided</h3>
+                    <p>CV NUMBER            ${orde.cvnumber}</p>
+                    <p>CARD NUMBER          ${orde.cardnumber }</p>
+                    <p>CARD EXPIRY DATE     ${orde.expdate }</p>
+                    <p>COUPEN CODE          ${orde.ccode }</p>
+ 
+ 
+ 
+                    </c:if>
+                    
+                    
+                    
+                    <c:if test="${paycon==0}">
+ 
+ 
+ <form role="form" id="payment-form" method="POST" action="pay">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -377,23 +426,30 @@ $(document).ready(function() {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="couponcod">COUPON CODE</label>
-                                    <input type="text" class="form-control" name="couponcode" />
+                                    <label for="couponcode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="coupencode" />
                                 </div>
                             </div>                        
                         </div>
-                        <div class="row">
+                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
-                            </div>
+                                <div class="form-group">
+                                   
+                                    <button type="submit" class="btn btn-success btn-sm">
+                               SUBMIT</button>
+                                </div>
+                            </div>                        
                         </div>
-                        <div class="row" style="display:none;">
-                            <div class="col-xs-12">
-                                <p class="payment-errors"></p>
-                            </div>
-                        </div>
+                       
+                       
                     </form>
+ 
+ 
+ 
                     </c:if>
+                    
+                    
+                    
                 </div>
             </div>            
             <!-- CREDIT CARD FORM ENDS HERE -->
@@ -486,13 +542,13 @@ $(document).ready(function() {
 <tr><td><input type="checkbox">
                                    CONFIRM(Cannot be undone)</td></tr>
                                    
-                                     <c:if test="${ord.bcon==0 || ord.scon==0 || order.paycon==0}">
+                                     <c:if test="${bcon==0 || scon==0 || paycon==0}">
                                    
-                                   <tr><td> <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; cursor: not-allowed"></td></tr>
+                                   <tr><td> <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; cursor: not-allowed" readonly></td></tr>
                                    </c:if>
-                                        <c:if test="${ord.bcon==1 && ord.scon==1 && order.paycon==1}">
+                                        <c:if test="${bcon==1 && scon==1 && paycon==1}">
                                    
-                                   <tr><td> <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; "></td></tr>
+                                   <tr><td> <a href="placeorder"><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="PLACE ORDER" style="width:100%; "></a></td></tr>
                                    </c:if>
 </table>
   

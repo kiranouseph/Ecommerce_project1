@@ -14,6 +14,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    function check() {
+        var quan = document.getElementById("quant").value;
+        var stock = document.getElementById("stock").value;
+        if (quan > stock) {
+        	 document.getElementById("error").innerHTML = "The requested quantity not available";
+            return false;
+        }
+        return true;
+    }
+</script>
   <style>
   ul {
   list-style-type: none;
@@ -74,7 +85,13 @@ table { border-collapse: separate; border-spacing: 5px; }
                      <div class="single-product-details">
                        
                         <h2>${prod.prodname}</h2>
+                       <c:if test="${prod.stock == 0}">
+                       <p style="color:red">OUT OF STOCK</p>
+                       </c:if> 
+                        
+                       <c:if test="${prod.stock != 0}">  
                       <h4>${prod.stock} left</h4>
+                      </c:if>
                         <p>${prod.proddecs}</p>
                         <div class="single-product-price">
                         <c:if test="${prod.offer eq 1}">
@@ -95,16 +112,29 @@ table { border-collapse: separate; border-spacing: 5px; }
                         </div>
                         
                         <table>
-                        <tr><td><a href="addcart?id=${prod.id}"><button type="button" class="btn btn-success">ADD TO CART</button></a></td>
+                        
+                        <tr>
+                         <c:if test="${prod.stock eq 0}">
+                        <td><a href="addcart?id=${prod.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="button" value="ADDTO CART" style="cursor: not-allowed" readonly></a></td>
+                        </c:if>
+                        
+                        
+                         <c:if test="${prod.stock ge 1}">
+                        <td><a href="addcart?id=${prod.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="button" value="ADD TO CART" ></a></td>
+                        </c:if>
+                        
+                        
+                        
                         </tr>
                        </table>
                        <form action="buynow">
-                            <input type="number" name="number" value=1>
+                            <input type="number" name="number" value=1 id="quant">
 
-<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUYNOW" >
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUYNOW" onclick="return check()">
  <input type="hidden" name="id" value="${prod.id}">
+<input type="hidden" name="stock" value="${prod.stock}" id="stock"> 
                         </form>
-                        
+                         <p id="error"></p>
                        
                         <div class="add-to-wishlist">
                            <a class="wish-btn" href="cart.html?ref=designcollection">
