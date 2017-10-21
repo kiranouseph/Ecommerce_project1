@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.sql.Date;
 
 @Entity
 @Component
@@ -42,18 +43,7 @@ public class Order implements Serializable {
 	@Column(name = "total", nullable = true) 
 	private int total;
 	
-	@Column(name = "cardnumber", nullable =  true) 
-	private int cardnumber;
 	
-	@Column(name = "cvnumber", nullable =  true) 
-	private int cvnumber;
-	
-	
-	@Column(name = "expdate", nullable =  true) 
-	private int expdate;
-	
-	@Column(name = "couponcode", nullable =  true) 
-	private int ccode;
 	@Column(name = "bconfirm", nullable =  true) 
 	private int bcon;
 	@Column(name = "sconfirm", nullable =  true) 
@@ -75,9 +65,34 @@ public class Order implements Serializable {
 	private String email;
 	@Column(name = "orderdetails", nullable =  true) 
 	private String orderdetails;
+	@Column(name = "cartdetails", nullable =  true) 
+	private String carddetaisl;
+	@Column(name = "delivered", nullable =  true) 
+	private int delivered;
+
+	
 	
 	
 
+
+
+
+
+	public String getCarddetaisl() {
+		return carddetaisl;
+	}
+
+	public int getDelivered() {
+		return delivered;
+	}
+
+	public void setDelivered(int delivered) {
+		this.delivered = delivered;
+	}
+
+	public void setCarddetaisl(String carddetaisl) {
+		this.carddetaisl = carddetaisl;
+	}
 
 	public int getBcon() {
 		return bcon;
@@ -156,37 +171,7 @@ public class Order implements Serializable {
 		this.total = total;
 	}
 
-	public int getCardnumber() {
-		return cardnumber;
-	}
-
-	public void setCardnumber(int cardnumber) {
-		this.cardnumber = cardnumber;
-	}
-
-	public int getCvnumber() {
-		return cvnumber;
-	}
-
-	public void setCvnumber(int cvnumber) {
-		this.cvnumber = cvnumber;
-	}
-
-	public int getExpdate() {
-		return expdate;
-	}
-
-	public void setExpdate(int expdate) {
-		this.expdate = expdate;
-	}
-
-	public int getCcode() {
-		return ccode;
-	}
-
-	public void setCcode(int ccode) {
-		this.ccode = ccode;
-	}
+	
 
 	
 	

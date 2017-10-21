@@ -227,7 +227,7 @@ left: 35%;
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<section>
+<section style="background:#efefe9;">
         <div class="container">
             <div class="row">
                
@@ -236,19 +236,19 @@ left: 35%;
                     <ul class="nav nav-tabs" id="myTab">
                    
                      <li>
-                     <a href="" title="Shipping Detail">
+                     <a href="#home" title="Shipping Detail">
                       <span class="round-tabs one">
                               <i class="glyphicon glyphicon-home"></i>
                       </span> 
                   </a></li>
 
-                  <li ><a href="">
+                  <li ><a href="#profile">
                      <span class="round-tabs two">
                          <i class="glyphicon glyphicon-user"></i>
                      </span> 
            </a>
                  </li>
-                 <li><a href=""  >
+                 <li><a href="#messages"  >
                      <span class="round-tabs three">
                           <i class="glyphicon glyphicon-gift"></i>
                      </span> </a>
@@ -274,7 +274,7 @@ left: 35%;
                           <h3 class="head text-center">Thank You!</h3>
        <div class="jumbotron text-xs-center">
  
-  <p class="lead" align="center"><strong>Please check your email</strong> for tracking your product</p>
+  <p class="lead" align="center"><strong>Please check your email</strong> for tracking your product.Details has been already send to your email</p>
   <hr>
   <p class="text-center">
                     <a href="./" class="btn btn-success btn-outline-rounded green"> continue shopping <span style="margin-left:10px;" class="glyphicon glyphicon-shopping-cart"></span></a>

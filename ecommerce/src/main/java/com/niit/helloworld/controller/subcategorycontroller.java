@@ -109,7 +109,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		ModelAndView mv1 = new ModelAndView("admin");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -149,7 +149,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 	@RequestMapping("/updatesubcategory")
 	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 	
-		ModelAndView mv1 = new ModelAndView("list");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3");
 		Subcategory sc=new Subcategory();
 		sc.setId(id);
 		sc.setSubcategoryname(name);
@@ -158,7 +158,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		sc.setCategory(c);
 		
 		//no image use previous  upload
-		if(file==null)
+		if(file.getOriginalFilename()=="")
 		{
 			Subcategory imageret=new Subcategory();
 			imageret=scdao.getscatbyid(id);

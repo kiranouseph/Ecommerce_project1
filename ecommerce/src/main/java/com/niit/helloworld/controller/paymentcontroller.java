@@ -1,6 +1,10 @@
 package com.niit.helloworld.controller;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -50,8 +54,8 @@ public class paymentcontroller {
 	@RequestMapping("/badd")
 	public ModelAndView badd(@RequestParam("name") String name,@RequestParam("add1") String add1,@RequestParam("add2") String add2,@RequestParam("city") String city,@RequestParam("state") String state,@RequestParam("pin") int pin)
 	{ModelAndView mv1=new ModelAndView("orderconfirm");
-		String badd=name+" "+add1+" "+add2+" "+city+" "+state+" "+pin;
-		System.err.println(badd);
+		String badd=name+","+add1+","+add2+","+city+","+state+","+pin;
+		
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 		 String namees = authent.getName();
 		 if(namees!="anonymousUser")
@@ -94,7 +98,7 @@ public class paymentcontroller {
 		or=odao.getorderbyemail(namees);
 		for(Order s:or)
 		{
-			mv1.addObject("orde",s);
+			mv1.addObject("bill",s.getBaddress());
 			mv1.addObject("bcon",s.getBcon());
 			mv1.addObject("scon",s.getScon());
 			mv1.addObject("paycon",s.getPaycon());
@@ -116,7 +120,7 @@ public class paymentcontroller {
 	@RequestMapping("/sadd")
 	public ModelAndView sadd(@RequestParam("name") String name,@RequestParam("add1") String add1,@RequestParam("add2") String add2,@RequestParam("city") String city,@RequestParam("state") String state,@RequestParam("pin") int pin)
 	{ModelAndView mv1=new ModelAndView("orderconfirm");
-		String sadd=name+" "+add1+" "+add2+" "+city+" "+state+" "+pin;
+		String sadd=name+","+add1+","+add2+","+city+","+state+","+pin;
 		
 	
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
@@ -152,7 +156,9 @@ public class paymentcontroller {
 		orr=odao.getorderbyemail(namees);
 		for(Order s:orr)
 		{
-			mv1.addObject("orde",s);
+			mv1.addObject("bill",s.getBaddress());
+			mv1.addObject("ship",s.getSaddress());
+			System.err.println(s.getSaddress());
 			mv1.addObject("bcon",s.getBcon());
 			mv1.addObject("scon",s.getScon());
 			mv1.addObject("paycon",s.getPaycon());
@@ -185,7 +191,7 @@ int total=0;
 		@RequestMapping("/pay")
 		public ModelAndView pay(@RequestParam("cardnum") int cardnum,@RequestParam("cardexp") int cardexp,@RequestParam("cardcv") int cardcv,@RequestParam("coupencode") int coupencode)
 		{ModelAndView mv1=new ModelAndView("orderconfirm");
-			
+			String card=cardnum+","+cardexp+","+cardcv+","+coupencode;
 			org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 			 String namees = authent.getName();
 			 if(namees!="anonymousUser")
@@ -208,10 +214,7 @@ int total=0;
 				for(Order s:or)
 				{
 					
-					s.setCardnumber(cardnum);
-					s.setCcode(coupencode);
-					s.setCvnumber(cardcv);
-					s.setExpdate(cardexp);
+					s.setCarddetaisl(card);
 					s.setPaycon(1);
 					odao.updateorder(s);
 				
@@ -224,7 +227,9 @@ int total=0;
 			orr=odao.getorderbyemail(namees);
 			for(Order s:orr)
 			{
-				mv1.addObject("orde",s);
+				mv1.addObject("bill",s.getBaddress());
+				mv1.addObject("ship",s.getSaddress());
+				mv1.addObject("paym",s.getCarddetaisl());
 				mv1.addObject("bcon",s.getBcon());
 				mv1.addObject("scon",s.getScon());
 				mv1.addObject("paycon",s.getPaycon());
@@ -277,6 +282,7 @@ int total=0;
 					
 					
 					s.setPlacecon(1);
+					s.setDelivered(0);
 					odao.updateorder(s);
 					
 					
@@ -288,16 +294,18 @@ int total=0;
 				
 				}	
 				
-				
+			int tota=0;
 				String name="";
+				String name1="";
 				ArrayList<Cart> cartt=new ArrayList<Cart>();
 				cartt=cartdao.getcartitemsbyname(namees);
 				for(Cart ca:cartt)
 				{
-					int tot=ca.getPrice()*ca.getQuantity();
-				name=name+"PRODUCT      :"+ca.getProduct().getProdname()+"PRICE       :"+ca.getPrice()+"QUANTITY     :"+ca.getQuantity()+"total    :"+tot+"--";
-					cartdao.deletecartitem(ca.getCartid());
-					
+				int tot=ca.getPrice()*ca.getQuantity();
+				name=name+"&nbsp&nbsp&nbsp"+ca.getProduct().getProdname()+"&nbsp&nbsp&nbsp"+ca.getPrice()+"rs"+"&nbsp&nbsp&nbsp"+ca.getQuantity()+"no's"+"&nbsp&nbsp&nbsp"+"Total"+tot+"<br>";
+				name1=name1+"       "+ca.getProduct().getProdname()+"         "+ca.getPrice()+"rs"+"       "+ca.getQuantity()+"no's"+"       "+"Total"+tot+"\n";
+				cartdao.deletecartitem(ca.getCartid());
+				tota=tota+tot;	
 				}
 			
 			
@@ -305,21 +313,20 @@ int total=0;
 				for(Order s:orr)
 				{
 					s.setOrderdetails(name);
+					
 					odao.updateorder(s);
 				}
 			
-			System.err.println(name);
+		
 			
 			ArrayList<Order> orrd=odao.getorderbyemail(namees);
 			mv1.addObject("orrdd",orrd);
-			
-			 /*SimpleMailMessage emaill = new SimpleMailMessage();
-		        emaill.setTo(namees);
-		        emaill.setSubject("Placed order ");
-		        emaill.setText(bill+"\n"+ship+"\n"+name);
-		        // sends the e-mail
-		        sendmail.send(emaill);
-			    */
+			SimpleMailMessage emaill = new SimpleMailMessage();
+		    emaill.setTo(namees);
+		    emaill.setSubject("YOUR ORDER IS PLACED");
+		    emaill.setText("YOUR ORDERE FOR\n"+name1+"\n is placed and the total amount is"+ tota);
+		    // sends the e-mail
+		    sendmail.send(emaill);
 			return mv1;
 		
 	}

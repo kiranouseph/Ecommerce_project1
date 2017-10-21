@@ -145,7 +145,7 @@ public class productcontroller {
 
 		
 		
-		ModelAndView mv1 = new ModelAndView("admin");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -186,7 +186,7 @@ public class productcontroller {
 	//for updating product
 	@RequestMapping("/updateproduct")
 	public ModelAndView updateproduct(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
-		ModelAndView mv1 = new ModelAndView("list");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1");
 		
 		
 		

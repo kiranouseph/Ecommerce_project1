@@ -53,7 +53,7 @@
   </head>
 <body>
 <%@ include file = "header.jsp" %>
-<body>
+
 
 <c:if test="${fn:length(cartt) eq 0}">
 

@@ -144,7 +144,7 @@ String n="";
 		    
 		
 		
-		ModelAndView mv1 = new ModelAndView("admin");
+		ModelAndView mv1 = new ModelAndView("redirect;/list?num=4");
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		
@@ -189,7 +189,7 @@ String n="";
 	@RequestMapping("/updatesupplier")
 	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc) {
 	
-		ModelAndView mv1 = new ModelAndView("list");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4");
 	Supplier s= new Supplier();
 	s.setId(id);
 	s.setSuppname(name);

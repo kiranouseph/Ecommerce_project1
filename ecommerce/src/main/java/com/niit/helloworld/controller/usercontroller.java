@@ -732,7 +732,7 @@ public class usercontroller {
 		ArrayList<Category> c=new ArrayList<Category>();
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
 		ArrayList<Supplier> sup=new ArrayList<Supplier>();
-		ModelAndView mv1 = new ModelAndView("list");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num="+num);
 		if(num==1)
 	{
 			try

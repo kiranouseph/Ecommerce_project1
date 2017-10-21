@@ -141,8 +141,71 @@ $(document).ready(function() {
                <c:if test="${bcon==1}">
                     
                     <h3>THE billing address you provided</h3>
-                    <p>${orde.baddress}</p>
+                    <%
+String bill=(String)request.getAttribute("bill");
+
+String[] billadd=bill.split(",");
+
+%>
+ <form class="form-horizontal" role="form"  >
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label" >
+                            Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" name="name" value="<%=billadd[0] %>"  required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Address line 1</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="add1" value="<%=billadd[1] %>"  required readonly>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Address line 2</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="add2" value="<%=billadd[2] %>"   required readonly>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            City/Town</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="city"    value="<%=billadd[3] %>" required readonly>
+                        </div>
+                    </div>
                     
+                     <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                           State / Province / Region
+</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="state"value="<%=billadd[4] %>"  required readonly >
+                        </div>
+                    </div>
+                    
+                          <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Zip / Postal Code
+</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="mobno"  name="pin" value="<%=billadd[5] %>"  required readonly>
+                        </div>
+                    </div>
+                    
+                 
+                  
+                  
+                
+                    
+                    
+                    
+                    
+                    </form>
+
+
                     
                     
                     
@@ -163,7 +226,7 @@ $(document).ready(function() {
                         <label for="name" class="col-sm-3 control-label" >
                             Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required >
                         </div>
                     </div>
                     <div class="form-group">
@@ -182,27 +245,27 @@ $(document).ready(function() {
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                            City/Town</label>
+                            City</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City/town"   required>
+                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City"   required>
                         </div>
                     </div>
                     
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                           State / Province / Region
+                           State 
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="state/ region/ provice"   required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="state"   required>
                         </div>
                     </div>
                     
                           <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                            Zip / Postal Code
+                             Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="mobno"  name="pin" placeholder="Zip/Postal code"  required>
+                            <input type="number" class="form-control" id="mobno"  name="pin" placeholder="Postal code"  required>
                         </div>
                     </div>
                     
@@ -250,9 +313,70 @@ $(document).ready(function() {
                 <div class="panel-body">
                  <c:if test="${scon==1}}">
                    
-             <h3>THE shipping address you provided</h3>
-                    <p>${orde.saddress}</p>
+                                <%
+String ship=(String)request.getAttribute("ship");
+
+String[] shipadd=ship.split(",");
+
+%>
             
+<form class="form-horizontal" role="form"  >
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label" >
+                            Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" name="name" value="<%=shipadd[0] %>"  required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Address line 1</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="add1" value="<%=shipadd[1] %>"  required readonly>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Address line 2</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="add2" value="<%=shipadd[2] %>"   required readonly>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            City</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="city"    value="<%=shipadd[3] %>" required readonly>
+                        </div>
+                    </div>
+                    
+                     <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                           State
+</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobno"  name="state" value="<%=shipadd[4] %>"  required readonly >
+                        </div>
+                    </div>
+                    
+                          <div class="form-group">
+                        <label for="mobno" class="col-sm-3 control-label">
+                            Postal Code
+</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="mobno"  name="pin" value="<%=shipadd[5] %>"  required readonly>
+                        </div>
+                    </div>
+                    
+                 
+                  
+                  
+                
+                    
+                    
+                    
+                    
+                    </form>
             
             
                     </c:if>
@@ -289,27 +413,27 @@ $(document).ready(function() {
                     </div>
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                            City/Town</label>
+                            City</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City/town"   required>
+                            <input type="text" class="form-control" id="mobno"  name="city" placeholder="City"   required>
                         </div>
                     </div>
                     
                      <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                           State / Province / Region
+                           State
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="State/province/region"   required>
+                            <input type="text" class="form-control" id="mobno"  name="state" placeholder="State"   required>
                         </div>
                     </div>
                     
                           <div class="form-group">
                         <label for="mobno" class="col-sm-3 control-label">
-                            Zip / Postal Code
+                             Postal Code
 </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="Zip/postalcode"  required>
+                            <input type="text" class="form-control" id="mobno"  name="pin" placeholder="postalcode"  required>
                         </div>
                     </div>
                     
@@ -362,11 +486,82 @@ $(document).ready(function() {
  
  
   <h3>THE payment details you provided</h3>
-                    <p>CV NUMBER            ${orde.cvnumber}</p>
-                    <p>CARD NUMBER          ${orde.cardnumber }</p>
-                    <p>CARD EXPIRY DATE     ${orde.expdate }</p>
-                    <p>COUPEN CODE          ${orde.ccode }</p>
- 
+                                  <%
+String paym=(String)request.getAttribute("paym");
+
+String[] paymadd=paym.split(",");
+
+%>
+<form role="form" id="payment-form" method="POST" action="pay">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardnum"
+                                           value="<%=paymadd[0] %>"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        name="cardexp"
+                                       value="<%=paymadd[1] %>"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardcv"
+                                      value="<%=paymadd[2] %>"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponcode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="coupencode" value="<%=paymadd[3] %>"  />
+                                </div>
+                            </div>                        
+                        </div>
+                         <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                   
+                                    <button type="submit" class="btn btn-success btn-sm">
+                               SUBMIT</button>
+                                </div>
+                            </div>                        
+                        </div>
+                       
+                       
+                    </form>
+
+
+                   
  
  
                     </c:if>
@@ -470,45 +665,52 @@ $(document).ready(function() {
                    <!-- train section -->
                 <div class="bhoechie-tab-content">
                  
-                                  <c:if test="${status eq 1}">
+     <c:if test="${bcon==1 && scon==1 && paycon==1}">               
+                  <%
+String bill=(String)request.getAttribute("bill");
 
+String[] billadd=bill.split(",");
+
+%>
+<%
+String ship=(String)request.getAttribute("ship");
+
+String[] shipadd=ship.split(",");
+
+%>
+                                  <div class="container">
+  <div class="row">
+    <div class="col-md-3">
 <table style="border-collapse: separate;
-    border-spacing: 50px ;cellspacing:25%">
-<tr>
-<th>Name</th>
-<th>price</th>
-<th>Quantity</th>
-<th>Total</th>
-</tr>
-<tr>
-<td>${product.prodname}</td>
-<td>${price}</td>
- 
-
-<td>${num }</td>
-
-<td>${num*price}</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>SUBTOTAL</td>
-<td>${num*price}</td>
-
-
-
-</tr>
-<tr><td><input type="checkbox">
-                                   CONFIRM(Cannot be undone)</td></tr>
-                                   <tr><td>  <a href="placeorder"><button class="subscribe btn btn-success btn-lg btn-block" type="button">Place order</button></a></td></tr>
-</table>
-
-
-
-</c:if>
+    border-spacing: 5px ;cellspacing:5%">
+<tr><td>Billing address</td></tr> 
+ <tr><td>Name   </td><td><%=billadd[0] %> </td></tr>
+   <tr><td>Address line 1   </td><td> <%=billadd[1] %>  </td></tr>
+   <tr><td>Address line 2   </td><td>  <%=billadd[2] %> </td></tr>
+   <tr><td>city   </td><td> <%=billadd[3] %>  </td></tr>
+   <tr><td>town   </td><td> <%=billadd[4] %>  </td></tr>
+   <tr><td>state   </td><td>  <%=billadd[5] %> </td></tr>
+   
+   </table> 
+       </div>
+    <div class="col-md-3">
+<table style="border-collapse: separate;
+    border-spacing:5px;cellspacing:5%">
+    <tr><td>Shipping address</td></tr> 
+       <tr><td>Name   </td><td><%=shipadd[0] %> </td></tr>
+   <tr><td>Address line 1   </td><td> <%=shipadd[1] %>  </td></tr>
+   <tr><td>Address line 2   </td><td>  <%=shipadd[2] %> </td></tr>
+   <tr><td>city   </td><td> <%=shipadd[3] %>  </td></tr>
+   <tr><td>town   </td><td> <%=shipadd[4] %>  </td></tr>
+   <tr><td>state   </td><td>  <%=shipadd[5] %> </td></tr>
+   
+   </table> 
+       </div>
+  </div>
+          </div>  
+    </c:if>
                  
-  <c:if test="${status eq 2}">
-  
+                                 
   
  
   <table style="border-collapse: separate;
@@ -555,7 +757,7 @@ $(document).ready(function() {
 
 
 
-</c:if>               
+         
                  
       
                  

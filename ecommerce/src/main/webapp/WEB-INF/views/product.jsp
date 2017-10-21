@@ -14,17 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    function check() {
-        var quan = document.getElementById("quant").value;
-        var stock = document.getElementById("stock").value;
-        if (quan > stock) {
-        	 document.getElementById("error").innerHTML = "The requested quantity not available";
-            return false;
-        }
-        return true;
-    }
-</script>
+
   <style>
   ul {
   list-style-type: none;
@@ -115,26 +105,30 @@ table { border-collapse: separate; border-spacing: 5px; }
                         
                         <tr>
                          <c:if test="${prod.stock eq 0}">
-                        <td><a href="addcart?id=${prod.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="button" value="ADDTO CART" style="cursor: not-allowed" readonly></a></td>
+                          
+                     
+                            
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADDTO CART" style="cursor: not-allowed" readonly >
+
+                          
+                         
                         </c:if>
                         
                         
                          <c:if test="${prod.stock ge 1}">
-                        <td><a href="addcart?id=${prod.id}"><input id="submit" class="btn btn-info btn-md" name="submit" type="button" value="ADD TO CART" ></a></td>
-                        </c:if>
+           <form action="addcart">
+                     <input type="number" name="quan" value=1 id="quant">
+                       <input id="prodId" name="id" type="hidden" value="${prod.id}">      
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD TO CART" >
+
+                        </form>                        </c:if>
                         
                         
                         
                         </tr>
                        </table>
-                       <form action="buynow">
-                            <input type="number" name="number" value=1 id="quant">
-
-<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="BUYNOW" onclick="return check()">
- <input type="hidden" name="id" value="${prod.id}">
-<input type="hidden" name="stock" value="${prod.stock}" id="stock"> 
-                        </form>
-                         <p id="error"></p>
+            
+                        
                        
                         <div class="add-to-wishlist">
                            <a class="wish-btn" href="cart.html?ref=designcollection">

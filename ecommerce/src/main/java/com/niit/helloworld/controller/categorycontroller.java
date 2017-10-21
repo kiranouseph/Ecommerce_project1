@@ -116,7 +116,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 			e.printStackTrace();
 			}
 
-		ModelAndView mv1 = new ModelAndView("admin");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=2");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -169,7 +169,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		c.setCategorydesc(catdesc);
 		
 		//if no image uplaoded use previos uploaded iamge
-		if(file==null)
+		if(file.getOriginalFilename()=="")
 		{
 			Category imageret=new Category();
 			imageret=cdao.getcatbyid(id);
@@ -203,7 +203,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 		cdao.updatecategory(c);
 		
 		
-		ModelAndView mv1 = new ModelAndView("list");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=2");
 		ArrayList<Category> cc=new ArrayList<Category>();
 
 		 cc=(ArrayList<Category>)cdao.getallcategories();

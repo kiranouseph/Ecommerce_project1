@@ -234,6 +234,8 @@ $(document).ready(function() {
        <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
          <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
+  <a href="orders">OFFERS</a><br><br>
+          
          
 				</div>
 				

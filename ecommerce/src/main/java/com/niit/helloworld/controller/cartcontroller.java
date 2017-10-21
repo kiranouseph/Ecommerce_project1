@@ -106,7 +106,7 @@ public class cartcontroller {
 	
 	//for adding items to cart 
 	@RequestMapping("/addcart")
-	public ModelAndView addcart(@RequestParam("id") int id)
+	public ModelAndView addcart(@RequestParam("id") int id,@RequestParam("quan") int quan)
 	{ 
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		 org.springframework.security.core.Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -133,7 +133,7 @@ int flag=0,imp=0;
 		
 		Cart ct=cartdao.getcartitembyid(imp);
 		int quant=ct.getQuantity();
-		quant=quant+1;
+		quant=quant+quan;
 		
 		cartdao.updatequan(imp,quant);
 	}
@@ -142,7 +142,7 @@ int flag=0,imp=0;
 	else
 	{
 		cart.setUsername(name);
-cart.setQuantity(1);
+cart.setQuantity(quan);
 		
 		
 		Product p=new Product();
@@ -164,14 +164,14 @@ cart.setQuantity(1);
 	}
 	Product p=new Product();
 	p=pdao.getProdById(id);
-	p.setStock(p.getStock()-1);
+	p.setStock(p.getStock()-quan);
 	pdao.updateproduct(p);
 	
 	
 		
 		
 		
-		ModelAndView mv1 = new ModelAndView("product");
+		ModelAndView mv1 = new ModelAndView("redirect:/prod?id="+id);
 		Product ll=new Product();
 		ll=pdao.getProdById(id);
 		
@@ -367,55 +367,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 
 	}
-	//for buying the product redirect to order confirm rather than entering to cart
-	@RequestMapping("/buynow")
-	public ModelAndView buynow(@RequestParam("number") int num,@RequestParam("id") int id)
-	{
-		
-		ModelAndView mv1 = new ModelAndView("orderconfirm");
-ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-		 
-		
-		mv1.addObject("catego",l);
-		Product p=pdao.getProdById(id);
-		if(p.getOffer()==1)
-		{
-			mv1.addObject("price",p.getOfferprice());	
-		}
-		else
-		{
-			mv1.addObject("price",p.getPrice());	
-		}
-		mv1.addObject("product",p);
-		mv1.addObject("num",num);
-		mv1.addObject("status",1);
-		Product pr=pdao.getProdById(id);
-		pr.setStock(pr.getStock()-num);
-		pdao.updateproduct(pr);
-		//for getting the email of the logined user and to find the role whether admni user or supplier
-		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-		 String namees = authent.getName();
-		 if(namees!="anonymousUser")
-		 {
-		 ArrayList<User> userer=udao.getUserByUsername(namees);
-		 for(User u:userer)
-		 {
-			 mv1.addObject("role", u.getRole());
-		 }
-		 }
-		 else
-		 {
-			 mv1.addObject("role","ROLE_USER");
-		 }
-		 
-		 
-		 mv1.addObject("bcon",0);
-		 mv1.addObject("scon",0);
-		 mv1.addObject("paycon",0);
-		 
-		return mv1;
-	}
+	
 	
 
 	@RequestMapping("/checkout")
