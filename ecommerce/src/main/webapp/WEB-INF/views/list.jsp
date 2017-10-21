@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Listing</title>
 <style>
+
+
+
+
+
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
     font-color:black;
@@ -78,8 +83,8 @@
 <h1 style="text-align:center">LIST OF SUPPLIERS</h1>
 </c:if>
 
-<h1 style="text-align:center">${msg}</h1>
 
+<font size="10" color="red">${msg }</font>
 
 
 
@@ -112,9 +117,13 @@
 									<div class="col-sm-4 "><img src="${pageContext.request.contextPath}/resources/products/${designate.image}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.prodname}</h4>
-										<p>
-    
-										</p>	</div>
+										<h4 class="nomargin">Price       :${designate.price}</h4>
+										<h4 class="nomargin">Description :${designate.proddecs}</h4>
+										<h4 class="nomargin">Subcategory : ${designate.subcategory.subcategoryname}</h4>
+										<h4 class="nomargin">Category    :${designate.subcategory.category.categoryname}</h4>
+										
+										
+										</div>
 								</div>
 							</td>
 							 <td>
@@ -141,6 +150,7 @@
 									<div class="col-sm-4 "><img src="${pageContext.request.contextPath}/resources/products/${designate.catimage}" alt="Chania" width="200" height="200" class="img-responsive"/></div>
 									<div class="col-sm-8">
 										<h4 class="nomargin">${designate.categoryname}</h4>
+										<h4 class="nomargin">Description:${designate.categorydesc}</h4>
 										<p>
     
 										</p>	</div>
@@ -199,6 +209,8 @@
 									
 									<div class="col-sm-12">
 										<h4 class="nomargin">${designate.suppname}</h4>
+										<h4 class="nomargin">Address:${designate.suppdesc}</h4>
+										
 										<p>
     
 										</p>	</div>

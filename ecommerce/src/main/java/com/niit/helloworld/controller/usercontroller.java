@@ -732,7 +732,7 @@ public class usercontroller {
 		ArrayList<Category> c=new ArrayList<Category>();
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
 		ArrayList<Supplier> sup=new ArrayList<Supplier>();
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num="+num);
+		ModelAndView mv1 = new ModelAndView("list");
 		if(num==1)
 	{
 			try
@@ -747,7 +747,7 @@ public class usercontroller {
 				p=(ArrayList<Product>)pdao.getallproducts();
 			mv1.addObject("list",p);
 			mv1.addObject("status",1);
-				mv1.addObject("msg","This product is in a someones cart you cant delete");
+				mv1.addObject("msg","This product is in  someones cart you cant delete");
 			}
 	}
 	else if(num==2)
