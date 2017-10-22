@@ -211,21 +211,21 @@ html, body {
     <jsp:include page="header.jsp" />  
 <center><h1>OUR TEAM</h1></center>
 <div class="about__section"> <!-- Specificity container -->
-<a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
+<a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/kiran.jpg');"></div>
   <div class="about__info">
   <h4 class="name">Kiran ouseph</h4>
   <h5 class="title">Chief Executive Officer</h5>
   </div>
   <div class="bioText"><br><br></div>
   
-  </div></a><a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
+  </div></a><a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/jithin.jpg');"></div>
   <div class="about__info">
-  <h4 class="name">Kiran ouseph</h4>
+  <h4 class="name">Jithin Shaji</h4>
   <h5 class="title">Chief Executive Officer</h5>
   </div>
   <div class="bioText"><br><br></div>
   
-  </div></a><a href="javascript:void(0);" title="Riley Brunet - Creative Director"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
+  </div></a><a href="javascript:void(0);" title="Riley Brunet - Creative Director"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/plavin.jpg');"></div>
   <div class="about__info">
   <h4 class="name">Plavin Paul</h4>
   <h5 class="title">Creative Director</h5>
@@ -233,7 +233,7 @@ html, body {
   <div class="bioText"><br><br></div>
   
   </div></a><a href="javascript:void(0);" title="Harbor Neher - Account Manager"><div class="about__slot">
-    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
+    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/hrishi.jpg');"></div>
   
   <div class="about__info">
   <h4 class="name">Hrishikesh </h4>
@@ -252,7 +252,7 @@ html, body {
   
   
   </div></a><a href="javascript:void(0);" title="Malik Ali - Account Manager"><div class="about__slot">
-    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('');"></div>
+    <div class="headshot"  onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/shifia.jpg');"></div>
   
   <div class="about__info">
   <h4 class="name">Shiphia philip</h4>
@@ -261,9 +261,9 @@ html, body {
       <div class="bioText"><br><br></div>
   
   </div></a>
- <a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url("");"></div>
+ <a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/merin.jpg');"></div>
   <div class="about__info">
-  <h4 class="name">Kiran ouseph</h4>
+  <h4 class="name">Merin Grace Ben</h4>
   <h5 class="title">Chief Executive Officer</h5>
   </div>
   <div class="bioText"><br><br></div>
@@ -294,7 +294,7 @@ html, body {
     <div class="row">
         <div class="col-md-8">
             <div class="well well-sm">
-                <form >
+                <form action="contact">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -351,7 +351,7 @@ html, body {
             </address>
             <address>
                 <strong>Full Name</strong><br>
-                <a href="mailto:#">first.last@example.com</a>
+                <a href="mailto:#">kiranouseph@gmail.com</a>
             </address>
             </form>
         </div>

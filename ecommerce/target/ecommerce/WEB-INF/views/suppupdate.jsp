@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<%@ include file = "header.jsp" %>
 <div style="padding-left:25%; padding-top:15%">
 <form action="suppupdatee" method="post" enctype="multipart/form-data">
       <table >
@@ -58,6 +59,6 @@
 </form>
 </div>
 
-
+<%@ include file = "footer.jsp" %>
 </body>
 </html>

@@ -89,7 +89,7 @@ else
 	@RequestMapping("/offersset")
 	public ModelAndView offerprice(@RequestParam("prid") int prid,@RequestParam("offerprice") int offprice,@RequestParam("orgprice") int orgprice) 
 	{ 
-		ModelAndView mv1 = new ModelAndView("offer");
+		ModelAndView mv1 = new ModelAndView("redirect:/offers");
 		pdao.setoffers(prid,offprice,orgprice);
 		ArrayList<Product> p=new ArrayList<Product>();
 		 p=(ArrayList<Product>)pdao.getallproducts();
@@ -129,7 +129,7 @@ else
 	@RequestMapping("/offersdel")
 	public ModelAndView offerdelete(@RequestParam("prid") int id) 
 	{
-		ModelAndView mv1 = new ModelAndView("offer");
+		ModelAndView mv1 = new ModelAndView("redirect:/offers");
 		pdao.deleteoffer(id);
 		ArrayList<Product> p=new ArrayList<Product>();
 		 p=(ArrayList<Product>)pdao.getallproducts();
@@ -173,7 +173,7 @@ else
 	//for getting products of the specific loginned supplier
 	@RequestMapping("/suppoffers")
 	public ModelAndView suppoffer() {
-		ModelAndView mv1 = new ModelAndView("supplierpage");
+		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
 		
 		
 		
@@ -224,7 +224,7 @@ mv1.addObject("catego",c);
 	
 	@RequestMapping("/suppoffersset")
 	public ModelAndView suppoffersset(@RequestParam("prid") int prid,@RequestParam("offerprice") int offprice,@RequestParam("orgprice") int orgprice) {
-		ModelAndView mv1 = new ModelAndView("supplierpage");
+		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
 		pdao.setoffers(prid,offprice,orgprice);
 		
 		
@@ -272,7 +272,7 @@ mv1.addObject("catego",c);
 	
 	@RequestMapping("/suppoffersdel")
 	public ModelAndView suppoffersdel(@RequestParam("prid") int prid) {
-		ModelAndView mv1 = new ModelAndView("supplierpage");
+		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
 		pdao.deleteoffer(prid);
 		
 		

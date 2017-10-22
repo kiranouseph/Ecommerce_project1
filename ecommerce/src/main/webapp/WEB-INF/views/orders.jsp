@@ -64,7 +64,7 @@
 
 <body>
 
-
+<%@ include file = "header.jsp" %>
 <div class="panel panel-default panel-order">
   <div class="panel-heading">
       <strong>Pending orders</strong>
@@ -108,7 +108,7 @@
 
 
 
-
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>

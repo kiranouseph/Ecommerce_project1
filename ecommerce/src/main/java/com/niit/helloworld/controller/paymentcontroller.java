@@ -53,7 +53,7 @@ public class paymentcontroller {
 	
 	@RequestMapping("/badd")
 	public ModelAndView badd(@RequestParam("name") String name,@RequestParam("add1") String add1,@RequestParam("add2") String add2,@RequestParam("city") String city,@RequestParam("state") String state,@RequestParam("pin") int pin)
-	{ModelAndView mv1=new ModelAndView("orderconfirm");
+	{ModelAndView mv1=new ModelAndView("redirect:/checkout?st="+10);
 		String badd=name+","+add1+","+add2+","+city+","+state+","+pin;
 		
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
@@ -158,7 +158,6 @@ public class paymentcontroller {
 		{
 			mv1.addObject("bill",s.getBaddress());
 			mv1.addObject("ship",s.getSaddress());
-			System.err.println(s.getSaddress());
 			mv1.addObject("bcon",s.getBcon());
 			mv1.addObject("scon",s.getScon());
 			mv1.addObject("paycon",s.getPaycon());

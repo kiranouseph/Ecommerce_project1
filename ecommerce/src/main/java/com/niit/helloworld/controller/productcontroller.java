@@ -93,7 +93,7 @@ public class productcontroller {
 	
 	//for adding product
 	@RequestMapping("/product")
-	public ModelAndView addpro(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
+	public ModelAndView addpro(@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		
 	
 		Product p=new Product();
@@ -103,7 +103,7 @@ public class productcontroller {
 		
 		Subcategory scc=new Subcategory();
 		scc=scdao.getscatbyid(scat);
-	p.setId(prid);
+	
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);

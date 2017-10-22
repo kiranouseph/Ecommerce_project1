@@ -57,7 +57,8 @@
 
 <c:if test="${fn:length(cartt) eq 0}">
 
-<h2>NO PRODUCTS IN YOUR CART PLEASE ADD AND COME BACK</h2>
+<h2 style="margin-left: 30px;margin-top: 30px">YOUR SHOPPING ACRT IS EMPTY</h2>
+
 
 </c:if>
 <c:if test="${fn:length(cartt) ge 1}">
@@ -116,7 +117,7 @@
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total ${total}</strong></td>
-							<td><a href="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="checkout?st=9" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>

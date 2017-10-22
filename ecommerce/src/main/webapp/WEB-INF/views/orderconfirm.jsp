@@ -311,7 +311,7 @@ String[] billadd=bill.split(",");
             <div class="panel panel-default">
                
                 <div class="panel-body">
-                 <c:if test="${scon==1}}">
+                 <c:if test="${scon==1}">
                    
                                 <%
 String ship=(String)request.getAttribute("ship");
@@ -742,7 +742,7 @@ String[] shipadd=ship.split(",");
 
 </tr>
 <tr><td><input type="checkbox">
-                                   CONFIRM(Cannot be undone)</td></tr>
+                                   CONFIRM(Cannot be undone and cannot place another order from this account until this order is delivered.in any case another order is placed this order will be closed by the company)</td></tr>
                                    
                                      <c:if test="${bcon==0 || scon==0 || paycon==0}">
                                    

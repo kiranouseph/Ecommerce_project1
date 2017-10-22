@@ -43,14 +43,14 @@ table, th, td {
 
       
         <!-- Thumbnail Images -->
-        <div class="thumbnail"> <a href="prod?id=${designate.id}" class="link-p"> <img src="resources/products/${designate.image }" alt=""style="width:100%;height:150px"> </a>
+        <div class="thumbnail"> <a href="prod?id=${designate.id}" class="link-p"> <img src="resources/products/${designate.image }" alt=""style="width:100%;height:300px"> </a>
           <!-- Offer Tag-->
        
           <div class="caption prod-caption"> 
             <div class="pro-name"><a href="prod?id=${designate.id}" class="animated fadeInRightShort go">${designate.prodname }</a></div>
             <p>
             <!-- Price & Button -->
-            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default">$ ${designate.price}</a> <a href="addcart?id=${designate.id}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>ADD TO CART</a> </div>
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> ${designate.price}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
             <p></p>
           </div>
         </div>

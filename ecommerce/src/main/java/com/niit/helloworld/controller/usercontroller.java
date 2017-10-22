@@ -162,6 +162,9 @@ public class usercontroller {
 	
 	
 	
+	
+	
+	
 
 	
 
@@ -261,18 +264,7 @@ public class usercontroller {
 		
 		 
 		  
-	/*
-		SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo("plavinpaul11@gmail.com");
-        email.setSubject("ORDER CONFIRMATION");
-        email.setText("YOUR OPRDER IS PLACED BE READY WITH 250 rs FOR THE ROSE BOUQUET OUR REPRESENTATIVES WILL CONTACT YOU SHORTLY KEEP BUYING FROM GIFTERY ");
-         
-        // sends the e-mail
-        sendmail.send(email);
-		
-		*/
-		
-		
+	
 		
 		
 		
@@ -401,7 +393,7 @@ public class usercontroller {
 		user.setPassword(password);
         user.setRole("ROLE_USER"); 
 		udao.saveUser(user);
-		ModelAndView mv1 = new ModelAndView("login");
+		ModelAndView mv1 = new ModelAndView("redirect:/login");
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		

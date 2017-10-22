@@ -90,7 +90,7 @@ $(document).ready(function() {
       <table >
      
   
- <tr><td>ID</td><td><input type="number"  name="prid" required style="width:100%"></td></tr>
+
 <tr><td>NAME</td><td><input type="text"  name="name" required style="width:100%"></td></tr>
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%"> </textarea></td></tr>
 <tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%"></td></tr>
@@ -149,7 +149,7 @@ $(document).ready(function() {
 				<div class="tab-pane" id="2a">
          
 
-<form action="supplier" >
+<form action="supplier" method="post" >
       <table >
      
       
@@ -234,7 +234,7 @@ $(document).ready(function() {
        <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
          <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
-  <a href="orders">OFFERS</a><br><br>
+  <a href="orders">ORDERS</a><br><br>
           
          
 				</div>

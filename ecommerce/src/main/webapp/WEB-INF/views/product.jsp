@@ -62,7 +62,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <!-- Nav tabs -->
                         <ul class="product-tabs" role="tablist">
                            
-                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="${pageContext.request.contextPath}/resources/products/${prod.image}" alt="" style="width:100%;height:300px"></a></li>
+                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="${pageContext.request.contextPath}/resources/products/${prod.image}" alt="" style="width:300px;height:300px"></a></li>
                         </ul>
                      </div>
                   </div>
@@ -121,7 +121,11 @@ table { border-collapse: separate; border-spacing: 5px; }
                        <input id="prodId" name="id" type="hidden" value="${prod.id}">      
 <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD TO CART" >
 
-                        </form>                        </c:if>
+                        </form>                        
+                        
+                        
+                        
+                        </c:if>
                         
                         
                         
@@ -130,12 +134,7 @@ table { border-collapse: separate; border-spacing: 5px; }
             
                         
                        
-                        <div class="add-to-wishlist">
-                           <a class="wish-btn" href="cart.html?ref=designcollection">
-                           <i class="fa fa-heart-o"></i>
-                           <span>ADD TO WISHLIST</span>
-                           </a>
-                        </div>
+                       
                         <div class="single-product-categories">
 
                            <div class="clear"></div>

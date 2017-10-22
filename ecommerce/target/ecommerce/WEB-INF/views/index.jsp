@@ -337,31 +337,25 @@ interval: 2000
       </div>
     </div>
     
-    <c:forEach var="designate" items="${catego}">
+    <c:forEach var="designate" items="${catego}"  varStatus="loop">
     <div class="item">
       
-      <div class="container">
-      <div class="row">
-    <div class="col col-lg-6">
+      
       <img src="${pageContext.request.contextPath}/resources/products/${designate.catimage}" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
-    </div>
-   <div class="col col-lg-6" style="margin-top:15%">
-        
-          <h1>${designate.categoryname}</h1>
+    
+   <div class="carousel-caption">
+        <h1>${designate.categoryname}</h1>
             <h1>${designate.categorydesc}</h1>
-          
-     <div  style="margin-top:40%"></div>     
-    <h3 style="color:blue;">SCROLL DOWN FOR MORE OFFERS</h3>
-          <div class="arrow bounce">
-  <a class="fa fa-arrow-down fa-2x" href="#"></a>
-</div>
+
+        
+        
+          </div>
+    
+    
  
           
         
-        </div>
-      </div>
-  
-    </div>
+     
 
     </div>
    </c:forEach>

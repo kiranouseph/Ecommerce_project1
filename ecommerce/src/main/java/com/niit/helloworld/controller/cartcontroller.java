@@ -21,6 +21,7 @@ import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CartDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
@@ -28,6 +29,7 @@ import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category;
+import com.niit.ecommerce_backend.model.Order;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.User;
 @SuppressWarnings("unused")
@@ -47,6 +49,8 @@ public class cartcontroller {
 	ReviewDAOImpl rdao;
 	@Autowired
 	CartDAOImpl cartdao;
+	@Autowired
+	OrderDAOImpl odao;
 	
 	//redirection to cart from header
 	@RequestMapping("/cart")
@@ -171,7 +175,7 @@ cart.setQuantity(quan);
 		
 		
 		
-		ModelAndView mv1 = new ModelAndView("redirect:/prod?id="+id);
+		ModelAndView mv1 = new ModelAndView("redirect:/cart");
 		Product ll=new Product();
 		ll=pdao.getProdById(id);
 		
@@ -251,7 +255,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	@RequestMapping("/cartupdate")
 	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan,@RequestParam("prid") int prid) {
 		
-		ModelAndView mv1 = new ModelAndView("cart");
+		ModelAndView mv1 = new ModelAndView("redirect:/cart");
 
 		Cart car =cartdao.getcartitembyid(cartid);
 		
@@ -321,7 +325,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		pdao.updateproduct(pp);
 		cartdao.deletecartitem(cartid);
 		
-		ModelAndView mv1 = new ModelAndView("cart");
+		ModelAndView mv1 = new ModelAndView("redirect:/cart");
 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		 
@@ -371,7 +375,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
 
 	@RequestMapping("/checkout")
-	public ModelAndView checkout()
+	public ModelAndView checkout(@RequestParam("st") int st)
 	{
 		int total=0;
 		ModelAndView mv1 = new ModelAndView("orderconfirm");
@@ -412,10 +416,28 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			total=total+(c.getPrice()*c.getQuantity());	
 			}
 		 mv1.addObject("total",total);
+		 
+		 
+		 if(st==10)
+		 {
+				ArrayList<Order> or=new ArrayList<Order>();
+				or=odao.getorderbyemail(namees);
+				for(Order s:or)
+				{
+					mv1.addObject("bill",s.getBaddress());
+					mv1.addObject("bcon",s.getBcon());
+					mv1.addObject("scon",s.getScon());
+					mv1.addObject("paycon",s.getPaycon());
+				}	
+				 
+			 
+		 }
+		 else
+		 {
 		 mv1.addObject("bcon",0);
 		 mv1.addObject("scon",0);
 		 mv1.addObject("paycon",0);
-	
+		 }
 		return mv1;
 	}
 	

@@ -144,7 +144,7 @@ String n="";
 		    
 		
 		
-		ModelAndView mv1 = new ModelAndView("redirect;/list?num=4");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4");
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		
@@ -232,7 +232,7 @@ String n="";
 	
 	//for adding products from  supplier login
 	@RequestMapping("/addprobysupp")
-	public ModelAndView addprobysupp(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
+	public ModelAndView addprobysupp(@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 		
 	
 		Product p=new Product();
@@ -242,7 +242,7 @@ String n="";
 		
 		Subcategory scc=new Subcategory();
 		scc=scdao.getscatbyid(scat);
-	p.setId(prid);
+	
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);
@@ -292,7 +292,7 @@ p.setSupplier(sp);
 
 		
 		
-		ModelAndView mv1 = new ModelAndView("supplierpage");
+		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -349,7 +349,7 @@ p.setSupplier(sp);
 		ArrayList<Category> c=new ArrayList<Category>();
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
 		ArrayList<Supplier> sup=new ArrayList<Supplier>();
-		ModelAndView mv1 = new ModelAndView("supplierpage");
+		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
 		
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();

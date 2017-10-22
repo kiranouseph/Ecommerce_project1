@@ -137,7 +137,7 @@ $(document).ready(function(){
                               
                               
                                 <div class="item active">
-                                    <a href="#"><img src="resources/products/BabyPink.jpg" class="img-responsive" alt="product 1" style="height:250px; width:250px"></a>
+                                    <a href="#"><img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="product 1" style="height:250px; width:250px"></a>
                                     <div class="carousel-caption">
         <h3>Top offer in categories</h3>
      
@@ -148,7 +148,7 @@ $(document).ready(function(){
                                 
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
-                                    <a href="#"><img src="resources/products/${designate.catimage}" class="img-responsive" alt="product 3" style="height:250px; width:250px"></a>
+                                    <a href="#"><img src="${pageContext.request.contextPath}resources/products/${designate.catimage}" class="img-responsive" alt="product 3" style="height:250px; width:250px"></a>
                                     <div class="carousel-caption">
         <h3>${designate.categoryname}</h3>
         <br>

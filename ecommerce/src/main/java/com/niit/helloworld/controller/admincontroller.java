@@ -151,7 +151,7 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 	public ModelAndView shipped(@RequestParam("id") int id)
 {
 		
-	ModelAndView mv1 = new ModelAndView("orders");	
+	ModelAndView mv1 = new ModelAndView("redirect:/orders");	
 	
 	
 	
@@ -201,7 +201,11 @@ odao.updateorder(o);
     // sends the e-mail
     sendmail.send(emaill);
 	
+
+	Order oo=odao.getorderbyid(id);
+	odao.deleteorder(oo);
 	
+    
     ArrayList<Order> ord=odao.getallundeliveredprods();
 	
 	 

@@ -64,10 +64,10 @@
 
 <body>
 
-
+<%@ include file = "header.jsp" %>
 <div class="panel panel-default panel-order">
   <div class="panel-heading">
-      <strong>Order history</strong>
+      <strong>Pending orders</strong>
       <div class="btn-group pull-right">
           <div class="btn-group">
 
@@ -86,19 +86,20 @@
 		  <div class="col-md-12">
 			
 			<span><strong>Order ID</strong></span> <span class="label label-info">${designate.orderid}</span><br>
-			<span><strong>Orders</strong></span><p style="font-size: 25px">${designate.orderdetails }</p>
-			
-			
+			<span>Orders</span><p style="font-size: 25px">${designate.orderdetails }</p>
+			<span>Subtotal</span><p style="font-size: 25px">${designate.total }</p>
+			<a href="shipped?id=${designate.orderid}"><button>SHIP THE ORDERS</button></a>
 		  </div>
 		 
 		</div>
 	  </div>
 	</div>
+
 </div>
 
-<div class="pull-right"><label class="label label-danger">SHIPPED</label> </div>
+
  <div class="col-md-12">
-			order made on: 05/31/2014 by <a href="#">Email id: ${designate.email}</a>
+			order made by Email id: ${designate.email}
 		  </div>
 </c:forEach>
 </div>
@@ -107,7 +108,7 @@
 
 
 
-
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>
