@@ -94,7 +94,7 @@ $(document).ready(function(){
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </a>
-        <a class="navbar-brand" href="">GIFTERY</a>
+        <a class="navbar-brand" href="./"><strong>GIFTERY</strong></a>
         </div>
         <div class="navbar-collapse collapse">
      <ul class="nav navbar-nav navbar-right">
@@ -137,9 +137,9 @@ $(document).ready(function(){
                               
                               
                                 <div class="item active">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="product 1" style="height:250px; width:250px"></a>
+                                    <a href="#"><img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="product 1" style="height:250px; width:100%"></a>
                                     <div class="carousel-caption">
-        <h3>Top offer in categories</h3>
+        <h3>CATEGORIES</h3>
      
       </div>                                        
                                 </div><!-- End Item -->
@@ -148,7 +148,7 @@ $(document).ready(function(){
                                 
                                 <c:forEach var="designate" items="${catego}">
                                 <div class="item">
-                                    <a href="#"><img src="${pageContext.request.contextPath}resources/products/${designate.catimage}" class="img-responsive" alt="product 3" style="height:250px; width:250px"></a>
+                                    <a href="#"><img src="${pageContext.request.contextPath}/resources/products/${designate.catimage}" class="img-responsive" alt="product 3" style="height:250px; width:100%"></a>
                                     <div class="carousel-caption">
         <h3>${designate.categoryname}</h3>
         <br>

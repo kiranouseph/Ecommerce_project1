@@ -26,8 +26,8 @@
   <tr><td >PRODUCT ID</td><td><input type="number"  name="prid"  style=" opacity: 0.65; cursor: not-allowed; width:100%" value="${listt.id }"></td></tr>
 <tr><td>NAME</td><td><input type="text"  name="name" required style="width:100%" value="${listt.prodname }"></td></tr>
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%" >${listt.proddecs}</textarea></td></tr>
-<tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%" value="${listt.price }"></td></tr>
-<tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%" value="${listt.stock }"></td></tr>
+<tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%" value="${listt.price }" min="1" max="100000"></td></tr>
+<tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%" value="${listt.stock }" min="1" max="100000"></td></tr>
 <tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.image}"accept="D:/PRODIMAGES/${listt.image}"></td></tr>
 <tr><td><img src="${pageContext.request.contextPath}/resources/products/${listt.image}" style="width:100px;height:100px"></td></tr>
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
@@ -136,6 +136,8 @@
 <tr><td>SUPPLIER ID</td><td><input type="number"   name="suppid"   value="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>SUPPLIER NAME</td><td><input type="text"  name="suppname" required style="width:100%"  value="${listt.suppname }"></td></tr>
 <tr><td>SUPPLIER<br> ADDRESS</td><td><textarea rows="4" cols="50" name="suppaddress" style="width:100%"  >${listt.suppdesc}</textarea></td></tr>
+<tr><td>SUPPLIER<br> EMAIL</td><td><input type="text"  name="suppemail" required style="width:100%" value="${listt.suppemail }"></td></tr>
+
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>
 

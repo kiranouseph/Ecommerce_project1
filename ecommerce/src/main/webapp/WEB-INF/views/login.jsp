@@ -24,6 +24,7 @@
 html {
   font-family: "Abel", sans-serif;
   color: #FFF;
+ 
   
 }
 
@@ -118,7 +119,7 @@ input[type="radio"][id="open"]:checked ~ #info {
 </style>
 
 </head>
-<body>
+<body background="gifts.jpg" >
     <jsp:include page="header.jsp" />  
      <div class="container">
     <div class="row">
@@ -174,8 +175,7 @@ input[type="radio"][id="open"]:checked ~ #info {
                 <div class="panel-footer">
                     Not Registered? <a href="signup" >Register here</a><br>
                     
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+                    
 <div id="wrapper">
   <input type="radio" id="open" name="popup">
   <input type="radio" id="close" name="popup">
@@ -197,7 +197,7 @@ input[type="radio"][id="open"]:checked ~ #info {
         </div>
     </div>
 </div>
-
+</div>
 
    <jsp:include page="footer.jsp" />  
 

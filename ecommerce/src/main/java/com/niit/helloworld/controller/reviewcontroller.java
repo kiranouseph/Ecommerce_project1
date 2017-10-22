@@ -47,7 +47,7 @@ public class reviewcontroller {
 	//for setting the review for a product with the name of the customer
 	@RequestMapping("/review")
 	public ModelAndView offer(@RequestParam("prid") int id,@RequestParam("name") String name,@RequestParam("desc") String rev) {
-		ModelAndView mv1 = new ModelAndView("redirect:/prod?id+"+id);
+		ModelAndView mv1 = new ModelAndView("redirect:/prod?id="+id);
 		Review r= new Review();
 		r.setPrid(id);
 		r.setCustname(name);

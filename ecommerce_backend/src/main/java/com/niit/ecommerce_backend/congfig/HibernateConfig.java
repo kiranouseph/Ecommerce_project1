@@ -22,6 +22,7 @@ import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier ;
 import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Category ;
+import com.niit.ecommerce_backend.model.Contact;
 import com.niit.ecommerce_backend.model.Order;
 import com.niit.ecommerce_backend.model.User ;
 
@@ -29,6 +30,7 @@ import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ContactDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
@@ -36,6 +38,7 @@ import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
 import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
@@ -64,6 +67,7 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Subcategory.class);
 	        sessionBuilder.addAnnotatedClass(Review.class);
 	        sessionBuilder.addAnnotatedClass(Order.class);
+	        sessionBuilder.addAnnotatedClass(Contact.class);
       	    
 	      	    
 	        
@@ -99,7 +103,7 @@ public class HibernateConfig
 	        properties.put("hibernate.connection.autocommit", true);
 	        return properties;
 	    }
-	    @Bean
+	/*    @Bean
 	    @Autowired
 		public ProductDAO getProductDAO(SessionFactory sessionFactory)
 		{
@@ -161,12 +165,20 @@ public class HibernateConfig
 		return new OrderDAOImpl(sessionFactory);
 		}
 	    
+	    @Bean
+	    @Autowired
+		public ContactDAO getContactDAO(SessionFactory sessionFactory)
+		{
+			
+		return new ContactDAOImpl(sessionFactory);
+		}
+	    
 	  
 	    
 	    
 	    
 	    
-	   
+	   */
 	    
 	    
 	    

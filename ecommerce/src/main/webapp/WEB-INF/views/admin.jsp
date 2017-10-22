@@ -93,8 +93,8 @@ $(document).ready(function() {
 
 <tr><td>NAME</td><td><input type="text"  name="name" required style="width:100%"></td></tr>
 <tr><td>DESCRIPTION</td><td><textarea rows="4" cols="50" name="desc" style="width:100%"> </textarea></td></tr>
-<tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%"></td></tr>
-<tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%"></td></tr>
+<tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%" min="1" max="100000"></td></tr>
+<tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%" min="1" max="100000"></td></tr>
 <tr><td>IMAGE</td><td><input type="file" name="image" required></td></tr>
 
 
@@ -234,6 +234,7 @@ $(document).ready(function() {
        <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
          <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
+                    <a href="messages">MESSAGES</a><br><br>
   <a href="orders">ORDERS</a><br><br>
           
          

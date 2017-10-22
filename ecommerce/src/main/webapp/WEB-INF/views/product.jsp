@@ -29,18 +29,16 @@ table { border-collapse: separate; border-spacing: 5px; }
 
   </style>
   <script>
-  function plus() {
-	    int n=document.getElementById("num").innerHTML;
-	    n=n+1;
-	    document.getElementById("num").innerHTML=n;
-	    
-	}
-  function minus() {
-	  int n=document.getElementById("num").innerHTML;
-	    n=n-1;
-	    document.getElementById("num").innerHTML=n;
-	    
-	    	}
+
+  function checkstock() {
+      var quantity = document.getElementById("quant").value;
+      var stock = document.getElementById("stock").value;
+      if (quantity > stock) {
+      	 document.getElementById("error").innerHTML = "Requested quantity is more than stock";
+          return false;
+      }
+      return true;
+  }
   
 
   </script>
@@ -62,7 +60,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         <!-- Nav tabs -->
                         <ul class="product-tabs" role="tablist">
                            
-                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="${pageContext.request.contextPath}/resources/products/${prod.image}" alt="" style="width:300px;height:300px"></a></li>
+                           <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab"><img src="${pageContext.request.contextPath}/resources/products/${prod.image}" alt="" style="width:100%;height:500px"></a></li>
                         </ul>
                      </div>
                   </div>
@@ -118,11 +116,12 @@ table { border-collapse: separate; border-spacing: 5px; }
                          <c:if test="${prod.stock ge 1}">
            <form action="addcart">
                      <input type="number" name="quan" value=1 id="quant">
-                       <input id="prodId" name="id" type="hidden" value="${prod.id}">      
-<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD TO CART" >
+                       <input id="prodId" name="id" type="hidden" value="${prod.id}">     
+                       <input id="stock" name="id" type="hidden" value="${prod.stock}"> 
+<input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD TO CART" onclick="return checkstock()">
 
                         </form>                        
-                        
+                        <p id="error"></p>
                         
                         
                         </c:if>
@@ -179,7 +178,7 @@ table { border-collapse: separate; border-spacing: 5px; }
 
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="1">
-          <h3>From a perfect dozen long stem red roses for Valentine's Day to a 100 roses bouquet to mark your 30th anniversary, we can put together a range of exciting and beautiful rose bouquets for that special someone in your life. ... Our standard rose bouquets are available in red, white, pink, gold, yellow, and purple.
+          <h3>${prod.proddecs}
           </h3>
 				</div>
 				<div class="tab-pane" id="2">

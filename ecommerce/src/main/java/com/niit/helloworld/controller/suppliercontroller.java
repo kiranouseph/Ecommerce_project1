@@ -187,13 +187,14 @@ String n="";
 	
 	//updating supplier
 	@RequestMapping("/updatesupplier")
-	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc) {
+	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc,@RequestParam("suppemail") String email) {
 	
 		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4");
-	Supplier s= new Supplier();
+	Supplier s= sdao.getsuppbyid(id);
 	s.setId(id);
 	s.setSuppname(name);
 	s.setSuppdesc(desc);
+	s.setSuppemail(email);
 	sdao.updatesupplier(s);
 	ArrayList<Supplier> sup=new ArrayList<Supplier>();
 
@@ -500,7 +501,7 @@ p.setSupplier(sp);
 
 		//if no image uplaoded use the previous uploaded image
 	  
-	    if(file==null)
+	    if(file.getOriginalFilename()=="")
 	    	
 	    {
 	    Product imageret=new Product();

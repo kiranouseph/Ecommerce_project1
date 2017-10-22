@@ -72,7 +72,7 @@ div.description{
 	width:100%;
 	/* styling bellow */
 	
-	color:red;
+	color:black;
 	
 }
 p.description_content{
@@ -178,8 +178,8 @@ p.description_content{
 
 
 .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
-    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
-        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left;width:100%;hieght:100% }
+        .MultiCarousel .MultiCarousel-inner .item { float: left; width:100%;hieght:100%}
         .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
     .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
     .MultiCarousel .leftLst { left:0; }
@@ -385,7 +385,7 @@ interval: 2000
 
 
 
-
+<h2>SPECIAL OFFERS FOR YOU</h2>
 
  <div class="container"  style="text-align:center">
  
@@ -398,7 +398,7 @@ interval: 2000
                   <a href="prod?id=${offp1.id}">
                   <div class='wrapper'>
 	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp1.image}" style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp1.image}" style="width:300px; height:300px"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -413,7 +413,7 @@ interval: 2000
                    <a href="prod?id=${offp2.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp2.image}" style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp2.image}" style="width:300px; height:300px"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -428,7 +428,7 @@ interval: 2000
                    <a href="prod?id=${offp3.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp3.image}" style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp3.image}" style="width:300px; height:300px"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -443,7 +443,7 @@ interval: 2000
                    <a href="prod?id=${offp4.id}">
                  <div class='wrapper'>
 	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp4.image}" style="width:100%; height:100%"/>
+	<img src="${pageContext.request.contextPath}/resources/products/${offp4.image}" style="width:300px; height:300px"/>
 	<!-- description div -->
 	<div class='description'>
 		<!-- description content -->
@@ -479,15 +479,17 @@ interval: 2000
             <c:forEach var="des" items="${offproducts}">
             <c:if test="${designate.id eq des.catnum}">
           <a href="prod?id=${des.id}" > 
+        
                 <div class="item">
                     <div class="pad15">
-                    <img src="${pageContext.request.contextPath}/resources/products/${des.image}" class="img-responsive" alt="abcd" style="width:100%; height:100%">
+                    <img src="${pageContext.request.contextPath}/resources/products/${des.image}" class="img-responsive" alt="abcd" style="width:300px; height:250px">
                         <p class="lead">${des.prodname}</p>
                         <p> ${des.price}</p>
                         <p>${des.offerprice}</p>
                         <p>${des.offerper }%</p>
                     </div>
                 </div>
+               
                 </a>
                 </c:if>
 </c:forEach>              

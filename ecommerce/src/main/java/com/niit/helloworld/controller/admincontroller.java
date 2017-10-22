@@ -17,6 +17,7 @@ import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
+import com.niit.ecommerce_backend.daoimpl.ContactDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ProductDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ReviewDAOImpl;
@@ -24,6 +25,7 @@ import com.niit.ecommerce_backend.daoimpl.SubcategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
+import com.niit.ecommerce_backend.model.Contact;
 import com.niit.ecommerce_backend.model.Order;
 import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
@@ -50,6 +52,8 @@ public class admincontroller {
 	OrderDAOImpl odao;
 	@Autowired
 	private MailSender sendmail;
+	@Autowired
+	ContactDAOImpl ctdao;
  
 	
 	
@@ -229,6 +233,143 @@ odao.updateorder(o);
 	}
 
 
+
+@RequestMapping("/messages")
+
+public ModelAndView messages()
+{
+	
+ModelAndView mv1 = new ModelAndView("contact");	
+
+
+
+ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+
+
+mv1.addObject("catego",l);
+ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+
+
+
+mv1.addObject("suppli",ll);
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+
+mv1.addObject("subcatego",lll);
+
+org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+String namees = authent.getName();
+if(namees!="anonymousUser")
+{
+ArrayList<User> userer=udao.getUserByUsername(namees);
+for(User u:userer)
+{
+ mv1.addObject("role", u.getRole());
+}
+}
+else
+{
+ mv1.addObject("role","ROLE_USER");
+}
+
+
+ArrayList<Contact> con=ctdao.getallmessages();
+mv1.addObject("contacts", con);
+
+return mv1;
+}
+
+@RequestMapping("/contact")
+
+public ModelAndView contact(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("subject") String subject,@RequestParam("message") String message)
+{
+	ModelAndView mv1 = new ModelAndView("redirect:/");	
+
+	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+	
+	
+	mv1.addObject("catego",l);
+ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+
+
+	
+	mv1.addObject("suppli",ll);
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+	
+	mv1.addObject("subcatego",lll);
+	
+org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+ String namees = authent.getName();
+ if(namees!="anonymousUser")
+ {
+ ArrayList<User> userer=udao.getUserByUsername(namees);
+ for(User u:userer)
+ {
+	 mv1.addObject("role", u.getRole());
+ }
+ }
+ else
+ {
+	 mv1.addObject("role","ROLE_USER");
+ }
+	
+	Contact c=new Contact();
+c.setEmail(email);
+c.setMessage(message);
+c.setSubject(subject);
+c.setName(name);
+ctdao.savecontact(c);
+return mv1;
+
+
+}
+@RequestMapping("/deletecon")
+
+public ModelAndView deletecon(@RequestParam("id") int id)
+{
+	
+ModelAndView mv1 = new ModelAndView("redirect:/messages");	
+
+ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+
+
+mv1.addObject("catego",l);
+ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+
+
+
+mv1.addObject("suppli",ll);
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+
+mv1.addObject("subcatego",lll);
+
+org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+String namees = authent.getName();
+if(namees!="anonymousUser")
+{
+ArrayList<User> userer=udao.getUserByUsername(namees);
+for(User u:userer)
+{
+ mv1.addObject("role", u.getRole());
+}
+}
+else
+{
+ mv1.addObject("role","ROLE_USER");
+}
+
+
+ctdao.deletecontactbyid(id);
+ArrayList<Contact> con=ctdao.getallmessages();
+mv1.addObject("contacts", con);
+
+return mv1;
+}
 
 
 }

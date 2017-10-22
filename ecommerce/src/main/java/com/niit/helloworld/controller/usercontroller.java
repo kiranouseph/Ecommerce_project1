@@ -110,7 +110,7 @@ public class usercontroller {
 	 ArrayList<Product> pp=new ArrayList<Product>();
 	 pp=(ArrayList<Product>)pdao.listof_offerProducts();
 	//for displaying special offers randomly from the offer list
-	/*int index1 = random.nextInt(pp.size());
+	int index1 = random.nextInt(pp.size());
 	 Product p1=pp.get(index1);
 	 mv1.addObject("offp1",p1);
 	 pp.remove(p1);
@@ -125,7 +125,7 @@ public class usercontroller {
 	 int index4 = random.nextInt(pp.size());
 	 Product p4=pp.get(index4);
 	 mv1.addObject("offp4",p4);
-	 pp.remove(p4);*/
+	 pp.remove(p4);
 	 
 	 
 	 
@@ -673,6 +673,7 @@ public class usercontroller {
 		
 	
 		sup=sdao.getsuppbyid(id);
+		
 		mv1.addObject("listt",sup);
 		mv1.addObject("status",4);
 		
@@ -779,6 +780,12 @@ public class usercontroller {
 	{
 		
 	try{	
+		
+		ArrayList<User> us=udao.getUserByUsername(sdao.getsuppbyid(id).getSuppemail());
+		for(User u:us)
+		{
+			udao.deleteuserbyemail(u.getEmail());
+		}
 		sdao.deletesupplier(id);
 		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
 		mv1.addObject("list",sup);

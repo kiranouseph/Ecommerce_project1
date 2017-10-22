@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	//for getting the user details by user email
 	public ArrayList<User> getUserByUsername(String email){
-		System.out.println("in getuserbyname"+email);
+		
 		ArrayList<User> userr=new ArrayList<User>();
 		
 		Session session = sessionFactory.openSession();
@@ -82,6 +82,22 @@ public class UserDAOImpl implements UserDAO {
 	public int checklogin(String email, String password) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public void deleteuserbyemail(String email) {
+		
+ArrayList<User> userr=new ArrayList<User>();
+		
+		Session session = sessionFactory.openSession();
+	    session.beginTransaction();
+	    org.hibernate.Query q= session.createQuery("from User where email='"+email+"'");
+		userr=(ArrayList<User>) q.list();
+		for(User u:userr)
+		{
+			session.delete(u);
+		}
+	    session.getTransaction().commit();
+	    session.close();	
 	}
 
 	

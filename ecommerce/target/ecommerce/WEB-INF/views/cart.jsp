@@ -56,9 +56,12 @@
 
 
 <c:if test="${fn:length(cartt) eq 0}">
-
-<h2>NO PRODUCTS IN YOUR CART PLEASE ADD AND COME BACK</h2>
-
+<div>
+<h2 style="margin-left: 400px">YOUR SHOPPING CART IS EMPTY</h2>
+<div style="margin-left: 400px; margin-top:100px  ">
+<img src="${pageContext.request.contextPath}/resources/images/cartt.jpeg" alt="Chania" width="500" height="500" class="img-responsive" />
+</div>
+</div>
 </c:if>
 <c:if test="${fn:length(cartt) ge 1}">
 <div class="container">
@@ -116,7 +119,7 @@
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total ${total}</strong></td>
-							<td><a href="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="checkout?st=9" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
