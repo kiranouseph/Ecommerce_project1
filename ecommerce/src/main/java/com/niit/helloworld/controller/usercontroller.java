@@ -539,7 +539,7 @@ public class usercontroller {
 	
 	
 	@RequestMapping("/list")
-	public ModelAndView list(@RequestParam("num") int ca) 
+	public ModelAndView list(@RequestParam("num") int ca,@RequestParam("f") String st) 
 	{
 		ArrayList<Product> p=new ArrayList<Product>();
 		ArrayList<Category> c=new ArrayList<Category>();
@@ -549,25 +549,60 @@ public class usercontroller {
 		ModelAndView mv1 = new ModelAndView("list");
 		if(ca==1)
 		{
+			if(st==" ")
+			{
+				mv1.addObject("msg"," ");
+				
+			}
+			else
+			{
+				mv1.addObject("msg",st);
+			}
 			 p=(ArrayList<Product>)pdao.getallproducts();
 			 mv1.addObject("list",p);	
 			 mv1.addObject("status",1);
 		}
 		else if(ca==2)
+		{   if(st==" ")
 		{
+			mv1.addObject("msg"," ");
+			
+		}
+		else
+		{
+			mv1.addObject("msg",st);
+		} 
+			
 			 c=(ArrayList<Category>)cdao.getallcategories();
 			 mv1.addObject("list",c);	
 			 mv1.addObject("status",2);
 					}
 		else if(ca==3)
+		{    if(st==" ")
 		{
+			mv1.addObject("msg"," ");
+			
+		}
+		else
+		{
+			mv1.addObject("msg",st);
+		}
 			 sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
 			 mv1.addObject("list",sc);	
 			 mv1.addObject("status",3);
 					}
 		
 		
-		else{
+		else{ 
+			if(st==" ")
+			{
+				mv1.addObject("msg"," ");
+				
+			}
+			else
+			{
+				mv1.addObject("msg",st);
+			}
 			 sup=(ArrayList<Supplier>)sdao.getallsuppliers();
 			 mv1.addObject("list",sup);	
 			 mv1.addObject("status",4);
@@ -719,8 +754,14 @@ public class usercontroller {
 
 	
 	@RequestMapping("/delete")
-	public ModelAndView delete(@RequestParam("id") int id,@RequestParam("num") int num){	
+	public String delete(@RequestParam("id") int id,@RequestParam("num") int num){	
 		
+		
+		
+		
+		
+		
+		String msg="";
 		ArrayList<Product> p=new ArrayList<Product>();
 		ArrayList<Category> c=new ArrayList<Category>();
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
@@ -731,33 +772,30 @@ public class usercontroller {
 			try
 			{pdao.deleteproduct(id);
 			p=(ArrayList<Product>)pdao.getallproducts();
-			mv1.addObject("list",p);
+		    msg="Deleted Successfully";
 			mv1.addObject("status",1);
-			mv1.addObject("msg","deleted successfully");
 			}
 			catch(Exception e)
 			{
-				p=(ArrayList<Product>)pdao.getallproducts();
-			mv1.addObject("list",p);
-			mv1.addObject("status",1);
-				mv1.addObject("msg","This product is in  someones cart you cant delete");
+			p=(ArrayList<Product>)pdao.getallproducts();
+		    msg="This product is in some ones cart.You cannot delete";
 			}
+			return "redirect:/list?f="+msg+"&&num="+1;
 	}
 	else if(num==2)
 	{
 	try{	
 	cdao.deletecategory(id);	
 	c=(ArrayList<Category>)cdao.getallcategories();
-	mv1.addObject("list",c);	
+	msg="Deleted Successfully";
 	mv1.addObject("status",2);
-	mv1.addObject("msg","deleted successfully");
+	
 	}
 	catch(Exception e)
 	{c=(ArrayList<Category>)cdao.getallcategories();
-	mv1.addObject("list",c);	
-	mv1.addObject("status",2);
-		mv1.addObject("msg","This category contains subcategories and products you cant delete");
+	 msg="Thsi category has some products.You cannot delete";
 	}
+	return "redirect:/list?f="+msg+"&&num="+2;
 	}
 	else if(num==3)
 	{
@@ -765,16 +803,15 @@ public class usercontroller {
 		try{
 		scdao.deletesubcategory(id);
 		sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
-		mv1.addObject("list",sc);
+		msg="Deleted Successfully";
 		mv1.addObject("status",3);
-		mv1.addObject("msg","deleted successfully");
+		
 	}
 		catch(Exception e)
 		{sc=(ArrayList<Subcategory>)scdao.getallsubcategories();
-		mv1.addObject("list",sc);
-		mv1.addObject("status",3);
-			mv1.addObject("msg","This subcategory contains products you cant delete");
+		 msg="This Subcategory has some products.You cannot delete";
 		}
+		return "redirect:/list?f="+msg+"&&num="+3;
 	}
 	else if(num==4)
 	{
@@ -788,16 +825,15 @@ public class usercontroller {
 		}
 		sdao.deletesupplier(id);
 		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
-		mv1.addObject("list",sup);
+		msg="Deleted Successfully";
 		mv1.addObject("status",4);
-		mv1.addObject("msg","deleted successfully");
+		
 	}
 	catch(Exception e)
 	{		sup=(ArrayList<Supplier>)sdao.getallsuppliers();
-	mv1.addObject("list",sup);
-	mv1.addObject("status",4);
-		mv1.addObject("msg","This supplier provides some products you cant delete");
+	 msg="This supplier provides some products.You cannot delete";
 	}
+	return "redirect:/list?f="+msg+"&&num="+4;
 	}
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
@@ -823,7 +859,7 @@ public class usercontroller {
 		 
 		
 		
-		return mv1;
+		return null;
 	}
 	
 	

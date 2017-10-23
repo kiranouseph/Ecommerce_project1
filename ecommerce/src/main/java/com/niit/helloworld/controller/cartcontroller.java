@@ -256,6 +256,9 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan,@RequestParam("prid") int prid) {
 		
 		ModelAndView mv1 = new ModelAndView("redirect:/cart");
+		
+		
+		
 
 		Cart car =cartdao.getcartitembyid(cartid);
 		
@@ -376,9 +379,35 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 
 	@RequestMapping("/checkout")
 	public ModelAndView checkout(@RequestParam("st") int st)
-	{
+	{ModelAndView mv1 = new ModelAndView("orderconfirm");
+	int flag=0;
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+	
+		
+		ArrayList<Order> ore=odao.getorderbyemail(namees);
+		for(Order s:ore)
+		{
+			if(s.getEmail()==namees)
+			{
+				flag++;
+			}
+		}
+if(flag==0)
+{
+	mv1.addObject("messag","Check your order and confirm.");
+	mv1.addObject("exixtorder",0);
+}
+else
+{
+	mv1.addObject("messag","You have a exixsting order please wait until it get shipped.Sorry for the inconvenience.You can place orders after you get a shipping email");
+	mv1.addObject("existorder",1);
+	
+}
+		
+		
 		int total=0;
-		ModelAndView mv1 = new ModelAndView("orderconfirm");
+		
 		
 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
@@ -391,8 +420,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 		
 		//for getting the email of the logined user and to find the role whether admni user or supplier
-		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-		 String namees = authent.getName();
+		
 		 if(namees!="anonymousUser")
 		 {
 		 ArrayList<User> userer=udao.getUserByUsername(namees);

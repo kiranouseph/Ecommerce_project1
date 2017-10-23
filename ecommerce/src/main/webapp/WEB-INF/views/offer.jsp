@@ -56,8 +56,12 @@ border-collapse: separate;
 
 			<div class="tab-content ">
 			  <div class="tab-pane active" id="1">
-			<c:forEach var="designate" items="${prods}">
-         <form action="offersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
+			  <div class="container">
+			  
+		
+			<div class="row">
+				<c:forEach var="designate" items="${prods}">
+   
       <table >
      
       
@@ -65,22 +69,25 @@ border-collapse: separate;
 
 <td>${designate.prodname}</td>
 <td>${designate.price}</td>
+      <form action="offersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
 <td><input type="number" name="offerprice" value="${designate.offerprice}"></td>
 
 <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
+</form> 
 </tr>
 </table>
-</form> 
-         
+
+                </c:forEach>         
 
 
          
          
          
          
-         
-         
-                </c:forEach>
+         </div>
+         </div>
+
+				
 				</div>
 				<div class="tab-pane" id="2">
 				

@@ -327,7 +327,7 @@ interval: 2000
   
   <div class="carousel-inner">
     <div class="item active">
-       <img src="${pageContext.request.contextPath}/resources/images/1.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
+       <img src="${pageContext.request.contextPath}/resources/images/babygift.jpg" class="img-responsive" alt="Chania" style="width:100%; height:100vh">
       <div class="container">
         <div class="carousel-caption">
         <h1>Share happiness with giftery gifts</h1>

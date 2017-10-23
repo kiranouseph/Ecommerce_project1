@@ -45,9 +45,19 @@ color: #FFF;
 font-size: 24px;
 }
 
-html, body {
-  padding:0;
-  margin:0;
+
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/about.jpg");
+    background-repeat: no-repeat;
+     background-size: cover;
+}
+#abo
+{
+
+opacity:.9;
+
+
+
 }
 
 .about__section {
@@ -210,6 +220,7 @@ html, body {
 
     <jsp:include page="header.jsp" />  
 <center><h1>OUR TEAM</h1></center>
+<div id="abo">
 <div class="about__section"> <!-- Specificity container -->
 <a href="javascript:void(0);" title="Koby Conrad - CEO"><div class="about__slot"><div class="headshot" onclick="biograph(this.parentNode);" style="background-image:url('${pageContext.request.contextPath}/resources/images/kiran.jpg');"></div>
   <div class="about__info">
@@ -356,6 +367,7 @@ html, body {
             </form>
         </div>
     </div>
+</div>
 </div>
     <jsp:include page="footer.jsp" />  
 </body>

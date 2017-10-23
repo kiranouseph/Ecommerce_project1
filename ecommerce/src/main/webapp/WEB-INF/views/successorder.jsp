@@ -277,7 +277,7 @@ left: 35%;
   <p class="lead" align="center"><strong>Please check your email</strong> for tracking your product.Details has been already send to your email</p>
   <hr>
   <p class="text-center">
-                    <a href="./" class="btn btn-success btn-outline-rounded green"> continue shopping <span style="margin-left:10px;" class="glyphicon glyphicon-shopping-cart"></span></a>
+                    <a href="./" class="btn btn-success btn-outline-rounded green"> Continue shopping <span style="margin-left:10px;" class="glyphicon glyphicon-shopping-cart"></span></a>
                 </p>
 </div>
                       </div>

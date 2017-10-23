@@ -16,7 +16,12 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-  
+  body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/paybg.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 70vh;
+     text-align: center;
+}
   
 /*  bhoechie tab */
 div.bhoechie-tab-container{
@@ -87,6 +92,11 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
+#payy
+{
+opacity:0.9;
+
+}
   </style>
 <script>
 
@@ -105,8 +115,16 @@ $(document).ready(function() {
 </head>
 <body>
  <jsp:include page="header.jsp" />  
-  <p class="bg-info" style="font-size:50px">Check your order and confirm.</p>
-<div class="container">
+ <c:if test="${existorder eq 1}">
+  <p class="bg-info" style="font-size:50px">${messag}</p>
+ 
+ 
+ </c:if>
+ 
+ <c:if test="${existorder eq 0}">
+  <p class="bg-info" style="font-size:50px">${messag}</p>
+  
+<div class="container" id="payy">
 	<div class="row">
         <div class="col-lg-10 bhoechie-tab-container">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
@@ -723,26 +741,26 @@ String[] shipadd=ship.split(",");
 </tr>
 <c:forEach var="product" items="${cartt}">
 <tr>
-<td>${product.product.prodname }</td>
-<td>${product.price}</td>
+<th>${product.product.prodname }</th>
+<th>${product.price}</th>
  
 
-<td>${product.quantity}</td>
+<th>${product.quantity}</th>
 
-<td>${product.price*product.quantity}</td>
+<th>${product.price*product.quantity}</th>
 </tr>
 </c:forEach>
 <tr>
 <td></td>
 <td></td>
-<td>SUBTOTAL</td>
-<td>${total}</td>
+<th>SUBTOTAL</th>
+<th>${total}</th>
 
 
 
 </tr>
 <tr><td><input type="checkbox">
-                                   CONFIRM(Cannot be undone and cannot place another order from this account until this order is delivered.in any case another order is placed this order will be closed by the company)</td></tr>
+                                  <strong> CONFIRM(Cannot be undone and cannot place another order from this account until this order is delivered.in any case another order is placed this order will be closed by the company)</strong></td></tr>
                                    
                                      <c:if test="${bcon==0 || scon==0 || paycon==0}">
                                    
@@ -771,6 +789,7 @@ String[] shipadd=ship.split(",");
         </div>
   </div>
 </div>
+</c:if>
    <jsp:include page="footer.jsp" />   
 </body>
 </html>

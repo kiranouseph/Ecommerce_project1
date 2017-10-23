@@ -15,6 +15,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/bglist.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 70vh;
+     text-align: center;
+}
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,700);
 .snip1581 {
   font-family: 'Poppins:400,700', Arial, sans-serif;
@@ -86,10 +92,6 @@
   transform: scale(1.3) rotate(5deg);
 }
 /* Demo purposes only */
-body {
-  
-  text-align: center;
-}
 
 
 </style>

@@ -114,21 +114,34 @@ input[type="radio"][id="open"]:checked ~ #info {
   cursor: pointer;
  
 }
+#loginn
+{
+opacity:0.9;
 
+}
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 70vh;
+}
 
 </style>
 
 </head>
-<body background="gifts.jpg" >
+<body >
     <jsp:include page="header.jsp" />  
-     <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+     <div  id="loginn">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <strong>Login</strong>
+        <div class="col-md-4 col-md-offset-5">
+            <div >
+                <div >
+                 
                 </div>
-                <div class="panel-body">
+                <div>
                     <form class="form-horizontal" role="form" action="j_spring_security_check" method="post">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
@@ -152,16 +165,7 @@ input[type="radio"][id="open"]:checked ~ #info {
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9">
                             <button type="submit" class="btn btn-success btn-sm" >
@@ -172,7 +176,7 @@ input[type="radio"][id="open"]:checked ~ #info {
                     </div>
                     </form>
                 </div>
-                <div class="panel-footer">
+                <div >
                     Not Registered? <a href="signup" >Register here</a><br>
                     
                     

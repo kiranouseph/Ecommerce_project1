@@ -229,10 +229,10 @@ $(document).ready(function() {
          
 				
 							<div class="tab-pane" id="5a">
-         <a href="list?num=1">LIST OF PRODUCTS</a><br><br>
-         <a href="list?num=2">LIST OF CATEGORIES</a><br><br>
-       <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
-         <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
+         <a href="list?num=1&&f=">LIST OF PRODUCTS</a><br><br>
+         <a href="list?num=2&&f=">LIST OF CATEGORIES</a><br><br>
+       <a href="list?num=3&&f=">LIST OF SUBCATEGORIES</a><br><br>
+         <a href="list?num=4&&f=">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
                     <a href="messages">MESSAGES</a><br><br>
   <a href="orders">ORDERS</a><br><br>
