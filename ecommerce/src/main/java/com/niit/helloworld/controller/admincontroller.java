@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
+import com.niit.ecommerce_backend.daoimpl.CartDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.ContactDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
@@ -37,30 +42,32 @@ import com.niit.ecommerce_backend.model.User;
 //admin level controller 
 public class admincontroller {
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
 	@Autowired
-	OrderDAOImpl odao;
+	ReviewDAO rdao;
+	@Autowired
+	OrderDAO odao;
 	@Autowired
 	private MailSender sendmail;
 	@Autowired
-	ContactDAOImpl ctdao;
+	ContactDAO ctdao;
  
 	
 	
 	// if the admin link in home page is clicked it will be redirected to here 
 
 	@RequestMapping("/admin")
-	public ModelAndView admin() {
+	public ModelAndView admin(@RequestParam("suppexist") int suppexist) {
 		
 		ModelAndView mv1 = new ModelAndView("admin");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -96,7 +103,7 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 				 
 				 
 				 
-		
+		mv1.addObject("suppexist",suppexist);
 		return mv1;
 	}
 	@RequestMapping("/orders")
@@ -149,7 +156,7 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 		
 	}
 	
-	
+//the contoller for deleting the order after mailing the details to customer	
 @RequestMapping("/shipped")
 
 	public ModelAndView shipped(@RequestParam("id") int id)
@@ -233,7 +240,7 @@ odao.updateorder(o);
 	}
 
 
-
+//tofetchthe messages from the database
 @RequestMapping("/messages")
 
 public ModelAndView messages()
@@ -279,12 +286,12 @@ mv1.addObject("contacts", con);
 
 return mv1;
 }
-
+//to make a message by user 
 @RequestMapping("/contact")
 
 public ModelAndView contact(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("subject") String subject,@RequestParam("message") String message)
 {
-	ModelAndView mv1 = new ModelAndView("redirect:/");	
+	ModelAndView mv1 = new ModelAndView("redirect:./");	
 
 	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	
@@ -326,6 +333,8 @@ return mv1;
 
 
 }
+
+//tfor admin to delete a a message after deleting it
 @RequestMapping("/deletecon")
 
 public ModelAndView deletecon(@RequestParam("id") int id)

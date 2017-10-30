@@ -6,7 +6,7 @@
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
 
 	<!-- New Spring Security implementation -->
-<security:http auto-config="true">
+	<security:http auto-config="true">
     <security:intercept-url pattern="/admin/**"
     access="hasRole('ROLE_ADMIN')" />
      <security:intercept-url pattern="/category/**"
@@ -37,7 +37,16 @@
     access="hasRole('ROLE_ADMIN')" />
        <security:intercept-url pattern="/delete/**"
     access="hasRole('ROLE_ADMIN')" />
-    
+       <security:intercept-url pattern="/orders/**"
+    access="hasRole('ROLE_ADMIN')" />
+       <security:intercept-url pattern="/shipped/**"
+    access="hasRole('ROLE_ADMIN')" />
+       <security:intercept-url pattern="/messages/**"
+    access="hasRole('ROLE_ADMIN')" />
+       <security:intercept-url pattern="/delete/**"
+    access="hasRole('ROLE_ADMIN')" />
+       <security:intercept-url pattern="/deletecon/**"
+    access="hasRole('ROLE_ADMIN')" />
     
     
     
@@ -45,6 +54,7 @@
      access="permitAll" />
       <security:intercept-url pattern="/"
      access="permitAll" />
+     
      
      
 
@@ -59,15 +69,29 @@
      access="hasRole('ROLE_USER')" /> 
       <security:intercept-url pattern="/cartdelete/**"
      access="hasRole('ROLE_USER')" /> 
-          <security:intercept-url pattern="/review/**"
+     <security:intercept-url pattern="/review/**"
      access="hasRole('ROLE_USER')" /> 
-             <security:intercept-url pattern="/buynow/**"
+
+     <security:intercept-url pattern="/checkout/**"
      access="hasRole('ROLE_USER')" /> 
-              <security:intercept-url pattern="/checkout/**"
+    <security:intercept-url pattern="/badd/**"
+     access="hasRole('ROLE_USER')" /> 
+                   <security:intercept-url pattern="/sadd/**"
+     access="hasRole('ROLE_USER')" /> 
+                   <security:intercept-url pattern="/pay/**"
+     access="hasRole('ROLE_USER')" /> 
+                   <security:intercept-url pattern="/placeorder/**"
      access="hasRole('ROLE_USER')" /> 
      
      
      
+       
+       
+       
+       
+       
+       
+       
        <security:intercept-url pattern="/suppoffers/**"
      access="hasRole('ROLE_SUPPLIER')" /> 
        <security:intercept-url pattern="/suppoffersset/**"

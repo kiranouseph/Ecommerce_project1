@@ -19,7 +19,7 @@
   body {
     background-image: url("${pageContext.request.contextPath}/resources/images/paybg.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 150vh;
      text-align: center;
 }
   
@@ -114,9 +114,20 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
- <jsp:include page="header.jsp" />  
+ <jsp:include page="header.jsp" /> 
+
  <c:if test="${existorder eq 1}">
-  <p class="bg-info" style="font-size:50px">${messag}</p>
+  <br>
+ <br> 
+ <br>
+ <br>
+ <div class="row">
+<div class="col-md-4 col-md-offset-4">
+<font size="6" color="red">${messag }</font>
+ 
+ </div>
+ 
+ </div>
  
  
  </c:if>
@@ -790,6 +801,10 @@ String[] shipadd=ship.split(",");
   </div>
 </div>
 </c:if>
+<br>
+<br>
+<br>
+<br>
    <jsp:include page="footer.jsp" />   
 </body>
 </html>

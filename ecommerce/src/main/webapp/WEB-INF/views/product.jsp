@@ -224,7 +224,7 @@ table { border-collapse: separate; border-spacing: 5px; }
 	<div class="large"></div>
 	
 	<!-- This is the small image -->
-	<img class="small" src="${pageContext.request.contextPath}/resources/products/${prod.image}" style="width:500px;height:500px" data-toggle="magnify"/>
+	<img class="small" src="${pageContext.request.contextPath}/resources/products/${prod.image}" style="width:500px;height:600px" data-toggle="magnify"/>
 	
 </div>
 
@@ -285,7 +285,7 @@ table { border-collapse: separate; border-spacing: 5px; }
                         
                          <c:if test="${prod.stock ge 1}">
            <form action="addcart">
-                     <input type="number" name="quan" value=1 id="quant">
+                     <input type="number" name="quan" value=1 id="quant" min="1">
                        <input id="prodId" name="id" type="hidden" value="${prod.id}">     
                        <input id="stock" name="id" type="hidden" value="${prod.stock}"> 
 <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD TO CART" onclick="return checkstock()">

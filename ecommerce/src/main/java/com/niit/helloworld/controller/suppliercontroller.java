@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.mail.internet.InternetAddress;
+
+import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -16,8 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
@@ -37,25 +44,31 @@ import com.niit.ecommerce_backend.model.User;
 @Controller
 public class suppliercontroller {
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
+	@Autowired
+	ReviewDAO rdao;
+	@Autowired
+	OrderDAO odao;
 	@Autowired
 	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
  
 	
 	/*for redirecting top the supplier page from header fetching the products and offers
 	of those specific loginned supplier*/
 	@RequestMapping("/supplierpage")
-	public ModelAndView admin() {
+	public ModelAndView admin(@RequestParam("flag") int flag) {
 		
 		ModelAndView mv1 = new ModelAndView("supplierpage");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -97,7 +110,7 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 				 {supppro=pdao.getprodbysid(sss.getId());}
 				 
 				 mv1.addObject("suppproo", supppro);
-				  
+				 mv1.addObject("flag",flag); 
 				 
 		
 		return mv1;
@@ -107,20 +120,23 @@ ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
 	
 	//for adding supplier
 	@RequestMapping("/supplier")
-	public ModelAndView addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address,@RequestParam("suppemail") String email,@RequestParam("suppmob") long mob ) {
+	public String addsupp(@RequestParam("suppid") int id ,@RequestParam("suppname") String name,@RequestParam("suppaddress") String address,@RequestParam("suppemail") String email,@RequestParam("suppmob") long mob ) {
 		
-				Supplier s=new Supplier();
-		s.setId(id);
-		s.setSuppname(name);
-		s.setSuppdesc(address);
-		s.setSuppemail(email);
-		sdao.savesupplier(s);
+		
+		
+		
+		try{
+			
+		
+		
+	
 		User use=new User();
 		use.setEmail(email);
 		use.setMobno(mob);
 		use.setName(name);
 		use.setRole("ROLE_SUPPLIER");
 		
+			 
 		//for generating random temperory password for the supplier first login
 		 final String alphabet = "0123456789ABCDE";
 		    final int N = alphabet.length();
@@ -134,6 +150,12 @@ String n="";
 		    
 		    udao.saveUser(use);
 		    
+			Supplier s=new Supplier();
+			s.setId(id);
+			s.setSuppname(name);
+			s.setSuppdesc(address);
+			s.setSuppemail(email);
+			sdao.savesupplier(s);
 		    //for sending the random password as email to the supplier email 
 			SimpleMailMessage emaill = new SimpleMailMessage();
 	        emaill.setTo(email);
@@ -141,61 +163,37 @@ String n="";
 	        emaill.setText("password"+n);
 	        // sends the e-mail
 	        sendmail.send(emaill);
+		    return "redirect:/list?num=4&&f=";
+		}
+		
+		catch(Exception e)
+		{
+			
+			return "redirect:/admin?suppexist=1";
+		}
+		
+		
+
+		
+		  
 		    
 		
 		
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4");
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
-		
-				
-				mv1.addObject("catego",l);
-				
-				
-				
-				ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
-		
-				
-						
-						mv1.addObject("subcatego",lll);
-		 ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
-		
-		
-				mv1.addObject("suppli",ll);
-		
-		
-				//for getting the email of the logined user and to find the role whether admni user or supplier
-				org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-				 String namees = authent.getName();
-				 if(namees!="anonymousUser")
-				 {
-				 ArrayList<User> userer=udao.getUserByUsername(namees);
-				 for(User u:userer)
-				 {
-					 mv1.addObject("role", u.getRole());
-				 }
-				 }
-				 else
-				 {
-					 mv1.addObject("role","ROLE_USER");
-				 }
-				 
-				
-	
-		return mv1;
 	}
 	
 	//updating supplier
 	@RequestMapping("/updatesupplier")
 	public ModelAndView updatesupplier(@RequestParam("suppid") int id,@RequestParam("suppname") String name,@RequestParam("suppaddress")  String desc,@RequestParam("suppemail") String email) {
 	
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=4&&f=");
 	Supplier s= sdao.getsuppbyid(id);
 	s.setId(id);
 	s.setSuppname(name);
 	s.setSuppdesc(desc);
 	s.setSuppemail(email);
 	sdao.updatesupplier(s);
+
 	ArrayList<Supplier> sup=new ArrayList<Supplier>();
 
 	 sup=(ArrayList<Supplier>)sdao.getallsuppliers();
@@ -333,7 +331,7 @@ p.setSupplier(sp);
 								 {supppro=pdao.getprodbysid(sss.getId());}
 								 
 								 mv1.addObject("suppproo", supppro);
-								 
+								 mv1.addObject("flag",1);
 								 
 								
 								
@@ -351,12 +349,19 @@ p.setSupplier(sp);
 		ArrayList<Subcategory> sc=new ArrayList<Subcategory>();
 		ArrayList<Supplier> sup=new ArrayList<Supplier>();
 		ModelAndView mv1 = new ModelAndView("redirect:/supplierpage");
-		
+		int flag=0;
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 		 String namees = authent.getName();
+		 try
+		 {
 			pdao.deleteproduct(id);
-		
+			flag=1;
+		 }
+		 catch(Exception e)
+		 {
+			 
+		 }
 			 ArrayList<Supplier> suu=new ArrayList<Supplier>();
 			 suu=sdao.getsuppbyname(namees);
 			 
@@ -372,8 +377,13 @@ p.setSupplier(sp);
 		 
 		
 		mv1.addObject("catego",l);
+		ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+		 
 		
 		
+		mv1.addObject("subcatego",lll);
+		
+		mv1.addObject("flag",flag);
 		 if(namees!="anonymousUser")
 		 {
 		 ArrayList<User> userer=udao.getUserByUsername(namees);
@@ -546,6 +556,11 @@ p.setSupplier(sp);
 		 
 		
 		mv1.addObject("catego",l);
+		ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+		 
+		
+		
+		mv1.addObject("subcatego",lll);
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 		 String namees = authent.getName();
@@ -571,7 +586,7 @@ p.setSupplier(sp);
 		 {supppro=pdao.getprodbysid(sss.getId());}
 		 
 		 mv1.addObject("suppproo", supppro);
-		
+		mv1.addObject("flag", 1);
 		return mv1;
 	
 	

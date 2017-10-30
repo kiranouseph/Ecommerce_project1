@@ -18,7 +18,7 @@
 body {
     background-image: url("${pageContext.request.contextPath}/resources/images/bglist.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 150vh;
      text-align: center;
 }
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,700);
@@ -167,7 +167,14 @@ $(".hover").mouseleave(
     
     
     
-    
+<br>
+<br>
+ <br>
+ <br>
+<br>
+<br>
+<br>
+  
    <jsp:include page="footer.jsp" />  
 </body>
 </html>

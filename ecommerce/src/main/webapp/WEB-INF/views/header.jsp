@@ -67,9 +67,8 @@ $(document).ready(function(){
 
 </script>
 
-
 </head>
-<body >
+<body>
  
 
   
@@ -113,11 +112,11 @@ $(document).ready(function(){
             <li><a href="about">About</a></li>
            
            <c:if test="${role == 'ROLE_ADMIN'}"> 
-            <li><a href="admin">ADMIN</a></li>
+            <li><a href="admin?suppexist=0">ADMIN</a></li>
             </c:if>
             
              <c:if test="${role == 'ROLE_SUPPLIER'}"> 
-            <li><a href="supplierpage">SUPPLIER</a></li>
+            <li><a href="supplierpage?flag=1">SUPPLIER</a></li>
             </c:if>
             
              <c:if test="${role == 'ROLE_USER'}">  

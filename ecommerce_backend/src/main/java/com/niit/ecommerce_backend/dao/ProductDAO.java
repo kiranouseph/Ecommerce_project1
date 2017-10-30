@@ -19,4 +19,6 @@ public interface ProductDAO {
 	public void setoffers(int id,int offprice,int orgprice);
 	public void deleteoffer(int id);
 	public void updateproduct( Product p);
+	 public Product gettopoffer(int id);
+	 public ArrayList<Product> getprodbysid(int sid);
 }

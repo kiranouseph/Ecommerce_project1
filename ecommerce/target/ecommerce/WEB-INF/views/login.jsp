@@ -24,6 +24,7 @@
 html {
   font-family: "Abel", sans-serif;
   color: #FFF;
+ 
   
 }
 
@@ -113,21 +114,38 @@ input[type="radio"][id="open"]:checked ~ #info {
   cursor: pointer;
  
 }
-
+#loginn
+{
+opacity:0.9;
+-ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+    transform: rotate(4deg);
+}
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 100vh;
+}
 
 </style>
 
 </head>
-<body>
+<body >
     <jsp:include page="header.jsp" />  
-     <div class="container">
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+     <div  id="loginn">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <strong>Login</strong>
+        <div class="col-md-4 col-md-offset-5">
+            <div >
+                <div >
+                 
                 </div>
-                <div class="panel-body">
+                <div>
                     <form class="form-horizontal" role="form" action="j_spring_security_check" method="post">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">
@@ -151,16 +169,7 @@ input[type="radio"][id="open"]:checked ~ #info {
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                
                     <div class="form-group last">
                         <div class="col-sm-offset-3 col-sm-9">
                             <button type="submit" class="btn btn-success btn-sm" >
@@ -171,11 +180,11 @@ input[type="radio"][id="open"]:checked ~ #info {
                     </div>
                     </form>
                 </div>
-                <div class="panel-footer">
-                    Not Registered? <a href="signup" >Register here</a><br>
+                <div >
+                
+                    Not Registered? <a href="signup?err=0" >Register here</a><br>
                     
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+                    
 <div id="wrapper">
   <input type="radio" id="open" name="popup">
   <input type="radio" id="close" name="popup">
@@ -197,7 +206,7 @@ input[type="radio"][id="open"]:checked ~ #info {
         </div>
     </div>
 </div>
-
+</div>
 
    <jsp:include page="footer.jsp" />  
 

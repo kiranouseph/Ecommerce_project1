@@ -45,6 +45,11 @@ border-collapse: separate;
 }
 </style>
 <script>
+
+<script type="text/javascript">
+$(window).load(function(){
+    $('#test').modal('show');
+});
 $(document).ready(function() {
 	$(".btn-pref .btn").click(function () {
 	    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -58,7 +63,10 @@ $(document).ready(function() {
     <jsp:include page="header.jsp" />  
 
 
+<c:if test="${suppexist eq 1}">
+<h1 style="color:red" align="center">Supplier already exist or provided email id is not valid </h1>
 
+</c:if>
 <div class="container"><h1 style="margin-left: 30%;">ADMIN  </h1></div>
 <div id="exTab1" class="container">	
 <ul  class="nav nav-pills">
@@ -156,7 +164,7 @@ $(document).ready(function() {
 <tr><td>SUPPLIER ID</td><td><input type="number"  name="suppid" required style="width:100%"></td></tr>
 <tr><td>SUPPLIER NAME</td><td><input type="text"  name="suppname" required style="width:100%"></td></tr>
 <tr><td>SUPPLIER<br> ADDRESS</td><td><textarea rows="4" cols="50" name="suppaddress" style="width:100%"> </textarea></td></tr>
-<tr><td>SUPPLIER<br> EMAIL</td><td><input type="text"  name="suppemail" required style="width:100%"></td></tr>
+<tr><td>SUPPLIER<br> EMAIL</td><td> <input type="email" class="form-control" id="inputEmail3" name="suppemail"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=""  required ></td></tr>
 <tr><td>SUPPLIER<br> MOBILE NO:</td><td><input type="number"  name="suppmob" required style="width:100%"></td></tr>
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="ADD" style="width:100%"></td></tr>

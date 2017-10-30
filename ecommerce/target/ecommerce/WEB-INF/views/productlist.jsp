@@ -16,6 +16,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+  
+  body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/bglist.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 150vh;
+     text-align: center;
+}
   .cardcolor
 {
 background-color:white;	
@@ -48,10 +55,18 @@ table, th, td {
        
           <div class="caption prod-caption"> 
             <div class="pro-name"><a href="prod?id=${designate.id}" class="animated fadeInRightShort go">${designate.prodname }</a></div>
+            <c:if test="${designate.offerprice eq 0}">
             <p>
-            <!-- Price & Button -->
+           
             </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> ${designate.price}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
             <p></p>
+            </c:if>
+                        <c:if test="${designate.offerprice ge 1}">
+            <p>
+           
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> ${designate.offerprice}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            <p></p>
+            </c:if>
           </div>
         </div>
       
@@ -67,6 +82,11 @@ table, th, td {
 
 </c:forEach>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
   <jsp:include page="footer.jsp" />  
 
 </body>

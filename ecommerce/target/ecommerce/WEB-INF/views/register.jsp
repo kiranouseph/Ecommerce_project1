@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html >
 <html>
 <head>
@@ -25,18 +26,37 @@
         return true;
     }
 </script>
-
+<style>
+#reg
+{
+-ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+    transform: rotate(4deg);
+opacity:0.9;
+}
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 130vh;
+}
+</style>
 </head>
-<body>
+<body >
     <jsp:include page="header.jsp" />  
-        <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+        <div class="container" id="reg">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <strong>Register</strong>
+        <div class="col-md-4 col-md-offset-5">
+            <div >
+                <div>
+               
                 </div>
-                <div class="panel-body">
+                <div >
                     <form class="form-horizontal" role="form" method="post" action="addUser" >
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label" >
@@ -74,18 +94,13 @@
                         </div>
                     </div>
                   <p id="error"></p>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group last">
-                        <div class="col-sm-offset-3 col-sm-9">
+                  <c:if test="${err eq 1 }">
+                  
+                  <h4>Already registered Please Login!!</h4>
+                  
+                  </c:if>
+                                     <div class="form-group last">
+                        <div class="col-sm-offset-5 col-sm-7">
                             <button type="submit" class="btn btn-success btn-sm" onclick="return Validate()">
                                 Register</button>
                                  <button type="reset" class="btn btn-default btn-sm">
@@ -96,6 +111,7 @@
                 </div>
                
             </div>
+             Already have account? <a href="login" >login here</a><br>
         </div>
     </div>
 </div>

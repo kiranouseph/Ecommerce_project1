@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
@@ -35,17 +40,25 @@ import com.niit.ecommerce_backend.model.User;
 @Controller
 public class subcategorycontroller {
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
+	@Autowired
+	ReviewDAO rdao;
+	@Autowired
+	OrderDAO odao;
+	@Autowired
+	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
 	
 //for selecting the products according to the selected subcategory	
 	@RequestMapping("/selsubcat")
@@ -109,7 +122,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3&&f=");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -149,7 +162,7 @@ String filepath ="C:/Users/user/workspace/ecommerce/src/main/webapp/resources/pr
 	@RequestMapping("/updatesubcategory")
 	public ModelAndView updatesubcategory(@RequestParam("scatid") int id ,@RequestParam("scatname") String name,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
 	
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=3&&f=");
 		Subcategory sc=new Subcategory();
 		sc.setId(id);
 		sc.setSubcategoryname(name);

@@ -45,6 +45,11 @@ border-collapse: separate;
 }
 </style>
 <script>
+
+<script type="text/javascript">
+$(window).load(function(){
+    $('#test').modal('show');
+});
 $(document).ready(function() {
 	$(".btn-pref .btn").click(function () {
 	    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
@@ -58,7 +63,10 @@ $(document).ready(function() {
     <jsp:include page="header.jsp" />  
 
 
+<c:if test="${suppexist eq 1}">
+<h1 style="color:red" align="center">Supplier already exist or provided email id is not valid </h1>
 
+</c:if>
 <div class="container"><h1 style="margin-left: 30%;">ADMIN  </h1></div>
 <div id="exTab1" class="container">	
 <ul  class="nav nav-pills">
@@ -229,12 +237,12 @@ $(document).ready(function() {
          
 				
 							<div class="tab-pane" id="5a">
-         <a href="list?num=1">LIST OF PRODUCTS</a><br><br>
-         <a href="list?num=2">LIST OF CATEGORIES</a><br><br>
-       <a href="list?num=3">LIST OF SUBCATEGORIES</a><br><br>
-         <a href="list?num=4">LIST OF SUPPLIERS</a><br><br>
+         <a href="list?num=1&&f=">LIST OF PRODUCTS</a><br><br>
+         <a href="list?num=2&&f=">LIST OF CATEGORIES</a><br><br>
+       <a href="list?num=3&&f=">LIST OF SUBCATEGORIES</a><br><br>
+         <a href="list?num=4&&f=">LIST OF SUPPLIERS</a><br><br>
           <a href="offers">OFFERS</a><br><br>
-                    <a href="messages">OFFERS</a><br><br>
+                    <a href="messages">MESSAGES</a><br><br>
   <a href="orders">ORDERS</a><br><br>
           
          

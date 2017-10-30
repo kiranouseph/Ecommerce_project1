@@ -3,6 +3,7 @@ package com.niit.helloworld.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
@@ -23,6 +28,7 @@ import com.niit.ecommerce_backend.daoimpl.SupplierDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.UserDAOImpl;
 import com.niit.ecommerce_backend.model.Category;
 import com.niit.ecommerce_backend.model.Product;
+import com.niit.ecommerce_backend.model.Subcategory;
 import com.niit.ecommerce_backend.model.Supplier;
 import com.niit.ecommerce_backend.model.User;
 import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
@@ -31,17 +37,25 @@ import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 @Controller
 public class offercontroller {
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
+	@Autowired
+	ReviewDAO rdao;
+	@Autowired
+	OrderDAO odao;
+	@Autowired
+	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
 	
 	
 	//for redirecting to offer page with the offer products from database
@@ -209,11 +223,15 @@ else
 ArrayList<Category> c =new ArrayList<Category>();
 c=cdao.getallcategories();
 mv1.addObject("catego",c);
-		 
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+
+mv1.addObject("subcatego",lll);		 
 		
 
 		
-		
+		mv1.addObject("flag", 1);
 		return mv1;
 	
 	}
@@ -260,11 +278,16 @@ else
 ArrayList<Category> c =new ArrayList<Category>();
 c=cdao.getallcategories();
 mv1.addObject("catego",c);
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+
+mv1.addObject("subcatego",lll);
 		 
 		
 
 		
-		
+		mv1.addObject("flag", 1);
 		return mv1;
 	
 	}
@@ -308,11 +331,15 @@ else
 ArrayList<Category> c =new ArrayList<Category>();
 c=cdao.getallcategories();
 mv1.addObject("catego",c);
-		 
+ArrayList<Subcategory> lll=(ArrayList<Subcategory>)scdao.getallsubcategories();
+
+
+
+mv1.addObject("subcatego",lll);
 		
 
 		
-		
+		mv1.addObject("flag", 1);
 		return mv1;
 	
 	}

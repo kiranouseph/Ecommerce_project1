@@ -67,7 +67,7 @@
 <%@ include file = "header.jsp" %>
 <div class="panel panel-default panel-order">
   <div class="panel-heading">
-      <strong>Pending orders</strong>
+      <strong>Messages</strong>
       <div class="btn-group pull-right">
           <div class="btn-group">
 
@@ -89,7 +89,9 @@
 			<span>NAME</span><p style="font-size: 25px">${designate.name }</p>
 			<span>SUBJECT</span><p style="font-size: 25px">${designate.subject }</p>
 			<span>MESSAGE</span><p style="font-size: 25px">${designate.message }</p>
-			
+			 <a href="deletecon?id=${designate.id}">
+                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
+                                   </a>
 		  </div>
 		 
 		</div>

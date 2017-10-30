@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
 import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
@@ -39,17 +43,25 @@ import com.niit.ecommerce_backend.model.User;
 public class productcontroller {
 	
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
+	@Autowired
+	ReviewDAO rdao;
+	@Autowired
+	OrderDAO odao;
+	@Autowired
+	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
 	
 	//for fetching data of a speecific product according to the product id
 	@RequestMapping("/prod")
@@ -145,7 +157,7 @@ public class productcontroller {
 
 		
 		
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1&&f=");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		
@@ -186,7 +198,7 @@ public class productcontroller {
 	//for updating product
 	@RequestMapping("/updateproduct")
 	public ModelAndView updateproduct(@RequestParam("prid") int prid,@RequestParam("name") String name,@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("scat") int scat,@RequestParam("supp") int supp,@RequestParam("cat") int cat,@RequestParam("image") MultipartFile file) {
-		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1");
+		ModelAndView mv1 = new ModelAndView("redirect:/list?num=1&&f=");
 		
 		
 		
@@ -199,7 +211,7 @@ public class productcontroller {
 	
 		Product p=pdao.getProdById(prid);
 		
-		System.out.println("Previous Product Data : "+p);
+	
 		p.setProdname(name);
 		p.setProddecs(desc);
 		p.setPrice(price);
@@ -263,7 +275,7 @@ public class productcontroller {
 	    	System.err.println(p.getImage());
 	    }
 	    
-	    System.out.println(p);
+	    
 	   
 	  
 	    

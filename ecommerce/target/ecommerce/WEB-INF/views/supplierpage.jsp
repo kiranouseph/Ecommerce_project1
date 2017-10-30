@@ -42,6 +42,9 @@ border-collapse: separate;
 {
 	margin-left: 14cm;
 }
+
+
+
 </style>
 
 
@@ -64,6 +67,9 @@ $(document).ready(function() {
 
 
 <div class="container"><h1 style="margin-left: 30%;"> WELCOME ${pageContext.request.userPrincipal.name} </h1></div>
+<c:if test="${flag eq 0 }">
+<h2>Cannot delete.This product is in someone's cart</h2>
+</c:if>
 <div id="exTab1" class="container">	
 <ul  class="nav nav-pills">
 			<li class="active">

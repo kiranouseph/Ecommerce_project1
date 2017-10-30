@@ -40,7 +40,6 @@ background-size: cover;
 height:50px;
 	 
 	}
-
 .navbar-brand
 {
 	font-size:40px;
@@ -56,11 +55,6 @@ height:50px;
 {
 background-color:white;	
 }
-
-
-
-
-
 div.wrapper{
 	
 	
@@ -80,17 +74,8 @@ p.description_content{
 	margin:0px;
 	font-size: 30px;
 }
-
-
-
-
-
-
-
 /* BOOTSTRAP 3.x GLOBAL STYLES
 -------------------------------------------------- */
-
-
 .overlay { 
   color:#fff;
   position:absolute;
@@ -100,11 +85,8 @@ p.description_content{
   width:100%;
   text-align:center;
 }
-
-
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
-
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
@@ -113,12 +95,8 @@ p.description_content{
   right: 0;
   z-index: 10;
 }
-
-
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
-
 /* Carousel base class */
 .myCarouse1l {
   margin-bottom: 60px;
@@ -127,7 +105,6 @@ p.description_content{
 .carousel-caption {
   z-index: 1;
 }
-
 /* Declare heights because of positioning of img element */
 .myCarouse1l .item {
   height: 400px;
@@ -139,17 +116,9 @@ p.description_content{
   left: 0;
   min-height: 400px;
 }
-
-
-
-
-
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-
 @media (min-width: 768px) {
-
   /* Navbar positioning foo */
   .navbar-wrapper {
     margin-top: 20px;
@@ -159,7 +128,6 @@ p.description_content{
   .navbar-wrapper .navbar {
     border-radius: 4px;
   }
-
   /* Bump up size of carousel content */
  .myCarouse1l-caption p {
     margin-bottom: 20px;
@@ -167,16 +135,6 @@ p.description_content{
     line-height: 1.4;
   }
 }
-
-
-
-
-
-
-
-
-
-
 .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
     .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left;width:100%;hieght:100% }
         .MultiCarousel .MultiCarousel-inner .item { float: left; width:100%;hieght:100%}
@@ -205,7 +163,6 @@ $(document).ready(function () {
     var itemsMainDiv = ('.MultiCarousel');
     var itemsDiv = ('.MultiCarousel-inner');
     var itemWidth = "";
-
     $('.leftLst, .rightLst').click(function () {
         var condition = $(this).hasClass("leftLst");
         if (condition)
@@ -213,16 +170,10 @@ $(document).ready(function () {
         else
             click(1, this)
     });
-
     ResCarouselSize();
-
-
-
-
     $(window).resize(function () {
         ResCarouselSize();
     });
-
     //this function define the size of the items
     function ResCarouselSize() {
         var incno = 0;
@@ -239,8 +190,6 @@ $(document).ready(function () {
             btnParentSb = $(this).parent().attr(dataItems);
             itemsSplit = btnParentSb.split(',');
             $(this).parent().attr("id", "MultiCarousel" + id);
-
-
             if (bodyWidth >= 1200) {
                 incno = itemsSplit[3];
                 itemWidth = sampwidth / incno;
@@ -261,14 +210,10 @@ $(document).ready(function () {
             $(this).find(itemClass).each(function () {
                 $(this).outerWidth(itemWidth);
             });
-
             $(".leftLst").addClass("over");
             $(".rightLst").removeClass("over");
-
         });
     }
-
-
     //this function used to move the items
     function ResCarousel(e, el, s) {
         var leftBtn = ('.leftLst');
@@ -280,7 +225,6 @@ $(document).ready(function () {
         if (e == 0) {
             translateXval = parseInt(xds) - parseInt(itemWidth * s);
             $(el + ' ' + rightBtn).removeClass("over");
-
             if (translateXval <= itemWidth / 2) {
                 translateXval = 0;
                 $(el + ' ' + leftBtn).addClass("over");
@@ -290,7 +234,6 @@ $(document).ready(function () {
             var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
             translateXval = parseInt(xds) + parseInt(itemWidth * s);
             $(el + ' ' + leftBtn).removeClass("over");
-
             if (translateXval >= itemsCondition - itemWidth / 2) {
                 translateXval = itemsCondition;
                 $(el + ' ' + rightBtn).addClass("over");
@@ -298,16 +241,13 @@ $(document).ready(function () {
         }
         $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
     }
-
     //It is used to get some elements from btn
     function click(ell, ee) {
         var Parent = "#" + $(ee).parent().attr("id");
         var slide = $(Parent).attr("data-slide");
         ResCarousel(ell, Parent, slide);
     }
-
 });
-
 // Sets interval...what is transition slide speed?
 $('#myCarousel').carousel({
 interval: 2000
@@ -383,7 +323,7 @@ interval: 2000
 
 
 
-
+<c:if test="${role == 'ROLE_USER'}">  
 
 <h2>SPECIAL OFFERS FOR YOU</h2>
 
@@ -391,69 +331,73 @@ interval: 2000
  
              <div class="row">
             
+         <div class="col-lg-3 col-sm-4 hero-feature text-center">        <!-- Thumbnail Images -->
+        <div class="thumbnail"> <a href="prod?id=${offp1.id}" class="link-p"> <img src="resources/products/${offp1.image }" alt=""style="width:100%;height:200px"> </a>
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name"><a href="prod?id=${offp1.id}" class="animated fadeInRightShort go">${offp1.prodname }</a></div>
+            
+            <p>
+           
+            </p><div class="btn-group"> <a href="prod?id=${offp1.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${offp1.price}</a> <a href="prod?id=${offp1.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            <p></p>
+            
+           
+          </div>
+        </div>
+</div>
+
+             <div class="col-lg-3 col-sm-4 hero-feature text-center">        <!-- Thumbnail Images -->
+        <div class="thumbnail"> <a href="prod?id=${offp2.id}" class="link-p"> <img src="resources/products/${offp2.image }" alt=""style="width:100%;height:200px"> </a>
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name"><a href="prod?id=${offp2.id}" class="animated fadeInRightShort go">${offp2.prodname }</a></div>
+            
+            <p>
+           
+            </p><div class="btn-group"> <a href="prod?id=${offp2.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${offp2.price}</a> <a href="prod?id=${offp2.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            <p></p>
+            
+           
+          </div>
+        </div>
+</div>         <div class="col-lg-3 col-sm-4 hero-feature text-center">        <!-- Thumbnail Images -->
+        <div class="thumbnail"> <a href="prod?id=${offp3.id}" class="link-p"> <img src="resources/products/${offp3.image }" alt=""style="width:100%;height:200px"> </a>
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name"><a href="prod?id=${offp3.id}" class="animated fadeInRightShort go">${offp3.prodname }</a></div>
+            
+            <p>
+           
+            </p><div class="btn-group"> <a href="prod?id=${offp3.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${offp3.price}</a> <a href="prod?id=${offp3.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            <p></p>
+            
+           
+          </div>
+        </div>
+</div>
+         <div class="col-lg-3 col-sm-4 hero-feature text-center">        <!-- Thumbnail Images -->
+        <div class="thumbnail"> <a href="prod?id=${offp4.id}" class="link-p"> <img src="resources/products/${offp4.image }" alt=""style="width:100%;height:200px"> </a>
+          <!-- Offer Tag-->
+       
+          <div class="caption prod-caption"> 
+            <div class="pro-name"><a href="prod?id=${offp4.id}" class="animated fadeInRightShort go">${offp4.prodname }</a></div>
+            
+            <p>
+           
+            </p><div class="btn-group"> <a href="prod?id=${offp4.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${offp4.price}</a> <a href="prod?id=${offp4.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            <p></p>
+            
+           
+          </div>
+        </div>
+</div>
              
              
-             
-                  <div class="col-md-3">
-                  <a href="prod?id=${offp1.id}">
-                  <div class='wrapper'>
-	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp1.image}" style="width:300px; height:300px"/>
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp1.prodname}<br>${offp1.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-</a>
-                  </div>
-                   <div class="col-md-3">
-                   <a href="prod?id=${offp2.id}">
-                 <div class='wrapper'>
-	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp2.image}" style="width:300px; height:300px"/>
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp2.prodname}<br>${offp2.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-</a>
-                  </div>
-                   <div class="col-md-3">
-                   <a href="prod?id=${offp3.id}">
-                 <div class='wrapper'>
-	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp3.image}" style="width:300px; height:300px"/>
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp3.prodname}<br>${offp3.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-</a>
-                  </div>
-                   <div class="col-md-3">
-                   <a href="prod?id=${offp4.id}">
-                 <div class='wrapper'>
-	<!-- image -->
-	<img src="${pageContext.request.contextPath}/resources/products/${offp4.image}" style="width:300px; height:300px"/>
-	<!-- description div -->
-	<div class='description'>
-		<!-- description content -->
-		<p class='description_content'><strong>${offp4.prodname}<br>${offp4.offerper}%OFF</strong></p>
-		<!-- end description content -->
-	</div>
-	<!-- end description div -->
-</div>
-</a>
-                  </div>
+                  
                   
                   </div>
                   </div>
@@ -505,7 +449,7 @@ interval: 2000
 
 <br><br>
 </c:forEach>
-
+</c:if>
 <jsp:include page="footer.jsp" /> 
 
 

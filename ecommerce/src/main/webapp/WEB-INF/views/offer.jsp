@@ -62,20 +62,25 @@ border-collapse: separate;
 			<div class="row">
 				<c:forEach var="designate" items="${prods}">
    
-      <table >
+   
+   
+      <table class="table">
      
-      
+       <form action="offersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
 <tr>
 
-<td>${designate.prodname}</td>
+<td style='width: 200px'>${designate.prodname}</td>
 <td>${designate.price}</td>
-      <form action="offersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
-<td><input type="number" name="offerprice" value="${designate.offerprice}"></td>
+     
+<td><input type="number" name="offerprice" value="${designate.offerprice}" min="1"></td>
 
 <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
-</form> 
+
 </tr>
+</form> 
 </table>
+
+
 
                 </c:forEach>         
 

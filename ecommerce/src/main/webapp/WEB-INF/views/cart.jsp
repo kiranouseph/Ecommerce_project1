@@ -8,7 +8,7 @@
 body {
     background-image: url("${pageContext.request.contextPath}/resources/images/giftt.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 100%;
      text-align: center;
 }
 
@@ -66,8 +66,8 @@ body {
 <c:if test="${fn:length(cartt) eq 0}">
 <div>
 <h2 style="margin-left: 400px">YOUR SHOPPING CART IS EMPTY</h2>
-<div style="margin-left: 400px; margin-top:100px  ">
-<img src="${pageContext.request.contextPath}/resources/images/cartt.jpeg" alt="Chania" width="500" height="500" class="img-responsive" />
+<div style="margin-left: 520px; margin-top:60px">
+<img src="${pageContext.request.contextPath}/resources/images/emptybox.jpg" alt="Chania" width=375px; height=1000px class="img-responsive" />
 </div>
 </div>
 </c:if>
@@ -124,7 +124,7 @@ body {
 					<tfoot>
 						
 						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="./" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total ${total}</strong></td>
 							<td><a href="checkout?st=9" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>

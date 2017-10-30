@@ -1,8 +1,10 @@
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Subcategory.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\UserDAOImpl.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\dao\ReviewDAO.java
+C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Contact.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\OrderDAOImpl.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Product.java
+C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\dao\ContactDAO.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\congfig\HibernateConfig.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\App.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Category.java
@@ -16,6 +18,7 @@ C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backe
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Order.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\dao\UserDAO.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\SupplierDAOImpl.java
+C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\ContactDAOImpl.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\CategoryDAOImpl.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\daoimpl\CartDAOImpl.java
 C:\Users\user\workspace\ecommerce_backend\src\main\java\com\niit\ecommerce_backend\model\Supplier.java

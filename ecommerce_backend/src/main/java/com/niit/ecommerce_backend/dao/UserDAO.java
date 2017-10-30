@@ -8,5 +8,7 @@ import com.niit.ecommerce_backend.model.User;
 public interface UserDAO {
 	public void saveUser(User user);
 	public ArrayList<User> getUserByUsername(String email);
-	public int checklogin(String email,String password);
+	public void changepassword(String email, String pass);
+	public void deleteuserbyemail(String email);
+	public ArrayList<User> getallusers();
 }

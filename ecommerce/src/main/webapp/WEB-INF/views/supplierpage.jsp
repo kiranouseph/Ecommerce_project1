@@ -42,6 +42,9 @@ border-collapse: separate;
 {
 	margin-left: 14cm;
 }
+
+
+
 </style>
 
 
@@ -64,6 +67,9 @@ $(document).ready(function() {
 
 
 <div class="container"><h1 style="margin-left: 30%;"> WELCOME ${pageContext.request.userPrincipal.name} </h1></div>
+<c:if test="${flag eq 0 }">
+<h2>Cannot delete.This product is in someone's cart</h2>
+</c:if>
 <div id="exTab1" class="container">	
 <ul  class="nav nav-pills">
 			<li class="active">
@@ -225,14 +231,14 @@ $(document).ready(function() {
 			  <div class="tab-pane active" id="1">
 			<c:forEach var="designate" items="${suppproo}">	
          <form action="suppoffersset?prid=${designate.id}&orgprice=${designate.price}" method="post">
-      <table >
+      <table class="table">
      
       
 <tr>
 
-<td>${designate.prodname}</td>
+<td style='width: 200px'>${designate.prodname}</td>
 <td>${designate.price}</td>
-<td><input type="number" name="offerprice" value="${designate.offerprice}"></td>
+<td><input type="number" name="offerprice" value="${designate.offerprice}" min="1"></td>
 
 <td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="SUBMIT" ></td>
 </tr>

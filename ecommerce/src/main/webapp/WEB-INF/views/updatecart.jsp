@@ -111,7 +111,7 @@ function checkst() {
 							<form action="cartupdate">
 							 <input id="prodId" name="id" type="hidden" value="${cartt.cartid}">
 							  <input id="prodId" name="prid" type="hidden" value="${cartt.product.id}">
-								<input type="number" class="form-control text-center" value="${cartt.quantity }" name="quantity" id="quantnew">
+								<input type="number" class="form-control text-center" value="${cartt.quantity }" name="quantity" id="quantnew" min="1">
 								<input type="hidden" class="form-control text-center" value="${cartt.quantity }" id="quantpre">
 									<input type="hidden" class="form-control text-center" value="${cartt.product.stock }" id="prodstck">
 							    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%" onclick="return checkst()">

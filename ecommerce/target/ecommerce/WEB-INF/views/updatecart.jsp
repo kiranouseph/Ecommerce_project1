@@ -6,6 +6,12 @@
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftt.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 70vh;
+     text-align: center;
+}
 
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
@@ -39,6 +45,22 @@
 	
 }
 </style>
+<script>
+
+function checkst() {
+    var newquantity = document.getElementById("quantnew").value;
+    var previousquantity = document.getElementById("quantpre").value;
+    var prodstock = document.getElementById("prodstck").value;
+    if (prodstock<(newquantity-previousquantity)) {
+    	 document.getElementById("error").innerHTML = "Requested quantity is more than stock";
+        return false;
+    }
+    return true;
+}
+
+
+
+</script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -53,8 +75,7 @@
 <body>
 <%@ include file = "header.jsp" %>
 
-
-  
+ <font id="error"size="25" color="red">${msg }</font>  
 
 <div class="container">
 	<table id="cart"  style="color:black;border-collapse: separate;
@@ -90,8 +111,10 @@
 							<form action="cartupdate">
 							 <input id="prodId" name="id" type="hidden" value="${cartt.cartid}">
 							  <input id="prodId" name="prid" type="hidden" value="${cartt.product.id}">
-								<input type="number" class="form-control text-center" value="${cartt.quantity }" name="quantity">
-							    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%">
+								<input type="number" class="form-control text-center" value="${cartt.quantity }" name="quantity" id="quantnew">
+								<input type="hidden" class="form-control text-center" value="${cartt.quantity }" id="quantpre">
+									<input type="hidden" class="form-control text-center" value="${cartt.product.stock }" id="prodstck">
+							    <input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%" onclick="return checkst()">
 							</form>
 							</td>
 							<td data-th="Subtotal" class="text-center">${cartt.price }</td>

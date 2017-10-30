@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
@@ -47,28 +51,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
+
+
+import com.twilio.sdk.TwilioRestClient;
+import com.twilio.sdk.TwilioRestException;
+import com.twilio.sdk.resource.factory.MessageFactory;
+import com.twilio.sdk.resource.instance.Message;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+
+
+
+
 @SuppressWarnings("unused")
 //home controller For the important redirections and operations
 @Controller
 public class usercontroller {
-	@Autowired
-	UserDAOImpl udao;
-	@Autowired
-	ProductDAOImpl pdao;
-	@Autowired
-	CategoryDAOImpl cdao;
-	@Autowired
-	SupplierDAOImpl sdao;
-	@Autowired
-	SubcategoryDAOImpl scdao;
-	@Autowired
-	ReviewDAOImpl rdao;
-	@Autowired
-	private MailSender sendmail;
- 
 	
 	
+	  public static final String ACCOUNT_SID = "AC5381736be1859ec166d3fbe215597f47";
+	    public static final String AUTH_TOKEN = "dd376562416ceb96cb898e01449a240c";
+	    public static final String TWILIO_NUMBER = "+15037412491";
+		@Autowired
+		CartDAO cartdao;
+		@Autowired
+		UserDAO udao;
+		@Autowired
+		ProductDAO pdao;
+		@Autowired
+		CategoryDAO cdao;
+		@Autowired
+		SupplierDAO sdao;
+		@Autowired
+		SubcategoryDAO scdao;
+		@Autowired
+		ReviewDAO rdao;
+		@Autowired
+		OrderDAO odao;
+		@Autowired
+		private MailSender sendmail;
+		@Autowired
+		ContactDAO ctdao;
 	
+	
+		
 	
 	
 	
@@ -258,7 +285,7 @@ public class usercontroller {
 		
 	// for redirecting to register page
 	@RequestMapping("/signup")
-	public ModelAndView register() {
+	public ModelAndView register(@RequestParam("err") int err) {
 		
  
 		
@@ -282,7 +309,7 @@ public class usercontroller {
 		 
 		
 		mv1.addObject("catego",l);
-		
+		mv1.addObject("err", err);
 		
 		//for getting the email of the logined user and to find the role whether admni user or supplier
 		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
@@ -313,9 +340,9 @@ public class usercontroller {
 	@RequestMapping("/about")
 	public ModelAndView about() {
 		
- 
 		
-		 
+		
+		
 		  
 	/*
 		SimpleMailMessage email = new SimpleMailMessage();
@@ -327,10 +354,9 @@ public class usercontroller {
         sendmail.send(email);
 		
 		*/
-		
-		
-		
-		
+		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+		 String namees = authent.getName();
+	
 		
 		
 		
@@ -349,14 +375,13 @@ public class usercontroller {
 		
 		
 		//for getting the email of the logined user and to find the role whether admni user or supplier
-		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-		 String namees = authent.getName();
+		
 		 if(namees!="anonymousUser")
 		 {
 		 ArrayList<User> userer=udao.getUserByUsername(namees);
-		 for(User u:userer)
+		 for(User uu:userer)
 		 {
-			 mv1.addObject("role", u.getRole());
+			 mv1.addObject("role", uu.getRole());
 		 }
 		 }
 		 else
@@ -367,11 +392,11 @@ public class usercontroller {
 		 
 		 
 		 
-	
+		
 		return mv1;
-	}
+		}
 	
-	
+		
 	
 	
 	
@@ -383,9 +408,20 @@ public class usercontroller {
 
 	//for adding the user details to database at time of sign in
 	@RequestMapping("/addUser")
-	public ModelAndView addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email, @RequestParam("password") String password) {
+	public String addUser(@RequestParam("name") String name,@RequestParam("mobno") long mobno,@RequestParam("email") String email, @RequestParam("password") String password) {
 		
+		try
+		{
 		
+			 SimpleMailMessage emaile = new SimpleMailMessage();
+		        emaile.setTo(email);
+		        emaile.setSubject("Thanks for registering to Giftery");
+		        emaile.setText("Shop the wide variety of gifts for your dear ones and enjoy exiting offers.We provide fresh flowers delicious cakes toys paintings other decoratives");
+		         
+		        // sends the e-mail
+		        sendmail.send(emaile);
+			
+			
 		User user=new User();
 		user.setName(name);
 		user.setMobno(mobno);
@@ -393,35 +429,25 @@ public class usercontroller {
 		user.setPassword(password);
         user.setRole("ROLE_USER"); 
 		udao.saveUser(user);
-		ModelAndView mv1 = new ModelAndView("redirect:/login");
 		
-		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		return "redirect:/login";
+		}
+		catch(Exception e)
+		{
+			
+			return "redirect:/signup?err=1";
+			
+		}
 		
-		 
 		
-		mv1.addObject("catego",l);
+	
 		
-		//for getting the email of the logined user and to find the role whether admni user or supplier
-		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-		 String namees = authent.getName();
-		 if(namees!="anonymousUser")
-		 {
-		 ArrayList<User> userer=udao.getUserByUsername(namees);
-		 for(User u:userer)
-		 {
-			 mv1.addObject("role", u.getRole());
-		 }
-		 }
-		 else
-		 {
-			 mv1.addObject("role","ROLE_USER");
-		 }
-		 
-		 
+	
+	
 		 
 		 
 	
-		return mv1;
+		
 	}
 	
 	
@@ -449,12 +475,96 @@ public class usercontroller {
 			 mv1.addObject("role","ROLE_USER");
 		 }
 		 
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
 		 
-		 
+			
+			mv1.addObject("catego",l);		 
 		 
 	
 		return mv1;
 	}
+	
+	@RequestMapping("/forgotpassword")
+	public ModelAndView forgotpassword(@RequestParam("message") int message)
+	{	ModelAndView mv1 = new ModelAndView("email");
+	
+	ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+	
+	 
+	
+	mv1.addObject("catego",l);
+	org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+	 String namees = authent.getName();
+	 if(namees!="anonymousUser")
+	 {
+	 ArrayList<User> userer=udao.getUserByUsername(namees);
+	 for(User u:userer)
+	 {
+		 mv1.addObject("role", u.getRole());
+	 }
+	 }
+	 else
+	 {
+		 mv1.addObject("role","ROLE_USER");
+	 }
+	 
+	
+	
+	
+	mv1.addObject("message",message);
+		return mv1;
+	}
+	
+	
+	@RequestMapping("/forgotpass")
+	public String forgotpass(@RequestParam("mail") String email)
+	{	
+		int flag=0;
+		
+	ArrayList<User> use=udao.getallusers();
+
+	for(User uuu:use)
+	{System.out.println(uuu);
+		if(uuu.getEmail().equals(email))
+		{
+			flag++;
+			System.out.println("match found");
+		}
+	}
+		
+	if(flag==0)
+	{
+	
+		return "redirect:/forgotpassword?message="+1;
+	}
+	else
+	{
+		
+	
+	
+
+	ArrayList<User> u=udao.getUserByUsername(email);
+	for(User uu:u)
+	{
+		
+		
+		 SimpleMailMessage emaile = new SimpleMailMessage();
+	        emaile.setTo(email);
+	        emaile.setSubject("RECOVERY MAIL");
+	        emaile.setText("Your password:"+uu.getPassword()+"Please change the password on next login for security");
+	         
+	        // sends the e-mail
+	        sendmail.send(emaile);
+	}
+	
+	return "redirect:/login";
+	}
+	
+	
+		
+	}
+	
 	
 	
 	

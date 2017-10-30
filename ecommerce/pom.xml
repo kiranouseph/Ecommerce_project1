@@ -112,8 +112,17 @@
     <version>1.4.7</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+  <dependency>
+        <groupId>com.twilio.sdk</groupId>
+        <artifactId>twilio-java-sdk</artifactId>
+        <version>3.4.5</version>
+    </dependency>
 
-
+<dependency>
+    <groupId>commons-validator</groupId>
+    <artifactId>commons-validator</artifactId>
+    <version>1.4.1</version>
+</dependency>
     
   </dependencies>
   <build>

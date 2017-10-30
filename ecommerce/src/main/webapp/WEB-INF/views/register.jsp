@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html >
 <html>
 <head>
@@ -28,13 +29,15 @@
 <style>
 #reg
 {
-
+-ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+    transform: rotate(4deg);
 opacity:0.9;
 }
 body {
     background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 130vh;
 }
 </style>
 </head>
@@ -44,8 +47,9 @@ body {
     <br>
     <br>
     <br>
-    <br>
-        <div class="container" id="reg">
+   <br>
+   <br>
+   <div class="container" id="reg">
     <div class="row">
         <div class="col-md-4 col-md-offset-5">
             <div >
@@ -55,41 +59,46 @@ body {
                 <div >
                     <form class="form-horizontal" role="form" method="post" action="addUser" >
                     <div class="form-group">
-                        <label for="name" class="col-sm-5 control-label" >
+                        <label for="name" class="col-sm-3 control-label" >
                             Name</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mobno" class="col-sm-5 control-label">
+                        <label for="mobno" class="col-sm-3 control-label">
                             Mobile number</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" id="mobno"  name="mobno" placeholder="Your mobile number"  pattern=".{10}" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="col-sm-5 control-label" >
+                        <label for="email" class="col-sm-3 control-label" >
                             Email</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title=" use someone@domain.com"required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="col-sm-5 control-label" >
+                        <label for="password" class="col-sm-3 control-label" >
                             Password</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-9">
                             <input type="password" class="form-control" id="pass" name="password" placeholder="Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                        <div class="form-group">
-                        <label for="password" class="col-sm-5 control-label" >
+                        <label for="password" class="col-sm-3 control-label" >
                             Confirm Password</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-9">
                             <input type="password" class="form-control" id="cpass" name="cpassword" placeholder="confirm Password" pattern=".{6,}" title="Six or more characters" required>
                         </div>
                     </div>
                   <p id="error"></p>
+                  <c:if test="${err eq 1 }">
+                  
+                  <h4>Already registered Please Login!!</h4>
+                  
+                  </c:if>
                                      <div class="form-group last">
                         <div class="col-sm-offset-5 col-sm-7">
                             <button type="submit" class="btn btn-success btn-sm" onclick="return Validate()">
@@ -102,6 +111,7 @@ body {
                 </div>
                
             </div>
+             Already have account? <a href="login" >login here</a><br>
         </div>
     </div>
 </div>

@@ -117,12 +117,14 @@ input[type="radio"][id="open"]:checked ~ #info {
 #loginn
 {
 opacity:0.9;
-
+-ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+    transform: rotate(4deg);
 }
 body {
     background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 100vh;
 }
 
 </style>
@@ -130,6 +132,8 @@ body {
 </head>
 <body >
     <jsp:include page="header.jsp" />  
+    
+    <br>
     <br>
     <br>
     <br>
@@ -177,9 +181,12 @@ body {
                     </form>
                 </div>
                 <div >
-                    Not Registered? <a href="signup" >Register here</a><br>
+                
+                    Not Registered? <a href="signup?err=0" >Register here</a>&nbsp&nbsp
+                    <a href="forgotpassword?message=0" >Forgot password?</a><br>
                     
                     
+                   
 <div id="wrapper">
   <input type="radio" id="open" name="popup">
   <input type="radio" id="close" name="popup">

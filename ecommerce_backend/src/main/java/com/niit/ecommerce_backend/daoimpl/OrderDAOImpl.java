@@ -71,7 +71,7 @@ public class OrderDAOImpl implements OrderDAO {
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		org.hibernate.Query q= ssn.createQuery("from Order where delivered="+0);
+		org.hibernate.Query q= ssn.createQuery("from Order where delivered="+0+"AND placeconfirm="+1);
 		ArrayList<Order> l=(ArrayList<Order>) q.list();
 		
 	    t.commit();

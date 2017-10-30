@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.tomcat.util.net.jsse.openssl.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.security.access.method.P;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
 import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
 import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
 import com.niit.ecommerce_backend.dao.SubcategoryDAO;
 import com.niit.ecommerce_backend.dao.SupplierDAO;
 import com.niit.ecommerce_backend.dao.UserDAO;
@@ -36,21 +41,25 @@ import com.niit.ecommerce_backend.model.User;
 @Controller
 public class cartcontroller {
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
 	@Autowired
-	CartDAOImpl cartdao;
+	ReviewDAO rdao;
 	@Autowired
-	OrderDAOImpl odao;
+	OrderDAO odao;
+	@Autowired
+	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
 	
 	//redirection to cart from header
 	@RequestMapping("/cart")
@@ -251,7 +260,7 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 
 	}
 	
-	
+	//for increasing the quantity of product in cart
 	@RequestMapping("/cartupdate")
 	public ModelAndView cartupdate(@RequestParam("id") int cartid,@RequestParam("quantity") int quan,@RequestParam("prid") int prid) {
 		
@@ -376,36 +385,14 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 	}
 	
 	
-
+//to direct to billing page 
 	@RequestMapping("/checkout")
 	public ModelAndView checkout(@RequestParam("st") int st)
 	{ModelAndView mv1 = new ModelAndView("orderconfirm");
-	int flag=0;
-		org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
-		 String namees = authent.getName();
 	
-		
-		ArrayList<Order> ore=odao.getorderbyemail(namees);
-		for(Order s:ore)
-		{
-			if(s.getEmail()==namees)
-			{
-				flag++;
-			}
-		}
-if(flag==0)
-{
-	mv1.addObject("messag","Check your order and confirm.");
-	mv1.addObject("exixtorder",0);
-}
-else
-{
-	mv1.addObject("messag","You have a exixsting order please wait until it get shipped.Sorry for the inconvenience.You can place orders after you get a shipping email");
-	mv1.addObject("existorder",1);
-	
-}
-		
-		
+	org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
+	 String namees = authent.getName();
+
 		int total=0;
 		
 		
@@ -448,6 +435,9 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		 
 		 if(st==10)
 		 {
+			 
+		
+				
 				ArrayList<Order> or=new ArrayList<Order>();
 				or=odao.getorderbyemail(namees);
 				for(Order s:or)
@@ -457,11 +447,35 @@ ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 					mv1.addObject("scon",s.getScon());
 					mv1.addObject("paycon",s.getPaycon());
 				}	
+				mv1.addObject("existorder",0);
 				 
 			 
 		 }
 		 else
 		 {
+			 
+			 int flag=0;
+				
+				
+				ArrayList<Order> ore=odao.getorderbyemail(namees);
+				for(Order s:ore)
+				{
+					if(s.getEmail()==namees)
+					{
+						flag++;
+					}
+				}
+		if(flag==0)
+		{
+			mv1.addObject("messag","Check your order and confirm.");
+			mv1.addObject("existorder",0);
+		}
+		else
+		{
+			mv1.addObject("messag","You have a exixsting order please wait until it get shipped.Sorry for the inconvenience.You can place orders after you get a shipping email");
+			mv1.addObject("existorder",1);
+			
+		}
 		 mv1.addObject("bcon",0);
 		 mv1.addObject("scon",0);
 		 mv1.addObject("paycon",0);

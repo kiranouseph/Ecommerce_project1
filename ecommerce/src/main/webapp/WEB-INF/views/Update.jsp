@@ -18,7 +18,7 @@
 <body>
     <jsp:include page="header.jsp" />  
 <c:if test="${status eq 1}">
-<div style="padding-left:25%; padding-top:15%">
+<div style="padding-left:25%; padding-top:10%">
 <form action="updateproduct" method="post" enctype="multipart/form-data">
       <table >
      
@@ -29,7 +29,7 @@
 <tr><td>PRICE</td><td><input type="number"  name="price" required style="width:100%" value="${listt.price }" min="1" max="100000"></td></tr>
 <tr><td>STOCK</td><td><input type="number"  name="stock" required style="width:100%" value="${listt.stock }" min="1" max="100000"></td></tr>
 <tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.image}"accept="D:/PRODIMAGES/${listt.image}"></td></tr>
-<tr><td><img src="${pageContext.request.contextPath}/resources/products/${listt.image}" style="width:100px;height:100px"></td></tr>
+<tr><td></td><td><img src="${pageContext.request.contextPath}/resources/products/${listt.image}" style="width:100px;height:100px"></td></tr>
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
 <option value="${listt.subcategory.category.id}" selected>${listt.subcategory.category.categoryname}</option>
 <c:forEach var="designatee" items="${catego}">
@@ -73,7 +73,7 @@
 
 
 <c:if test="${status eq 2}">
-<div style="padding-left:25%; padding-top:15%">
+<div style="padding-left:25%; padding-top:10%">
 <form action="updatecategory" method="post" enctype="multipart/form-data">
 
       <table >
@@ -83,7 +83,7 @@
 <tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:100%"  value="${listt.categoryname }"></td></tr>
 <tr><td>CATEGORY DESCRIPTION</td><td><input type="text"  name="catdesc" required style="width:100%"  value="${listt.categorydesc }"></td></tr>
 <tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.catimage }" ></td></tr>
-<tr><td><img src="${pageContext.request.contextPath}/resources/products/${listt.catimage}" style="width:100px;height:100px"></td></tr>
+<tr><td></td><td><img src="${pageContext.request.contextPath}/resources/products/${listt.catimage}" style="width:100px;height:100px"></td></tr>
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>
 
 </table>
@@ -96,7 +96,7 @@
 
 
 <c:if test="${status eq 3}">
-<div style="padding-left:25%; padding-top:15%">
+<div style="padding-left:25%; padding-top:10%">
 
 <form action="updatesubcategory" method="post" enctype="multipart/form-data">
 
@@ -104,7 +104,7 @@
 <tr><td>SUBCATEGORY  ID</td><td><input type="number"   name="scatid"  value="${listt.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>SUBCATEGORY NAME</td><td><input type="text"  name="scatname" required style="width:100%"  value="${listt.subcategoryname }"></td></tr>
 <tr><td>IMAGE</td><td><input type="file" name="image" value="${listt.subcatimage}" ></td></tr>
-<tr><td><img src="${pageContext.request.contextPath}/resources/products/${listt.subcatimage}" style="width:100px;height:100px"></td></tr>
+<tr><td></td><td><img src="${pageContext.request.contextPath}/resources/products/${listt.subcatimage}" style="width:100px;height:100px"></td></tr>
 
 
 <tr><td>CATEGORY</td><td><select name="cat" style="width:100%">
@@ -126,7 +126,7 @@
         
 </c:if>
 <c:if test="${status eq 4}">
-<div style="padding-left:25%; padding-top:15%">
+<div style="padding-left:25%; padding-top:10%">
 
 <form action="updatesupplier" method="post">
 

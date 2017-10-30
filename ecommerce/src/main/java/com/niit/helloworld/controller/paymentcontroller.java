@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -15,6 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecommerce_backend.dao.CartDAO;
+import com.niit.ecommerce_backend.dao.CategoryDAO;
+import com.niit.ecommerce_backend.dao.ContactDAO;
+import com.niit.ecommerce_backend.dao.OrderDAO;
+import com.niit.ecommerce_backend.dao.ProductDAO;
+import com.niit.ecommerce_backend.dao.ReviewDAO;
+import com.niit.ecommerce_backend.dao.SubcategoryDAO;
+import com.niit.ecommerce_backend.dao.SupplierDAO;
+import com.niit.ecommerce_backend.dao.UserDAO;
 import com.niit.ecommerce_backend.daoimpl.CartDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.CategoryDAOImpl;
 import com.niit.ecommerce_backend.daoimpl.OrderDAOImpl;
@@ -27,29 +38,47 @@ import com.niit.ecommerce_backend.model.Cart;
 import com.niit.ecommerce_backend.model.Order;
 import com.niit.ecommerce_backend.model.Product;
 import com.niit.ecommerce_backend.model.User;
+import com.twilio.sdk.TwilioRestClient;
+import com.twilio.sdk.TwilioRestException;
+import com.twilio.sdk.resource.factory.MessageFactory;
+import com.twilio.sdk.resource.instance.Message;
+
+
+import com.twilio.sdk.TwilioRestClient;
+import com.twilio.sdk.TwilioRestException;
+import com.twilio.sdk.resource.factory.MessageFactory;
+import com.twilio.sdk.resource.instance.Message;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 @Controller
 public class paymentcontroller {
 	
 	@Autowired
-	UserDAOImpl udao;
+	CartDAO cartdao;
 	@Autowired
-	ProductDAOImpl pdao;
+	UserDAO udao;
 	@Autowired
-	CategoryDAOImpl cdao;
+	ProductDAO pdao;
 	@Autowired
-	SupplierDAOImpl sdao;
+	CategoryDAO cdao;
 	@Autowired
-	SubcategoryDAOImpl scdao;
+	SupplierDAO sdao;
 	@Autowired
-	ReviewDAOImpl rdao;
+	SubcategoryDAO scdao;
 	@Autowired
-	CartDAOImpl cartdao;
+	ReviewDAO rdao;
 	@Autowired
-	OrderDAOImpl odao;
+	OrderDAO odao;
 	@Autowired
 	private MailSender sendmail;
+	@Autowired
+	ContactDAO ctdao;
 	
-	
+	 public static final String ACCOUNT_SID = "AC5381736be1859ec166d3fbe215597f47";
+	    public static final String AUTH_TOKEN = "dd376562416ceb96cb898e01449a240c";
+	    public static final String TWILIO_NUMBER = "+15037412491";
+
 	
 	@RequestMapping("/badd")
 	public ModelAndView badd(@RequestParam("name") String name,@RequestParam("add1") String add1,@RequestParam("add2") String add2,@RequestParam("city") String city,@RequestParam("state") String state,@RequestParam("pin") int pin)
@@ -183,6 +212,7 @@ int total=0;
 			}
 		mv1.addObject("status",2);
 		mv1.addObject("total",total);
+		mv1.addObject("existorder",0);
 		
 		return mv1;
 	}
@@ -248,7 +278,8 @@ int total=0;
 				mv1.addObject("cartt", cartt);
 				mv1.addObject("total",total);
 				mv1.addObject("status",2);
-			
+				mv1.addObject("existorder",0);
+				
 			return mv1;
 		
 	}
@@ -256,7 +287,7 @@ int total=0;
 		@RequestMapping("/placeorder")
 		public ModelAndView placeorder()
 		{ModelAndView mv1=new ModelAndView("successorder");
-			
+		long mob;
 			org.springframework.security.core.Authentication authent = SecurityContextHolder.getContext().getAuthentication();
 			 String namees = authent.getName();
 			 if(namees!="anonymousUser")
@@ -317,6 +348,8 @@ int total=0;
 				}
 			
 		
+			ArrayList<User> u=udao.getUserByUsername(namees);
+			
 			
 			ArrayList<Order> orrd=odao.getorderbyemail(namees);
 			mv1.addObject("orrdd",orrd);
@@ -326,7 +359,31 @@ int total=0;
 		    emaill.setText("YOUR ORDERE FOR\n"+name1+"\n is placed and the total amount is"+ tota);
 		    // sends the e-mail
 		    sendmail.send(emaill);
-			return mv1;
+for(User us:u)
+{
+	
+
+
+			 try {
+			        TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
+			 
+			        // Build a filter for the MessageList
+			        ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+			        params.add(new BasicNameValuePair("Body", "THANKS FOR SHOPPING FROM GIFTERY!\n"+"YOUR ORDERE FOR\n"+name1+"\n is placed and the total amount is"+ tota));
+			        params.add(new BasicNameValuePair("To","918129925706")); //Add real number here
+			        params.add(new BasicNameValuePair("From", TWILIO_NUMBER));
+			 
+			        MessageFactory messageFactory = client.getAccount().getMessageFactory();
+			        Message message = messageFactory.create(params);
+			        System.out.println(message.getSid());
+			    } 
+			    catch (TwilioRestException e) {
+			        System.out.println(e.getErrorMessage());
+		    }
+
+			
+}
+return mv1;
 		
 	}
 		
@@ -334,7 +391,7 @@ int total=0;
 		
 	
 	
-	
+
 	
 
 }

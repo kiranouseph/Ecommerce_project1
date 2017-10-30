@@ -20,7 +20,7 @@
   body {
     background-image: url("${pageContext.request.contextPath}/resources/images/bglist.jpg");
     background-repeat: no-repeat;
-     background-size: 100% 70vh;
+     background-size: 100% 150vh;
      text-align: center;
 }
   .cardcolor
@@ -58,13 +58,13 @@ table, th, td {
             <c:if test="${designate.offerprice eq 0}">
             <p>
            
-            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> ${designate.price}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${designate.price}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
             <p></p>
             </c:if>
                         <c:if test="${designate.offerprice ge 1}">
             <p>
            
-            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> ${designate.offerprice}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
+            </p><div class="btn-group"> <a href="prod?id=${designate.id}" class="btn btn-default"> <i class="fa fa-inr"></i> ${designate.offerprice}</a> <a href="prod?id=${designate.id}" class="btn btn-primary"><span class="glyphicons glyphicons-zoom-in"></span>QUICK VIEW</a> </div>
             <p></p>
             </c:if>
           </div>
@@ -82,6 +82,11 @@ table, th, td {
 
 </c:forEach>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
   <jsp:include page="footer.jsp" />  
 
 </body>

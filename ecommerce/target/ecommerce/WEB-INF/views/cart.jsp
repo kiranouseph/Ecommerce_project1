@@ -4,6 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
+
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftt.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 100%;
+     text-align: center;
+}
+
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
@@ -59,7 +67,7 @@
 <div>
 <h2 style="margin-left: 400px">YOUR SHOPPING CART IS EMPTY</h2>
 <div style="margin-left: 400px; margin-top:100px  ">
-<img src="${pageContext.request.contextPath}/resources/images/cartt.jpeg" alt="Chania" width="500" height="500" class="img-responsive" />
+<img src="${pageContext.request.contextPath}/resources/images/emptybox.jpg" alt="Chania" width="500" height="500" class="img-responsive" />
 </div>
 </div>
 </c:if>
@@ -89,16 +97,16 @@
 									<div class="col-sm-2 "><img src="${pageContext.request.contextPath}/resources/products/${design.product.image}" alt="Chania" width="100" height="100" class="img-responsive"/></div>
 									<div class="col-sm-10">
 									 
-										<h4 class="nomargin">${design.product.prodname }</h4>
+										<h4 class="nomargin"><strong>${design.product.prodname }</strong></h4>
 										<p>
 										</p>	</div>
 								</div>
 							</td>
-							<td data-th="Price">${design.price }</td>
+							<td data-th="Price"><strong>${design.price }</strong></td>
 							<td data-th="Quantity">
 								<input type="number" class="form-control text-center" value="${design.quantity }" readonly>
 							</td>
-							<td data-th="Subtotal" class="text-center">${design.price*design.quantity }</td>
+							<td data-th="Subtotal" class="text-center"><strong>${design.price*design.quantity }</strong></td>
 							<td>
                                    <a href="cartretrieve?id=${design.cartid}">
                                   <i class="fa fa-refresh fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>

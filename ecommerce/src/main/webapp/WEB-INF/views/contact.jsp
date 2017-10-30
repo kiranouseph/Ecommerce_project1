@@ -15,7 +15,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-
+table, th, td {
+    border-collapse: separate;
+    border-spacing: 20px ;
+    
+}
 .panel-order .row {
 	border-bottom: 1px solid #ccc;
 }
@@ -75,7 +79,7 @@
 		  </div>
 		</div>
   </div>
-  <c:forEach var="designate" items="${contacts}">	
+  
 
 
 <div class="panel-body">
@@ -85,13 +89,29 @@
 		<div class="row">
 		  <div class="col-md-12">
 			
+			<table>
+			<tr>
 			
-			<span>NAME</span><p style="font-size: 25px">${designate.name }</p>
-			<span>SUBJECT</span><p style="font-size: 25px">${designate.subject }</p>
-			<span>MESSAGE</span><p style="font-size: 25px">${designate.message }</p>
-			 <a href="deletecon?id=${designate.id}">
-                                  <i class="fa fa-trash fa-3x" aria-hidden="true" style="width:50px;height:50px"></i>
-                                   </a>
+			<td Style="font-size: 25px">
+			
+			NAME
+			</td>
+			<td Style="font-size: 25px">Subject</td>
+			<td Style="font-size: 25px">Message</td>
+			<td Style="font-size: 25px">Action</td>
+			</tr>
+			<c:forEach var="designate" items="${contacts}">	
+			<tr>
+			<td Style="font-size: 25px">${designate.email }</td>
+			<td Style="font-size: 25px">${designate.subject }</td>
+			<td Style="font-size: 25px">${designate.message }</td>
+			<td Style="font-size: 25px"><a href="deletecon?id=${designate.id}">
+                                  <i class="fa fa-trash fa-3x" aria-hidden="true" ></i>
+                                   </a></td>
+			</tr>
+</c:forEach>			
+			</table>
+			
 		  </div>
 		 
 		</div>
@@ -101,10 +121,8 @@
 </div>
 
 
- <div class="col-md-12">
-			review made by Email id: ${designate.email}
-		  </div>
-</c:forEach>
+
+
 </div>
     
 

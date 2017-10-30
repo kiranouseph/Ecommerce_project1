@@ -79,10 +79,6 @@ public class UserDAOImpl implements UserDAO {
 
 	
 	
-	public int checklogin(String email, String password) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public void deleteuserbyemail(String email) {
 		
@@ -98,6 +94,21 @@ ArrayList<User> userr=new ArrayList<User>();
 		}
 	    session.getTransaction().commit();
 	    session.close();	
+	}
+
+	public ArrayList<User> getallusers() {
+		
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		Query q= ssn.createQuery("from User");
+		ArrayList<User> l=(ArrayList<User>) q.list();
+		
+        t.commit();
+        ssn.close();
+		
+		return l;
+		
 	}
 
 	

@@ -26,17 +26,38 @@
         return true;
     }
 </script>
+<style>
+#supd
+{
+
+-ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+    transform: rotate(4deg);
+}
+body {
+    background-image: url("${pageContext.request.contextPath}/resources/images/giftcard.jpg");
+    background-repeat: no-repeat;
+     background-size: 100% 100vh;
+}
+</style>
 <body>
 <%@ include file = "header.jsp" %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="supd">
    <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-md-4 col-md-offset-5">
+            <div >
+                <div ">
                   <strong>Login</strong><br>
                   <h4>Please enter new password</h4>
                 </div>
-                <div class="panel-body">
+                <div >
                     <form class="form-horizontal" role="form" action="spasupd" method="post">
                   
                     <div class="form-group">
@@ -70,6 +91,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <%@ include file = "footer.jsp" %>
 </body>
